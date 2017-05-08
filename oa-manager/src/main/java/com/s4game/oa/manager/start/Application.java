@@ -10,7 +10,9 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.boot.context.event.ApplicationStartingEvent;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.ComponentScan;
 
+@ComponentScan(basePackages = { "com.s4game" })
 @EnableAutoConfiguration
 public class Application extends SpringBootServletInitializer {
 	
