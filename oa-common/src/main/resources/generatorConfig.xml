@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<classPathEntry location="C:/Users/renyuan_game/.m2/repository/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar"/>
+	
+	<context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+
+		<commentGenerator>
+			<property name="suppressDate" value="true" />
+			<property name="suppressAllComments" value="true" />
+		</commentGenerator>
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost:3306/s4game-oa" userId="root" password="123456">
+		</jdbcConnection>
+
+		<javaModelGenerator targetPackage="com.s4game.oa.common.entity"
+			targetProject="src\main\java">
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+ 
+		<sqlMapGenerator targetPackage="com.s4game.oa.common.mapper"
+			targetProject="src\main\resources" />
+
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.s4game.oa.common.mapper" targetProject="src\main\java" />
+
+		<table tableName="%" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+							 enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" />
+		</table>
+	</context>
+</generatorConfiguration>

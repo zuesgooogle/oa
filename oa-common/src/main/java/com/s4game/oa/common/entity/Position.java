@@ -2,12 +2,10 @@ package com.s4game.oa.common.entity;
 
 import java.util.Date;
 
-public class User {
-    private Long id;
+public class Position {
+    private Integer id;
 
-    private String username;
-
-    private String password;
+    private String name;
 
     private Integer departmentId;
 
@@ -17,28 +15,20 @@ public class User {
 
     private Date updateTime;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getName() {
+        return name;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
     public Integer getDepartmentId() {
