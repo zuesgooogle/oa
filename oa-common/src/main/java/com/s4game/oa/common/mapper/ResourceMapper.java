@@ -1,17 +1,16 @@
 package com.s4game.oa.common.mapper;
 
 import com.s4game.oa.common.entity.Resource;
+import java.util.List;
 
 public interface ResourceMapper {
     int deleteByPrimaryKey(Integer id);
 
     int insert(Resource record);
 
-    int insertSelective(Resource record);
-
     Resource selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(Resource record);
+    List<Resource> selectAll();
 
     int updateByPrimaryKey(Resource record);
 }

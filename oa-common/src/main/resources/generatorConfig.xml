@@ -6,7 +6,7 @@
 <generatorConfiguration>
 	<classPathEntry location="C:/Users/renyuan_game/.m2/repository/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar"/>
 	
-	<context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
+	<context id="MysqlContext" targetRuntime="MyBatis3Simple" defaultModelType="flat">
 		<property name="beginningDelimiter" value="`" />
 		<property name="endingDelimiter" value="`" />
 
@@ -32,7 +32,8 @@
 
 		<table tableName="%" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
 							 enableSelectByExample="false" selectByExampleQueryId="false">
-			<generatedKey column="id" sqlStatement="Mysql" />
+							 
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 	</context>
 </generatorConfiguration>
