@@ -13,6 +13,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.s4game.oa.common.entity.Department;
 import com.s4game.oa.common.mapper.DepartmentMapper;
+import com.s4game.oa.common.response.Response;
 import com.s4game.oa.common.service.PageService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -31,11 +32,13 @@ public class DepartmentController {
 	
 	@ApiOperation(value = "部门列表")
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
-	public List<Department> list() {
+	public Response<List<Department>> list() {
+		Response<List<Department>> response = new Response<>();
 		
 		PageInfo<Department> pageInfo = pageService.selectPage(new Department(), new Page<>(1, 5));
+		response.setData(pageInfo.getList());
 		
-		return pageInfo.getList();
+		return response;
 	}
 	
 	@ApiOperation(value = "新增部门")
