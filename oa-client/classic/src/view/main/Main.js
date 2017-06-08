@@ -18,6 +18,7 @@ Ext.define('oa.view.main.Main', {
         'oa.view.main.List',
 
         'oa.view.department.DepartmentList',
+        'oa.view.department.DeparmentInfo',
         'oa.view.department.DepartmentController'
     ],
 

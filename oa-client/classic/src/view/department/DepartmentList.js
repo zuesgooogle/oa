@@ -3,9 +3,10 @@ Ext.define('oa.view.department.DepartmentList', {
     xtype: 'departmentList',
 
     requires: [
-        'oa.store.Department',
-        'oa.view.main.MainModel'
+        'oa.store.Department'
     ],
+
+    controller: 'department',
 
     title: '部门管理',
     scrollable: true,
@@ -15,7 +16,8 @@ Ext.define('oa.view.department.DepartmentList', {
         {
             xtype: 'button',
             text: '新增',
-            iconCls: 'icon-add'
+            iconCls: 'icon-add',
+            handler: 'addDepartment'
         }],
 
     store: {

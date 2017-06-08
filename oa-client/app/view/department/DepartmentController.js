@@ -3,8 +3,12 @@ Ext.define('oa.view.department.DepartmentController', {
 
     alias: 'controller.department',
     
-    getDepartmentList: function() {
-        console.log('get department list...');
-        Ext.getCmp('departmentList').store().reload();
+    addDepartment: function() {
+        var info = Ext.getCmp('departmentInfo');
+        if (info == null) {
+            info = Ext.create('departmentInfo');
+            console.log('new window');
+        }
+        info.show();
     }
 });
