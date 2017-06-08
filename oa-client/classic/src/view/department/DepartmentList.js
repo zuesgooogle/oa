@@ -11,11 +11,11 @@ Ext.define('oa.view.department.DepartmentList', {
     scrollable: true,
     closable: false,
 
-    tbar : [
+    tbar: [
         {
-           xtype : 'button',
-           text : '新增',
-           iconCls : 'icon-add'
+            xtype: 'button',
+            text: '新增',
+            iconCls: 'icon-add'
         }],
 
     store: {
@@ -23,13 +23,24 @@ Ext.define('oa.view.department.DepartmentList', {
     },
 
     columns: [
-        { text: 'Id',  dataIndex: 'id', width: 100 },
-        { text: 'Name',  dataIndex: 'name', width: 100 },
-        { text: 'CreateTime', dataIndex: 'createTime', flex: 1 }
+        { text: 'Id', dataIndex: 'id', width: 100 },
+        { text: 'Name', dataIndex: 'name', width: 200 },
+        { text: 'CreateTime', dataIndex: 'createTime', flex: 1,
+            renderer: function(value, cellmeta, record) {
+                return Ext.Date.format(new Date(value), 'Y-m-d H:i:s');
+            }
+        }
     ],
 
-    initComponent: function() {
+    initComponent: function () {
         this.callParent(arguments);
     },
+
+    listeners: {
+        render: function (grid) {
+            var store = grid.getStore();
+            store.load();
+        }
+    }
 
 });

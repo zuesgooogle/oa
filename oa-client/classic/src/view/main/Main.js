@@ -94,8 +94,7 @@ Ext.define('oa.view.main.Main', {
         title: 'Departments',
         iconCls: 'fa-users',
         items: [{
-            xtype: 'departmentList',
-            handler: 'getDepartmentList'
+            xtype: 'departmentList'
         }]
     }, {
         title: 'Settings',
