@@ -9,8 +9,18 @@ Ext.define('oa.view.main.MainController', {
 
     alias: 'controller.main',
 
-    onItemSelected: function (sender, record) {
-        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
+    onMenuClick: function (sender, record) {
+        var action =  record.data.action;
+
+        this.getView();
+
+        var workspace = Ext.getCmp('workspace');
+        var cmp = Ext.getCmp(action);
+        if (cmp == null) {
+            cmp = Ext.create(action);
+            workspace.add(cmp);
+        }
+        workspace.setActiveTab(cmp);
     },
 
     onConfirm: function (choice) {

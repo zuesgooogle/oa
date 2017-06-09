@@ -909,6 +909,7 @@ $include-ext-window-toast: dynamic(true);;
 $include-ext-window-window: dynamic(true);;
 $include-oa-application: dynamic(true);;
 $include-oa-store-department: dynamic(true);;
+$include-oa-store-menu: dynamic(true);;
 $include-oa-store-personnel: dynamic(true);;
 $include-oa-view-department-deparmentinfo: dynamic(true);;
 $include-oa-view-department-departmentcontroller: dynamic(true);;

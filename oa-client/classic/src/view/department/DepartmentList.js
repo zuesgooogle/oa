@@ -2,6 +2,9 @@ Ext.define('oa.view.department.DepartmentList', {
     extend: 'Ext.grid.Panel',
     xtype: 'departmentList',
 
+    id: 'departmentList',
+    alias: 'departmentList',
+
     requires: [
         'oa.store.Department'
     ],
@@ -10,7 +13,7 @@ Ext.define('oa.view.department.DepartmentList', {
 
     title: '部门管理',
     scrollable: true,
-    closable: false,
+    closable: true,
 
     tbar: [
         {
