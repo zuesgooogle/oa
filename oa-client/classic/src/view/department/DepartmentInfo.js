@@ -14,6 +14,28 @@ Ext.define('oa.view.department.DeparmentInfo', {
 
     closeAction: 'destroy',
 
+    items: [{
+        xtype: 'form',
+        bodyStyle:"padding:10px 10px 10px 10px",  
+        defaults: {
+            anchor: '100%',
+        },
+        items: [
+            {fieldLabel: 'Id', id: 'id', xtype: 'textfield', editable: false},
+            {fieldLabel: 'Name', id: 'name', xtype: 'textfield'},
+            {fieldLabel: 'CreateTime', id: 'createTime', xtype: 'datefield', editable: false, value: new Date(), format: 'Y-m-d H:i:s'},
+        ]
+    }],
+
+    buttons: [{
+        text: 'Submit'
+    }, {
+        text: 'Cancel',
+        handler: function() {
+            this.up("window").close(); 
+        }
+    }],
+
     initComponent: function () {
         this.callParent(arguments);
     }

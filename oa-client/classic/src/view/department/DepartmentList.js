@@ -45,7 +45,8 @@ Ext.define('oa.view.department.DepartmentList', {
         render: function (grid) {
             var store = grid.getStore();
             store.load();
-        }
+        },
+        itemdblclick: 'editDepartment'
     }
 
 });

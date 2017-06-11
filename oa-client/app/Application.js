@@ -13,7 +13,17 @@ Ext.define('oa.Application', {
     ],
     
     launch: function () {
-        // TODO - Launch the application
+        var loggedIn;
+
+        // Check to see the current value of the localStorage key
+        loggedIn = localStorage.getItem("oaLoggedIn");
+
+        // This ternary operator determines the value of the TutorialLoggedIn key.
+        // If TutorialLoggedIn isn't true, we display the login window,
+        // otherwise, we display the main view
+        Ext.create({
+            xtype: loggedIn ? 'app-main' : 'login'
+        });
     },
 
     onAppUpdate: function () {
