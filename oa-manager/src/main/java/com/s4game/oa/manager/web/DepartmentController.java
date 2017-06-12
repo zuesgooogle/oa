@@ -26,34 +26,44 @@ public class DepartmentController {
 
 	@Autowired
 	private DepartmentMapper departmentManager;
-	
+
 	@Autowired
 	private PageService<Department> pageService;
-	
+
 	@ApiOperation(value = "部门列表")
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
 	public Response<List<Department>> list() {
 		Response<List<Department>> response = new Response<>();
-		
+
 		PageInfo<Department> pageInfo = pageService.selectPage(new Department(), new Page<>(1, 5));
 		response.setData(pageInfo.getList());
-		
+
 		return response;
 	}
-	
-	@ApiOperation(value = "新增部门")
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public Department create(@ApiParam(value = "部门名称") @RequestParam(value = "name", required = true) String name) {
-		Department department = new Department();
-		department.setName(name);
-		department.setDeleted((byte)0);
-		
-		Date now = new Date();
-		department.setCreateTime(now);
-		
-		departmentManager.insert(department);
-		
-		return department;
+
+	@ApiOperation(value = "部门更新")
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public Response<Department> update(
+			@ApiParam(value = "部门Id") @RequestParam(value = "id", required = false) Integer id,
+			@ApiParam(value = "部门名称") @RequestParam(value = "name", required = true) String name) {
+		Response<Department> response = new Response<>();
+
+		Department department;
+		if (id == null) {
+			department = new Department();
+			department.setName(name);
+			department.setDeleted((byte) 0);
+			department.setCreateTime(new Date());
+
+			departmentManager.insert(department);
+		} else {
+			department = departmentManager.selectByPrimaryKey(id);
+			department.setName(name);
+			departmentManager.updateByPrimaryKey(department);
+		}
+
+		response.setData(department);
+		return response;
 	}
-	
+
 }

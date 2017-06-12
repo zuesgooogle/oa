@@ -7,19 +7,31 @@ Ext.define('oa.view.department.DepartmentController', {
         var info = Ext.getCmp('departmentInfo');
         if (info == null) {
             info = Ext.create('departmentInfo');
-            console.log('new window');
         }
         info.show();
     },
 
-    editDepartment: function(sender, record) {
+    viewDepartment: function(sender, record) {
         var info = Ext.getCmp('departmentInfo');
         if (info == null) {
             info = Ext.create('departmentInfo');
-            console.log('new window');
         }
         info.down('form').loadRecord(record);
         info.show();
-    }
+    },
 
+    updateDepartment: function(sender) {
+        var form = sender.up('form');
+        if (form.isValid()) {
+            form.submit({
+                success: function(form, action) {
+                    Ext.Msg.alert('Success', action.result);
+                },
+                failure: function(form, action) {
+                    Ext.Msg.alert('Failed', action.result.msg);
+                }
+            });
+        }
+
+    }
 });

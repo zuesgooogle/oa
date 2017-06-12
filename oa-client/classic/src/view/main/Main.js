@@ -7,6 +7,8 @@ Ext.define('oa.view.main.Main', {
     requires: [
         'Ext.plugin.Viewport',
         'Ext.window.MessageBox',
+        'Ext.tree.TreePanel',
+        'Ext.tab.Panel',
 
         'oa.store.Menu',
         'oa.view.main.MainController',
@@ -51,6 +53,7 @@ Ext.define('oa.view.main.Main', {
         }]
     }, {
         region: 'center',
+        title: '',
         xtype: 'tabpanel',
         id: 'workspace'
     }, {

@@ -13,7 +13,7 @@ Ext.define('oa.store.Department', {
             update : 'POST',
             destroy: 'POST'
         },
-        url: 'http://127.0.0.1:8080/ws/department/list',
+        url: oa.config.Config.BASE_URL + 'department/list',
         reader: {
             type: 'json',
             rootProperty: 'data'

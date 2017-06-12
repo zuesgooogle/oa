@@ -6,6 +6,8 @@ public class Response<T> {
 	
 	private int errorCode = ErrorCode.SUCCESS;
 
+	private String msg;
+	
 	public T getData() {
 		return data;
 	}
@@ -20,6 +22,14 @@ public class Response<T> {
 
 	public void setErrorCode(int errorCode) {
 		this.errorCode = errorCode;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 	
 }

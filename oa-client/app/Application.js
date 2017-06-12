@@ -7,6 +7,10 @@ Ext.define('oa.Application', {
     extend: 'Ext.app.Application',
     
     name: 'oa',
+    
+    requires: [
+        'oa.config.Config'
+    ],
 
     stores: [
         // TODO: add global / shared stores here

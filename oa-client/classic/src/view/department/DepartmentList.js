@@ -4,12 +4,14 @@ Ext.define('oa.view.department.DepartmentList', {
 
     id: 'departmentList',
     alias: 'departmentList',
+    reference: 'departmentList',
 
     requires: [
         'oa.store.Department'
     ],
 
     controller: 'department',
+    viewModel: 'department',
 
     title: '部门管理',
     scrollable: true,
@@ -46,7 +48,7 @@ Ext.define('oa.view.department.DepartmentList', {
             var store = grid.getStore();
             store.load();
         },
-        itemdblclick: 'editDepartment'
+        itemdblclick: 'viewDepartment'
     }
 
 });

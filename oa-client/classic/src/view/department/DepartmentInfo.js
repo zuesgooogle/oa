@@ -5,6 +5,9 @@ Ext.define('oa.view.department.DeparmentInfo', {
     alias: 'departmentInfo',
     id: 'departmentInfo',
 
+    controller: 'department',
+    viewModel: 'department',
+
     title: '部门信息',
     modal: false,
     resizable: false,
@@ -16,24 +19,28 @@ Ext.define('oa.view.department.DeparmentInfo', {
 
     items: [{
         xtype: 'form',
-        bodyStyle:"padding:10px 10px 10px 10px",  
-        defaults: {
-            anchor: '100%',
-        },
-        items: [
-            {fieldLabel: 'Id', id: 'id', xtype: 'textfield', editable: false},
-            {fieldLabel: 'Name', id: 'name', xtype: 'textfield'},
-            {fieldLabel: 'CreateTime', id: 'createTime', xtype: 'datefield', editable: false, value: new Date(), format: 'Y-m-d H:i:s'},
-        ]
-    }],
+        method: 'POST',
+        url: oa.config.Config.BASE_URL + 'department/update',
 
-    buttons: [{
-        text: 'Submit'
-    }, {
-        text: 'Cancel',
-        handler: function() {
-            this.up("window").close(); 
-        }
+        bodyStyle:"padding:10px 10px 10px 10px",
+        items: [
+            {fieldLabel: 'Id', name: 'id', xtype: 'textfield', editable: false},
+            {fieldLabel: 'Name', name: 'name', xtype: 'textfield', allowBlank: false},
+            {fieldLabel: 'CreateTime', name: 'createTime', xtype: 'textfield', editable: false, 
+                renderData: function(value) {
+                    return Ext.Date.format(new Date(value), 'Y-m-d H:i:s');
+                }
+            }
+        ],
+        buttons: [{
+            text: 'Submit',
+            handler: 'updateDepartment'
+        }, {
+            text: 'Cancel',
+            handler: function() {
+                this.up("window").close(); 
+            }
+        }]
     }],
 
     initComponent: function () {
