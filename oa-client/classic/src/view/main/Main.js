@@ -30,7 +30,12 @@ Ext.define('oa.view.main.Main', {
         html: '',
         scrollable: false,
         collapsible: false,
-        split: false
+        split: true,
+        tools: [{
+            type: 'exit',
+            tooltip: '退出',
+            handler: 'onLogout'
+        }]
     }, {
         region: 'west',
         id: 'west-region',

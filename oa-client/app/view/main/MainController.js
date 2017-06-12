@@ -27,5 +27,17 @@ Ext.define('oa.view.main.MainController', {
         if (choice === 'yes') {
             //
         }
+    },
+
+    onLogout: function(e, target, panel) {
+        localStorage.removeItem("oaLoggedIn");
+
+        // Remove Main View
+        this.getView().destroy();
+
+        // Add the Login Window
+        Ext.create({
+            xtype: 'login'
+        });
     }
 });

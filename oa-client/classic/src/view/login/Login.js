@@ -9,7 +9,7 @@ Ext.define('oa.view.login.Login', {
 
     controller: 'login',
     bodyPadding: 10,
-    title: 'Login Window',
+    title: '用户登录',
     closable: false,
     autoShow: true,
 
