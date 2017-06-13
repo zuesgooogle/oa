@@ -3,11 +3,11 @@ package com.s4game.oa.common.response;
 public class Response<T> {
 
 	private T data;
-	
-	private int errorCode = ErrorCode.SUCCESS;
+
+	private boolean success;
 
 	private String msg;
-	
+
 	public T getData() {
 		return data;
 	}
@@ -16,12 +16,12 @@ public class Response<T> {
 		this.data = data;
 	}
 
-	public int getErrorCode() {
-		return errorCode;
+	public boolean isSuccess() {
+		return success;
 	}
 
-	public void setErrorCode(int errorCode) {
-		this.errorCode = errorCode;
+	public void setSuccess(boolean success) {
+		this.success = success;
 	}
 
 	public String getMsg() {
@@ -32,4 +32,10 @@ public class Response<T> {
 		this.msg = msg;
 	}
 	
+	public Response<T> success(T data) {
+		this.data = data;
+		this.success = true;
+		
+		return this;
+	}
 }

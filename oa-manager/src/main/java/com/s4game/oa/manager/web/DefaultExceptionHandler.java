@@ -24,7 +24,7 @@ public class DefaultExceptionHandler {
 	@ResponseBody
 	public Response<String> resolveException(HttpServletRequest request, HttpServletResponse response, Exception ex) {
 		Response<String> result = new Response<>();
-		result.setErrorCode(-1);
+		result.setSuccess(false);
 		result.setMsg(ex.getMessage());
 
 		LOG.error("manager exception.", ex);

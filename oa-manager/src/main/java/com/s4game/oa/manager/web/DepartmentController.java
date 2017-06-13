@@ -38,6 +38,7 @@ public class DepartmentController {
 		PageInfo<Department> pageInfo = pageService.selectPage(new Department(), new Page<>(1, 5));
 		response.setData(pageInfo.getList());
 
+		response.setSuccess(true);
 		return response;
 	}
 
@@ -62,6 +63,7 @@ public class DepartmentController {
 			departmentManager.updateByPrimaryKey(department);
 		}
 
+		response.setSuccess(true);
 		response.setData(department);
 		return response;
 	}
