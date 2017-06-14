@@ -1,7 +1,6 @@
 package com.s4game.oa.manager.web;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,22 +31,21 @@ public class DepartmentController {
 
 	@ApiOperation(value = "部门列表")
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
-	public Response<List<Department>> list() {
-		Response<List<Department>> response = new Response<>();
+	public Response list() {
+		Response.Builder response = Response.newBuilder();
 
 		PageInfo<Department> pageInfo = pageService.selectPage(new Department(), new Page<>(1, 5));
 		response.setData(pageInfo.getList());
 
-		response.setSuccess(true);
-		return response;
+		return response.build();
 	}
 
 	@ApiOperation(value = "部门更新")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public Response<Department> update(
+	public Response update(
 			@ApiParam(value = "部门Id") @RequestParam(value = "id", required = false) Integer id,
 			@ApiParam(value = "部门名称") @RequestParam(value = "name", required = true) String name) {
-		Response<Department> response = new Response<>();
+		Response.Builder response = Response.newBuilder();
 
 		Department department;
 		if (id == null) {
@@ -63,9 +61,8 @@ public class DepartmentController {
 			departmentManager.updateByPrimaryKey(department);
 		}
 
-		response.setSuccess(true);
 		response.setData(department);
-		return response;
+		return response.build();
 	}
 
 }

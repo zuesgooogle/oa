@@ -22,8 +22,8 @@ public class DefaultExceptionHandler {
 
 	@ExceptionHandler(Exception.class)
 	@ResponseBody
-	public Response<String> resolveException(HttpServletRequest request, HttpServletResponse response, Exception ex) {
-		Response<String> result = new Response<>();
+	public Response resolveException(HttpServletRequest request, HttpServletResponse response, Exception ex) {
+		Response result = new Response();
 		result.setSuccess(false);
 		result.setMsg(ex.getMessage());
 

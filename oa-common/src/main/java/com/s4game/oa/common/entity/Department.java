@@ -2,13 +2,17 @@ package com.s4game.oa.common.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Department {
+	
     private Integer id;
 
     private String name;
 
     private Byte deleted;
 
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
 
     private Date updateTime;

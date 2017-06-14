@@ -24,25 +24,24 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.s4game.oa.common.convert.StringToDateConverter;
 
-
 @Configuration
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
-	
+
 	@Autowired
 	@Qualifier("jacksonObjectMapper")
 	private ObjectMapper jacksonObjectMapper;
-	
+
 	@Autowired
 	private RequestMappingHandlerAdapter handlerAdapter;
-	
+
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
 		NullSerializer serializer = new NullSerializer();
 		jacksonObjectMapper.getSerializerProvider().setNullValueSerializer(serializer);
 		
-		configureMessageConverters(converters);
+		super.configureMessageConverters(converters);
 	}
-
+	
 	@Override
 	public void configurePathMatch(PathMatchConfigurer configurer) {
 		super.configurePathMatch(configurer);
@@ -61,10 +60,10 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-//		UserAuthInteceptor inteceptor = new UserAuthInteceptor();
-//		inteceptor.setRedisTemplate(redisTemplate);
-//		registry.addInterceptor(inteceptor);
-//		super.addInterceptors(registry);
+		// UserAuthInteceptor inteceptor = new UserAuthInteceptor();
+		// inteceptor.setRedisTemplate(redisTemplate);
+		// registry.addInterceptor(inteceptor);
+		// super.addInterceptors(registry);
 	}
 
 	// @Bean
@@ -82,21 +81,22 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	// return new CorsFilter(urlBasedCorsConfigurationSource);
 	// }
 
-//	@Bean(name = "multipartResolver")
-//	public CommonsMultipartResolver multipartResolver() {
-//		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
-//		multipartResolver.setDefaultEncoding("UTF-8");
-//		multipartResolver.setMaxUploadSize(300 * 1024 * 1024);
-//		return multipartResolver;
-//	}
-//
-//	@Bean
-//	@Order(0)
-//	public MultipartFilter multipartFilter() {
-//		MultipartFilter multipartFilter = new MultipartFilter();
-//		multipartFilter.setMultipartResolverBeanName("multipartResolver");
-//		return multipartFilter;
-//	}
+	// @Bean(name = "multipartResolver")
+	// public CommonsMultipartResolver multipartResolver() {
+	// CommonsMultipartResolver multipartResolver = new
+	// CommonsMultipartResolver();
+	// multipartResolver.setDefaultEncoding("UTF-8");
+	// multipartResolver.setMaxUploadSize(300 * 1024 * 1024);
+	// return multipartResolver;
+	// }
+	//
+	// @Bean
+	// @Order(0)
+	// public MultipartFilter multipartFilter() {
+	// MultipartFilter multipartFilter = new MultipartFilter();
+	// multipartFilter.setMultipartResolverBeanName("multipartResolver");
+	// return multipartFilter;
+	// }
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
@@ -104,7 +104,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 				.maxAge(3600);
 		super.addCorsMappings(registry);
 	}
-	
+
 	class NullSerializer extends JsonSerializer<Object> {
 
 		public void serialize(Object value, JsonGenerator jgen, SerializerProvider provider)
