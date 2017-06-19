@@ -22,12 +22,13 @@ Ext.define('oa.view.department.DeparmentInfo', {
         method: 'POST',
         url: oa.config.Config.BASE_URL + 'department/update',
 
-        bodyStyle:"padding:10px 10px 10px 10px",
+        bodyStyle: "padding:10px 10px 10px 10px",
         items: [
-            {fieldLabel: 'Id', name: 'id', xtype: 'textfield', editable: false},
-            {fieldLabel: 'Name', name: 'name', xtype: 'textfield', allowBlank: false},
-            {fieldLabel: 'CreateTime', name: 'createTime', xtype: 'textfield', editable: false, 
-                renderData: function(value) {
+            { fieldLabel: 'Id', name: 'id', xtype: 'textfield', editable: false},
+            { fieldLabel: 'Name', name: 'name', xtype: 'textfield', allowBlank: false},
+            {
+                fieldLabel: 'CreateTime', name: 'createTime', xtype: 'textfield', editable: false,
+                renderData: function (value) {
                     return Ext.Date.format(new Date(value), 'Y-m-d H:i:s');
                 }
             }
@@ -37,10 +38,10 @@ Ext.define('oa.view.department.DeparmentInfo', {
             handler: 'updateDepartment'
         }, {
             text: 'Cancel',
-            handler: function() {
-                this.up("window").close(); 
+            handler: function () {
+                this.up("window").close();
             }
-        }]
+        }],
     }],
 
     initComponent: function () {

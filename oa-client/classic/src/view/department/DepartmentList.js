@@ -32,12 +32,18 @@ Ext.define('oa.view.department.DepartmentList', {
     columns: [
         { text: 'Id', dataIndex: 'id', width: 100 },
         { text: 'Name', dataIndex: 'name', width: 200 },
-        { text: 'CreateTime', dataIndex: 'createTime', flex: 1,
-            renderer: function(value, cellmeta, record) {
+        {
+            text: 'CreateTime', dataIndex: 'createTime', flex: 1,
+            renderer: function (value, cellmeta, record) {
                 return Ext.Date.format(new Date(value), 'Y-m-d H:i:s');
             }
         }
     ],
+    /** 
+    bbar: [
+        { xtype: "pagingtoolbar", store: 'department' }
+    ],
+    */
 
     initComponent: function () {
         this.callParent(arguments);

@@ -31,10 +31,13 @@ public class DepartmentController {
 
 	@ApiOperation(value = "部门列表")
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
-	public Response list() {
+	public Response list(
+			@ApiParam(value = "当前页数") @RequestParam(value = "page", required = false) Integer page,
+			@ApiParam(value = "每页数量") @RequestParam(value = "limit", required = false) Integer limit
+			) {
 		Response.Builder response = Response.newBuilder();
 
-		PageInfo<Department> pageInfo = pageService.selectPage(new Department(), new Page<>(1, 5));
+		PageInfo<Department> pageInfo = pageService.selectPage(new Department(), new Page<>(page, limit));
 		response.setData(pageInfo.getList());
 
 		return response.build();

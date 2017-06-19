@@ -25,10 +25,11 @@ Ext.define('oa.view.department.DepartmentController', {
         if (form.isValid()) {
             form.submit({
                 success: function(form, action) {
-                    var record = action.data;
-                    
+                    var record = action.result.data;
+                    var store = Ext.getCmp('departmentList').store;
+                    store.reload();
 
-                    Ext.Msg.alert('Success', action.result);
+                    sender.up("window").close();
                 },
                 failure: function(form, action) {
                     Ext.Msg.alert('Failed', action.result.msg);

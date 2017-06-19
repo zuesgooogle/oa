@@ -1,9 +1,12 @@
 Ext.define('oa.store.Department', {
     extend: 'Ext.data.Store',
 
+    id: 'store.department',
     alias: 'store.department',
 
     fields: ['id', 'name', 'createTime'],
+
+    pageSize: 5,
 
     proxy: {
         type: 'ajax',
