@@ -25,6 +25,9 @@ Ext.define('oa.view.department.DepartmentController', {
         if (form.isValid()) {
             form.submit({
                 success: function(form, action) {
+                    var record = action.data;
+                    
+
                     Ext.Msg.alert('Success', action.result);
                 },
                 failure: function(form, action) {

@@ -6,12 +6,13 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.support.GenericConversionService;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -28,20 +29,34 @@ import com.s4game.oa.common.convert.StringToDateConverter;
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Autowired
-	@Qualifier("jacksonObjectMapper")
-	private ObjectMapper jacksonObjectMapper;
-
+	private ObjectMapper objectMapper;
+	
 	@Autowired
 	private RequestMappingHandlerAdapter handlerAdapter;
 
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-		NullSerializer serializer = new NullSerializer();
-		jacksonObjectMapper.getSerializerProvider().setNullValueSerializer(serializer);
-		
+		// NullSerializer serializer = new NullSerializer();
+		// jacksonObjectMapper.getSerializerProvider().setNullValueSerializer(serializer);
 		super.configureMessageConverters(converters);
 	}
-	
+
+	@Override
+	public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+		ObjectMapper objectMapper = null;
+		for (HttpMessageConverter<?> converter : converters) {
+			if (converter instanceof MappingJackson2HttpMessageConverter) {
+				MappingJackson2HttpMessageConverter jacksonConverter = ((MappingJackson2HttpMessageConverter) converter);
+
+				if (objectMapper == null) {
+					objectMapper = jacksonConverter.getObjectMapper();
+				} else {
+					jacksonConverter.setObjectMapper(objectMapper);
+				}
+			}
+		}
+	}
+
 	@Override
 	public void configurePathMatch(PathMatchConfigurer configurer) {
 		super.configurePathMatch(configurer);

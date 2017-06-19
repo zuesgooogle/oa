@@ -15,7 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = { "com.s4game" })
 @EnableAutoConfiguration
 public class Application extends SpringBootServletInitializer {
-	
+
 	public static void main(String[] args) {
 		SpringApplication application = new SpringApplication(Application.class);
 		application.addListeners(new ApplicationListenerEnvironmentPrepared());
@@ -24,7 +24,7 @@ public class Application extends SpringBootServletInitializer {
 		application.addListeners(new ApplicationListenerStarted());
 		application.run(args);
 	}
-	
+
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
 		builder.application().addListeners(new ApplicationListenerEnvironmentPrepared());

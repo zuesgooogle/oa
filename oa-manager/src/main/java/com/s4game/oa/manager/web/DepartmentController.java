@@ -65,4 +65,9 @@ public class DepartmentController {
 		return response.build();
 	}
 
+	@ApiOperation(value = "部门更新")
+	@RequestMapping(value = "/date")
+	public Date date() {
+		return new Date();
+	}
 }

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.Page;
@@ -23,7 +22,7 @@ public class UserController {
 	private PageService<User> pageService;
 	
 	@ApiOperation(value = "用户列表")
-	@RequestMapping(value = "/list", method = RequestMethod.POST)
+	@RequestMapping(value = "/list")
 	public List<User> list() {
 		PageInfo<User> pageInfo = pageService.selectPage(new User(), new Page<User>(1, 100));
 		
