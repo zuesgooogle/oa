@@ -25,10 +25,20 @@ Ext.define('oa.view.department.DepartmentController', {
         if (form.isValid()) {
             form.submit({
                 success: function(form, action) {
-                    var record = action.result.data;
-                    var store = Ext.getCmp('departmentList').store;
-                    store.reload();
+                    var data = action.result.data;
 
+                    var deparmentList = Ext.getCmp('departmentList');
+                    var store = deparmentList.store;
+                    var record = store.getById(data.id);
+                    if (record != null) {
+                        record.data = data;
+                    } else {
+                        store.add(data);
+                    }
+                    
+                    // refresh grid view
+                    deparmentList.getView().refresh();
+                    // window close
                     sender.up("window").close();
                 },
                 failure: function(form, action) {

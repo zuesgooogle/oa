@@ -19,13 +19,17 @@ Ext.define('oa.view.department.DeparmentInfo', {
 
     items: [{
         xtype: 'form',
+        layout: 'anchor',
+        defaults: {
+            anchor: '100%'
+        },
         method: 'POST',
         url: oa.config.Config.BASE_URL + 'department/update',
 
         bodyStyle: "padding:10px 10px 10px 10px",
         items: [
-            { fieldLabel: 'Id', name: 'id', xtype: 'textfield', editable: false},
-            { fieldLabel: 'Name', name: 'name', xtype: 'textfield', allowBlank: false},
+            { fieldLabel: 'Id', name: 'id', xtype: 'textfield', editable: false },
+            { fieldLabel: 'Name', name: 'name', xtype: 'textfield', allowBlank: false },
             {
                 fieldLabel: 'CreateTime', name: 'createTime', xtype: 'textfield', editable: false,
                 renderData: function (value) {
