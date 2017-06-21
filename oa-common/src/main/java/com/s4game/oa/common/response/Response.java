@@ -4,6 +4,8 @@ public class Response {
 
 	private Object data;
 
+	private long totalCount; //总记录 数
+	
 	private boolean success;
 
 	private String msg;
@@ -14,6 +16,14 @@ public class Response {
 
 	public void setData(Object data) {
 		this.data = data;
+	}
+
+	public long getTotalCount() {
+		return totalCount;
+	}
+
+	public void setTotalCount(long totalCount) {
+		this.totalCount = totalCount;
 	}
 
 	public boolean isSuccess() {
@@ -40,6 +50,8 @@ public class Response {
 		
 		private Object data;
 		
+		private long totalCount;
+		
 		private boolean success;
 		
 		private String msg;
@@ -53,6 +65,11 @@ public class Response {
 		public Builder setData(Object data) {
 			this.data = data;
 			this.success = true;
+			return this;
+		}
+		
+		public Builder setTotalCount(long totalCount) {
+			this.totalCount = totalCount;
 			return this;
 		}
 		
@@ -70,6 +87,7 @@ public class Response {
 		public Response build() {
 			Response response = new Response();
 			response.setData(data);
+			response.setTotalCount(totalCount);
 			response.setSuccess(success);
 			response.setMsg(msg);
 			

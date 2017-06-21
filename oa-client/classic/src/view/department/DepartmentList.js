@@ -39,11 +39,10 @@ Ext.define('oa.view.department.DepartmentList', {
             }
         }
     ],
-    /** 
-    bbar: [
-        { xtype: "pagingtoolbar", store: 'department' }
-    ],
-    */
+    bbar: {
+        xtype: 'pagingtoolbar',
+        displayInfo: true
+    },
 
     initComponent: function () {
         this.callParent(arguments);

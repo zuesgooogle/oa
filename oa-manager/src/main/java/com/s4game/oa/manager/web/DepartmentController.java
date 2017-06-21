@@ -39,6 +39,7 @@ public class DepartmentController {
 
 		PageInfo<Department> pageInfo = pageService.selectPage(new Department(), new Page<>(page, limit));
 		response.setData(pageInfo.getList());
+		response.setTotalCount(pageInfo.getTotal());
 
 		return response.build();
 	}

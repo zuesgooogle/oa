@@ -6,8 +6,8 @@ Ext.define('oa.store.Department', {
 
     fields: ['id', 'name', 'createTime'],
 
-    pageSize: 5,
-
+    pageSize: 20,
+    remoteSort: true,
     proxy: {
         type: 'ajax',
         actionMethods: {
@@ -19,7 +19,8 @@ Ext.define('oa.store.Department', {
         url: oa.config.Config.BASE_URL + 'department/list',
         reader: {
             type: 'json',
-            rootProperty: 'data'
+            rootProperty: 'data',
+            totalProperty: 'totalCount'
         }
     }
 });
