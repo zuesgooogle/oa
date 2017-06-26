@@ -916,6 +916,7 @@ $include-oa-view-department-deparmentinfo: dynamic(true);;
 $include-oa-view-department-departmentcontroller: dynamic(true);;
 $include-oa-view-department-departmentlist: dynamic(true);;
 $include-oa-view-department-departmentmodel: dynamic(true);;
+$include-oa-view-department-departmenttree: dynamic(true);;
 $include-oa-view-login-login: dynamic(true);;
 $include-oa-view-login-logincontroller: dynamic(true);;
 $include-oa-view-main-list: dynamic(true);;

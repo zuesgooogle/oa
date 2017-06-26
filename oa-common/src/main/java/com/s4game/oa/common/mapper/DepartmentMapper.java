@@ -11,6 +11,8 @@ public interface DepartmentMapper {
     Department selectByPrimaryKey(Integer id);
 
     List<Department> selectAll();
+    
+    List<Department> selectByParentId(Integer id);
 
     int updateByPrimaryKey(Department record);
 }

@@ -2,17 +2,15 @@ package com.s4game.oa.common.entity;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 public class Department {
-	
     private Integer id;
+
+    private Integer parentId;
 
     private String name;
 
     private Byte deleted;
 
-    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createTime;
 
     private Date updateTime;
@@ -23,6 +21,14 @@ public class Department {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
     public String getName() {

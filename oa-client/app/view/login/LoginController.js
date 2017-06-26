@@ -2,21 +2,27 @@ Ext.define('oa.view.login.LoginController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.login',
 
-    onLoginClick: function() {
+    onLoginClick: function(sender) {
+        var that = this;
 
-        // This would be the ideal location to verify the user's credentials via
-        // a server-side lookup. We'll just move forward for the sake of this example.
+        var form = sender.up('form');
+        if (form.isValid()) {
+            form.submit({
+                success: function(form, action) {
+                    localStorage.setItem("oaLoggedIn", true);
 
-        // Set the localStorage value to true
-        localStorage.setItem("oaLoggedIn", true);
+                    // Remove Login Window
+                    that.getView().destroy();
 
-        // Remove Login Window
-        this.getView().destroy();
-
-        // Add the main view to the viewport
-        Ext.create({
-            xtype: 'app-main'
-        });
-
+                    // Add the main view to the viewport
+                    Ext.create({
+                        xtype: 'app-main'
+                    });
+                },
+                failure: function(form, action) {
+                    Ext.Msg.alert('Failed', action.result.msg);
+                }
+            });
+        }
     }
 });

@@ -1,26 +1,28 @@
 Ext.define('oa.store.Department', {
-    extend: 'Ext.data.Store',
+    extend: 'Ext.data.TreeStore',
 
     id: 'store.department',
     alias: 'store.department',
 
-    fields: ['id', 'name', 'createTime'],
+    fields: [{
+        name: 'text',
+        mapping: 'name'
+    }],
 
-    pageSize: 20,
-    remoteSort: true,
+    root: {
+        id: 1,
+        text: '所有部门',
+        expanded: true
+    },
+
+    autoLoad: true,
     proxy: {
+        
         type: 'ajax',
-        actionMethods: {
-            create : 'POST',
-            read   : 'POST',
-            update : 'POST',
-            destroy: 'POST'
-        },
         url: oa.config.Config.BASE_URL + 'department/list',
         reader: {
             type: 'json',
-            rootProperty: 'data',
-            totalProperty: 'totalCount'
+            rootProperty: 'data'
         }
     }
 });

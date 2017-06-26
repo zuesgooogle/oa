@@ -15,6 +15,15 @@ Ext.define('oa.view.login.Login', {
 
     items: {
         xtype: 'form',
+        layout: 'anchor',
+        defaults: {
+            anchor: '100%'
+        },
+        method: 'POST',
+        url: oa.config.Config.BASE_URL + 'login',
+
+        bodyStyle: "padding:10px 10px 10px 10px",
+
         reference: 'form',
         items: [{
             xtype: 'textfield',

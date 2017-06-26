@@ -8,6 +8,8 @@ public class Response {
 	
 	private boolean success;
 
+	private int errorCode;
+	
 	private String msg;
 
 	public Object getData() {
@@ -34,6 +36,14 @@ public class Response {
 		this.success = success;
 	}
 
+	public int getErrorCode() {
+		return errorCode;
+	}
+
+	public void setErrorCode(int errorCode) {
+		this.errorCode = errorCode;
+	}
+
 	public String getMsg() {
 		return msg;
 	}
@@ -55,6 +65,8 @@ public class Response {
 		private boolean success;
 		
 		private String msg;
+		
+		private int errorCode;
 		
 		/**
 		 * 有数据，默认表示成功
@@ -84,11 +96,17 @@ public class Response {
 			return this;
 		}
 		
+		public Builder errorCode(int errorCode) {
+			this.errorCode = errorCode;
+			return this;
+		}
+		
 		public Response build() {
 			Response response = new Response();
 			response.setData(data);
 			response.setTotalCount(totalCount);
 			response.setSuccess(success);
+			response.setErrorCode(errorCode);
 			response.setMsg(msg);
 			
 			return response;

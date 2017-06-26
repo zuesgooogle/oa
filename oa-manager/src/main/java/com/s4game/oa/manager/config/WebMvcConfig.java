@@ -6,14 +6,15 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.support.GenericConversionService;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
@@ -36,8 +37,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-		// NullSerializer serializer = new NullSerializer();
-		// jacksonObjectMapper.getSerializerProvider().setNullValueSerializer(serializer);
+		 NullSerializer serializer = new NullSerializer();
+		 objectMapper.getSerializerProvider().setNullValueSerializer(serializer);
 		super.configureMessageConverters(converters);
 	}
 
@@ -73,28 +74,10 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		}
 	}
 
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		// UserAuthInteceptor inteceptor = new UserAuthInteceptor();
-		// inteceptor.setRedisTemplate(redisTemplate);
-		// registry.addInterceptor(inteceptor);
-		// super.addInterceptors(registry);
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
-
-	// @Bean
-	// public CorsFilter corsFilter() {
-	// final UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource =
-	// new UrlBasedCorsConfigurationSource();
-	// final CorsConfiguration corsConfiguration = new CorsConfiguration();
-	// corsConfiguration.setAllowCredentials(false);
-	// corsConfiguration.addAllowedOrigin("*");
-	// corsConfiguration.addAllowedHeader("*");
-	// corsConfiguration.addAllowedMethod("*");
-	// corsConfiguration.setMaxAge(3600l);
-	// urlBasedCorsConfigurationSource.registerCorsConfiguration("/**",
-	// corsConfiguration);
-	// return new CorsFilter(urlBasedCorsConfigurationSource);
-	// }
 
 	// @Bean(name = "multipartResolver")
 	// public CommonsMultipartResolver multipartResolver() {
@@ -115,7 +98,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**").allowCredentials(true).allowedHeaders("*").allowedMethods("*").allowedOrigins("*")
+		registry.addMapping("/**")
+				.allowCredentials(true)
+				.allowedHeaders("*")
+				.allowedMethods("*")
+				.allowedOrigins("*")
 				.maxAge(3600);
 		super.addCorsMappings(registry);
 	}
