@@ -59,7 +59,7 @@ public class DepartmentController {
 	@ApiOperation(value = "更新部门")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public Response update(
-			@ApiParam(value = "部门Id") @RequestParam(value = "id", required = false) Integer id,
+			@ApiParam(value = "部门Id") @RequestParam(value = "id", required = true) Integer id,
 			@ApiParam(value = "部门名称") @RequestParam(value = "name", required = true) String name) {
 		Response.Builder response = Response.newBuilder();
 

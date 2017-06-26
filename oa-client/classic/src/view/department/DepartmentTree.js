@@ -19,21 +19,31 @@ Ext.define('oa.view.department.DepartmentTree', {
         }
     },
     tbar: [{
-        id: 'addDeptBtn', text: "增加", disabled: true, handler: 'addDepartment'
+        text: "展开", 
+        iconCls: 'x-fa fa-expand',
+        handler: function() {
+            this.up('treepanel').expandAll();
+        }
     }, "-", {
-        id: 'deleteDeptBtn', text: "删除", disabled: true, handler: 'deleteDepartment'
+        text: "折叠", 
+        iconCls: 'x-fa fa-compress',
+        handler: function() {
+            this.up('treepanel').collapseAll();
+        }
     }, "-", {
-        text: "刷新", handler: function () {
+        text: "刷新", 
+        iconCls: 'x-fa fa-refresh',
+        handler: function () {
             this.up("treepanel").store.load();
         }
     }],
+    
     listeners: {
         selectionchange: function (view, record) {
-            Ext.getCmp('addDeptBtn').setDisabled(false);
-            Ext.getCmp('deleteDeptBtn').setDisabled(false);
         },
         itemclick: function(view, record, index, e, eOpts) {
             var t = view.getSelectionModel().getSelection()[0];
-        }
+        },
+        itemcontextmenu: 'onItemContextMenu'
     }
 });

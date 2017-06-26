@@ -1,5 +1,5 @@
 $app-name:  dynamic( 'oa' );
-$image-search-path: 'D:/github/oa/oa-client/build/development/oa/classic/resources';
+$image-search-path: '/Users/max/git/oa/oa-client/build/development/oa/classic/resources';
 $theme-name:  dynamic( 'theme-triton' );
 $include-ext-abstractcomponent: dynamic(true);;
 $include-ext-abstractcontainer: dynamic(true);;

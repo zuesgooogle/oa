@@ -14,6 +14,7 @@ Ext.define('oa.Application', {
 
     stores: [
         // TODO: add global / shared stores here
+        // http://fontawesome.io/icons/
     ],
     
     launch: function () {

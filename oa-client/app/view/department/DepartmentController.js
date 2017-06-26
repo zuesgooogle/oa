@@ -5,13 +5,48 @@ Ext.define('oa.view.department.DepartmentController', {
 
     store: ['department'],
 
-    init: function () {
+    ctxMenu: null,
 
+    init: function () {
+    },
+
+    buildCtxMenu: function () {
+        var me = this;
+        return Ext.create('Ext.menu.Menu', {
+            treeNode: null,
+            items: [{
+                text: '增加',
+                iconCls: 'x-fa fa-plus',
+                handler: me.addDepartment
+            }, {
+                text: '修改',
+                iconCls: 'x-fa fa-edit',
+                handler: me.updateDepartment
+            }, {
+                text: '删除',
+                iconCls: 'x-fa fa-remove',
+                handler: me.deleteDepartment
+            }, '-', {
+                text: '刷新',
+                iconCls: 'x-fa fa-refresh'
+            }]
+        });
+    },
+
+    onItemContextMenu: function (view, record, item, index, e) {
+        if (!this.ctxMenu) {
+            this.ctxMenu = this.buildCtxMenu();
+        }
+        this.ctxMenu.treeNode = record;
+
+        this.ctxMenu.showAt(e.getXY());
+        e.stopEvent();
     },
 
     addDepartment: function (sender) {
-        var tree = sender.up('treepanel');
-        var parentNode = tree.getSelectionModel().getSelection()[0];
+        // var tree = sender.up('treepanel');
+        // var parentNode = tree.getSelectionModel().getSelection()[0];
+        var parentNode = sender.up('menu').treeNode;
 
         Ext.Msg.prompt('部门名称', '请输入部门名称: \n', function (btn, text) {
             if (btn == 'ok') {
@@ -22,9 +57,14 @@ Ext.define('oa.view.department.DepartmentController', {
                         parentId: parentNode.data.id,
                         name: text
                     },
-                    timeout: 60000,
                     success: function (response, opts) {
-                        tree.store.load();
+                        var result = Ext.decode(response.responseText);
+                        var node = {
+                            id: result.data.id,
+                            text: result.data.name,
+                            leaf: true
+                        };
+                        parentNode.appendChild(node);
                     },
 
                     failure: function (response, opts) {
@@ -36,8 +76,10 @@ Ext.define('oa.view.department.DepartmentController', {
     },
 
     deleteDepartment: function (sender) {
-        var tree = sender.up('treepanel');
-        var record = tree.getSelectionModel().getSelection()[0];
+        // var tree = sender.up('treepanel');
+        // var record = tree.getSelectionModel().getSelection()[0];
+
+        var record = sender.up('menu').treeNode;
 
         if (record == null) {
             Ext.Msg.alert('错误信息', '请选择需要删除的部门！');
@@ -57,9 +99,9 @@ Ext.define('oa.view.department.DepartmentController', {
                     params: {
                         id: record.data.id
                     },
-                    timeout: 60000,
                     success: function (response, opts) {
-                        tree.store.load();
+                        // tree.store.load();
+                        record.remove(true);
                     },
 
                     failure: function (response, opts) {
@@ -70,41 +112,30 @@ Ext.define('oa.view.department.DepartmentController', {
         });
     },
 
-    viewDepartment: function (sender, record) {
-        var info = Ext.getCmp('departmentInfo');
-        if (info == null) {
-            info = Ext.create('departmentInfo');
-        }
-        info.down('form').loadRecord(record);
-        info.show();
-    },
-
     updateDepartment: function (sender) {
-        var form = sender.up('form');
-        if (form.isValid()) {
-            form.submit({
-                success: function (form, action) {
-                    var data = action.result.data;
+        var record = sender.up('menu').treeNode;
 
-                    var deparmentList = Ext.getCmp('departmentList');
-                    var store = deparmentList.store;
-                    var record = store.getById(data.id);
-                    if (record != null) {
-                        record.data = data;
-                    } else {
-                        store.add(data);
+        Ext.Msg.prompt('部门名称', '请输入部门名称: \n', function (btn, text) {
+            if (btn == 'ok') {
+                 Ext.Ajax.request({
+                    url: oa.config.Config.BASE_URL + 'department/update',
+                    method: 'POST',
+                    params: {
+                        id: record.data.id,
+                        name: text
+                    },
+                    success: function (response, opts) {
+                        var result = Ext.decode(response.responseText);
+                        record.data.text = text;
+
+                        Ext.getCmp('departmentTree').getView().refresh();
+                    },
+
+                    failure: function (response, opts) {
+                        console.log('server-side failure with status code ' + response.status);
                     }
-
-                    // refresh grid view
-                    deparmentList.getView().refresh();
-                    // window close
-                    sender.up("window").close();
-                },
-                failure: function (form, action) {
-                    Ext.Msg.alert('Failed', action.result.msg);
-                }
-            });
-        }
-
+                });
+            }
+        }, this, false, record.data.text);
     }
 });
