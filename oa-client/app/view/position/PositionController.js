@@ -82,6 +82,11 @@ Ext.define('oa.view.position.PositionController', {
             return;
         }
 
+        if (Utils.isCompany(record.data.text)) {
+            Ext.Msg.alert('非法操作', '公司目录不能删除！');
+            return;
+        }
+
         Ext.MessageBox.confirm("删除职位", "您确认要删除职位？", function (btn) {
             if (btn == 'yes') {
                 Ext.Ajax.request({

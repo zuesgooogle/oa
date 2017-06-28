@@ -86,8 +86,8 @@ Ext.define('oa.view.department.DepartmentController', {
             return;
         }
 
-        if (record.data.id == 1) {
-            Ext.Msg.alert('错误信息', '根目录不能删除！');
+        if (Utils.isCompany(record.data.text)) {
+            Ext.Msg.alert('非法操作', '公司目录不能删除！');
             return;
         }
 

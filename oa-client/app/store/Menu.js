@@ -11,14 +11,14 @@ Ext.define('oa.store.Menu', {
                 {text: '部门管理', action: 'departmentTree', iconCls: 'x-fa fa-group', leaf: true},
                 {text: '职位管理', action: 'positionTree', iconCls: 'x-fa fa-user-secret', leaf: true}
             ]},
-            {text: '经营管理', expanded: true, children: [
+            {text: '经营管理', expanded: false, iconCls: 'x-fa fa-cart-plus', children: [
                 {text: '成本台账', leaf: true},
                 {text: '收费台账', leaf: true},
                 {text: '合同台账', leaf: true}
             ]},
-            {text: '财务管理', expanded: true, children: [
-                {text: '资金计划', leaf: true},
-                {text: '融资管理', leaf: true}
+            {text: '财务管理', expanded: true, iconCls: 'x-fa fa-bank', children: [
+                {text: '资金计划', iconCls: 'x-fa fa-money', leaf: true},
+                {text: '融资管理', iconCls: 'fa-random', leaf: true}
             ]},
             {text: '工程管理', expanded: false, children: [
                 {text: '土地开发管理', leaf: true},
