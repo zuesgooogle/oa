@@ -6,10 +6,10 @@ Ext.define('oa.store.Menu', {
     root: {
         expanded: true,
         children: [
-            {text: '组织管理', expanded: true, children: [
-                {text: '用户管理', action: 'userList', leaf: true},
-                {text: '部门管理', action: 'departmentTree', leaf: true},
-                {text: '权限分配', leaf: true}
+            {text: '组织管理', expanded: true, iconCls: 'x-fa fa-user-plus', children: [
+                {text: '用户管理', action: 'userList', iconCls: 'x-fa fa-user', leaf: true},
+                {text: '部门管理', action: 'departmentTree', iconCls: 'x-fa fa-group', leaf: true},
+                {text: '职位管理', iconCls: 'x-fa fa-user-secret', leaf: true}
             ]},
             {text: '经营管理', expanded: true, children: [
                 {text: '成本台账', leaf: true},
@@ -27,6 +27,9 @@ Ext.define('oa.store.Menu', {
             {text: '前期管理', expanded: false, children: [
                 {text: '土地开发管理', leaf: true},
                 {text: '二级开发', leaf: true}
+            ]},
+            {text: '系统设置', expanded: true, iconCls: 'fa-paper-plane', children: [
+                {text: '成本科目', iconCls: 'x-fa fa-cubes', action: 'costsubjectTree', leaf: true}
             ]}
         ]
     }

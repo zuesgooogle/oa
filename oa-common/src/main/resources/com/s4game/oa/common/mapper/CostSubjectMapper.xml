@@ -3,10 +3,11 @@
 <mapper namespace="com.s4game.oa.common.mapper.CostSubjectMapper">
   <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.CostSubject">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="text" jdbcType="VARCHAR" property="text" />
     <result column="parent_id" jdbcType="INTEGER" property="parentId" />
-    <result column="leaf" jdbcType="SMALLINT" property="leaf" />
-    <result column="deleted" jdbcType="SMALLINT" property="deleted" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="company" jdbcType="INTEGER" property="company" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from cost_subject
@@ -16,26 +17,32 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into cost_subject (text, parent_id, leaf, 
-      deleted)
-    values (#{text,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, #{leaf,jdbcType=SMALLINT}, 
-      #{deleted,jdbcType=SMALLINT})
+    insert into cost_subject (parent_id, name, company, 
+      create_time, update_time)
+    values (#{parentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{company,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.CostSubject">
     update cost_subject
-    set text = #{text,jdbcType=VARCHAR},
-      parent_id = #{parentId,jdbcType=INTEGER},
-      leaf = #{leaf,jdbcType=SMALLINT},
-      deleted = #{deleted,jdbcType=SMALLINT}
+    set parent_id = #{parentId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      company = #{company,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, text, parent_id, leaf, deleted
+    select id, parent_id, name, company, create_time, update_time
     from cost_subject
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, text, parent_id, leaf, deleted
+    select id, parent_id, name, company, create_time, update_time
     from cost_subject
+  </select>
+  <select id="selectByParentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, parent_id, name, company, create_time, update_time
+    from cost_subject
+     where parent_id = #{parentId,jdbcType=INTEGER}
   </select>
 </mapper>

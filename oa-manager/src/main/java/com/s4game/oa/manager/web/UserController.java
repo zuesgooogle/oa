@@ -3,32 +3,26 @@ package com.s4game.oa.manager.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.s4game.oa.common.entity.User;
-import com.s4game.oa.common.response.ErrorCode;
-import com.s4game.oa.common.response.Response;
 import com.s4game.oa.common.service.PageService;
-import com.s4game.oa.manager.service.IUserService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
-import com.wordnik.swagger.annotations.ApiParam;
 
 @RestController
 @RequestMapping("/user")
 @Api(value = "user", description = "用户管理")
 public class UserController {
 	
-	@Autowired
-	private IUserService userService;
-	
-	@Autowired
-	private PasswordEncoder passwordEncoder;
+//	@Autowired
+//	private IUserService userService;
+//	
+//	@Autowired
+//	private PasswordEncoder passwordEncoder;
 	
 	@Autowired
 	private PageService<User> pageService;

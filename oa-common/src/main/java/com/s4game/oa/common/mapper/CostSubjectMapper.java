@@ -1,9 +1,11 @@
 package com.s4game.oa.common.mapper;
 
-import com.s4game.oa.common.entity.CostSubject;
 import java.util.List;
 
+import com.s4game.oa.common.entity.CostSubject;
+
 public interface CostSubjectMapper {
+	
     int deleteByPrimaryKey(Integer id);
 
     int insert(CostSubject record);
@@ -12,5 +14,7 @@ public interface CostSubjectMapper {
 
     List<CostSubject> selectAll();
 
+    List<CostSubject> selectByParentId(Integer id);
+    
     int updateByPrimaryKey(CostSubject record);
 }

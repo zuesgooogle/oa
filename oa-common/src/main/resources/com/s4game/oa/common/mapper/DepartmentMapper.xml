@@ -5,7 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="parent_id" jdbcType="INTEGER" property="parentId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
-    <result column="deleted" jdbcType="TINYINT" property="deleted" />
+    <result column="company" jdbcType="INTEGER" property="company" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
@@ -17,32 +17,32 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into department (parent_id, name, deleted, 
+    insert into department (parent_id, name, company, 
       create_time, update_time)
-    values (#{parentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{deleted,jdbcType=TINYINT}, 
+    values (#{parentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{company,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.Department">
     update department
     set parent_id = #{parentId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
-      deleted = #{deleted,jdbcType=TINYINT},
+      company = #{company,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, parent_id, name, deleted, create_time, update_time
+    select id, parent_id, name, company, create_time, update_time
     from department
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, parent_id, name, deleted, create_time, update_time
+    select id, parent_id, name, company, create_time, update_time
     from department
   </select>
   <select id="selectByParentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, parent_id, name, deleted, create_time, update_time
+    select id, parent_id, name, company, create_time, update_time
     from department
-     where parent_id = #{parentId,jdbcType=INTEGER} and deleted = 0
+     where parent_id = #{parentId,jdbcType=INTEGER}
   </select>
 </mapper>

@@ -26,40 +26,39 @@ public class DepartmentController {
 
 	@ApiOperation(value = "部门列表")
 	@RequestMapping(value = "/list")
-	public Response list(
-			@ApiParam(value = "部门Id") @RequestParam(value = "node", required = true) Integer node
-			) {
+	public Response list(@ApiParam(value = "部门Id") @RequestParam(value = "node", required = true) Integer node) {
 		Response.Builder response = Response.newBuilder();
-		
+
 		List<Department> departments = departmentManager.selectByParentId(node);
 		response.setData(departments);
-		
+
 		return response.build();
 	}
-	
+
 	@ApiOperation(value = "新增部门")
-	@RequestMapping(value = "/add", method = RequestMethod.POST) 
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public Response add(
 			@ApiParam(value = "部门ParentId") @RequestParam(value = "parentId", required = true) Integer parentId,
 			@ApiParam(value = "部门名称") @RequestParam(value = "name", required = true) String name) {
 		Response.Builder response = Response.newBuilder();
-		
+
+		Department parent = departmentManager.selectByPrimaryKey(parentId);
+
 		Department department = new Department();
 		department.setParentId(parentId);
 		department.setName(name);
-		department.setDeleted((byte) 0);
+		department.setCompany(parent.getCompany());
 		department.setCreateTime(new Date());
 
 		departmentManager.insert(department);
-		
+
 		response.setData(department);
 		return response.build();
 	}
 
 	@ApiOperation(value = "更新部门")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public Response update(
-			@ApiParam(value = "部门Id") @RequestParam(value = "id", required = true) Integer id,
+	public Response update(@ApiParam(value = "部门Id") @RequestParam(value = "id", required = true) Integer id,
 			@ApiParam(value = "部门名称") @RequestParam(value = "name", required = true) String name) {
 		Response.Builder response = Response.newBuilder();
 
@@ -73,8 +72,7 @@ public class DepartmentController {
 
 	@ApiOperation(value = "删除部门")
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public Response delete(
-			@ApiParam(value = "部门Id") @RequestParam(value = "id", required = false) Integer id) {
+	public Response delete(@ApiParam(value = "部门Id") @RequestParam(value = "id", required = false) Integer id) {
 		Response.Builder response = Response.newBuilder();
 
 		int result = departmentManager.deleteByPrimaryKey(id);

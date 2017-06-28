@@ -1,15 +1,19 @@
 package com.s4game.oa.common.entity;
 
+import java.util.Date;
+
 public class CostSubject {
     private Integer id;
 
-    private String text;
-
     private Integer parentId;
 
-    private Short leaf;
+    private String name;
 
-    private Short deleted;
+    private Integer company;
+
+    private Date createTime;
+
+    private Date updateTime;
 
     public Integer getId() {
         return id;
@@ -17,14 +21,6 @@ public class CostSubject {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text == null ? null : text.trim();
     }
 
     public Integer getParentId() {
@@ -35,19 +31,35 @@ public class CostSubject {
         this.parentId = parentId;
     }
 
-    public Short getLeaf() {
-        return leaf;
+    public String getName() {
+        return name;
     }
 
-    public void setLeaf(Short leaf) {
-        this.leaf = leaf;
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 
-    public Short getDeleted() {
-        return deleted;
+    public Integer getCompany() {
+        return company;
     }
 
-    public void setDeleted(Short deleted) {
-        this.deleted = deleted;
+    public void setCompany(Integer company) {
+        this.company = company;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }

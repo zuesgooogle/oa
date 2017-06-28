@@ -9,7 +9,7 @@ public class Department {
 
     private String name;
 
-    private Byte deleted;
+    private Integer company;
 
     private Date createTime;
 
@@ -39,12 +39,12 @@ public class Department {
         this.name = name == null ? null : name.trim();
     }
 
-    public Byte getDeleted() {
-        return deleted;
+    public Integer getCompany() {
+        return company;
     }
 
-    public void setDeleted(Byte deleted) {
-        this.deleted = deleted;
+    public void setCompany(Integer company) {
+        this.company = company;
     }
 
     public Date getCreateTime() {

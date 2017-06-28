@@ -12,7 +12,7 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.annotation.ComponentScan;
 
-@ComponentScan(basePackages = { "com.s4game" })
+@ComponentScan(basePackages = { "com.s4game", "org.activiti.rest.diagram", "org.activiti.rest.editor" })
 @EnableAutoConfiguration
 public class Application extends SpringBootServletInitializer {
 

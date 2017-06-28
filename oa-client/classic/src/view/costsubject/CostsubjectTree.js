@@ -1,21 +1,21 @@
-Ext.define('oa.view.department.DepartmentTree', {
+Ext.define('oa.view.costsubject.CostsubjectTree', {
     extend: 'Ext.tree.Panel',
-    xtype: 'departmentTree',
+    xtype: 'costsubjectTree',
 
-    id: 'departmentTree',
-    alias: 'departmentTree',
+    id: 'costsubjectTree',
+    alias: 'costsubjectTree',
 
-    controller: 'department',
+    controller: 'costsubject',
 
-    title: '部门管理',
+    title: '成本科目管理',
     closable: true,
 
     rootVisible: false,
     store: {
-        type: 'department',
+        type: 'costsubject',
         proxy: {
             type: 'ajax',
-            url: oa.config.Config.BASE_URL + 'department/list'
+            url: oa.config.Config.BASE_URL + 'costsubject/list'
         }
     },
     tbar: [{

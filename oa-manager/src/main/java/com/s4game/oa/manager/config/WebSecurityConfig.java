@@ -27,7 +27,7 @@ import com.s4game.oa.manager.service.IUserService;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private IUserService userService;
