@@ -126,14 +126,22 @@ CREATE TABLE `ledger_zhiye` (
 -- ----------------------------
 DROP TABLE IF EXISTS `position`;
 CREATE TABLE `position` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL COMMENT '上级职位',
   `name` varchar(64) NOT NULL,
-  `department_id` int(11) NOT NULL,
-  `deleted` tinyint(4) NOT NULL,
+  `alias` varchar(64) NOT NULL COMMENT '职位别名（流程中使用）',
+  `company` int(4) NOT NULL COMMENT '所属公司',
   `create_time` datetime NOT NULL,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='职位信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='职位信息表';
+
+-- ----------------------------
+-- Records of position
+-- ----------------------------
+INSERT INTO `position` VALUES ('1', null, 'Root', '', '0', '2017-06-28 21:13:00', '2017-06-28 21:13:04');
+INSERT INTO `position` VALUES ('2', '1', '置地公司', '', '1', '2017-06-28 21:13:18', '2017-06-28 21:13:22');
+INSERT INTO `position` VALUES ('3', '1', '置业公司', '', '2', '2017-06-28 21:13:35', '2017-06-28 21:13:38');
 
 -- ----------------------------
 -- Records of position

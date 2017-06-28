@@ -5,11 +5,13 @@ import java.util.Date;
 public class Position {
     private Integer id;
 
+    private Integer parentId;
+
     private String name;
 
-    private Integer departmentId;
+    private String alias;
 
-    private Byte deleted;
+    private Integer company;
 
     private Date createTime;
 
@@ -23,6 +25,14 @@ public class Position {
         this.id = id;
     }
 
+    public Integer getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
+    }
+
     public String getName() {
         return name;
     }
@@ -31,20 +41,20 @@ public class Position {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getDepartmentId() {
-        return departmentId;
+    public String getAlias() {
+        return alias;
     }
 
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
+    public void setAlias(String alias) {
+        this.alias = alias == null ? null : alias.trim();
     }
 
-    public Byte getDeleted() {
-        return deleted;
+    public Integer getCompany() {
+        return company;
     }
 
-    public void setDeleted(Byte deleted) {
-        this.deleted = deleted;
+    public void setCompany(Integer company) {
+        this.company = company;
     }
 
     public Date getCreateTime() {

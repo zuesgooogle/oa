@@ -1,23 +1,21 @@
-Ext.define('oa.view.costsubject.CostsubjectTree', {
+Ext.define('oa.view.position.PositionTree', {
     extend: 'Ext.tree.Panel',
-    xtype: 'costsubjectTree',
+    xtype: 'positionTree',
 
-    requires: ['oa.config.Config'],
+    id: 'positionTree',
+    alias: 'positionTree',
 
-    id: 'costsubjectTree',
-    alias: 'costsubjectTree',
+    controller: 'position',
 
-    controller: 'costsubject',
-
-    title: '成本科目管理',
+    title: '职位管理',
     closable: true,
 
     rootVisible: false,
     store: {
-        type: 'costsubject',
+        type: 'position',
         proxy: {
             type: 'ajax',
-            url: oa.config.Config.BASE_URL + 'costsubject/list'
+            url: oa.config.Config.BASE_URL + 'position/list'
         }
     },
     tbar: [{

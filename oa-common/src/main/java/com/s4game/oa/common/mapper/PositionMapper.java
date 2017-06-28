@@ -12,5 +12,7 @@ public interface PositionMapper {
 
     List<Position> selectAll();
 
+    List<Position> selectByParentId(Integer parentId);
+    
     int updateByPrimaryKey(Position record);
 }

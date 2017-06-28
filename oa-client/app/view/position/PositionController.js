@@ -1,9 +1,10 @@
-Ext.define('oa.view.costsubject.CostsubjectController', {
+Ext.define('oa.view.position.PositionController', {
     extend: 'Ext.app.ViewController',
 
-    alias: 'controller.costsubject',
+    alias: 'controller.position',
+    requires: ['oa.config.Config'],
 
-    store: ['costsubject'],
+    store: ['position'],
 
     ctxMenu: null,
 
@@ -17,15 +18,15 @@ Ext.define('oa.view.costsubject.CostsubjectController', {
             items: [{
                 text: '增加',
                 iconCls: 'x-fa fa-plus',
-                handler: me.addCostsubject
+                handler: me.addPosition
             }, {
                 text: '修改',
                 iconCls: 'x-fa fa-edit',
-                handler: me.updateCostsubject
+                handler: me.updatePosition
             }, {
                 text: '删除',
                 iconCls: 'x-fa fa-remove',
-                handler: me.deleteCostsubject
+                handler: me.deletePosition
             }, '-', {
                 text: '刷新',
                 iconCls: 'x-fa fa-refresh'
@@ -43,15 +44,13 @@ Ext.define('oa.view.costsubject.CostsubjectController', {
         e.stopEvent();
     },
 
-    addCostsubject: function (sender) {
-        // var tree = sender.up('treepanel');
-        // var parentNode = tree.getSelectionModel().getSelection()[0];
+    addPosition: function (sender) {
         var parentNode = sender.up('menu').treeNode;
 
-        Ext.Msg.prompt('成本科目', '请输入科目名称: \n', function (btn, text) {
+        Ext.Msg.prompt('职位信息', '请输入职位名称: \n', function (btn, text) {
             if (btn == 'ok') {
                 Ext.Ajax.request({
-                    url: oa.config.Config.BASE_URL + 'costsubject/add',
+                    url: oa.config.Config.BASE_URL + 'position/add',
                     method: 'POST',
                     params: {
                         parentId: parentNode.data.id,
@@ -75,23 +74,18 @@ Ext.define('oa.view.costsubject.CostsubjectController', {
         });
     },
 
-    deleteCostsubject: function (sender) {
+    deletePosition: function (sender) {
         var record = sender.up('menu').treeNode;
 
         if (record == null) {
-            Ext.Msg.alert('错误信息', '请选择需要删除的科目！');
+            Ext.Msg.alert('错误信息', '请选择需要删除的职位！');
             return;
         }
 
-        if (Utils.isCompany(record.data.text)) {
-            Ext.Msg.alert('非法操作', '公司目录不能删除！');
-            return;
-        }
-
-        Ext.MessageBox.confirm("删除科目", "您确认要删除部门？", function (btn) {
+        Ext.MessageBox.confirm("删除职位", "您确认要删除职位？", function (btn) {
             if (btn == 'yes') {
                 Ext.Ajax.request({
-                    url: oa.config.Config.BASE_URL + 'costsubject/delete',
+                    url: oa.config.Config.BASE_URL + 'position/delete',
                     method: 'POST',
                     params: {
                         id: record.data.id
@@ -108,13 +102,13 @@ Ext.define('oa.view.costsubject.CostsubjectController', {
         });
     },
 
-    updateCostsubject: function (sender) {
+    updatePosition: function (sender) {
         var record = sender.up('menu').treeNode;
 
-        Ext.Msg.prompt('科目名称', '请输入科目名称: \n', function (btn, text) {
+        Ext.Msg.prompt('职位名称', '请输入职位名称: \n', function (btn, text) {
             if (btn == 'ok') {
                  Ext.Ajax.request({
-                    url: oa.config.Config.BASE_URL + 'costsubject/update',
+                    url: oa.config.Config.BASE_URL + 'position/update',
                     method: 'POST',
                     params: {
                         id: record.data.id,
@@ -124,7 +118,7 @@ Ext.define('oa.view.costsubject.CostsubjectController', {
                         var result = Ext.decode(response.responseText);
                         record.data.text = text;
 
-                        Ext.getCmp('costsubjectTree').getView().refresh();
+                        Ext.getCmp('positionTree').getView().refresh();
                     },
 
                     failure: function (response, opts) {
