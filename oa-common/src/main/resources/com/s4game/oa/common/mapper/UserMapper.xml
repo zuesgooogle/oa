@@ -11,14 +11,14 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from user
+    delete from oa_user
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.s4game.oa.common.entity.User">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into user (username, password, department_id, 
+    insert into oa_user (username, password, department_id, 
       deleted, create_time, update_time
       )
     values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{departmentId,jdbcType=INTEGER}, 
@@ -26,7 +26,7 @@
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.User">
-    update user
+    update oa_user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       department_id = #{departmentId,jdbcType=INTEGER},
@@ -37,16 +37,17 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select id, username, password, department_id, deleted, create_time, update_time
-    from user
+    from oa_user
     where id = #{id,jdbcType=BIGINT}
-  </select>
-  <select id="selectByUsername" parameterType="String" resultMap="BaseResultMap">
-    select id, username, password, department_id, deleted, create_time, update_time
-    from user
-    where username = #{username,jdbcType=VARCHAR}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, username, password, department_id, deleted, create_time, update_time
-    from user
+    from oa_user
+  </select>
+
+  <select id="selectByUsername" parameterType="String" resultMap="BaseResultMap">
+    select id, username, password, department_id, deleted, create_time, update_time
+    from oa_user
+    where username = #{username,jdbcType=VARCHAR}
   </select>
 </mapper>

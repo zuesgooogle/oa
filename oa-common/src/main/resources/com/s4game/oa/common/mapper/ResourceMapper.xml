@@ -10,20 +10,20 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from resource
+    delete from oa_resource
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.s4game.oa.common.entity.Resource">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into resource (name, code, deleted, 
+    insert into oa_resource (name, code, deleted, 
       create_time, update_time)
     values (#{name,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR}, #{deleted,jdbcType=TINYINT}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.Resource">
-    update resource
+    update oa_resource
     set name = #{name,jdbcType=VARCHAR},
       code = #{code,jdbcType=VARCHAR},
       deleted = #{deleted,jdbcType=TINYINT},
@@ -33,11 +33,11 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, name, code, deleted, create_time, update_time
-    from resource
+    from oa_resource
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, name, code, deleted, create_time, update_time
-    from resource
+    from oa_resource
   </select>
 </mapper>

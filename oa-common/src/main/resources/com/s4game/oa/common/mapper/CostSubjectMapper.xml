@@ -9,21 +9,21 @@
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from cost_subject
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from oa_cost_subject
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.s4game.oa.common.entity.CostSubject">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into cost_subject (parent_id, name, company, 
+    insert into oa_cost_subject (parent_id, name, company, 
       create_time, update_time)
     values (#{parentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{company,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.CostSubject">
-    update cost_subject
+    update oa_cost_subject
     set parent_id = #{parentId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       company = #{company,jdbcType=INTEGER},
@@ -33,16 +33,16 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, parent_id, name, company, create_time, update_time
-    from cost_subject
+    from oa_cost_subject
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, parent_id, name, company, create_time, update_time
-    from cost_subject
+    from oa_cost_subject
   </select>
   <select id="selectByParentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, parent_id, name, company, create_time, update_time
-    from cost_subject
+    from oa_cost_subject
      where parent_id = #{parentId,jdbcType=INTEGER}
   </select>
 </mapper>

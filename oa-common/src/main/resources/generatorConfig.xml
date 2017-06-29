@@ -35,9 +35,35 @@
 		<javaClientGenerator type="XMLMAPPER"
 			targetPackage="com.s4game.oa.common.mapper" targetProject="src\test\java" />
 
-		<table tableName="%" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
-							 enableSelectByExample="false" selectByExampleQueryId="false">
-							 
+		<!-- table generate -->
+		<table tableName="oa_cost_subject" domainObjectName="CostSubject" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="oa_department" domainObjectName="Department" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="oa_ledger_zhidi" domainObjectName="LedgerZhidi" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="oa_ledger_zhiye" domainObjectName="LedgerZhiye" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="oa_position" domainObjectName="Position" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="oa_resource" domainObjectName="Resource" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="oa_role" domainObjectName="Role" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="oa_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="oa_user_department" domainObjectName="UserDepartment" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="oa_user_position" domainObjectName="UserPosition" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 	</context>

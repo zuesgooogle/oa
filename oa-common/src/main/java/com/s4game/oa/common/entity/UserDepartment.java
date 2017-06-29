@@ -1,11 +1,11 @@
 package com.s4game.oa.common.entity;
 
-public class UserPosition {
+public class UserDepartment {
     private Integer id;
 
     private Integer userId;
 
-    private Integer positionId;
+    private Integer departmentId;
 
     public Integer getId() {
         return id;
@@ -23,11 +23,11 @@ public class UserPosition {
         this.userId = userId;
     }
 
-    public Integer getPositionId() {
-        return positionId;
+    public Integer getDepartmentId() {
+        return departmentId;
     }
 
-    public void setPositionId(Integer positionId) {
-        this.positionId = positionId;
+    public void setDepartmentId(Integer departmentId) {
+        this.departmentId = departmentId;
     }
 }

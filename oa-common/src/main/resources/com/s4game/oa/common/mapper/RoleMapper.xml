@@ -9,20 +9,20 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from role
+    delete from oa_role
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.s4game.oa.common.entity.Role">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into role (name, deleted, create_time, 
+    insert into oa_role (name, deleted, create_time, 
       update_time)
     values (#{name,jdbcType=VARCHAR}, #{deleted,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.Role">
-    update role
+    update oa_role
     set name = #{name,jdbcType=VARCHAR},
       deleted = #{deleted,jdbcType=TINYINT},
       create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -31,11 +31,11 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, name, deleted, create_time, update_time
-    from role
+    from oa_role
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, name, deleted, create_time, update_time
-    from role
+    from oa_role
   </select>
 </mapper>

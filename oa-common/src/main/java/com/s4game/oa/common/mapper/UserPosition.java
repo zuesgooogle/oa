@@ -1,4 +1,4 @@
-package com.s4game.oa.common.entity;
+package com.s4game.oa.common.mapper;
 
 public class UserPosition {
     private Integer id;

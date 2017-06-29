@@ -11,14 +11,14 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from position
+    delete from oa_position
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.s4game.oa.common.entity.Position">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into position (parent_id, name, alias, 
+    insert into oa_position (parent_id, name, alias, 
       company, create_time, update_time
       )
     values (#{parentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
@@ -26,7 +26,7 @@
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.Position">
-    update position
+    update oa_position
     set parent_id = #{parentId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       alias = #{alias,jdbcType=VARCHAR},
@@ -37,16 +37,17 @@
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, parent_id, name, alias, company, create_time, update_time
-    from position
+    from oa_position
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, parent_id, name, alias, company, create_time, update_time
-    from position
+    from oa_position
   </select>
-    <select id="selectByParentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  
+  <select id="selectByParentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, parent_id, name, company, create_time, update_time
-    from position
+    from oa_position
     where parent_id = #{parentId,jdbcType=INTEGER}
   </select>
 </mapper>
