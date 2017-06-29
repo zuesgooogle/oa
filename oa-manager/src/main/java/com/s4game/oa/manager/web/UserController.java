@@ -4,14 +4,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.s4game.oa.common.entity.User;
+import com.s4game.oa.common.response.Response;
 import com.s4game.oa.common.service.PageService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiParam;
 
 @RestController
 @RequestMapping("/user")
@@ -50,9 +53,15 @@ public class UserController {
 	
 	@ApiOperation(value = "用户列表")
 	@RequestMapping(value = "/list")
-	public List<User> list() {
-		PageInfo<User> pageInfo = pageService.selectPage(new User(), new Page<User>(1, 100));
+	public Response list(
+			@ApiParam(value = "当前页数") @RequestParam(value = "page", required = false) Integer page,
+			@ApiParam(value = "每页数量") @RequestParam(value = "limit", required = false) Integer limit
+			) {
+		Response.Builder response = Response.newBuilder();
 		
-		return pageInfo.getList();
+		PageInfo<User> pageInfo = pageService.selectPage(new User(), new Page<User>(page, limit));
+		response.setData(pageInfo.getList());
+		
+		return response.build();
 	}
 }
