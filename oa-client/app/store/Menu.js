@@ -11,8 +11,9 @@ Ext.define('oa.store.Menu', {
                 {text: '部门管理', action: 'departmentTree', iconCls: 'x-fa fa-group', leaf: true},
                 {text: '职位管理', action: 'positionTree', iconCls: 'x-fa fa-user-secret', leaf: true}
             ]},
-            {text: '经营管理', expanded: false, iconCls: 'x-fa fa-cart-plus', children: [
-                {text: '成本台账', leaf: true},
+            {text: '经营管理', expanded: true, iconCls: 'x-fa fa-cart-plus', children: [
+                {text: '成本台账(置地)', action: 'zhidiLedgerCostList', iconCls: 'fa-hourglass', leaf: true},
+                {text: '成本台账(置业)', action: 'zhiyeLedgerCostList', iconCls: 'fa-hourglass-end', leaf: true},
                 {text: '收费台账', leaf: true},
                 {text: '合同台账', leaf: true}
             ]},

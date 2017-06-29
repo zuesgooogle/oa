@@ -3,12 +3,14 @@ package com.s4game.oa.common.entity;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class LedgerZhidi {
+public class ZhidiLedgerCost {
     private Long id;
 
     private String serialNumber;
 
-    private String area;
+    private Integer area;
+
+    private Integer subjectId;
 
     private String projectName;
 
@@ -48,12 +50,20 @@ public class LedgerZhidi {
         this.serialNumber = serialNumber == null ? null : serialNumber.trim();
     }
 
-    public String getArea() {
+    public Integer getArea() {
         return area;
     }
 
-    public void setArea(String area) {
-        this.area = area == null ? null : area.trim();
+    public void setArea(Integer area) {
+        this.area = area;
+    }
+
+    public Integer getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(Integer subjectId) {
+        this.subjectId = subjectId;
     }
 
     public String getProjectName() {

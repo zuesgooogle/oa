@@ -3,24 +3,30 @@ package com.s4game.oa.common.entity;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class LedgerZhiye {
+public class ZhiyeLedgerCost {
     private Long id;
 
     private String serialNumber;
 
-    private String area;
+    private Integer area;
+
+    private Integer subjectId;
 
     private String projectName;
 
+    private BigDecimal calculateInvest;
+
     private BigDecimal expectInvest;
 
-    private BigDecimal contractAmount;
+    private BigDecimal totalInvest;
 
-    private BigDecimal performanceAmount;
+    private BigDecimal auditStatistics;
 
-    private BigDecimal paidAmount;
+    private BigDecimal govConfirm;
 
-    private BigDecimal settledAccount;
+    private BigDecimal govCheck;
+
+    private BigDecimal uncheck;
 
     private String remark;
 
@@ -44,12 +50,20 @@ public class LedgerZhiye {
         this.serialNumber = serialNumber == null ? null : serialNumber.trim();
     }
 
-    public String getArea() {
+    public Integer getArea() {
         return area;
     }
 
-    public void setArea(String area) {
-        this.area = area == null ? null : area.trim();
+    public void setArea(Integer area) {
+        this.area = area;
+    }
+
+    public Integer getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(Integer subjectId) {
+        this.subjectId = subjectId;
     }
 
     public String getProjectName() {
@@ -60,6 +74,14 @@ public class LedgerZhiye {
         this.projectName = projectName == null ? null : projectName.trim();
     }
 
+    public BigDecimal getCalculateInvest() {
+        return calculateInvest;
+    }
+
+    public void setCalculateInvest(BigDecimal calculateInvest) {
+        this.calculateInvest = calculateInvest;
+    }
+
     public BigDecimal getExpectInvest() {
         return expectInvest;
     }
@@ -68,36 +90,44 @@ public class LedgerZhiye {
         this.expectInvest = expectInvest;
     }
 
-    public BigDecimal getContractAmount() {
-        return contractAmount;
+    public BigDecimal getTotalInvest() {
+        return totalInvest;
     }
 
-    public void setContractAmount(BigDecimal contractAmount) {
-        this.contractAmount = contractAmount;
+    public void setTotalInvest(BigDecimal totalInvest) {
+        this.totalInvest = totalInvest;
     }
 
-    public BigDecimal getPerformanceAmount() {
-        return performanceAmount;
+    public BigDecimal getAuditStatistics() {
+        return auditStatistics;
     }
 
-    public void setPerformanceAmount(BigDecimal performanceAmount) {
-        this.performanceAmount = performanceAmount;
+    public void setAuditStatistics(BigDecimal auditStatistics) {
+        this.auditStatistics = auditStatistics;
     }
 
-    public BigDecimal getPaidAmount() {
-        return paidAmount;
+    public BigDecimal getGovConfirm() {
+        return govConfirm;
     }
 
-    public void setPaidAmount(BigDecimal paidAmount) {
-        this.paidAmount = paidAmount;
+    public void setGovConfirm(BigDecimal govConfirm) {
+        this.govConfirm = govConfirm;
     }
 
-    public BigDecimal getSettledAccount() {
-        return settledAccount;
+    public BigDecimal getGovCheck() {
+        return govCheck;
     }
 
-    public void setSettledAccount(BigDecimal settledAccount) {
-        this.settledAccount = settledAccount;
+    public void setGovCheck(BigDecimal govCheck) {
+        this.govCheck = govCheck;
+    }
+
+    public BigDecimal getUncheck() {
+        return uncheck;
+    }
+
+    public void setUncheck(BigDecimal uncheck) {
+        this.uncheck = uncheck;
     }
 
     public String getRemark() {

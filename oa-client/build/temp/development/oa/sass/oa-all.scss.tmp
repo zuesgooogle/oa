@@ -1,5 +1,5 @@
 $app-name:  dynamic( 'oa' );
-$image-search-path: 'D:/github/oa/oa-client/build/development/oa/classic/resources';
+$image-search-path: '/Users/max/git/oa/oa-client/build/development/oa/classic/resources';
 $theme-name:  dynamic( 'theme-triton' );
 $include-ext-abstractcomponent: dynamic(true);;
 $include-ext-abstractcontainer: dynamic(true);;
@@ -996,6 +996,7 @@ $include-oa-store-menu: dynamic(true);;
 $include-oa-store-personnel: dynamic(true);;
 $include-oa-store-position: dynamic(true);;
 $include-oa-store-user: dynamic(true);;
+$include-oa-store-zhidiledgercost: dynamic(true);;
 $include-oa-view-costsubject-costsubjectcontroller: dynamic(true);;
 $include-oa-view-costsubject-costsubjecttree: dynamic(true);;
 $include-oa-view-department-deparmentinfo: dynamic(true);;
@@ -1004,6 +1005,7 @@ $include-oa-view-department-departmentlist: dynamic(true);;
 $include-oa-view-department-departmentmodel: dynamic(true);;
 $include-oa-view-department-departmentpicker: dynamic(true);;
 $include-oa-view-department-departmenttree: dynamic(true);;
+$include-oa-view-ledger-zhidiledgercostinfo: dynamic(true);;
 $include-oa-view-login-login: dynamic(true);;
 $include-oa-view-login-logincontroller: dynamic(true);;
 $include-oa-view-main-list: dynamic(true);;
@@ -1015,6 +1017,8 @@ $include-oa-view-position-positiontree: dynamic(true);;
 $include-oa-view-user-usercontroller: dynamic(true);;
 $include-oa-view-user-userinfo: dynamic(true);;
 $include-oa-view-user-userlist: dynamic(true);;
+$include-oa-view-user-zhidiledgercostcontroller: dynamic(true);;
+$include-oa-view-user-zhidiledgercostlist: dynamic(true);;
 $output-paths: ("path": "../../classic/resources", "shared": "../../resources");
 
 /* ======================== ETC ======================== */

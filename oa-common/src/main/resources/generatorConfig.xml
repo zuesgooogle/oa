@@ -6,7 +6,11 @@
 <generatorConfiguration>
 	<!-- cmd: mybatis-generator:generate -->
 
+	<classPathEntry location="/Users/max/m2/repository/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar"/>
+
+	<!--
 	<classPathEntry location="C:/Users/renyuan_game/.m2/repository/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar"/>
+	-->
 	
 	<context id="MysqlContext" targetRuntime="MyBatis3Simple" defaultModelType="flat">
 		<property name="beginningDelimiter" value="`" />
@@ -25,15 +29,15 @@
 		</jdbcConnection>
 
 		<javaModelGenerator targetPackage="com.s4game.oa.common.entity"
-			targetProject="src\test\java">
+			targetProject="src/test/java">
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
  
 		<sqlMapGenerator targetPackage="com.s4game.oa.common.mapper"
-			targetProject="src\test\resources" />
+			targetProject="src/test/resources" />
 
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.s4game.oa.common.mapper" targetProject="src\test\java" />
+			targetPackage="com.s4game.oa.common.mapper" targetProject="src/test/java" />
 
 		<!-- table generate -->
 		<table tableName="oa_cost_subject" domainObjectName="CostSubject" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
@@ -42,10 +46,10 @@
 		<table tableName="oa_department" domainObjectName="Department" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
-		<table tableName="oa_ledger_zhidi" domainObjectName="LedgerZhidi" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+		<table tableName="oa_zhidi_ledger_cost" domainObjectName="ZhidiLedgerCost" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
-		<table tableName="oa_ledger_zhiye" domainObjectName="LedgerZhiye" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+		<table tableName="oa_zhidi_ledger_cost" domainObjectName="ZhiyeLedgerCost" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 		<table tableName="oa_position" domainObjectName="Position" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">

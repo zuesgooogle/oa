@@ -42,6 +42,7 @@ Ext.define('oa.view.main.Main', {
         title: '菜单',
         width: 200,
         collapsible: true,
+        scrollable: true,
         split: true,
         items: [{
             xtype: 'treepanel',
