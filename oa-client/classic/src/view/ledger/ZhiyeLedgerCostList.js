@@ -1,17 +1,17 @@
-Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
+Ext.define('oa.view.ledger.ZhiyeLedgerCostList', {
     extend: 'Ext.grid.Panel',
-    xtype: 'zhidiLedgerCostList',
+    xtype: 'zhiyeLedgerCostList',
 
-    id: 'zhidiLedgerCostList',
-    alias: 'zhidiLedgerCostList',
+    id: 'zhiyeLedgerCostList',
+    alias: 'zhiyeLedgerCostList',
 
     requires: [
-        'oa.store.ZhidiLedgerCost'
+        'oa.store.ZhiyeLedgerCost'
     ],
 
-    controller: 'zhidiLedgerCost',
+    controller: 'zhiyeLedgerCost',
 
-    title: '成本台账（置地）',
+    title: '成本台账（置业）',
     scrollable: true,
     closable: true,
 
@@ -20,15 +20,15 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
             xtype: 'button',
             text: '新增',
             iconCls: 'x-fa fa-plus',
-            handler: 'addZhidiLedgerCost'
+            handler: 'addZhiyeLedgerCost'
         },
         {
             xtype: 'button',
             itemId: 'update',
             text: '修改',
-            iconCls: 'x-fa fa-edit',
+            iconCls: 'x-fa fa-eyet',
             disabled: true,
-            handler: 'viewZhidiLedgerCost'
+            handler: 'viewZhiyeLedgerCost'
         },
         {
             xtype: 'button',
@@ -36,25 +36,23 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
             text: '删除',
             iconCls: 'x-fa fa-remove',
             disabled: true,
-            handler: 'deleteZhidiLedgerCost'
+            handler: 'deleteZhiyeLedgerCost'
         }]
     },
 
     store: {
-        type: 'zhidiLedgerCost'
+        type: 'zhiyeLedgerCost'
     },
 
     columns: [
         { text: 'Id', dataIndex: 'id', width: 100 },
         { text: '片区', dataIndex: 'area', width: 100 },
         { text: '成本科目', dataIndex: 'subjectId', width: 100 },
-        { text: '可研测算金额', dataIndex: 'calculateInvest', width: 100 },
         { text: '预计投资额', dataIndex: 'expectInvest', width: 100 },
-        { text: '累计投入', dataIndex: 'totalInvest', width: 100 },
-        { text: '审计资料统计金额', dataIndex: 'auditStatistics', width: 150 },
-        { text: '政府确认金额', dataIndex: 'govConfirm', width: 100 },
-        { text: '政府程序金额', dataIndex: 'govCheck', width: 100 },
-        { text: '未核对金额', dataIndex: 'uncheck', width: 100 },
+        { text: '已签合同金额', dataIndex: 'contractAmount', width: 100 },
+        { text: '已履约金额', dataIndex: 'performanceAmount', width: 150 },
+        { text: '已付金额', dataIndex: 'paidAmount', width: 100 },
+        { text: '已结束金额', dataIndex: 'settledAccount', width: 100 },
         {
             text: '时间', dataIndex: 'createTime', flex: 1,
             renderer: function (value, cellmeta, record) {
@@ -64,7 +62,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
     ],
     bbar: {
         xtype: 'pagingtoolbar',
-        displayInfo: true
+        yesplayInfo: true
     },
 
     initComponent: function () {

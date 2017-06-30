@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
-import com.s4game.oa.common.entity.ZhidiLedgerCost;
-import com.s4game.oa.common.mapper.ZhidiLedgerCostMapper;
+import com.s4game.oa.common.entity.ZhiyeLedgerCost;
+import com.s4game.oa.common.mapper.ZhiyeLedgerCostMapper;
 import com.s4game.oa.common.response.Response;
 import com.s4game.oa.common.service.PageService;
 import com.wordnik.swagger.annotations.Api;
@@ -19,15 +19,15 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
 @RestController
-@RequestMapping("/zhidi/ledger/cost")
-@Api(value = "/zhidi/ledger/cost", description = "成本台账（置地）")
-public class ZhidiLedgerCostController {
+@RequestMapping("/zhiye/ledger/cost")
+@Api(value = "/zhiye/ledger/cost", description = "成本台账（置业）")
+public class ZhiyeLedgerCostController {
 
 	@Autowired
-	private PageService<ZhidiLedgerCost> pageService;
+	private PageService<ZhiyeLedgerCost> pageService;
 
 	@Autowired
-	private ZhidiLedgerCostMapper ledgerCostMapper;
+	private ZhiyeLedgerCostMapper ledgerCostMapper;
 	
 	@ApiOperation(value = "台账列表")
 	@RequestMapping(value = "/list")
@@ -37,7 +37,7 @@ public class ZhidiLedgerCostController {
 			) {
 		Response.Builder response = Response.newBuilder();
 		
-		PageInfo<ZhidiLedgerCost> pageInfo = pageService.selectPage(new ZhidiLedgerCost(), new Page<ZhidiLedgerCost>(page, limit));
+		PageInfo<ZhiyeLedgerCost> pageInfo = pageService.selectPage(new ZhiyeLedgerCost(), new Page<ZhiyeLedgerCost>(page, limit));
 		response.setData(pageInfo.getList());
 		
 		return response.build();
@@ -50,30 +50,25 @@ public class ZhidiLedgerCostController {
 			@ApiParam(value = "台账ID") @RequestParam(value = "id", required = false) Long id,
 			@ApiParam(value = "片区") @RequestParam(value = "area", required = true) Integer area,
 			@ApiParam(value = "成本科目ID") @RequestParam(value = "subjectId", required = true) Integer subjectId,
-			@ApiParam(value = "可研测算金额") @RequestParam(value = "calculateInvest", required = true) BigDecimal calculateInvest,
 			@ApiParam(value = "预计投入金额") @RequestParam(value = "expectInvest", required = true) BigDecimal expectInvest,
-			@ApiParam(value = "累计投入") @RequestParam(value = "totalInvest", required = true) BigDecimal totalInvest,
-			@ApiParam(value = "审计资料统计金额") @RequestParam(value = "auditStatistics", required = true) BigDecimal auditStatistics,
-			@ApiParam(value = "政府确认金额") @RequestParam(value = "govConfirm", required = true) BigDecimal govConfirm,
-			@ApiParam(value = "政府程序金额") @RequestParam(value = "govCheck", required = true) BigDecimal govCheck,
-			@ApiParam(value = "未核对金额") @RequestParam(value = "uncheck", required = true) BigDecimal uncheck,
+			@ApiParam(value = "已签合同金额") @RequestParam(value = "contractAmount", required = true) BigDecimal contractAmount,
+			@ApiParam(value = "已履约金额") @RequestParam(value = "performanceAmount", required = true) BigDecimal performanceAmount,
+			@ApiParam(value = "已付金额") @RequestParam(value = "paidAmount", required = true) BigDecimal paidAmount,
+			@ApiParam(value = "已结束金额") @RequestParam(value = "settledAccount", required = true) BigDecimal settledAccount,
 			@ApiParam(value = "说明") @RequestParam(value = "remark", required = false) String remark
 			) {
 		Response.Builder response = Response.newBuilder();
 		
-		ZhidiLedgerCost ledgerCost = null;
+		ZhiyeLedgerCost ledgerCost = null;
 		if (id == null) {
-			ledgerCost = new ZhidiLedgerCost();
+			ledgerCost = new ZhiyeLedgerCost();
 			ledgerCost.setArea(area);
 			ledgerCost.setSubjectId(subjectId);
-			ledgerCost.setCalculateInvest(calculateInvest);
 			ledgerCost.setExpectInvest(expectInvest);
-			ledgerCost.setTotalInvest(totalInvest);
-			ledgerCost.setTotalInvest(totalInvest);
-			ledgerCost.setAuditStatistics(auditStatistics);
-			ledgerCost.setGovConfirm(govConfirm);
-			ledgerCost.setGovCheck(govCheck);
-			ledgerCost.setUncheck(uncheck);
+			ledgerCost.setContractAmount(contractAmount);
+			ledgerCost.setPerformanceAmount(performanceAmount);
+			ledgerCost.setPaidAmount(paidAmount);
+			ledgerCost.setSettledAccount(settledAccount);
 			ledgerCost.setRemark(remark);
 			ledgerCost.setCreateTime(new Date());
 			
@@ -82,14 +77,11 @@ public class ZhidiLedgerCostController {
 			ledgerCost = ledgerCostMapper.selectByPrimaryKey(id);
 			ledgerCost.setArea(area);
 			ledgerCost.setSubjectId(subjectId);
-			ledgerCost.setCalculateInvest(calculateInvest);
 			ledgerCost.setExpectInvest(expectInvest);
-			ledgerCost.setTotalInvest(totalInvest);
-			ledgerCost.setTotalInvest(totalInvest);
-			ledgerCost.setAuditStatistics(auditStatistics);
-			ledgerCost.setGovConfirm(govConfirm);
-			ledgerCost.setGovCheck(govCheck);
-			ledgerCost.setUncheck(uncheck);
+			ledgerCost.setContractAmount(contractAmount);
+			ledgerCost.setPerformanceAmount(performanceAmount);
+			ledgerCost.setPaidAmount(paidAmount);
+			ledgerCost.setSettledAccount(settledAccount);
 			ledgerCost.setRemark(remark);
 			
 			ledgerCostMapper.updateByPrimaryKey(ledgerCost);

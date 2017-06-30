@@ -4,9 +4,7 @@ Ext.define('oa.store.ZhidiLedgerCost', {
     id: 'store.zhidiLedgerCost',
     alias: 'store.zhidiLedgerCost',
 
-    fields: ['id', 'serialNumber', 'area', 'subjectId', 'projectName',
-        'calculateInvest', 'expectInvest', 'totalInvest', 'auditStatistics', 'govConfirm', 'govCheck', 'uncheck',
-        'remark', 'createTime'],
+    model: 'oa.model.ZhidiLedgerCost',
 
     proxy: {
 

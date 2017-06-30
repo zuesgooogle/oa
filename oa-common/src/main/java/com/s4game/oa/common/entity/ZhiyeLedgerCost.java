@@ -14,19 +14,15 @@ public class ZhiyeLedgerCost {
 
     private String projectName;
 
-    private BigDecimal calculateInvest;
-
     private BigDecimal expectInvest;
 
-    private BigDecimal totalInvest;
+    private BigDecimal contractAmount;
 
-    private BigDecimal auditStatistics;
+    private BigDecimal performanceAmount;
 
-    private BigDecimal govConfirm;
+    private BigDecimal paidAmount;
 
-    private BigDecimal govCheck;
-
-    private BigDecimal uncheck;
+    private BigDecimal settledAccount;
 
     private String remark;
 
@@ -74,14 +70,6 @@ public class ZhiyeLedgerCost {
         this.projectName = projectName == null ? null : projectName.trim();
     }
 
-    public BigDecimal getCalculateInvest() {
-        return calculateInvest;
-    }
-
-    public void setCalculateInvest(BigDecimal calculateInvest) {
-        this.calculateInvest = calculateInvest;
-    }
-
     public BigDecimal getExpectInvest() {
         return expectInvest;
     }
@@ -90,44 +78,36 @@ public class ZhiyeLedgerCost {
         this.expectInvest = expectInvest;
     }
 
-    public BigDecimal getTotalInvest() {
-        return totalInvest;
+    public BigDecimal getContractAmount() {
+        return contractAmount;
     }
 
-    public void setTotalInvest(BigDecimal totalInvest) {
-        this.totalInvest = totalInvest;
+    public void setContractAmount(BigDecimal contractAmount) {
+        this.contractAmount = contractAmount;
     }
 
-    public BigDecimal getAuditStatistics() {
-        return auditStatistics;
+    public BigDecimal getPerformanceAmount() {
+        return performanceAmount;
     }
 
-    public void setAuditStatistics(BigDecimal auditStatistics) {
-        this.auditStatistics = auditStatistics;
+    public void setPerformanceAmount(BigDecimal performanceAmount) {
+        this.performanceAmount = performanceAmount;
     }
 
-    public BigDecimal getGovConfirm() {
-        return govConfirm;
+    public BigDecimal getPaidAmount() {
+        return paidAmount;
     }
 
-    public void setGovConfirm(BigDecimal govConfirm) {
-        this.govConfirm = govConfirm;
+    public void setPaidAmount(BigDecimal paidAmount) {
+        this.paidAmount = paidAmount;
     }
 
-    public BigDecimal getGovCheck() {
-        return govCheck;
+    public BigDecimal getSettledAccount() {
+        return settledAccount;
     }
 
-    public void setGovCheck(BigDecimal govCheck) {
-        this.govCheck = govCheck;
-    }
-
-    public BigDecimal getUncheck() {
-        return uncheck;
-    }
-
-    public void setUncheck(BigDecimal uncheck) {
-        this.uncheck = uncheck;
+    public void setSettledAccount(BigDecimal settledAccount) {
+        this.settledAccount = settledAccount;
     }
 
     public String getRemark() {

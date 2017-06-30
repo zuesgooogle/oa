@@ -4,7 +4,7 @@ Ext.define('oa.store.User', {
     id: 'store.user',
     alias: 'store.user',
 
-    fields: ['id', 'username', 'createTime'],
+    model: 'oa.model.User',
 
     proxy: {
         

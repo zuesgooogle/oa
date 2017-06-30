@@ -1,13 +1,13 @@
-Ext.define('oa.view.ledger.ZhidiLedgerCostInfo', {
+Ext.define('oa.view.ledger.ZhiyeLedgerCostInfo', {
     extend: 'Ext.window.Window',
-    xtype: 'zhidiLedgerCostInfo',
+    xtype: 'zhiyeLedgerCostInfo',
 
-    alias: 'zhidiLedgerCostInfo',
-    id: 'zhidiLedgerCostInfo',
+    alias: 'zhiyeLedgerCostInfo',
+    id: 'zhiyeLedgerCostInfo',
 
-    controller: 'zhidiLedgerCost',
+    controller: 'zhiyeLedgerCost',
 
-    title: '成本台账信息（置地）',
+    title: '成本台账信息（置业）',
     modal: false,
     resizable: false,
 
@@ -23,9 +23,9 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostInfo', {
             anchor: '100%'
         },
         method: 'POST',
-        url: oa.config.Config.BASE_URL + 'zhidi/ledger/cost/update',
+        url: oa.config.Config.BASE_URL + 'zhiye/ledger/cost/update',
 
-        bodyStyle: "padding:10px",
+        bodyStyle: "padyeng:10px",
         items: [
             {
                 xtype: 'fieldset',
@@ -42,12 +42,11 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostInfo', {
                 columnWidth: .5,
                 layout: 'form',
                 defaults: { anchor: '95%' },
-                style:  "padding: 5px",
+                style: "padyeng: 5px",
                 items: [
-                    { fieldLabel: '可研测算金额', name: 'calculateInvest', xtype: 'numberfield' },
                     { fieldLabel: '预计投入金额', name: 'expectInvest', xtype: 'numberfield' },
-                    { fieldLabel: '累计投入', name: 'totalInvest', xtype: 'numberfield' },
-                    { fieldLabel: '审计资料统计金额', name: 'auditStatistics', xtype: 'numberfield' },
+                    { fieldLabel: '已签合同金额', name: 'contractAmount', xtype: 'numberfield' },
+                    { fieldLabel: '已履约金额', name: 'performanceAmount', xtype: 'numberfield' },
                 ]
             },
             {
@@ -55,11 +54,10 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostInfo', {
                 columnWidth: .5,
                 layout: 'form',
                 defaults: { anchor: '95%' },
-                style:  "margin-left: 5px; padding: 5px",
+                style: "margin-left: 5px; padyeng: 5px",
                 items: [
-                    { fieldLabel: '政府确认金额', name: 'govConfirm', xtype: 'numberfield' },
-                    { fieldLabel: '政府程序金额', name: 'govCheck', xtype: 'numberfield' },
-                    { fieldLabel: '未核对金额', name: 'uncheck', xtype: 'numberfield' },
+                    { fieldLabel: '已付金额', name: 'paidAmount', xtype: 'numberfield' },
+                    { fieldLabel: '已结束金额', name: 'settledAccount', xtype: 'numberfield' }
                 ]
             },
             {
@@ -81,7 +79,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostInfo', {
         ],
         buttons: [{
             text: 'Submit',
-            handler: 'updateZhidiLedgerCost'
+            handler: 'updateZhiyeLedgerCost'
         }, {
             text: 'Cancel',
             handler: function () {
