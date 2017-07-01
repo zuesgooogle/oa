@@ -72,7 +72,7 @@ public class ProjectController {
 
 	@ApiOperation(value = "删除项目")
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public Response delete(@ApiParam(value = "项目Id") @RequestParam(value = "id", required = false) Integer id) {
+	public Response delete(@ApiParam(value = "项目Id") @RequestParam(value = "id", required = true) Integer id) {
 		Response.Builder response = Response.newBuilder();
 
 		int result = projectManager.deleteByPrimaryKey(id);
