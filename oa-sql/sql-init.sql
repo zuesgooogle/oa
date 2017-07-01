@@ -39,6 +39,131 @@ CREATE TABLE `oa_department` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for oa_plan_money_in_month
+-- ----------------------------
+DROP TABLE IF EXISTS `oa_plan_money_in_month`;
+CREATE TABLE `oa_plan_money_in_month` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `company` int(11) NOT NULL,
+  `department_id` int(11) NOT NULL COMMENT '部门',
+  `project_id` int(11) NOT NULL COMMENT '项目',
+  `subject_id` int(11) NOT NULL COMMENT '成本科目',
+  `organizer` varchar(128) NOT NULL COMMENT '单位名称',
+  `contract_name` varchar(128) NOT NULL COMMENT '合同名称',
+  `total` decimal(20,2) NOT NULL,
+  `plan_amount` decimal(20,2) NOT NULL COMMENT '本月计划金额',
+  `actual_amount` decimal(20,2) NOT NULL COMMENT '实际收入',
+  `create_time` datetime NOT NULL,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of oa_plan_money_in_month
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for oa_plan_money_in_year
+-- ----------------------------
+DROP TABLE IF EXISTS `oa_plan_money_in_year`;
+CREATE TABLE `oa_plan_money_in_year` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `company` int(11) NOT NULL COMMENT '单位',
+  `department_id` int(11) NOT NULL COMMENT '部门',
+  `project_id` int(11) NOT NULL COMMENT '项目',
+  `subject_id` int(11) NOT NULL COMMENT '成本科目',
+  `organizer` varchar(128) NOT NULL COMMENT '单位名称',
+  `contract_name` varchar(128) NOT NULL COMMENT '合同名称',
+  `contract_amount` decimal(20,2) NOT NULL COMMENT '合同金额',
+  `year` int(11) NOT NULL,
+  `month_1` decimal(20,2) DEFAULT NULL,
+  `month_2` decimal(20,2) DEFAULT NULL,
+  `month_3` decimal(20,2) DEFAULT NULL,
+  `month_4` decimal(20,2) DEFAULT NULL,
+  `month_5` decimal(20,2) DEFAULT NULL,
+  `month_6` decimal(20,2) DEFAULT NULL,
+  `month_7` decimal(20,2) DEFAULT NULL,
+  `month_8` decimal(20,2) DEFAULT NULL,
+  `month_9` decimal(20,2) DEFAULT NULL,
+  `month_10` decimal(20,2) DEFAULT NULL,
+  `month_11` decimal(20,2) DEFAULT NULL,
+  `month_12` decimal(20,2) DEFAULT NULL,
+  `create_time` datetime NOT NULL,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of oa_plan_money_in_year
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for oa_plan_money_out_month
+-- ----------------------------
+DROP TABLE IF EXISTS `oa_plan_money_out_month`;
+CREATE TABLE `oa_plan_money_out_month` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `company` int(11) NOT NULL,
+  `department_id` int(11) NOT NULL COMMENT '部门',
+  `project_id` int(11) NOT NULL COMMENT '项目',
+  `subject_id` int(11) NOT NULL COMMENT '成本科目',
+  `receiver` varchar(128) NOT NULL COMMENT '收款单位名称',
+  `contract_name` varchar(128) NOT NULL COMMENT '合同名称',
+  `contract_amount` decimal(20,2) NOT NULL COMMENT '合同金额',
+  `paid_amount` decimal(20,2) NOT NULL COMMENT '已支付',
+  `plan_amount` decimal(20,2) NOT NULL COMMENT '本月计划金额',
+  `actual_amount` decimal(20,2) NOT NULL COMMENT '本月实际支付',
+  `remark` varchar(255) DEFAULT NULL COMMENT '备注',
+  `create_time` datetime NOT NULL,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of oa_plan_money_out_month
+-- ----------------------------
+INSERT INTO `oa_plan_money_out_month` VALUES ('2', '1', '1', '1', '1', '1', '1', '1.00', '1.00', '1.00', '1.00', '1', '2017-07-01 18:17:29', '2017-07-01 18:17:28');
+
+-- ----------------------------
+-- Table structure for oa_plan_money_out_year
+-- ----------------------------
+DROP TABLE IF EXISTS `oa_plan_money_out_year`;
+CREATE TABLE `oa_plan_money_out_year` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `company` int(11) NOT NULL COMMENT '单位',
+  `department_id` int(11) NOT NULL COMMENT '部门',
+  `project_id` int(11) DEFAULT NULL COMMENT '项目',
+  `subject_id` int(11) DEFAULT NULL COMMENT '成本科目',
+  `receiver` varchar(128) DEFAULT NULL COMMENT '收款单位名称',
+  `contract_name` varchar(128) NOT NULL COMMENT '合同名称',
+  `contract_amount` decimal(20,2) NOT NULL COMMENT '合同金额',
+  `paid_amount` decimal(20,2) DEFAULT NULL COMMENT '已支付金额',
+  `year` int(11) NOT NULL COMMENT '年份',
+  `month_1` decimal(20,2) DEFAULT NULL,
+  `month_2` decimal(20,2) DEFAULT NULL,
+  `month_3` decimal(20,2) DEFAULT NULL,
+  `month_4` decimal(20,2) DEFAULT NULL,
+  `month_5` decimal(20,2) DEFAULT NULL,
+  `month_6` decimal(20,2) DEFAULT NULL,
+  `month_7` decimal(20,2) DEFAULT NULL,
+  `month_8` decimal(20,2) DEFAULT NULL,
+  `month_9` decimal(20,2) DEFAULT NULL,
+  `month_10` decimal(20,2) DEFAULT NULL,
+  `month_11` decimal(20,2) DEFAULT NULL,
+  `month_12` decimal(20,2) DEFAULT NULL,
+  `create_time` datetime NOT NULL,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of oa_plan_money_out_year
+-- ----------------------------
+INSERT INTO `oa_plan_money_out_year` VALUES ('1', '1', '1', null, null, null, '1', '1.00', '12.00', '2017', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2017-07-01 18:44:32', '2017-07-01 18:45:51');
+INSERT INTO `oa_plan_money_out_year` VALUES ('2', '1', '1', null, null, null, '1', '1.00', '1.00', '2018', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2017-07-01 19:03:15', '2017-07-01 19:03:14');
+INSERT INTO `oa_plan_money_out_year` VALUES ('3', '1', '1', null, null, null, '1', '1.00', '1.00', '2020', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2017-07-01 19:14:06', '2017-07-01 19:14:06');
+
+-- ----------------------------
 -- Table structure for oa_position
 -- ----------------------------
 DROP TABLE IF EXISTS `oa_position`;
@@ -118,11 +243,14 @@ CREATE TABLE `oa_section` (
   `create_time` datetime NOT NULL,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of oa_section
 -- ----------------------------
+INSERT INTO `oa_section` VALUES ('1', 'A', '2017-07-01 19:22:31', '2017-07-01 19:22:31');
+INSERT INTO `oa_section` VALUES ('2', 'B', '2017-07-01 19:22:34', '2017-07-01 19:22:34');
+INSERT INTO `oa_section` VALUES ('3', 'C', '2017-07-01 19:22:38', '2017-07-01 19:22:37');
 
 -- ----------------------------
 -- Table structure for oa_user
@@ -142,7 +270,7 @@ CREATE TABLE `oa_user` (
 -- ----------------------------
 -- Records of oa_user
 -- ----------------------------
-INSERT INTO `oa_user` VALUES ('1', '18810863658', '$2a$10$fnxrymljcZQgRpMxaNZZ8.Xjgro9jSm7tFhC5IyG7a.5/IPMLqM.G', '1', '0', '2017-06-22 17:25:04', '2017-06-22 17:25:06');
+INSERT INTO `oa_user` VALUES ('1', '123456', '$2a$10$fnxrymljcZQgRpMxaNZZ8.Xjgro9jSm7tFhC5IyG7a.5/IPMLqM.G', '1', '0', '2017-06-22 17:25:04', '2017-07-01 19:46:39');
 
 -- ----------------------------
 -- Table structure for oa_user_department

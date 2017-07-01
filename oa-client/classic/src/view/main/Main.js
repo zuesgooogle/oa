@@ -48,6 +48,9 @@ Ext.define('oa.view.main.Main', {
                 type: 'menu'
             },
             listeners: {
+                // render: function(tree) {
+                //     tree.getStore().reload();
+                // },
                 itemclick: 'onMenuClick'
             }
         }]
