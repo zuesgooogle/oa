@@ -10,9 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
-import com.s4game.oa.common.entity.Department;
-import com.s4game.oa.common.entity.User;
-import com.s4game.oa.common.mapper.DepartmentMapper;
+import com.s4game.oa.common.entity.Section;
+import com.s4game.oa.common.mapper.SectionMapper;
 import com.s4game.oa.common.response.Response;
 import com.s4game.oa.common.service.PageService;
 import com.s4game.oa.manager.utils.WebUtils;
@@ -21,17 +20,17 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
 @RestController
-@RequestMapping("/department")
-@Api(value = "department", description = "部门管理")
-public class DepartmentController {
+@RequestMapping("/section")
+@Api(value = "section", description = "标段管理")
+public class SectionController {
 
 	@Autowired
-	private DepartmentMapper departmentManager;
+	private SectionMapper sectionManager;
+
+	@Autowired
+	private PageService<Section> pageService;
 	
-	@Autowired
-	private PageService<Department> pageService;
-
-	@ApiOperation(value = "部门列表")
+	@ApiOperation(value = "标段列表")
 	@RequestMapping(value = "/list")
 	public Response list(
 			@ApiParam(value = "当前页数") @RequestParam(value = "page", required = false) Integer page,
@@ -39,43 +38,41 @@ public class DepartmentController {
 			) {
 		Response.Builder response = Response.newBuilder();
 
-		PageInfo<Department> pageInfo = pageService.selectPage(new Department(), new Page<Department>(page, limit));
+		PageInfo<Section> pageInfo = pageService.selectPage(new Section(), new Page<Section>(page, limit));
 		response.setData(pageInfo.getList());
 
 		return response.build();
 	}
 
-	@ApiOperation(value = "更新部门")
+	@ApiOperation(value = "更新标段")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public Response update(@ApiParam(value = "部门Id") @RequestParam(value = "id", required = true) Integer id,
-			@ApiParam(value = "部门名称") @RequestParam(value = "name", required = true) String name,
-			@ApiParam(value = "所属公司") @RequestParam(value = "company", required = true) Integer company) {
+	public Response update(@ApiParam(value = "标段Id") @RequestParam(value = "id", required = true) Integer id,
+			@ApiParam(value = "标段名称") @RequestParam(value = "name", required = true) String name) {
 		Response.Builder response = Response.newBuilder();
 		
-		Department department = null;
+		Section section = null;
 		if (WebUtils.isAdd(id)) {
-			department = new Department();
-			department.setName(name);
-			department.setCompany(company);
-			department.setCreateTime(new Date());
+			section = new Section();
+			section.setName(name);
+			section.setCreateTime(new Date());
 
-			departmentManager.insert(department);
+			sectionManager.insert(section);
 		} else {
-			department = departmentManager.selectByPrimaryKey(id);
-			department.setName(name);
-			department.setCompany(company);
-			departmentManager.updateByPrimaryKey(department);
+			section = sectionManager.selectByPrimaryKey(id);
+			section.setName(name);
+			sectionManager.updateByPrimaryKey(section);
 		}
-		response.setData(department);
+
+		response.setData(section);
 		return response.build();
 	}
 
-	@ApiOperation(value = "删除部门")
+	@ApiOperation(value = "删除标段")
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public Response delete(@ApiParam(value = "部门Id") @RequestParam(value = "id", required = true) Integer id) {
+	public Response delete(@ApiParam(value = "标段Id") @RequestParam(value = "id", required = false) Integer id) {
 		Response.Builder response = Response.newBuilder();
 
-		int result = departmentManager.deleteByPrimaryKey(id);
+		int result = sectionManager.deleteByPrimaryKey(id);
 
 		response.setData(result);
 		return response.build();

@@ -12,12 +12,7 @@ Ext.define('oa.view.main.Main', {
 
         'oa.store.Menu',
         'oa.view.main.MainController',
-        'oa.view.main.MainModel',
-        'oa.view.main.List',
-
-        'oa.view.department.DepartmentList',
-        'oa.view.department.DeparmentInfo',
-        'oa.view.department.DepartmentController'
+        'oa.view.main.MainModel'
     ],
 
     controller: 'main',

@@ -2,8 +2,8 @@ Ext.define('Utils', {
     singleton: true,
 
     company: [
-        { id: 2, name: '置地公司' },
-        { id: 3, name: '置业公司' }
+        { id: 1, name: '置地公司' },
+        { id: 2, name: '置业公司' }
     ],
 
     isCompany: function (name) {
@@ -15,5 +15,16 @@ Ext.define('Utils', {
             }
         });
         return has;
+    },
+
+    rendererCompany: function(id) {
+        var name = 'unknow';
+        Ext.each(this.company, function (record) {
+            if (record.id === id) {
+                name = record.name;
+                return false;
+            }
+        });
+        return name;
     }
 });

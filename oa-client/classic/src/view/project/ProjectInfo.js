@@ -1,14 +1,13 @@
-Ext.define('oa.view.department.DeparmentInfo', {
+Ext.define('oa.view.project.ProjectInfo', {
     extend: 'Ext.window.Window',
-    xtype: 'deparmentInfo',
+    xtype: 'projectInfo',
 
-    alias: 'departmentInfo',
-    id: 'departmentInfo',
+    alias: 'projectInfo',
+    id: 'projectInfo',
 
-    controller: 'department',
-    viewModel: 'department',
+    controller: 'project',
 
-    title: '部门信息',
+    title: '项目信息',
     modal: false,
     resizable: false,
 
@@ -24,13 +23,13 @@ Ext.define('oa.view.department.DeparmentInfo', {
             anchor: '100%'
         },
         method: 'POST',
-        url: oa.config.Config.BASE_URL + 'department/update',
+        url: oa.config.Config.BASE_URL + 'project/update',
 
         bodyStyle: "padding:10px 10px 10px 10px",
         items: [
-            { fieldLabel: 'ID', name: 'id', xtype: 'textfield', hidden: true },
+            { fieldLabel: 'ID', name: 'id', xtype: 'textfield', hidden: true},
             {name: 'company', xtype: 'companyCombo', allowBlank: false},
-            { fieldLabel: '部门名称', name: 'name', xtype: 'textfield', allowBlank: false },
+            { fieldLabel: '项目名称', name: 'name', xtype: 'textfield', allowBlank: false },
             {
                 fieldLabel: '创建时间', name: 'createTime', xtype: 'textfield', editable: false,
                 renderData: function (value) {
@@ -40,7 +39,7 @@ Ext.define('oa.view.department.DeparmentInfo', {
         ],
         buttons: [{
             text: 'Submit',
-            handler: 'updateDepartment'
+            handler: 'updateProject'
         }, {
             text: 'Cancel',
             handler: function () {

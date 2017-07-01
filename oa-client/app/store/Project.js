@@ -1,14 +1,14 @@
-Ext.define('oa.store.Position', {
+Ext.define('oa.store.Project', {
     extend: 'Ext.data.Store',
 
-    id: 'store.position',
-    alias: 'store.position',
+    id: 'store.project',
+    alias: 'store.project',
 
-    model: 'oa.model.Position',
+    model: 'oa.model.Project',
 
     proxy: {
         type: 'ajax',
-        url: oa.config.Config.BASE_URL + 'position/list',
+        url: oa.config.Config.BASE_URL + 'project/list',
         reader: {
             type: 'json',
             rootProperty: 'data',

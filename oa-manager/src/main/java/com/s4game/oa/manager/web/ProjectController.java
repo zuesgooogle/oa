@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
-import com.s4game.oa.common.entity.Position;
-import com.s4game.oa.common.mapper.PositionMapper;
+import com.s4game.oa.common.entity.Project;
+import com.s4game.oa.common.mapper.ProjectMapper;
 import com.s4game.oa.common.response.Response;
 import com.s4game.oa.common.service.PageService;
 import com.s4game.oa.manager.utils.WebUtils;
@@ -20,17 +20,17 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
 @RestController
-@RequestMapping("/position")
-@Api(value = "position", description = "职位管理")
-public class PositionController {
+@RequestMapping("/project")
+@Api(value = "project", description = "项目管理")
+public class ProjectController {
 
 	@Autowired
-	private PositionMapper positionManager;
+	private ProjectMapper projectManager;
 
 	@Autowired
-	private PageService<Position> pageService;
+	private PageService<Project> pageService;
 	
-	@ApiOperation(value = "职位列表")
+	@ApiOperation(value = "项目列表")
 	@RequestMapping(value = "/list")
 	public Response list(
 			@ApiParam(value = "当前页数") @RequestParam(value = "page", required = false) Integer page,
@@ -38,47 +38,44 @@ public class PositionController {
 			) {
 		Response.Builder response = Response.newBuilder();
 
-		PageInfo<Position> pageInfo = pageService.selectPage(new Position(), new Page<Position>(page, limit));
+		PageInfo<Project> pageInfo = pageService.selectPage(new Project(), new Page<Project>(page, limit));
 		response.setData(pageInfo.getList());
 
 		return response.build();
 	}
 
-	@ApiOperation(value = "更新职位")
+	@ApiOperation(value = "更新项目")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public Response update(@ApiParam(value = "职位Id") @RequestParam(value = "id", required = true) Integer id,
-			@ApiParam(value = "职位名称") @RequestParam(value = "name", required = true) String name,
-			@ApiParam(value = "职位别名") @RequestParam(value = "alias", required = true) String alias,
+	public Response update(@ApiParam(value = "项目Id") @RequestParam(value = "id", required = true) Integer id,
+			@ApiParam(value = "项目名称") @RequestParam(value = "name", required = true) String name,
 			@ApiParam(value = "所属公司") @RequestParam(value = "company", required = true) Integer company) {
 		Response.Builder response = Response.newBuilder();
 		
-		Position position = null;
+		Project project = null;
 		if (WebUtils.isAdd(id)) {
-			position = new Position();
-			position.setName(name);
-			position.setAlias(alias);
-			position.setCompany(company);
-			position.setCreateTime(new Date());
+			project = new Project();
+			project.setName(name);
+			project.setCompany(company);
+			project.setCreateTime(new Date());
 
-			positionManager.insert(position);
+			projectManager.insert(project);
 		} else {
-			position = positionManager.selectByPrimaryKey(id);
-			position.setName(name);
-			position.setAlias(alias);
-			position.setCompany(company);
-			positionManager.updateByPrimaryKey(position);
+			project = projectManager.selectByPrimaryKey(id);
+			project.setName(name);
+			project.setCompany(company);
+			projectManager.updateByPrimaryKey(project);
 		}
 
-		response.setData(position);
+		response.setData(project);
 		return response.build();
 	}
 
-	@ApiOperation(value = "删除职位")
+	@ApiOperation(value = "删除项目")
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public Response delete(@ApiParam(value = "职位Id") @RequestParam(value = "id", required = false) Integer id) {
+	public Response delete(@ApiParam(value = "项目Id") @RequestParam(value = "id", required = false) Integer id) {
 		Response.Builder response = Response.newBuilder();
 
-		int result = positionManager.deleteByPrimaryKey(id);
+		int result = projectManager.deleteByPrimaryKey(id);
 
 		response.setData(result);
 		return response.build();

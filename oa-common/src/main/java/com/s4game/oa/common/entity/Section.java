@@ -2,12 +2,10 @@ package com.s4game.oa.common.entity;
 
 import java.util.Date;
 
-public class Department {
+public class Section {
     private Integer id;
 
     private String name;
-
-    private Integer company;
 
     private Date createTime;
 
@@ -27,14 +25,6 @@ public class Department {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
-    }
-
-    public Integer getCompany() {
-        return company;
-    }
-
-    public void setCompany(Integer company) {
-        this.company = company;
     }
 
     public Date getCreateTime() {

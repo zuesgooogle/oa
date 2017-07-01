@@ -33,11 +33,24 @@ Ext.define('oa.view.department.DepartmentPicker', {
                 type: 'json',
                 rootProperty: 'data'
             }
+        },
+        listeners: {
+            nodeexpand: function (node, eOpts) {
+                node.data.checked = true;
+                console.log('tree node : ' + node);
+            }
         }
     }),
 
     initComponent: function () {
         this.callParent(arguments);
+
+        this.on('itemclick', this.itemclick, this);
+    },
+
+    itemclick: function(view, record) {
+        console.log(record);
     }
+
 
 });

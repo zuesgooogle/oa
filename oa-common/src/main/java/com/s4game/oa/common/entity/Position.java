@@ -5,8 +5,6 @@ import java.util.Date;
 public class Position {
     private Integer id;
 
-    private Integer parentId;
-
     private String name;
 
     private String alias;
@@ -23,14 +21,6 @@ public class Position {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(Integer parentId) {
-        this.parentId = parentId;
     }
 
     public String getName() {

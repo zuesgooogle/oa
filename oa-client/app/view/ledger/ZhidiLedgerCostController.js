@@ -1,4 +1,4 @@
-Ext.define('oa.view.user.ZhidiLedgerCostController', {
+Ext.define('oa.view.ledger.ZhidiLedgerCostController', {
     extend: 'Ext.app.ViewController',
 
     alias: 'controller.zhidiLedgerCost',

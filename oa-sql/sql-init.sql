@@ -27,20 +27,16 @@ INSERT INTO `oa_cost_subject` VALUES ('4', '2', '11111', '1', '2017-06-28 22:33:
 DROP TABLE IF EXISTS `oa_department`;
 CREATE TABLE `oa_department` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(11) DEFAULT NULL COMMENT '上级部门',
   `name` varchar(64) NOT NULL,
   `company` int(4) NOT NULL COMMENT '所属公司',
   `create_time` datetime NOT NULL,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=112 DEFAULT CHARSET=utf8 COMMENT='部门信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='部门信息表';
 
 -- ----------------------------
 -- Records of oa_department
 -- ----------------------------
-INSERT INTO `oa_department` VALUES ('1', null, 'Root', '0', '2017-06-06 17:08:05', '2017-06-28 21:00:24');
-INSERT INTO `oa_department` VALUES ('2', '1', '置地公司', '1', '2017-06-08 18:23:25', '2017-06-28 20:51:57');
-INSERT INTO `oa_department` VALUES ('3', '1', '置业公司', '2', '2017-06-21 17:24:35', '2017-06-28 20:52:07');
 
 -- ----------------------------
 -- Table structure for oa_position
@@ -48,21 +44,34 @@ INSERT INTO `oa_department` VALUES ('3', '1', '置业公司', '2', '2017-06-21 1
 DROP TABLE IF EXISTS `oa_position`;
 CREATE TABLE `oa_position` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent_id` int(11) DEFAULT NULL COMMENT '上级职位',
   `name` varchar(64) NOT NULL,
   `alias` varchar(64) NOT NULL COMMENT '职位别名（流程中使用）',
   `company` int(4) NOT NULL COMMENT '所属公司',
   `create_time` datetime NOT NULL,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='职位信息表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='职位信息表';
 
 -- ----------------------------
 -- Records of oa_position
 -- ----------------------------
-INSERT INTO `oa_position` VALUES ('1', null, 'Root', '', '0', '2017-06-28 21:13:00', '2017-06-28 21:13:04');
-INSERT INTO `oa_position` VALUES ('2', '1', '置地公司', '', '1', '2017-06-28 21:13:18', '2017-06-28 21:13:22');
-INSERT INTO `oa_position` VALUES ('3', '1', '置业公司', '', '2', '2017-06-28 21:13:35', '2017-06-28 21:13:38');
+
+-- ----------------------------
+-- Table structure for oa_project
+-- ----------------------------
+DROP TABLE IF EXISTS `oa_project`;
+CREATE TABLE `oa_project` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  `company` int(11) NOT NULL,
+  `create_time` datetime NOT NULL,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of oa_project
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for oa_resource
@@ -97,6 +106,22 @@ CREATE TABLE `oa_role` (
 
 -- ----------------------------
 -- Records of oa_role
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for oa_section
+-- ----------------------------
+DROP TABLE IF EXISTS `oa_section`;
+CREATE TABLE `oa_section` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL,
+  `create_time` datetime NOT NULL,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of oa_section
 -- ----------------------------
 
 -- ----------------------------

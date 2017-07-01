@@ -1,19 +1,18 @@
-Ext.define('oa.view.department.DepartmentList', {
+Ext.define('oa.view.position.PositionList', {
     extend: 'Ext.grid.Panel',
-    xtype: 'departmentList',
+    xtype: 'positionList',
 
-    id: 'departmentList',
-    alias: 'departmentList',
-    reference: 'departmentList',
+    id: 'positionList',
+    alias: 'positionList',
+    reference: 'positionList',
 
     requires: [
-        'oa.store.Department'
+        'oa.store.Position'
     ],
 
-    controller: 'department',
-    viewModel: 'department',
+    controller: 'position',
 
-    title: '部门管理',
+    title: '职位管理',
     scrollable: true,
     closable: true,
 
@@ -22,28 +21,28 @@ Ext.define('oa.view.department.DepartmentList', {
             xtype: 'button',
             text: '新增',
             iconCls: 'x-fa fa-plus',
-            handler: 'addDepartment'
+            handler: 'addPosition'
         }, {
             itemId: 'update',
             text: '修改',
             iconCls: 'x-fa fa-edit',
             disabled: true,
-            handler: 'viewDepartment'
+            handler: 'viewPosition'
         }, {
             itemId: 'delete',
             text: '删除',
             iconCls: 'x-fa fa-remove',
             disabled: true,
-            handler: 'deleteDepartment'
+            handler: 'deletePosition'
         }],
 
     store: {
-        type: 'department'
+        type: 'position'
     },
 
     columns: [
         { text: 'ID', dataIndex: 'id', width: 100 },
-        { text: '部门名称', dataIndex: 'name', width: 200 },
+        { text: '职位名称', dataIndex: 'name', width: 200 },
         {
             text: '所属公司', dataIndex: 'company', width: 200,
             renderer: function (value, cellmeta, record) {
@@ -78,7 +77,7 @@ Ext.define('oa.view.department.DepartmentList', {
             var store = grid.getStore();
             store.load();
         },
-        itemdblclick: 'viewDepartment'
+        itemdblclick: 'viewPosition'
     }
 
 });
