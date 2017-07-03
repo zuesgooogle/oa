@@ -2,6 +2,7 @@ package com.s4game.oa.manager.start;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.event.ApplicationEnvironmentPreparedEvent;
 import org.springframework.boot.context.event.ApplicationFailedEvent;
@@ -14,6 +15,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan(basePackages = { "com.s4game", "org.activiti.rest.diagram", "org.activiti.rest.editor" })
 @EnableAutoConfiguration
+@SpringBootApplication
 public class Application extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {

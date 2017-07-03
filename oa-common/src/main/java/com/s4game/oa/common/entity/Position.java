@@ -11,6 +11,8 @@ public class Position {
 
     private Integer company;
 
+    private Integer level;
+
     private Date createTime;
 
     private Date updateTime;
@@ -45,6 +47,14 @@ public class Position {
 
     public void setCompany(Integer company) {
         this.company = company;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public void setLevel(Integer level) {
+        this.level = level;
     }
 
     public Date getCreateTime() {

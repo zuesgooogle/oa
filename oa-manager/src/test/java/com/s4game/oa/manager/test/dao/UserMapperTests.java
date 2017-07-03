@@ -28,7 +28,6 @@ public class UserMapperTests extends BaseTest {
 		testUser = new User();
 		testUser.setUsername("test");
 		testUser.setPassword("123456");
-		testUser.setDepartmentId(1);
 		testUser.setDeleted((byte) 0);
 		testUser.setCreateTime(new Date());
 	}

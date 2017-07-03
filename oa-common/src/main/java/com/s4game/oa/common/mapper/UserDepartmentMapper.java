@@ -5,6 +5,8 @@ import java.util.List;
 
 public interface UserDepartmentMapper {
     int deleteByPrimaryKey(Integer id);
+    
+    int deleteByUserId(Integer id);
 
     int insert(UserDepartment record);
 

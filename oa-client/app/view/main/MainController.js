@@ -12,8 +12,6 @@ Ext.define('oa.view.main.MainController', {
     onMenuClick: function (sender, record) {
         var action =  record.data.action;
 
-        this.getView();
-
         var workspace = Ext.getCmp('workspace');
         var cmp = Ext.getCmp(action);
         if (cmp == null) {

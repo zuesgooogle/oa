@@ -49,7 +49,8 @@ public class PositionController {
 	public Response update(@ApiParam(value = "职位Id") @RequestParam(value = "id", required = true) Integer id,
 			@ApiParam(value = "职位名称") @RequestParam(value = "name", required = true) String name,
 			@ApiParam(value = "职位别名") @RequestParam(value = "alias", required = true) String alias,
-			@ApiParam(value = "所属公司") @RequestParam(value = "company", required = true) Integer company) {
+			@ApiParam(value = "所属公司") @RequestParam(value = "company", required = true) Integer company,
+			@ApiParam(value = "职位等级") @RequestParam(value = "level", required = true) Integer level) {
 		Response.Builder response = Response.newBuilder();
 		
 		Position position = null;
@@ -57,6 +58,7 @@ public class PositionController {
 			position = new Position();
 			position.setName(name);
 			position.setAlias(alias);
+			position.setLevel(level);
 			position.setCompany(company);
 			position.setCreateTime(new Date());
 
@@ -65,6 +67,7 @@ public class PositionController {
 			position = positionManager.selectByPrimaryKey(id);
 			position.setName(name);
 			position.setAlias(alias);
+			position.setLevel(level);
 			position.setCompany(company);
 			positionManager.updateByPrimaryKey(position);
 		}

@@ -50,11 +50,12 @@ Ext.define('oa.view.plan.PlanMoneyOutMonthList', {
         {text: '合同名称', dataIndex: 'contractName', width: 100},
         {text: '合同金额', dataIndex: 'contractAmount', width: 100},
         {
-            text: '创建时间', dataIndex: 'createTime', flex: 1,
+            text: '创建时间', dataIndex: 'createTime', width: 200,
             renderer: function (value, cellmeta, record) {
                 return Ext.Date.format(new Date(value), 'Y-m-d H:i:s');
             }
-        }
+        },
+        { flex: 1 }
     ],
     bbar: {
         xtype: 'pagingtoolbar',

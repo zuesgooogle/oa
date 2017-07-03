@@ -58,7 +58,7 @@ public class PlanMoneyOutMonthController {
 			@ApiParam(value = "已支付金额") @RequestParam(value = "paidAmount", required = true) BigDecimal paidAmount,
 			@ApiParam(value = "本月计划支付") @RequestParam(value = "planAmount", required = true) BigDecimal planAmount,
 			@ApiParam(value = "本月实际支付") @RequestParam(value = "actualAmount", required = true) BigDecimal actualAmount,
-			@ApiParam(value = "备注") @RequestParam(value = "remark", required = true) String remark) {
+			@ApiParam(value = "备注") @RequestParam(value = "remark", required = false) String remark) {
 		Response.Builder response = Response.newBuilder();
 		
 		PlanMoneyOutMonth month = null;

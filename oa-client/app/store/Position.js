@@ -5,7 +5,7 @@ Ext.define('oa.store.Position', {
     alias: 'store.position',
 
     model: 'oa.model.Position',
-
+    autoLoad: true,
     proxy: {
         type: 'ajax',
         url: oa.config.Config.BASE_URL + 'position/list',

@@ -22,6 +22,18 @@ Ext.define('oa.view.user.UserList', {
             text: '新增',
             iconCls: 'x-fa fa-plus',
             handler: 'addUser'
+        }, {
+            itemId: 'update',
+            text: '修改',
+            iconCls: 'x-fa fa-edit',
+            disabled: true,
+            handler: 'viewUser'
+        }, {
+            itemId: 'delete',
+            text: '删除',
+            iconCls: 'x-fa fa-remove',
+            disabled: true,
+            handler: 'deleteUser'
         }],
 
     store: {
@@ -29,14 +41,18 @@ Ext.define('oa.view.user.UserList', {
     },
 
     columns: [
-        { text: 'Id', dataIndex: 'id', width: 100 },
-        { text: 'Username', dataIndex: 'username', width: 200 },
+        { text: 'ID', dataIndex: 'id', width: 100 },
+        { text: '用户名', dataIndex: 'username', width: 100 },
+        { text: '北京号码', dataIndex: 'beijingMobile', width: 100 },
+        { text: '天津号码', dataIndex: 'tianjingMobile', width: 100 },
+        { text: '房间号', dataIndex: 'roomId', width: 100 },
         {
-            text: 'CreateTime', dataIndex: 'createTime', flex: 1,
+            text: '时间', dataIndex: 'createTime', width: 200,
             renderer: function (value, cellmeta, record) {
                 return Ext.Date.format(new Date(value), 'Y-m-d H:i:s');
             }
-        }
+        },
+        { flex: 1 }
     ],
     bbar: {
         xtype: 'pagingtoolbar',
@@ -45,6 +61,12 @@ Ext.define('oa.view.user.UserList', {
 
     initComponent: function () {
         this.callParent(arguments);
+        this.getSelectionModel().on('selectionchange', this.onSelectChange, this);
+    },
+
+    onSelectChange: function (selModel, selections) {
+        this.down('#update').setDisabled(selections.length === 0);
+        this.down('#delete').setDisabled(selections.length === 0);
     },
 
     listeners: {

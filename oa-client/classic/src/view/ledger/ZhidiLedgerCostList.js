@@ -56,11 +56,12 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
         { text: '政府程序金额', dataIndex: 'govCheck', width: 100 },
         { text: '未核对金额', dataIndex: 'uncheck', width: 100 },
         {
-            text: '时间', dataIndex: 'createTime', flex: 1,
+            text: '时间', dataIndex: 'createTime', width: 200,
             renderer: function (value, cellmeta, record) {
                 return Ext.Date.format(new Date(value), 'Y-m-d H:i:s');
             }
-        }
+        },
+        { flex: 1 }
     ],
     bbar: {
         xtype: 'pagingtoolbar',

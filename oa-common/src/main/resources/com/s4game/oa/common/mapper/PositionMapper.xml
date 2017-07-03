@@ -6,6 +6,7 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="alias" jdbcType="VARCHAR" property="alias" />
     <result column="company" jdbcType="INTEGER" property="company" />
+    <result column="level" jdbcType="INTEGER" property="level" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
@@ -18,26 +19,29 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into oa_position (name, alias, company, 
-      create_time, update_time)
+      level, create_time, update_time
+      )
     values (#{name,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, #{company,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+      #{level,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.Position">
     update oa_position
     set name = #{name,jdbcType=VARCHAR},
       alias = #{alias,jdbcType=VARCHAR},
       company = #{company,jdbcType=INTEGER},
+      level = #{level,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, name, alias, company, create_time, update_time
+    select id, name, alias, company, level, create_time, update_time
     from oa_position
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, name, alias, company, create_time, update_time
+    select id, name, alias, company, level, create_time, update_time
     from oa_position
   </select>
 </mapper>

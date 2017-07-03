@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.s4game.oa.common.mapper.PlanChargeMonthMapper">
+  <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.PlanChargeMonth">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="company" jdbcType="INTEGER" property="company" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="project_id" jdbcType="INTEGER" property="projectId" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="charge_name" jdbcType="VARCHAR" property="chargeName" />
+    <result column="year_amount" jdbcType="DECIMAL" property="yearAmount" />
+    <result column="paied_amount" jdbcType="DECIMAL" property="paiedAmount" />
+    <result column="plan_amount" jdbcType="DECIMAL" property="planAmount" />
+    <result column="actual_amount" jdbcType="DECIMAL" property="actualAmount" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from oa_plan_charge_month
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.s4game.oa.common.entity.PlanChargeMonth">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_plan_charge_month (company, department_id, project_id, 
+      subject_id, charge_name, year_amount, 
+      paied_amount, plan_amount, actual_amount, 
+      remark, create_time, update_time
+      )
+    values (#{company,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, 
+      #{subjectId,jdbcType=INTEGER}, #{chargeName,jdbcType=VARCHAR}, #{yearAmount,jdbcType=DECIMAL}, 
+      #{paiedAmount,jdbcType=DECIMAL}, #{planAmount,jdbcType=DECIMAL}, #{actualAmount,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.PlanChargeMonth">
+    update oa_plan_charge_month
+    set company = #{company,jdbcType=INTEGER},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      project_id = #{projectId,jdbcType=INTEGER},
+      subject_id = #{subjectId,jdbcType=INTEGER},
+      charge_name = #{chargeName,jdbcType=VARCHAR},
+      year_amount = #{yearAmount,jdbcType=DECIMAL},
+      paied_amount = #{paiedAmount,jdbcType=DECIMAL},
+      plan_amount = #{planAmount,jdbcType=DECIMAL},
+      actual_amount = #{actualAmount,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, company, department_id, project_id, subject_id, charge_name, year_amount, 
+    paied_amount, plan_amount, actual_amount, remark, create_time, update_time
+    from oa_plan_charge_month
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, company, department_id, project_id, subject_id, charge_name, year_amount, 
+    paied_amount, plan_amount, actual_amount, remark, create_time, update_time
+    from oa_plan_charge_month
+  </select>
+</mapper>

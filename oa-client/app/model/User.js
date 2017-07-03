@@ -6,6 +6,12 @@ Ext.define('oa.model.User', {
         type: 'int'
     },
     'username',
+    'departmentids',
+    'positionids',
+    'beijingMobile',
+    'tianjingMobile',
+    'roomId',
+    'remark',
     {
         name: 'createTime',
         convert: function(v, record) {

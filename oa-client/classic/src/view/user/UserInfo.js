@@ -5,8 +5,6 @@ Ext.define('oa.view.user.UserInfo', {
     alias: 'userInfo',
     id: 'userInfo',
 
-    requires: ['oa.view.department.DepartmentPicker'],
-
     controller: 'user',
 
     title: '用户信息',
@@ -14,7 +12,7 @@ Ext.define('oa.view.user.UserInfo', {
     resizable: false,
 
     width: 800,
-    height: 600,
+    height: 500,
 
     closeAction: 'destroy',
 
@@ -29,9 +27,15 @@ Ext.define('oa.view.user.UserInfo', {
 
         bodyStyle: "padding:10px 10px 10px 10px",
         items: [
-            { fieldLabel: 'Id', name: 'id', xtype: 'textfield', editable: false },
+            { fieldLabel: 'Id', name: 'id', xtype: 'textfield', hidden: true },
             { fieldLabel: '用户名', name: 'username', xtype: 'textfield', allowBlank: false },
-            { fieldLable: '所属部门', name: 'departmentIds', xtype: 'departmentPicker'},
+            { name: 'departmentids', xtype: 'departmentMultiSelect', allowBlank: false },
+            { name: 'positionids', xtype: 'positionMultiSelect', allowBlank: false },
+            { fieldLabel: '房间号', name: 'roomId', xtype: 'numberfield', allowBlank: false },
+            { fieldLabel: '北京号码', name: 'beijingMobile', xtype: 'textfield' },
+            { fieldLabel: '天津号码', name: 'tianjingMobile', xtype: 'textfield' },
+
+            { fieldLabel: '备注', name: 'remark', xtype: 'textfield' },
             {
                 fieldLabel: 'CreateTime', name: 'createTime', xtype: 'textfield', editable: false,
                 renderData: function (value) {

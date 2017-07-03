@@ -9,7 +9,17 @@ public class User {
 
     private String password;
 
-    private Integer departmentId;
+    private String departmentids;
+
+    private String positionids;
+
+    private String beijingMobile;
+
+    private String tianjingMobile;
+
+    private Integer roomId;
+
+    private String remark;
 
     private Byte deleted;
 
@@ -41,12 +51,52 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public Integer getDepartmentId() {
-        return departmentId;
+    public String getDepartmentids() {
+        return departmentids;
     }
 
-    public void setDepartmentId(Integer departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartmentids(String departmentids) {
+        this.departmentids = departmentids == null ? null : departmentids.trim();
+    }
+
+    public String getPositionids() {
+        return positionids;
+    }
+
+    public void setPositionids(String positionids) {
+        this.positionids = positionids == null ? null : positionids.trim();
+    }
+
+    public String getBeijingMobile() {
+        return beijingMobile;
+    }
+
+    public void setBeijingMobile(String beijingMobile) {
+        this.beijingMobile = beijingMobile == null ? null : beijingMobile.trim();
+    }
+
+    public String getTianjingMobile() {
+        return tianjingMobile;
+    }
+
+    public void setTianjingMobile(String tianjingMobile) {
+        this.tianjingMobile = tianjingMobile == null ? null : tianjingMobile.trim();
+    }
+
+    public Integer getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark == null ? null : remark.trim();
     }
 
     public Byte getDeleted() {

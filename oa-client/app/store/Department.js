@@ -5,9 +5,8 @@ Ext.define('oa.store.Department', {
     alias: 'store.department',
 
     model: 'oa.model.Department',
-
+    autoLoad: true,
     proxy: {
-        
         type: 'ajax',
         url: oa.config.Config.BASE_URL + 'department/list',
         reader: {

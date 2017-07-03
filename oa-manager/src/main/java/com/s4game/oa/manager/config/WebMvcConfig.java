@@ -6,14 +6,15 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.convert.support.GenericConversionService;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+import org.springframework.web.multipart.support.MultipartFilter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -30,38 +31,23 @@ import com.s4game.oa.common.convert.StringToDateConverter;
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Autowired
-	private ObjectMapper objectMapper;
-	
-	@Autowired
-	private RequestMappingHandlerAdapter handlerAdapter;
+	@Qualifier("jacksonObjectMapper")
+	private ObjectMapper jacksonObjectMapper;
 
 	@Override
 	public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-		 NullSerializer serializer = new NullSerializer();
-		 objectMapper.getSerializerProvider().setNullValueSerializer(serializer);
+		NullSerializer serializer = new NullSerializer();
+		jacksonObjectMapper.getSerializerProvider().setNullValueSerializer(serializer);
 		super.configureMessageConverters(converters);
-	}
-
-	@Override
-	public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-		ObjectMapper objectMapper = null;
-		for (HttpMessageConverter<?> converter : converters) {
-			if (converter instanceof MappingJackson2HttpMessageConverter) {
-				MappingJackson2HttpMessageConverter jacksonConverter = ((MappingJackson2HttpMessageConverter) converter);
-
-				if (objectMapper == null) {
-					objectMapper = jacksonConverter.getObjectMapper();
-				} else {
-					jacksonConverter.setObjectMapper(objectMapper);
-				}
-			}
-		}
 	}
 
 	@Override
 	public void configurePathMatch(PathMatchConfigurer configurer) {
 		super.configurePathMatch(configurer);
 	}
+
+	@Autowired
+	private RequestMappingHandlerAdapter handlerAdapter;
 
 	@PostConstruct
 	public void initEditableValidation() {
@@ -72,40 +58,63 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 					.getConversionService();
 			genericConversionService.addConverter(new StringToDateConverter());
 		}
+
 	}
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
-
-	// @Bean(name = "multipartResolver")
-	// public CommonsMultipartResolver multipartResolver() {
-	// CommonsMultipartResolver multipartResolver = new
-	// CommonsMultipartResolver();
-	// multipartResolver.setDefaultEncoding("UTF-8");
-	// multipartResolver.setMaxUploadSize(300 * 1024 * 1024);
-	// return multipartResolver;
+	// @Override
+	// public void addInterceptors(InterceptorRegistry registry) {
+	// UserAuthInteceptor inteceptor = new UserAuthInteceptor();
+	// inteceptor.setRedisTemplate(redisTemplate);
+	// registry.addInterceptor(inteceptor);
+	// super.addInterceptors(registry);
 	// }
-	//
+
 	// @Bean
-	// @Order(0)
-	// public MultipartFilter multipartFilter() {
-	// MultipartFilter multipartFilter = new MultipartFilter();
-	// multipartFilter.setMultipartResolverBeanName("multipartResolver");
-	// return multipartFilter;
+	// public CorsFilter corsFilter() {
+	// final UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource =
+	// new UrlBasedCorsConfigurationSource();
+	// final CorsConfiguration corsConfiguration = new CorsConfiguration();
+	// corsConfiguration.setAllowCredentials(false);
+	// corsConfiguration.addAllowedOrigin("*");
+	// corsConfiguration.addAllowedHeader("*");
+	// corsConfiguration.addAllowedMethod("*");
+	// corsConfiguration.setMaxAge(3600l);
+	// urlBasedCorsConfigurationSource.registerCorsConfiguration("/**",
+	// corsConfiguration);
+	// return new CorsFilter(urlBasedCorsConfigurationSource);
 	// }
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-		registry.addMapping("/**")
-				.allowCredentials(true)
-				.allowedHeaders("*")
-				.allowedMethods("*")
-				.allowedOrigins("*")
+		// TODO Auto-generated method stub
+		registry.addMapping("/**").allowCredentials(true).allowedHeaders("*").allowedMethods("*").allowedOrigins("*")
 				.maxAge(3600);
 		super.addCorsMappings(registry);
 	}
+
+	@Bean(name = "multipartResolver")
+	public CommonsMultipartResolver multipartResolver() {
+		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
+		multipartResolver.setDefaultEncoding("UTF-8");
+		multipartResolver.setMaxUploadSize(300 * 1024 * 1024);
+		return multipartResolver;
+	}
+
+	@Bean
+	@Order(0)
+	public MultipartFilter multipartFilter() {
+		MultipartFilter multipartFilter = new MultipartFilter();
+		multipartFilter.setMultipartResolverBeanName("multipartResolver");
+		return multipartFilter;
+	}
+
+	// @Bean
+	// public CharacterEncodingFilter characterEncodingFilter() {
+	// CharacterEncodingFilter filter = new CharacterEncodingFilter();
+	// filter.setEncoding("UTF8");
+	// filter.setForceEncoding(true);
+	// return filter;
+	// }
 
 	class NullSerializer extends JsonSerializer<Object> {
 

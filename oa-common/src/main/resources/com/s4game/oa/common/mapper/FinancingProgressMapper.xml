@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.s4game.oa.common.mapper.FinancingProgressMapper">
+  <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.FinancingProgress">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="bank_id" jdbcType="INTEGER" property="bankId" />
+    <result column="task_type_id" jdbcType="INTEGER" property="taskTypeId" />
+    <result column="task_name_id" jdbcType="INTEGER" property="taskNameId" />
+    <result column="plan_start_time" jdbcType="TIMESTAMP" property="planStartTime" />
+    <result column="plan_end_time" jdbcType="TIMESTAMP" property="planEndTime" />
+    <result column="actual_start_time" jdbcType="TIMESTAMP" property="actualStartTime" />
+    <result column="actual_end_time" jdbcType="TIMESTAMP" property="actualEndTime" />
+    <result column="organizer" jdbcType="VARCHAR" property="organizer" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from oa_financing_progress
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.s4game.oa.common.entity.FinancingProgress">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_financing_progress (bank_id, task_type_id, task_name_id, 
+      plan_start_time, plan_end_time, actual_start_time, 
+      actual_end_time, organizer, department_id, 
+      user_id, create_time, update_time
+      )
+    values (#{bankId,jdbcType=INTEGER}, #{taskTypeId,jdbcType=INTEGER}, #{taskNameId,jdbcType=INTEGER}, 
+      #{planStartTime,jdbcType=TIMESTAMP}, #{planEndTime,jdbcType=TIMESTAMP}, #{actualStartTime,jdbcType=TIMESTAMP}, 
+      #{actualEndTime,jdbcType=TIMESTAMP}, #{organizer,jdbcType=VARCHAR}, #{departmentId,jdbcType=INTEGER}, 
+      #{userId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.FinancingProgress">
+    update oa_financing_progress
+    set bank_id = #{bankId,jdbcType=INTEGER},
+      task_type_id = #{taskTypeId,jdbcType=INTEGER},
+      task_name_id = #{taskNameId,jdbcType=INTEGER},
+      plan_start_time = #{planStartTime,jdbcType=TIMESTAMP},
+      plan_end_time = #{planEndTime,jdbcType=TIMESTAMP},
+      actual_start_time = #{actualStartTime,jdbcType=TIMESTAMP},
+      actual_end_time = #{actualEndTime,jdbcType=TIMESTAMP},
+      organizer = #{organizer,jdbcType=VARCHAR},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=BIGINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, bank_id, task_type_id, task_name_id, plan_start_time, plan_end_time, actual_start_time, 
+    actual_end_time, organizer, department_id, user_id, create_time, update_time
+    from oa_financing_progress
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, bank_id, task_type_id, task_name_id, plan_start_time, plan_end_time, actual_start_time, 
+    actual_end_time, organizer, department_id, user_id, create_time, update_time
+    from oa_financing_progress
+  </select>
+</mapper>

@@ -34,7 +34,7 @@ Ext.define('oa.view.plan.PlanMoneyOutMonthInfo', {
                 items: [
                     { fieldLabel: 'Id', name: 'id', xtype: 'textfield', hidden: true },
                     { name: 'company', xtype: 'companyCombo', allowBlank: false },
-                    { fieldLabel: '部门', name: 'departmentId', xtype: 'textfield', allowBlank: false },
+                    { name: 'departmentId', xtype: 'departmentSingleSelect', allowBlank: false },
                     { fieldLabel: '项目', name: 'projectId', xtype: 'textfield', allowBlank: false },
                     { fieldLabel: '成本科目', name: 'subjectId', xtype: 'textfield' }
                 ]

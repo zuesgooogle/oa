@@ -12,7 +12,7 @@ Ext.define('oa.view.position.PositionInfo', {
     resizable: false,
 
     width: 400,
-    height: 300,
+    height: 400,
 
     closeAction: 'destroy',
 
@@ -31,6 +31,7 @@ Ext.define('oa.view.position.PositionInfo', {
             {name: 'company', xtype: 'companyCombo', allowBlank: false},
             { fieldLabel: '职位名称', name: 'name', xtype: 'textfield', allowBlank: false },
             { fieldLabel: '职位别名', name: 'alias', xtype: 'textfield', allowBlank: false },
+            { fieldLabel: '职位等级', name: 'level', xtype: 'positionLevelCombo', allowBlank: false },
             {
                 fieldLabel: '创建时间', name: 'createTime', xtype: 'textfield', editable: false,
                 renderData: function (value) {

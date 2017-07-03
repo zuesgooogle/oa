@@ -5,7 +5,12 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="departmentIds" jdbcType="VARCHAR" property="departmentids" />
+    <result column="positionIds" jdbcType="VARCHAR" property="positionids" />
+    <result column="beijing_mobile" jdbcType="VARCHAR" property="beijingMobile" />
+    <result column="tianjing_mobile" jdbcType="VARCHAR" property="tianjingMobile" />
+    <result column="room_id" jdbcType="INTEGER" property="roomId" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
     <result column="deleted" jdbcType="TINYINT" property="deleted" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
@@ -18,35 +23,47 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into oa_user (username, password, department_id, 
-      deleted, create_time, update_time
-      )
-    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{departmentId,jdbcType=INTEGER}, 
-      #{deleted,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+    insert into oa_user (username, password, departmentIds, 
+      positionIds, beijing_mobile, tianjing_mobile, 
+      room_id, remark, deleted, 
+      create_time, update_time)
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{departmentids,jdbcType=VARCHAR}, 
+      #{positionids,jdbcType=VARCHAR}, #{beijingMobile,jdbcType=VARCHAR}, #{tianjingMobile,jdbcType=VARCHAR}, 
+      #{roomId,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, #{deleted,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.User">
     update oa_user
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      department_id = #{departmentId,jdbcType=INTEGER},
+      departmentIds = #{departmentids,jdbcType=VARCHAR},
+      positionIds = #{positionids,jdbcType=VARCHAR},
+      beijing_mobile = #{beijingMobile,jdbcType=VARCHAR},
+      tianjing_mobile = #{tianjingMobile,jdbcType=VARCHAR},
+      room_id = #{roomId,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
       deleted = #{deleted,jdbcType=TINYINT},
+      <!-- 
       create_time = #{createTime,jdbcType=TIMESTAMP},
+       -->
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select id, username, password, department_id, deleted, create_time, update_time
+    select id, username, password, departmentIds, positionIds, beijing_mobile, tianjing_mobile, 
+    room_id, remark, deleted, create_time, update_time
     from oa_user
     where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, username, password, department_id, deleted, create_time, update_time
+    select id, username, password, departmentIds, positionIds, beijing_mobile, tianjing_mobile, 
+    room_id, remark, deleted, create_time, update_time
     from oa_user
   </select>
 
   <select id="selectByUsername" parameterType="String" resultMap="BaseResultMap">
-    select id, username, password, department_id, deleted, create_time, update_time
+    select id, username, password, departmentIds, positionIds, beijing_mobile, tianjing_mobile, 
+    room_id, remark, deleted, create_time, update_time
     from oa_user
     where username = #{username,jdbcType=VARCHAR}
   </select>

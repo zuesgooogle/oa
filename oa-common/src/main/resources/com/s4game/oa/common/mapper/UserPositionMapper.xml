@@ -32,4 +32,10 @@
     select id, user_id, position_id
     from oa_user_position
   </select>
+  
+  <delete id="deleteByUserId" parameterType="java.lang.Integer">
+    delete from oa_user_position
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  
 </mapper>

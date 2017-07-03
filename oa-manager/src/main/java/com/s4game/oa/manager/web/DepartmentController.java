@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.s4game.oa.common.entity.Department;
-import com.s4game.oa.common.entity.User;
 import com.s4game.oa.common.mapper.DepartmentMapper;
 import com.s4game.oa.common.response.Response;
 import com.s4game.oa.common.service.PageService;

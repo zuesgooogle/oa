@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.s4game.oa.common.mapper.PlanAssertYearMapper">
+  <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.PlanAssertYear">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="assert_id" jdbcType="INTEGER" property="assertId" />
+    <result column="assert_name" jdbcType="VARCHAR" property="assertName" />
+    <result column="year_total_num" jdbcType="INTEGER" property="yearTotalNum" />
+    <result column="unit_price" jdbcType="DECIMAL" property="unitPrice" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+    <result column="month_1" jdbcType="DECIMAL" property="month1" />
+    <result column="month_2" jdbcType="DECIMAL" property="month2" />
+    <result column="month_3" jdbcType="DECIMAL" property="month3" />
+    <result column="month_4" jdbcType="DECIMAL" property="month4" />
+    <result column="month_5" jdbcType="DECIMAL" property="month5" />
+    <result column="month_6" jdbcType="DECIMAL" property="month6" />
+    <result column="month_7" jdbcType="DECIMAL" property="month7" />
+    <result column="month_8" jdbcType="DECIMAL" property="month8" />
+    <result column="month_9" jdbcType="DECIMAL" property="month9" />
+    <result column="month_10" jdbcType="DECIMAL" property="month10" />
+    <result column="month_11" jdbcType="DECIMAL" property="month11" />
+    <result column="month_12" jdbcType="DECIMAL" property="month12" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from oa_plan_assert_year
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.s4game.oa.common.entity.PlanAssertYear">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_plan_assert_year (assert_id, assert_name, year_total_num, 
+      unit_price, year, month_1, 
+      month_2, month_3, month_4, 
+      month_5, month_6, month_7, 
+      month_8, month_9, month_10, 
+      month_11, month_12, remark, 
+      create_time, update_time)
+    values (#{assertId,jdbcType=INTEGER}, #{assertName,jdbcType=VARCHAR}, #{yearTotalNum,jdbcType=INTEGER}, 
+      #{unitPrice,jdbcType=DECIMAL}, #{year,jdbcType=INTEGER}, #{month1,jdbcType=DECIMAL}, 
+      #{month2,jdbcType=DECIMAL}, #{month3,jdbcType=DECIMAL}, #{month4,jdbcType=DECIMAL}, 
+      #{month5,jdbcType=DECIMAL}, #{month6,jdbcType=DECIMAL}, #{month7,jdbcType=DECIMAL}, 
+      #{month8,jdbcType=DECIMAL}, #{month9,jdbcType=DECIMAL}, #{month10,jdbcType=DECIMAL}, 
+      #{month11,jdbcType=DECIMAL}, #{month12,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.PlanAssertYear">
+    update oa_plan_assert_year
+    set assert_id = #{assertId,jdbcType=INTEGER},
+      assert_name = #{assertName,jdbcType=VARCHAR},
+      year_total_num = #{yearTotalNum,jdbcType=INTEGER},
+      unit_price = #{unitPrice,jdbcType=DECIMAL},
+      year = #{year,jdbcType=INTEGER},
+      month_1 = #{month1,jdbcType=DECIMAL},
+      month_2 = #{month2,jdbcType=DECIMAL},
+      month_3 = #{month3,jdbcType=DECIMAL},
+      month_4 = #{month4,jdbcType=DECIMAL},
+      month_5 = #{month5,jdbcType=DECIMAL},
+      month_6 = #{month6,jdbcType=DECIMAL},
+      month_7 = #{month7,jdbcType=DECIMAL},
+      month_8 = #{month8,jdbcType=DECIMAL},
+      month_9 = #{month9,jdbcType=DECIMAL},
+      month_10 = #{month10,jdbcType=DECIMAL},
+      month_11 = #{month11,jdbcType=DECIMAL},
+      month_12 = #{month12,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, assert_id, assert_name, year_total_num, unit_price, year, month_1, month_2, 
+    month_3, month_4, month_5, month_6, month_7, month_8, month_9, month_10, month_11, 
+    month_12, remark, create_time, update_time
+    from oa_plan_assert_year
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, assert_id, assert_name, year_total_num, unit_price, year, month_1, month_2, 
+    month_3, month_4, month_5, month_6, month_7, month_8, month_9, month_10, month_11, 
+    month_12, remark, create_time, update_time
+    from oa_plan_assert_year
+  </select>
+</mapper>

@@ -8,6 +8,7 @@ Ext.define('oa.model.Position', {
     'name',
     'alias', 
     'company',
+    'level',
     {
         name: 'createTime',
         convert: function(v, record) {

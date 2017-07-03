@@ -13,7 +13,7 @@ import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping("/activiti")
+@RequestMapping("/approval")
 @Api(value = "activiti", description = "流程管理")
 public class ActivitiController {
 

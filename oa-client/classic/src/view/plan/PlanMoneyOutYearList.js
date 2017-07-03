@@ -49,11 +49,12 @@ Ext.define('oa.view.plan.PlanMoneyOutYearList', {
         {text: '已支付金额', dataIndex: 'paidAmount', width: 100},
         
         {
-            text: '创建时间', dataIndex: 'createTime', flex: 1,
+            text: '创建时间', dataIndex: 'createTime', width: 200,
             renderer: function (value, cellmeta, record) {
                 return Ext.Date.format(new Date(value), 'Y-m-d H:i:s');
             }
-        }
+        },
+        { flex: 1 }
     ],
     bbar: {
         xtype: 'pagingtoolbar',
