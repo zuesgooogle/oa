@@ -28,7 +28,7 @@ Ext.define('oa.view.develop.DevelopLandInfo', {
         bodyStyle: "padding:10px 10px 10px 10px",
         items: [
             { fieldLabel: 'ID', name: 'id', xtype: 'numberfield', hidden: true},
-            { fieldLabel: '片区', name: 'sectionId', xtype: 'textfield', allowBlank: false },
+            { fieldLabel: '片区', name: 'sectionId', xtype: 'areaCombo', allowBlank: false },
             { fieldLabel: '任务类型', name: 'taskTypeId', xtype: 'textfield', allowBlank: false },
             { fieldLabel: '任务名称', name: 'taskNameId', xtype: 'textfield', allowBlank: false },
             { fieldLabel: '计划开始时间', name: 'planStartTime', xtype: 'datefield', format: 'Y-m-d H:i:s', editable : false, allowBlank: false },

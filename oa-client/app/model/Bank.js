@@ -1,20 +1,11 @@
-Ext.define('oa.model.ZhidiLedgerCost', {
+Ext.define('oa.model.Bank', {
     extend: 'Ext.data.Model',
 
     fields: [{
         name: 'id',
         type: 'int'
     }, 
-    'area', 
-    'subjectId', 
-    'calculateInvest', 
-    'expectInvest', 
-    'totalInvest', 
-    'auditStatistics', 
-    'govConfirm', 
-    'govCheck', 
-    'uncheck',
-    'remark', 
+    'name',
     {
         name: 'createTime',
         convert: function(v, record) {

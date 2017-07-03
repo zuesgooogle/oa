@@ -16,5 +16,5 @@ Ext.define('oa.ux.CompanyCombo', {
     editable: false,      //是否允许输入   
     forceSelection: true, //必须选择一个选项   
     displayField: 'name',
-    valueField: 'id',
-});
+    valueField: 'id'
+})

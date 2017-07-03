@@ -38,4 +38,10 @@
     select id, parent_id, name, create_time, update_time
     from oa_task_classifi
   </select>
+  
+  <select id="selectByParentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, parent_id, name, create_time, update_time
+    from oa_task_classifi
+    where parent_id = #{parentId,jdbcType=INTEGER}
+  </select>
 </mapper>

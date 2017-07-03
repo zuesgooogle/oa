@@ -3,8 +3,6 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostController', {
 
     alias: 'controller.zhidiLedgerCost',
 
-    stores: ['zhidiLedgerCost'],
-
     addZhidiLedgerCost: function (sender) {
         var info = Ext.getCmp('zhidiLedgerCostInfo');
         if (info == null) {

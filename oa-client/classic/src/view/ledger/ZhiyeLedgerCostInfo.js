@@ -12,7 +12,7 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostInfo', {
     resizable: false,
 
     width: 800,
-    height: 600,
+    height: 550,
     scrollable: true,
     closeAction: 'destroy',
 
@@ -33,7 +33,7 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostInfo', {
                 layout: 'form',
                 items: [
                     { fieldLabel: 'Id', name: 'id', xtype: 'textfield', hidden: true },
-                    { fieldLabel: '片区', name: 'area', xtype: 'textfield', allowBlank: false },
+                    { fieldLabel: '地块', name: 'area', xtype: 'landCombo', allowBlank: false },
                     { fieldLabel: '成本科目', name: 'subjectId', xtype: 'textfield' },
                 ]
             },

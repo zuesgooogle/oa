@@ -1,13 +1,13 @@
-Ext.define('oa.ux.DepartmentSingleSelect', {
+Ext.define('oa.ux.LandCombo', {
     extend: 'Ext.form.ComboBox',
 
-    alias: 'widget.departmentSingleSelect',
+    alias: 'widget.landCombo',
 
     store: {
-        type: 'department'
+        type: 'land'
     },
 
-    fieldLabel: '选择部门',
+    fieldLabel: '地块',
     queryMode: 'local',
     editable: false,      //是否允许输入   
     forceSelection: true, //必须选择一个选项   

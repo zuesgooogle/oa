@@ -7,12 +7,6 @@ Ext.define('oa.store.Menu', {
         expanded: true,
         children: [
             {
-                text: '审批管理', expanded: true, iconCls: 'x-fa fa-stack-exchange', children: [
-                    { text: '发起审批', action: 'approvalAuditTree', iconCls: 'fa-tags', leaf: true },
-                    { text: '审批管理', action: 'workflowList', iconCls: 'fa-tasks', leaf: true }
-                ]
-            },
-            {
                 text: '经营管理', expanded: true, iconCls: 'x-fa fa-cart-plus', children: [
                     { text: '成本台账(置地)', action: 'zhidiLedgerCostList', iconCls: 'fa-hourglass', leaf: true },
                     { text: '成本台账(置业)', action: 'zhiyeLedgerCostList', iconCls: 'fa-hourglass-end', leaf: true },
@@ -28,7 +22,7 @@ Ext.define('oa.store.Menu', {
                             { text: '月度', action: 'planMoneyOutMonthList', iconCls: 'x-fa fa-calendar-o', leaf: true },
                             { text: '年度', action: 'planMoneyOutYearList', iconCls: 'x-fa fa-calendar', leaf: true }
                         ]
-                    },{
+                    }, {
                         text: '收入计划', expanded: false, iconCls: 'x-fa fa-reply', children: [
                             { text: '月度', action: 'planMoneyInMonthList', iconCls: 'x-fa fa-calendar-o', leaf: true },
                             { text: '年度', action: 'planMoneyInYearList', iconCls: 'x-fa fa-calendar', leaf: true }
@@ -43,7 +37,7 @@ Ext.define('oa.store.Menu', {
                     {
                         text: '购置计划', iconCls: 'x-fa fa-shopping-cart', children: [
                             { text: '月度', action: 'planAssertMonthList', iconCls: 'x-fa fa-calendar-o', leaf: true },
-                            { text: '年度', action: 'planAssertYearList',iconCls: 'x-fa fa-calendar', leaf: true }
+                            { text: '年度', action: 'planAssertYearList', iconCls: 'x-fa fa-calendar', leaf: true }
                         ]
                     },
                     { text: '融资进度管理', action: 'financingList', iconCls: 'fa-random', leaf: true }
@@ -63,10 +57,20 @@ Ext.define('oa.store.Menu', {
                 ]
             },
             {
+                text: '审批管理', expanded: false, iconCls: 'x-fa fa-stack-exchange', children: [
+                    { text: '发起审批', action: 'approvalAuditTree', iconCls: 'fa-tags', leaf: true },
+                    { text: '审批管理', action: 'workflowList', iconCls: 'fa-tasks', leaf: true }
+                ]
+            },
+            {
                 text: '系统设置', expanded: true, iconCls: 'fa-paper-plane', children: [
                     { text: '成本科目', iconCls: 'x-fa fa-cubes', action: 'costsubjectTree', leaf: true },
                     { text: '项目管理', iconCls: 'x-fa fa-delicious', action: 'projectList', leaf: true },
-                    { text: '标段管理', iconCls: 'x-fa fa-map-pin', action: 'sectionList', leaf: true }
+                    { text: '片区管理', iconCls: 'x-fa fa-area-chart', action: 'areaList', leaf: true },
+                    { text: '标段管理', iconCls: 'x-fa fa-map-pin', action: 'sectionList', leaf: true },
+                    { text: '地块管理', iconCls: 'x-fa fa-anchor', action: 'landList', leaf: true },
+                    { text: '银行管理', iconCls: 'x-fa fa-bank', action: 'bankList', leaf: true },
+                    { text: '任务分类', iconCls: 'x-fa fa-list', action: 'taskClassifiTree', leaf: true }
                 ]
             }
         ]

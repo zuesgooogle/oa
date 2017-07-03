@@ -33,7 +33,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostInfo', {
                 layout: 'form',
                 items: [
                     { fieldLabel: 'Id', name: 'id', xtype: 'textfield', hidden: true },
-                    { fieldLabel: '片区', name: 'area', xtype: 'textfield', allowBlank: false },
+                    { fieldLabel: '片区', name: 'area', xtype: 'areaCombo', allowBlank: false },
                     { fieldLabel: '成本科目', name: 'subjectId', xtype: 'textfield' },
                 ]
             },

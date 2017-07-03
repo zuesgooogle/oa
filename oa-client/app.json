@@ -14,6 +14,8 @@
      */
     "indexHtmlPath": "index.html",
 
+    "locale": "zh_CN", 
+
     /**
      * Comma-separated string with the paths of directories or files to search. Any classes
      * declared in these locations will be available in your class "requires" or in calls
@@ -231,6 +233,9 @@
             {
                 "path": "${framework.dir}/build/ext-all-debug.js"
             }
+        ],
+        "requires": [
+            "ext-locale"
         ]
     },
 

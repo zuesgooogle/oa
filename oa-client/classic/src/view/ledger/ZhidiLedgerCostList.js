@@ -83,7 +83,8 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
         render: function (grid) {
             var store = grid.getStore();
             store.load();
-        }
+        },
+        itemdblclick: 'viewZhidiLedgerCost'
     }
 
 });

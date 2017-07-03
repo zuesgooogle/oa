@@ -40,6 +40,8 @@
     select id, parent_id, name, company, create_time, update_time
     from oa_cost_subject
   </select>
+  
+  
   <select id="selectByParentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, parent_id, name, company, create_time, update_time
     from oa_cost_subject

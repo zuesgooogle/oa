@@ -12,9 +12,9 @@ Ext.define('oa.Application', {
         'oa.config.Config'
     ],
 
+    // http://fontawesome.io/icons/
     stores: [
         // TODO: add global / shared stores here
-        // http://fontawesome.io/icons/
     ],
     
     launch: function () {
