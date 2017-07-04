@@ -8,30 +8,12 @@ Ext.define('oa.model.DevelopSecond', {
     'landId',
     'taskTypeId',
     'taskNameId',
-    {
-        name: 'planStartTime',
-        convert: function(v, record) {
-            return Ext.Date.format(new Date(v), 'Y-m-d H:i:s');
-        }
-    },
-    {
-        name: 'planEndTime',
-        convert: function(v, record) {
-            return Ext.Date.format(new Date(v), 'Y-m-d H:i:s');
-        }
-    },
-    {
-        name: 'actualStartTime',
-        convert: function(v, record) {
-            return Ext.Date.format(new Date(v), 'Y-m-d H:i:s');
-        }
-    },
-    {
-        name: 'actualEndTime',
-        convert: function(v, record) {
-            return Ext.Date.format(new Date(v), 'Y-m-d H:i:s');
-        }
-    },
+    
+    { name: 'planStartTime',  type: 'date',  dateFormat: 'Y-m-d H:i:s' },
+    { name: 'planEndTime',  type: 'date',  dateFormat: 'Y-m-d H:i:s' },
+    { name: 'actualStartTime',  type: 'date',  dateFormat: 'Y-m-d H:i:s' },
+    { name: 'actualEndTime',  type: 'date',  dateFormat: 'Y-m-d H:i:s' },
+
     'organizer',
     'departmentId',
     'userId',

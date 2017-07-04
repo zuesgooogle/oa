@@ -12,7 +12,8 @@ Ext.define('oa.store.Menu', {
                     { text: '成本台账(置业)', action: 'zhiyeLedgerCostList', iconCls: 'fa-hourglass-end', leaf: true },
                     { text: '合同台账', leaf: true },
                     { text: '行政收费台账', leaf: true },
-                    { text: '费用报销台账', leaf: true }
+                    { text: '费用报销台账', leaf: true },
+                    { text: '合格供方名录', action: 'providerDirectoryList', iconCls: 'x-fa fa-user', leaf: true },
                 ]
             },
             {
@@ -40,7 +41,8 @@ Ext.define('oa.store.Menu', {
                             { text: '年度', action: 'planAssertYearList', iconCls: 'x-fa fa-calendar', leaf: true }
                         ]
                     },
-                    { text: '融资进度管理', action: 'financingList', iconCls: 'fa-random', leaf: true }
+                    { text: '融资进度管理', action: 'financingList', iconCls: 'fa-random', leaf: true },
+                    { text: '融资台账', action: 'financingLedgerList', iconCls: 'fa-recycle', leaf: true }
                 ]
             },
             {

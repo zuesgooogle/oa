@@ -51,10 +51,12 @@ Ext.define('oa.view.department.DepartmentList', {
             }
         },
         {
-            text: '创建时间', dataIndex: 'createTime', flex: 1,
+            text: '创建时间', dataIndex: 'createTime', width: 200,
             renderer: function (value, cellmeta, record) {
                 return Ext.Date.format(new Date(value), 'Y-m-d H:i:s');
             }
+        }, {
+            flex: 1
         }
     ],
     bbar: {

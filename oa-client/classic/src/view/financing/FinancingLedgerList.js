@@ -1,18 +1,13 @@
-Ext.define('oa.view.position.PositionList', {
+Ext.define('oa.view.develop.financingLedgerList', {
     extend: 'Ext.grid.Panel',
-    xtype: 'positionList',
+    xtype: 'financingLedgerList',
 
-    id: 'positionList',
-    alias: 'positionList',
-    reference: 'positionList',
+    id: 'financingLedgerList',
+    alias: 'financingLedgerList',
 
-    requires: [
-        'oa.store.Position'
-    ],
+    controller: 'financingLedger',
 
-    controller: 'position',
-
-    title: '职位管理',
+    title: '融资进度管理',
     scrollable: true,
     closable: true,
 
@@ -21,39 +16,40 @@ Ext.define('oa.view.position.PositionList', {
             xtype: 'button',
             text: '新增',
             iconCls: 'x-fa fa-plus',
-            handler: 'addPosition'
+            handler: 'addFinancingLedger'
         }, {
             itemId: 'update',
             text: '修改',
             iconCls: 'x-fa fa-edit',
             disabled: true,
-            handler: 'viewPosition'
+            handler: 'viewFinancingLedger'
         }, {
             itemId: 'delete',
             text: '删除',
             iconCls: 'x-fa fa-remove',
             disabled: true,
-            handler: 'deletePosition'
+            handler: 'deleteFinancingLedger'
         }],
 
     store: {
-        type: 'position'
+        type: 'financingLedger'
     },
 
     columns: [
         { text: 'ID', dataIndex: 'id', width: 100 },
-        {
-            text: '所属公司', dataIndex: 'company', width: 200,
-            renderer: function (value, cellmeta, record) {
-                return Utils.rendererCompany(value);
-            }
-        },
-        { text: '职位名称', dataIndex: 'name', width: 200 },
-        { text: '职位等级', dataIndex: 'level', width: 100 ,
-            renderer: function(value, cellmeta, record) {
-                return Utils.rendererPositionLevel(value);
-            }
-        },
+        { text: '类别', dataIndex: 'type', width: 100 },
+        { text: '年', dataIndex: 'year', width: 50 },
+        { text: '月', dataIndex: 'month', width: 50 },
+        { text: '银行', dataIndex: 'bankId', width: 100 },
+        { text: '项目', dataIndex: 'projectName', width: 100 },
+        { text: '额度', dataIndex: 'amount', width: 100 },
+        { text: '计划融资金额', dataIndex: 'financingAmount', width: 120 },
+        { text: '累计已放款金额', dataIndex: 'totalLending', width: 120 },
+        { text: '累计已还款金额', dataIndex: 'totalReplayLoan', width: 120 },
+        { text: '贷款余额', dataIndex: 'remainLoan', width: 100 },
+        { text: '期限', dataIndex: 'deadline', width: 100 },
+        { text: '利率', dataIndex: 'rate', width: 100 },
+        { text: '担保方式', dataIndex: 'guaranty', width: 100 },
         {
             text: '创建时间', dataIndex: 'createTime', width: 200,
             renderer: function (value, cellmeta, record) {
@@ -84,7 +80,7 @@ Ext.define('oa.view.position.PositionList', {
             var store = grid.getStore();
             store.load();
         },
-        itemdblclick: 'viewPosition'
+        itemdblclick: 'viewFinancingLedger'
     }
 
 });

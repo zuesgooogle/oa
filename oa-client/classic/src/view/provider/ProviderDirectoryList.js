@@ -1,18 +1,13 @@
-Ext.define('oa.view.position.PositionList', {
+Ext.define('oa.view.provider.ProviderDirectoryList', {
     extend: 'Ext.grid.Panel',
-    xtype: 'positionList',
+    xtype: 'providerDirectoryList',
 
-    id: 'positionList',
-    alias: 'positionList',
-    reference: 'positionList',
+    id: 'providerDirectoryList',
+    alias: 'providerDirectoryList',
 
-    requires: [
-        'oa.store.Position'
-    ],
+    controller: 'providerDirectory',
 
-    controller: 'position',
-
-    title: '职位管理',
+    title: '合格供方名录',
     scrollable: true,
     closable: true,
 
@@ -21,47 +16,43 @@ Ext.define('oa.view.position.PositionList', {
             xtype: 'button',
             text: '新增',
             iconCls: 'x-fa fa-plus',
-            handler: 'addPosition'
+            handler: 'addProviderDirectory'
         }, {
             itemId: 'update',
             text: '修改',
             iconCls: 'x-fa fa-edit',
             disabled: true,
-            handler: 'viewPosition'
+            handler: 'viewProviderDirectory'
         }, {
             itemId: 'delete',
             text: '删除',
             iconCls: 'x-fa fa-remove',
             disabled: true,
-            handler: 'deletePosition'
+            handler: 'deleteProviderDirectory'
         }],
 
     store: {
-        type: 'position'
+        type: 'providerDirectory'
     },
 
     columns: [
         { text: 'ID', dataIndex: 'id', width: 100 },
+        { text: '供方名称', dataIndex: 'name', width: 100 },
+        { text: '供方品类', dataIndex: 'type', width: 100 },
+        { text: '联系人', dataIndex: 'linkman', width: 100 },
+        { text: '联系电话', dataIndex: 'phone', width: 100 },
+        { text: '地址', dataIndex: 'address', width: 100 },
+        { text: '邮编', dataIndex: 'postcode', width: 100 },
+        { text: '考察评审表', dataIndex: 'assessTable', width: 200 },
+        { text: '能力评审表', dataIndex: 'abilityTable', width: 200 },
+        { text: '供方评价表', dataIndex: 'provideTable', width: 200 },
         {
-            text: '所属公司', dataIndex: 'company', width: 200,
-            renderer: function (value, cellmeta, record) {
-                return Utils.rendererCompany(value);
-            }
-        },
-        { text: '职位名称', dataIndex: 'name', width: 200 },
-        { text: '职位等级', dataIndex: 'level', width: 100 ,
-            renderer: function(value, cellmeta, record) {
-                return Utils.rendererPositionLevel(value);
-            }
-        },
-        {
-            text: '创建时间', dataIndex: 'createTime', width: 200,
+            text: '创建时间', dataIndex: 'createTime', width: 150 ,
             renderer: function (value, cellmeta, record) {
                 return Ext.Date.format(new Date(value), 'Y-m-d H:i:s');
             }
-        }, {
-            flex: 1
-        }
+        },
+        { flex: 1 }
     ],
     bbar: {
         xtype: 'pagingtoolbar',
@@ -84,7 +75,7 @@ Ext.define('oa.view.position.PositionList', {
             var store = grid.getStore();
             store.load();
         },
-        itemdblclick: 'viewPosition'
+        itemdblclick: 'viewProviderDirectory'
     }
 
 });

@@ -91,6 +91,9 @@
 		<table tableName="oa_task_classifi" domainObjectName="TaskClassifi" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
+		<table tableName="oa_provider_directory" domainObjectName="ProviderDirectory" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
 		
 		
 		<!-- 资金收入、支出计划 -->
@@ -124,6 +127,11 @@
 		<table tableName="oa_financing_progress" domainObjectName="FinancingProgress" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
+		<table tableName="oa_financing_ledger" domainObjectName="FinancingLedger" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		
+		
 		
 		<!-- 土地、二级开发计划 -->
 		<table tableName="oa_develop_progress_land" domainObjectName="DevelopProgressLand" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">

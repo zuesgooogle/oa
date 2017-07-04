@@ -1,41 +1,41 @@
-Ext.define('oa.view.financing.FinancingController', {
+Ext.define('oa.view.financingLedger.financingLedgerController', {
     extend: 'Ext.app.ViewController',
 
-    alias: 'controller.financing',
+    alias: 'controller.financingLedger',
 
-    store: ['financing'],
+    store: ['financingLedger'],
 
     init: function () {
     },
 
-    addFinancing: function (sender) {
-        var info = Ext.getCmp('financingInfo');
+    addFinancingLedger: function (sender) {
+        var info = Ext.getCmp('financingLedgerInfo');
         if (info == null) {
-            info = Ext.create('financingInfo');
+            info = Ext.create('financingLedgerInfo');
         }
         info.show();
     },
 
-    viewFinancing: function(sender) {
-        var gird = sender.up('financingList');
+    viewFinancingLedger: function(sender) {
+        var gird = sender.up('financingLedgerList');
         var record = gird.getSelectionModel().getSelection()[0];
 
-        var info = Ext.getCmp('financingInfo');
+        var info = Ext.getCmp('financingLedgerInfo');
         if (info == null) {
-            info = Ext.create('financingInfo');
+            info = Ext.create('financingLedgerInfo');
         }
         info.down('form').loadRecord(record);
         info.show();
     },
 
-    deleteFinancing: function (sender) {
-        var gird = sender.up('financingList');
+    deleteFinancingLedger: function (sender) {
+        var gird = sender.up('financingLedgerList');
         var record = gird.getSelectionModel().getSelection()[0];
 
-        Ext.MessageBox.confirm("删除进度", "您确认要删除进度？", function (btn) {
+        Ext.MessageBox.confirm("删除进度", "您确认要删除吗？", function (btn) {
             if (btn == 'yes') {
                 Ext.Ajax.request({
-                    url: oa.config.Config.BASE_URL + 'financing/delete',
+                    url: oa.config.Config.BASE_URL + 'financing/ledger/delete',
                     method: 'POST',
                     params: {
                         id: record.data.id
@@ -52,15 +52,15 @@ Ext.define('oa.view.financing.FinancingController', {
         });
     },
 
-    updateFinancing: function (sender) {
+    updateFinancingLedger: function (sender) {
         var form = sender.up('form').getForm();
         if (form.isValid()) {
             form.submit({
                 success: function(form, action) {
                     var data = action.result.data;
 
-                    var financingList = Ext.getCmp('financingList');
-                    var store = financingList.store;
+                    var financingLedgerList = Ext.getCmp('financingLedgerList');
+                    var store = financingLedgerList.store;
                     var record = store.getById(data.id);
                     if (record != null) {
                         record.data = data;
@@ -69,7 +69,7 @@ Ext.define('oa.view.financing.FinancingController', {
                     }
 
                     // refresh grid view
-                    financingList.getView().refresh();
+                    financingLedgerList.getView().refresh();
                     // window close
                     sender.up("window").close();
                 },
