@@ -69,8 +69,8 @@ Ext.define('oa.store.Menu', {
                     { text: '成本科目', iconCls: 'x-fa fa-cubes', action: 'costsubjectTree', leaf: true },
                     { text: '项目管理', iconCls: 'x-fa fa-delicious', action: 'projectList', leaf: true },
                     { text: '片区管理', iconCls: 'x-fa fa-area-chart', action: 'areaList', leaf: true },
-                    { text: '标段管理', iconCls: 'x-fa fa-map-pin', action: 'sectionList', leaf: true },
                     { text: '地块管理', iconCls: 'x-fa fa-anchor', action: 'landList', leaf: true },
+                    { text: '标段管理', iconCls: 'x-fa fa-map-pin', action: 'sectionList', leaf: true },
                     { text: '银行管理', iconCls: 'x-fa fa-bank', action: 'bankList', leaf: true },
                     { text: '任务分类', iconCls: 'x-fa fa-list', action: 'taskClassifiTree', leaf: true }
                 ]
