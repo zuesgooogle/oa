@@ -14,7 +14,6 @@ Ext.define('oa.view.main.Main', {
 
         'oa.view.main.MainController',
         'oa.view.main.MainModel',
-        'oa.view.main.List'
     ],
 
     controller: 'main',

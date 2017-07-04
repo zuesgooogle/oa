@@ -5,7 +5,7 @@ Ext.define('oa.store.Bank', {
     alias: 'store.bank',
 
     model: 'oa.model.Bank',
-
+    autoLoad: true,
     proxy: {
         type: 'ajax',
         url: oa.config.Config.BASE_URL + 'bank/list',
