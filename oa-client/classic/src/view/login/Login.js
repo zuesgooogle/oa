@@ -20,7 +20,7 @@ Ext.define('oa.view.login.Login', {
             anchor: '100%'
         },
         method: 'POST',
-        url: oa.config.Config.BASE_URL + 'login',
+        url: oa.config.Config.BASE_URL + 'user/login',
 
         bodyStyle: "padding:10px 10px 10px 10px",
 

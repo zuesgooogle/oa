@@ -1009,6 +1009,7 @@ $include-ext-window-window: dynamic(true);;
 $include-utils: dynamic(true);;
 $include-oa-application: dynamic(true);;
 $include-oa-config-config: dynamic(true);;
+$include-oa-model-administrativeledger: dynamic(true);;
 $include-oa-model-area: dynamic(true);;
 $include-oa-model-bank: dynamic(true);;
 $include-oa-model-department: dynamic(true);;

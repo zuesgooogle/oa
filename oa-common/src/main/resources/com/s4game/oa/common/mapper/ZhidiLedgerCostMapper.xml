@@ -19,14 +19,14 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from oa_zhidi_ledger_cost
+    delete from oa_ledger_zhidi_cost
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.s4game.oa.common.entity.ZhidiLedgerCost">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into oa_zhidi_ledger_cost (serial_number, area, subject_id, 
+    insert into oa_ledger_zhidi_cost (serial_number, area, subject_id, 
       project_name, calculate_invest, expect_invest, 
       total_invest, audit_statistics, gov_confirm, 
       gov_check, uncheck, remark, 
@@ -38,7 +38,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.ZhidiLedgerCost">
-    update oa_zhidi_ledger_cost
+    update oa_ledger_zhidi_cost
     set serial_number = #{serialNumber,jdbcType=VARCHAR},
       area = #{area,jdbcType=INTEGER},
       subject_id = #{subjectId,jdbcType=INTEGER},
@@ -59,13 +59,13 @@
     select id, serial_number, area, subject_id, project_name, calculate_invest, expect_invest, 
     total_invest, audit_statistics, gov_confirm, gov_check, uncheck, remark, create_time, 
     update_time
-    from oa_zhidi_ledger_cost
+    from oa_ledger_zhidi_cost
     where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, serial_number, area, subject_id, project_name, calculate_invest, expect_invest, 
     total_invest, audit_statistics, gov_confirm, gov_check, uncheck, remark, create_time, 
     update_time
-    from oa_zhidi_ledger_cost
+    from oa_ledger_zhidi_cost
   </select>
 </mapper>

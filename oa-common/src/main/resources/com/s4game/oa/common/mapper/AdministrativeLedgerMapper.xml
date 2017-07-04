@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.s4game.oa.common.mapper.AdministrativeLedgerMapper">
+  <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.AdministrativeLedger">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="company" jdbcType="INTEGER" property="company" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="payable_amount" jdbcType="DECIMAL" property="payableAmount" />
+    <result column="pay_condition" jdbcType="VARCHAR" property="payCondition" />
+    <result column="signatory" jdbcType="VARCHAR" property="signatory" />
+    <result column="sign_time" jdbcType="TIMESTAMP" property="signTime" />
+    <result column="linkman" jdbcType="VARCHAR" property="linkman" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="pay_total" jdbcType="DECIMAL" property="payTotal" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="file_box_id" jdbcType="VARCHAR" property="fileBoxId" />
+    <result column="file_id" jdbcType="VARCHAR" property="fileId" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from oa_ledger_administrative
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.s4game.oa.common.entity.AdministrativeLedger">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_ledger_administrative (company, subject_id, name, 
+      content, payable_amount, pay_condition, 
+      signatory, sign_time, linkman, 
+      phone, pay_total, department_id, 
+      user_id, file_box_id, file_id, 
+      remark, create_time, update_time
+      )
+    values (#{company,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{payableAmount,jdbcType=DECIMAL}, #{payCondition,jdbcType=VARCHAR}, 
+      #{signatory,jdbcType=VARCHAR}, #{signTime,jdbcType=TIMESTAMP}, #{linkman,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{payTotal,jdbcType=DECIMAL}, #{departmentId,jdbcType=INTEGER}, 
+      #{userId,jdbcType=BIGINT}, #{fileBoxId,jdbcType=VARCHAR}, #{fileId,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.AdministrativeLedger">
+    update oa_ledger_administrative
+    set company = #{company,jdbcType=INTEGER},
+      subject_id = #{subjectId,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      payable_amount = #{payableAmount,jdbcType=DECIMAL},
+      pay_condition = #{payCondition,jdbcType=VARCHAR},
+      signatory = #{signatory,jdbcType=VARCHAR},
+      sign_time = #{signTime,jdbcType=TIMESTAMP},
+      linkman = #{linkman,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      pay_total = #{payTotal,jdbcType=DECIMAL},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=BIGINT},
+      file_box_id = #{fileBoxId,jdbcType=VARCHAR},
+      file_id = #{fileId,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select id, company, subject_id, name, content, payable_amount, pay_condition, signatory, 
+    sign_time, linkman, phone, pay_total, department_id, user_id, file_box_id, file_id, 
+    remark, create_time, update_time
+    from oa_ledger_administrative
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, company, subject_id, name, content, payable_amount, pay_condition, signatory, 
+    sign_time, linkman, phone, pay_total, department_id, user_id, file_box_id, file_id, 
+    remark, create_time, update_time
+    from oa_ledger_administrative
+  </select>
+</mapper>

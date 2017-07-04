@@ -13,4 +13,4 @@ Ext.define('oa.ux.DepartmentMultiSelect', {
     filterPickList: true,
     displayField: 'name',
     valueField: 'id'
-})
+});

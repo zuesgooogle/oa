@@ -17,14 +17,14 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from oa_zhiye_ledger_cost
+    delete from oa_ledger_zhiye_cost
     where id = #{id,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.s4game.oa.common.entity.ZhiyeLedgerCost">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into oa_zhiye_ledger_cost (serial_number, area, subject_id, 
+    insert into oa_ledger_zhiye_cost (serial_number, area, subject_id, 
       project_name, expect_invest, contract_amount, 
       performance_amount, paid_amount, settled_account, 
       remark, create_time, update_time
@@ -36,7 +36,7 @@
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.ZhiyeLedgerCost">
-    update oa_zhiye_ledger_cost
+    update oa_ledger_zhiye_cost
     set serial_number = #{serialNumber,jdbcType=VARCHAR},
       area = #{area,jdbcType=INTEGER},
       subject_id = #{subjectId,jdbcType=INTEGER},
@@ -54,12 +54,12 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select id, serial_number, area, subject_id, project_name, expect_invest, contract_amount, 
     performance_amount, paid_amount, settled_account, remark, create_time, update_time
-    from oa_zhiye_ledger_cost
+    from oa_ledger_zhiye_cost
     where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
     select id, serial_number, area, subject_id, project_name, expect_invest, contract_amount, 
     performance_amount, paid_amount, settled_account, remark, create_time, update_time
-    from oa_zhiye_ledger_cost
+    from oa_ledger_zhiye_cost
   </select>
 </mapper>

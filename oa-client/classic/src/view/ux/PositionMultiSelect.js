@@ -13,4 +13,4 @@ Ext.define('oa.ux.PositionMultiSelect', {
     filterPickList: true,
     displayField: 'name',
     valueField: 'id'
-})
+});

@@ -14,4 +14,4 @@ Ext.define('oa.ux.PositionLevelCombo', {
     forceSelection: true, //必须选择一个选项   
     displayField: 'name',
     valueField: 'id'
-})
+});

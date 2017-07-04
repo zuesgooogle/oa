@@ -35,26 +35,25 @@ public class UserController {
 	@Autowired
 	private PageService<User> pageService;
 	
-//	@ApiOperation(value = "用户登录")
-//	@RequestMapping(value = "/login")
-//	public Response login(
-//			@ApiParam(value = "用户名") @RequestParam(value = "username", required = true) String username,
-//			@ApiParam(value = "密码") @RequestParam(value = "password", required = true) String password
-//			) {
-//		Response.Builder response = Response.newBuilder();
-//		
-//		User user = userService.findByUsername(username);
-//		if (user == null) {
-//			return response.failure("").errorCode(ErrorCode.INVALID_USERNAME_OR_PASSWORD).build();
-//		}
-//		
-//		String pwd = passwordEncoder.encode(password);
-//		if (!user.getPassword().equals(pwd)) {
-//			return response.failure("").errorCode(ErrorCode.INVALID_USERNAME_OR_PASSWORD).build();
-//		}
-//		
-//		return response.success().build();
-//	}
+	@ApiOperation(value = "用户登录")
+	@RequestMapping(value = "/login")
+	public Response login(
+			@ApiParam(value = "用户名") @RequestParam(value = "username", required = true) String username,
+			@ApiParam(value = "密码") @RequestParam(value = "password", required = true) String password
+			) {
+		Response.Builder response = Response.newBuilder();
+		
+		User user = userService.findByUsername(username);
+		if (user == null) {
+			return response.failure("用户名或者密码错误").build();
+		}
+		
+		if (!user.getPassword().equals(password)) {
+			return response.failure("用户名或者密码错误").build();
+		}
+		
+		return response.success().build();
+	}
 	
 	@ApiOperation(value = "用户列表")
 	@RequestMapping(value = "/list")

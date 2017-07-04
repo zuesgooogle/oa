@@ -69,7 +69,7 @@ public class BankController {
 
 	@ApiOperation(value = "删除银行")
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public Response delete(@ApiParam(value = "银行Id") @RequestParam(value = "id", required = false) Integer id) {
+	public Response delete(@ApiParam(value = "银行Id") @RequestParam(value = "id", required = true) Integer id) {
 		Response.Builder response = Response.newBuilder();
 
 		int result = bankManager.deleteByPrimaryKey(id);
