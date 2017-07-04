@@ -301,7 +301,7 @@ CREATE TABLE `oa_financing_ledger` (
 -- ----------------------------
 -- Records of oa_financing_ledger
 -- ----------------------------
-INSERT INTO `oa_financing_ledger` VALUES ('1', '2017', '12', '1', '1', '1', '1.00', '1.00', '1.00', '1.00', '1.00', '1', '1', '1', '1', '2017-07-04 15:40:03', '2017-07-04 15:40:02');
+INSERT INTO `oa_financing_ledger` VALUES ('1', '2017', '12', '1', '5', '1', '1.00', '1.00', '1.00', '1.00', '1.00', '1', '1', '1', '1', '2017-07-04 15:40:03', '2017-07-04 15:40:02');
 
 -- ----------------------------
 -- Table structure for oa_financing_progress
@@ -352,6 +352,91 @@ INSERT INTO `oa_land` VALUES ('5', '4-1福心家园', '2017-07-02 06:51:06', '20
 INSERT INTO `oa_land` VALUES ('6', '7-3金玉三园', '2017-07-02 06:51:17', '2017-07-02 06:51:16');
 INSERT INTO `oa_land` VALUES ('7', '7-4金玉四园', '2017-07-02 06:51:26', '2017-07-02 06:51:25');
 INSERT INTO `oa_land` VALUES ('8', '7-5金玉五园', '2017-07-02 06:51:33', '2017-07-02 06:51:33');
+
+-- ----------------------------
+-- Table structure for oa_ledger_administrative
+-- ----------------------------
+DROP TABLE IF EXISTS `oa_ledger_administrative`;
+CREATE TABLE `oa_ledger_administrative` (
+  `id` bigint(20) NOT NULL,
+  `company` int(11) NOT NULL COMMENT '公司',
+  `subject_id` int(11) NOT NULL COMMENT '成本科目',
+  `name` varchar(128) NOT NULL COMMENT '名称',
+  `content` varchar(128) DEFAULT NULL COMMENT '内容',
+  `payable_amount` decimal(20,2) NOT NULL COMMENT '应支付金额',
+  `pay_condition` varchar(255) DEFAULT NULL COMMENT '付款条件',
+  `signatory` varchar(128) NOT NULL COMMENT '签约方',
+  `sign_time` datetime NOT NULL COMMENT '合同签订时间',
+  `linkman` varchar(64) NOT NULL COMMENT '联系人',
+  `phone` varchar(16) NOT NULL COMMENT '联系人电话',
+  `pay_total` decimal(20,2) DEFAULT NULL COMMENT '累计付款金额',
+  `department_id` int(11) NOT NULL COMMENT '发起部门',
+  `user_id` bigint(20) NOT NULL COMMENT '发起人',
+  `file_box_id` varchar(64) NOT NULL COMMENT '档案合编号',
+  `file_id` varchar(64) NOT NULL COMMENT '档案编号',
+  `remark` varchar(64) DEFAULT NULL COMMENT '其他',
+  `create_time` datetime NOT NULL,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of oa_ledger_administrative
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for oa_ledger_zhidi_cost
+-- ----------------------------
+DROP TABLE IF EXISTS `oa_ledger_zhidi_cost`;
+CREATE TABLE `oa_ledger_zhidi_cost` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `serial_number` varchar(20) DEFAULT NULL COMMENT '序号',
+  `area` int(11) NOT NULL COMMENT '片区',
+  `subject_id` int(11) NOT NULL COMMENT '成本科目ID',
+  `project_name` varchar(64) DEFAULT NULL COMMENT '成本项目名称',
+  `calculate_invest` decimal(10,2) NOT NULL COMMENT '可研测算金额',
+  `expect_invest` decimal(10,2) NOT NULL COMMENT '预计投入金额',
+  `total_invest` decimal(10,2) NOT NULL COMMENT '累计投入',
+  `audit_statistics` decimal(10,2) NOT NULL COMMENT '审计资料统计金额',
+  `gov_confirm` decimal(10,2) NOT NULL COMMENT '政府确认金额',
+  `gov_check` decimal(10,2) NOT NULL COMMENT '政府程序金额',
+  `uncheck` decimal(10,2) NOT NULL COMMENT '未核对金额',
+  `remark` varchar(128) DEFAULT NULL,
+  `create_time` datetime NOT NULL,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of oa_ledger_zhidi_cost
+-- ----------------------------
+INSERT INTO `oa_ledger_zhidi_cost` VALUES ('1', null, '1', '1', null, '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1', '2017-07-03 19:51:28', '2017-07-03 19:51:28');
+
+-- ----------------------------
+-- Table structure for oa_ledger_zhiye_cost
+-- ----------------------------
+DROP TABLE IF EXISTS `oa_ledger_zhiye_cost`;
+CREATE TABLE `oa_ledger_zhiye_cost` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `serial_number` varchar(20) DEFAULT NULL COMMENT '序号',
+  `area` int(11) NOT NULL COMMENT '片区',
+  `subject_id` int(11) NOT NULL COMMENT '成本科目ID',
+  `project_name` varchar(64) DEFAULT NULL,
+  `expect_invest` decimal(10,2) NOT NULL COMMENT '预计投入金额',
+  `contract_amount` decimal(10,2) NOT NULL COMMENT '已签合同金额',
+  `performance_amount` decimal(10,2) NOT NULL COMMENT '已履约金额',
+  `paid_amount` decimal(10,2) NOT NULL COMMENT '已付金额',
+  `settled_account` decimal(10,2) NOT NULL COMMENT '已结束金额',
+  `remark` varchar(64) DEFAULT NULL COMMENT '说明',
+  `create_time` datetime NOT NULL,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of oa_ledger_zhiye_cost
+-- ----------------------------
+INSERT INTO `oa_ledger_zhiye_cost` VALUES ('1', null, '1', '2', null, '1.00', '1.00', '1.00', '1.00', '1.00', '1', '2017-07-03 19:53:18', '2017-07-03 19:53:18');
 
 -- ----------------------------
 -- Table structure for oa_plan_assert_month
@@ -823,8 +908,8 @@ CREATE TABLE `oa_user` (
 -- ----------------------------
 -- Records of oa_user
 -- ----------------------------
-INSERT INTO `oa_user` VALUES ('1', '123456', '$2a$10$R0UiRRDFLgoaLlgMe9t4cerdg3olVdU7l1.XKyhD2Si.Z1aaHgu/6', '1,2', '3,4,5,6', '1', '1', '1', '', null, '2017-06-22 17:25:04', '2017-07-02 20:50:31');
-INSERT INTO `oa_user` VALUES ('3', '222', '$2a$10$UrR6.gEqiUIzSf5hGNA00OI3IHPyV.U5BME5nBpXP9GDxBgt7iZae', '1,2', '1', '2', '2', '2', '', null, '2017-07-02 11:22:02', '2017-07-02 11:22:01');
+INSERT INTO `oa_user` VALUES ('1', '123456', '123456', '1,2', '3,4,5,6', '1', '1', '1', '', null, '2017-06-22 17:25:04', '2017-07-04 20:51:02');
+INSERT INTO `oa_user` VALUES ('3', '222', '123456', '1,2', '1', '2', '2', '2', '', null, '2017-07-02 11:22:02', '2017-07-04 20:51:05');
 
 -- ----------------------------
 -- Table structure for oa_user_department
@@ -894,67 +979,4 @@ CREATE TABLE `oa_user_process` (
   `create_time` datetime NOT NULL COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间，自动填充，程序不需要处理',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1115 DEFAULT CHARSET=utf8 COMMENT='用户任务';
-
--- ----------------------------
--- Records of oa_user_process
--- ----------------------------
-INSERT INTO `oa_user_process` VALUES ('1110', '47507', '1', '1', '1', '1', null, null, 'deptManager', null, '2017-07-02 21:40:53', null, '2017-07-02 21:40:53', '2017-07-02 21:40:54');
-INSERT INTO `oa_user_process` VALUES ('1111', '47515', '1', '1', '1', '1', null, null, 'deptManager', null, '2017-07-02 21:54:08', null, '2017-07-02 21:54:08', '2017-07-02 21:54:08');
-INSERT INTO `oa_user_process` VALUES ('1112', '47523', '1', '1', '1', '1', null, null, 'deptManager', null, '2017-07-02 21:54:33', null, '2017-07-02 21:54:33', '2017-07-02 21:54:33');
-INSERT INTO `oa_user_process` VALUES ('1113', '47531', '1', '1', '1', '1', null, null, 'deptManager', null, '2017-07-02 21:55:33', null, '2017-07-02 21:55:33', '2017-07-02 21:55:32');
-INSERT INTO `oa_user_process` VALUES ('1114', '47539', '1', '1', '1', '1', null, null, 'deptManager', null, '2017-07-02 21:57:23', null, '2017-07-02 21:57:23', '2017-07-02 21:57:23');
-
--- ----------------------------
--- Table structure for oa_zhidi_ledger_cost
--- ----------------------------
-DROP TABLE IF EXISTS `oa_zhidi_ledger_cost`;
-CREATE TABLE `oa_zhidi_ledger_cost` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `serial_number` varchar(20) DEFAULT NULL COMMENT '序号',
-  `area` int(11) NOT NULL COMMENT '片区',
-  `subject_id` int(11) NOT NULL COMMENT '成本科目ID',
-  `project_name` varchar(64) DEFAULT NULL COMMENT '成本项目名称',
-  `calculate_invest` decimal(10,2) NOT NULL COMMENT '可研测算金额',
-  `expect_invest` decimal(10,2) NOT NULL COMMENT '预计投入金额',
-  `total_invest` decimal(10,2) NOT NULL COMMENT '累计投入',
-  `audit_statistics` decimal(10,2) NOT NULL COMMENT '审计资料统计金额',
-  `gov_confirm` decimal(10,2) NOT NULL COMMENT '政府确认金额',
-  `gov_check` decimal(10,2) NOT NULL COMMENT '政府程序金额',
-  `uncheck` decimal(10,2) NOT NULL COMMENT '未核对金额',
-  `remark` varchar(128) DEFAULT NULL,
-  `create_time` datetime NOT NULL,
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of oa_zhidi_ledger_cost
--- ----------------------------
-INSERT INTO `oa_zhidi_ledger_cost` VALUES ('1', null, '1', '1', null, '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1', '2017-07-03 19:51:28', '2017-07-03 19:51:28');
-
--- ----------------------------
--- Table structure for oa_zhiye_ledger_cost
--- ----------------------------
-DROP TABLE IF EXISTS `oa_zhiye_ledger_cost`;
-CREATE TABLE `oa_zhiye_ledger_cost` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `serial_number` varchar(20) DEFAULT NULL COMMENT '序号',
-  `area` int(11) NOT NULL COMMENT '片区',
-  `subject_id` int(11) NOT NULL COMMENT '成本科目ID',
-  `project_name` varchar(64) DEFAULT NULL,
-  `expect_invest` decimal(10,2) NOT NULL COMMENT '预计投入金额',
-  `contract_amount` decimal(10,2) NOT NULL COMMENT '已签合同金额',
-  `performance_amount` decimal(10,2) NOT NULL COMMENT '已履约金额',
-  `paid_amount` decimal(10,2) NOT NULL COMMENT '已付金额',
-  `settled_account` decimal(10,2) NOT NULL COMMENT '已结束金额',
-  `remark` varchar(64) DEFAULT NULL COMMENT '说明',
-  `create_time` datetime NOT NULL,
-  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of oa_zhiye_ledger_cost
--- ----------------------------
-INSERT INTO `oa_zhiye_ledger_cost` VALUES ('1', null, '1', '1', null, '1.00', '1.00', '1.00', '1.00', '1.00', '1', '2017-07-03 19:53:18', '2017-07-03 19:53:18');
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='用户任务';
