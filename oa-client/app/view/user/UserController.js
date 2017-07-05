@@ -76,5 +76,5 @@ Ext.define('oa.view.user.UserController', {
                 });
             }
         });
-    },
+    }
 });

@@ -3,8 +3,9 @@
 <mapper namespace="com.s4game.oa.common.mapper.ZhiyeLedgerCostMapper">
   <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.ZhiyeLedgerCost">
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="serial_number" jdbcType="VARCHAR" property="serialNumber" />
-    <result column="area" jdbcType="INTEGER" property="area" />
+    <result column="year" jdbcType="SMALLINT" property="year" />
+    <result column="month" jdbcType="SMALLINT" property="month" />
+    <result column="land_id" jdbcType="INTEGER" property="landId" />
     <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
     <result column="project_name" jdbcType="VARCHAR" property="projectName" />
     <result column="expect_invest" jdbcType="DECIMAL" property="expectInvest" />
@@ -24,21 +25,22 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into oa_ledger_zhiye_cost (serial_number, area, subject_id, 
-      project_name, expect_invest, contract_amount, 
-      performance_amount, paid_amount, settled_account, 
-      remark, create_time, update_time
-      )
-    values (#{serialNumber,jdbcType=VARCHAR}, #{area,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, 
-      #{projectName,jdbcType=VARCHAR}, #{expectInvest,jdbcType=DECIMAL}, #{contractAmount,jdbcType=DECIMAL}, 
-      #{performanceAmount,jdbcType=DECIMAL}, #{paidAmount,jdbcType=DECIMAL}, #{settledAccount,jdbcType=DECIMAL}, 
-      #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+    insert into oa_ledger_zhiye_cost (year, month, land_id, 
+      subject_id, project_name, expect_invest, 
+      contract_amount, performance_amount, paid_amount, 
+      settled_account, remark, create_time, 
+      update_time)
+    values (#{year,jdbcType=SMALLINT}, #{month,jdbcType=SMALLINT}, #{landId,jdbcType=INTEGER}, 
+      #{subjectId,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{expectInvest,jdbcType=DECIMAL}, 
+      #{contractAmount,jdbcType=DECIMAL}, #{performanceAmount,jdbcType=DECIMAL}, #{paidAmount,jdbcType=DECIMAL}, 
+      #{settledAccount,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.ZhiyeLedgerCost">
     update oa_ledger_zhiye_cost
-    set serial_number = #{serialNumber,jdbcType=VARCHAR},
-      area = #{area,jdbcType=INTEGER},
+    set year = #{year,jdbcType=SMALLINT},
+      month = #{month,jdbcType=SMALLINT},
+      land_id = #{landId,jdbcType=INTEGER},
       subject_id = #{subjectId,jdbcType=INTEGER},
       project_name = #{projectName,jdbcType=VARCHAR},
       expect_invest = #{expectInvest,jdbcType=DECIMAL},
@@ -52,13 +54,13 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select id, serial_number, area, subject_id, project_name, expect_invest, contract_amount, 
+    select id, year, month, land_id, subject_id, project_name, expect_invest, contract_amount, 
     performance_amount, paid_amount, settled_account, remark, create_time, update_time
     from oa_ledger_zhiye_cost
     where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, serial_number, area, subject_id, project_name, expect_invest, contract_amount, 
+    select id, year, month, land_id, subject_id, project_name, expect_invest, contract_amount, 
     performance_amount, paid_amount, settled_account, remark, create_time, update_time
     from oa_ledger_zhiye_cost
   </select>

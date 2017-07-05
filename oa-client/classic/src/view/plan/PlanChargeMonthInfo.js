@@ -67,8 +67,7 @@ Ext.define('oa.view.plan.PlanChargeMonthInfo', {
                         }
                     }
                 ]
-            },
-
+            }
         ],
         buttons: [{
             text: 'Submit',
@@ -78,7 +77,7 @@ Ext.define('oa.view.plan.PlanChargeMonthInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

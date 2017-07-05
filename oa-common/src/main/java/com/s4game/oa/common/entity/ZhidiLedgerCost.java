@@ -6,9 +6,11 @@ import java.util.Date;
 public class ZhidiLedgerCost {
     private Long id;
 
-    private String serialNumber;
+    private Short year;
 
-    private Integer area;
+    private Short month;
+
+    private Integer areaId;
 
     private Integer subjectId;
 
@@ -42,20 +44,28 @@ public class ZhidiLedgerCost {
         this.id = id;
     }
 
-    public String getSerialNumber() {
-        return serialNumber;
+    public Short getYear() {
+        return year;
     }
 
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber == null ? null : serialNumber.trim();
+    public void setYear(Short year) {
+        this.year = year;
     }
 
-    public Integer getArea() {
-        return area;
+    public Short getMonth() {
+        return month;
     }
 
-    public void setArea(Integer area) {
-        this.area = area;
+    public void setMonth(Short month) {
+        this.month = month;
+    }
+
+    public Integer getAreaId() {
+        return areaId;
+    }
+
+    public void setAreaId(Integer areaId) {
+        this.areaId = areaId;
     }
 
     public Integer getSubjectId() {

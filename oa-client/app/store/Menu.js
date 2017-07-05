@@ -13,7 +13,7 @@ Ext.define('oa.store.Menu', {
                     { text: '合同台账', leaf: true },
                     { text: '行政收费台账', leaf: true },
                     { text: '费用报销台账', leaf: true },
-                    { text: '合格供方名录', action: 'providerDirectoryList', iconCls: 'x-fa fa-user', leaf: true },
+                    { text: '合格供方名录', action: 'providerDirectoryList', iconCls: 'x-fa fa-user', leaf: true }
                 ]
             },
             {

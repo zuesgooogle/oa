@@ -5,7 +5,9 @@ Ext.define('oa.model.ZhiyeLedgerCost', {
         name: 'id',
         type: 'int'
     }, 
-    'area', 
+    'year',
+    'month',
+    'landId', 
     'subjectId', 
     'expectInvest', 
     'contractAmount', 

@@ -37,7 +37,7 @@ Ext.define('oa.view.plan.PlanChargeYearInfo', {
                     { fieldLabel: 'Id', name: 'id', xtype: 'textfield', hidden: true },
                     { fieldLabel: '年份', name: 'year', xtype: 'numberfield', allowBlank: false },
                     { name: 'company', xtype: 'companyCombo', allowBlank: false },
-                    { name: 'departmentId', xtype: 'departmentSingleSelect', allowBlank: false },
+                    { name: 'departmentId', xtype: 'departmentSingleSelect', allowBlank: false }
                 ]
             },
             {
@@ -49,7 +49,7 @@ Ext.define('oa.view.plan.PlanChargeYearInfo', {
                 items: [
                     { fieldLabel: '成本科目', name: 'subjectId', xtype: 'textfield' },
                     { fieldLabel: '费用名称', name: 'chargeName', xtype: 'textfield' },
-                    { fieldLabel: '年度计划金额', name: 'yearAmount', xtype: 'numberfield' },
+                    { fieldLabel: '年度计划金额', name: 'yearAmount', xtype: 'numberfield' }
                 ]
             },
             {
@@ -64,7 +64,7 @@ Ext.define('oa.view.plan.PlanChargeYearInfo', {
                     { fieldLabel: '3月份', name: 'month3', xtype: 'numberfield' },
                     { fieldLabel: '4月份', name: 'month4', xtype: 'numberfield' },
                     { fieldLabel: '5月份', name: 'month5', xtype: 'numberfield' },
-                    { fieldLabel: '6月份', name: 'month6', xtype: 'numberfield' },
+                    { fieldLabel: '6月份', name: 'month6', xtype: 'numberfield' }
                 ]
             },
             {
@@ -79,7 +79,7 @@ Ext.define('oa.view.plan.PlanChargeYearInfo', {
                     { fieldLabel: '9月份', name: 'month9', xtype: 'numberfield' },
                     { fieldLabel: '10月份', name: 'month10', xtype: 'numberfield' },
                     { fieldLabel: '11月份', name: 'month11', xtype: 'numberfield' },
-                    { fieldLabel: '12月份', name: 'month12', xtype: 'numberfield' },
+                    { fieldLabel: '12月份', name: 'month12', xtype: 'numberfield' }
                 ]
             },
             {
@@ -95,7 +95,7 @@ Ext.define('oa.view.plan.PlanChargeYearInfo', {
                         }
                     }
                 ]
-            },
+            }
         ],
         buttons: [{
             text: 'Submit',
@@ -105,7 +105,7 @@ Ext.define('oa.view.plan.PlanChargeYearInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

@@ -59,7 +59,7 @@ Ext.define('oa.view.develop.financingLedgerInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

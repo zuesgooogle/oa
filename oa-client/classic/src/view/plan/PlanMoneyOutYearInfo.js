@@ -49,7 +49,7 @@ Ext.define('oa.view.plan.PlanMoneyOutYearInfo', {
                 items: [
                     { fieldLabel: '合同名称', name: 'contractName', xtype: 'textfield' },
                     { fieldLabel: '合同金额', name: 'contractAmount', xtype: 'numberfield' },
-                    { fieldLabel: '已支付金额', name: 'paidAmount', xtype: 'numberfield' },
+                    { fieldLabel: '已支付金额', name: 'paidAmount', xtype: 'numberfield' }
                 ]
             },
             {
@@ -64,7 +64,7 @@ Ext.define('oa.view.plan.PlanMoneyOutYearInfo', {
                     { fieldLabel: '3月份', name: 'month3', xtype: 'numberfield' },
                     { fieldLabel: '4月份', name: 'month4', xtype: 'numberfield' },
                     { fieldLabel: '5月份', name: 'month5', xtype: 'numberfield' },
-                    { fieldLabel: '6月份', name: 'month6', xtype: 'numberfield' },
+                    { fieldLabel: '6月份', name: 'month6', xtype: 'numberfield' }
                 ]
             },
             {
@@ -79,7 +79,7 @@ Ext.define('oa.view.plan.PlanMoneyOutYearInfo', {
                     { fieldLabel: '9月份', name: 'month9', xtype: 'numberfield' },
                     { fieldLabel: '10月份', name: 'month10', xtype: 'numberfield' },
                     { fieldLabel: '11月份', name: 'month11', xtype: 'numberfield' },
-                    { fieldLabel: '12月份', name: 'month12', xtype: 'numberfield' },
+                    { fieldLabel: '12月份', name: 'month12', xtype: 'numberfield' }
                 ]
             },
             {
@@ -95,7 +95,7 @@ Ext.define('oa.view.plan.PlanMoneyOutYearInfo', {
                         }
                     }
                 ]
-            },
+            }
         ],
         buttons: [{
             text: 'Submit',
@@ -105,7 +105,7 @@ Ext.define('oa.view.plan.PlanMoneyOutYearInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

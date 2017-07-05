@@ -9,7 +9,7 @@ Ext.define('oa.store.ApprovalAudit', {
             {
                 text: '置地流程', expanded: true, children: [
                     { text: '人事审批', iconCls: 'fa-user-plus', expanded: true, children: [
-                        { text: '请假申请表', action: 'leaveForm', iconCls: 'fa-user', leaf: true },
+                        { text: '请假申请表', action: 'leaveForm', iconCls: 'fa-user', leaf: true }
                     ]},
                     { text: '财务审批', action: '', iconCls: 'fa-bank', children: [
 

@@ -53,7 +53,7 @@ Ext.define('oa.view.develop.DevelopLandInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

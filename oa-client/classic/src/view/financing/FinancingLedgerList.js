@@ -39,7 +39,7 @@ Ext.define('oa.view.develop.financingLedgerList', {
         { text: '类别', dataIndex: 'type', width: 100 },
         { text: '年', dataIndex: 'year', width: 50 },
         { text: '月', dataIndex: 'month', width: 50 },
-        { text: '银行', dataIndex: 'bankId', width: 100,},
+        { text: '银行', dataIndex: 'bankId', width: 100},
         { text: '项目', dataIndex: 'projectName', width: 100 },
         { text: '额度', dataIndex: 'amount', width: 100 },
         { text: '计划融资金额', dataIndex: 'financingAmount', width: 120 },

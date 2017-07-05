@@ -54,7 +54,7 @@ Ext.define('oa.view.provider.providerDirectoryInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

@@ -50,7 +50,7 @@ Ext.define('oa.view.plan.PlanMoneyInMonthInfo', {
                     { fieldLabel: '合同名称', name: 'contractName', xtype: 'textfield' },
                     { fieldLabel: '全年计划总额', name: 'total', xtype: 'numberfield' },
                     { fieldLabel: '本月计划支付', name: 'planAmount', xtype: 'numberfield' },
-                    { fieldLabel: '本月实际支付', name: 'actualAmount', xtype: 'numberfield' },
+                    { fieldLabel: '本月实际支付', name: 'actualAmount', xtype: 'numberfield' }
                 ]
             },
             {
@@ -67,8 +67,7 @@ Ext.define('oa.view.plan.PlanMoneyInMonthInfo', {
                         }
                     }
                 ]
-            },
-
+            }
         ],
         buttons: [{
             text: 'Submit',
@@ -78,7 +77,7 @@ Ext.define('oa.view.plan.PlanMoneyInMonthInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

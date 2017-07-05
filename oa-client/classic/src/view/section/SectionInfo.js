@@ -44,7 +44,7 @@ Ext.define('oa.view.section.SectionInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

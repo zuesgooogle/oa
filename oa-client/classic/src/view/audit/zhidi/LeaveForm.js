@@ -25,7 +25,7 @@ Ext.define('oa.view.plan.LeaveForm', {
                 cellpadding: 5,
                 cellspacing: 1,
                 style: {
-                    width: '60%',
+                    width: '60%'
                 }
             },
             tdAttrs: {
@@ -64,7 +64,7 @@ Ext.define('oa.view.plan.LeaveForm', {
                     { boxLabel: '事假', name: 'leaveItype', inputValue: 2 },
                     { boxLabel: '婚假', name: 'leaveItype', inputValue: 3 },
                     { boxLabel: '年假', name: 'leaveItype', inputValue: 4 },
-                    { boxLabel: '其他', name: 'leaveItype', inputValue: 5 },
+                    { boxLabel: '其他', name: 'leaveItype', inputValue: 5 }
                 ]
             },
             { text: '申请休假时间' }, { width: 200, name: 'startTime', xtype: 'datefield', format: 'Y-m-d H:i:s', allowBlank: false },
@@ -110,7 +110,7 @@ Ext.define('oa.view.plan.LeaveForm', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

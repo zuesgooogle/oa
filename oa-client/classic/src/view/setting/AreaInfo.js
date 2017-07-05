@@ -44,7 +44,7 @@ Ext.define('oa.view.setting.areaInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

@@ -9,7 +9,7 @@ Ext.define('oa.store.ZhidiLedgerCost', {
     proxy: {
 
         type: 'ajax',
-        url: oa.config.Config.BASE_URL + 'zhidi/ledger/cost/list',
+        url: oa.config.Config.BASE_URL + 'ledger/zhidi/cost/list',
         reader: {
             type: 'json',
             rootProperty: 'data',

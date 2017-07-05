@@ -47,7 +47,7 @@ Ext.define('oa.view.position.PositionInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

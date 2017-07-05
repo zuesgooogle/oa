@@ -51,7 +51,7 @@ Ext.define('oa.view.user.UserInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

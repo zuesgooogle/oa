@@ -51,7 +51,7 @@ Ext.define('oa.view.plan.PlanAssertMonthInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

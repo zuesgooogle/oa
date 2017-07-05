@@ -44,7 +44,7 @@ Ext.define('oa.view.setting.LandInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

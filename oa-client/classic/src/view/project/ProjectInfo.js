@@ -45,7 +45,7 @@ Ext.define('oa.view.project.ProjectInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

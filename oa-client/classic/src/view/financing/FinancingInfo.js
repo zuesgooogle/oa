@@ -53,7 +53,7 @@ Ext.define('oa.view.develop.FinancingInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

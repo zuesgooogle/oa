@@ -86,7 +86,7 @@ Ext.define('oa.view.plan.PlanAssertYearInfo', {
                         }
                     }
                 ]
-            },
+            }
         ],
         buttons: [{
             text: 'Submit',
@@ -96,7 +96,7 @@ Ext.define('oa.view.plan.PlanAssertYearInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

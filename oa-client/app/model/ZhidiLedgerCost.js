@@ -5,7 +5,9 @@ Ext.define('oa.model.ZhidiLedgerCost', {
         name: 'id',
         type: 'int'
     }, 
-    'area', 
+    'year',
+    'month',
+    'areaId', 
     'subjectId', 
     'calculateInvest', 
     'expectInvest', 

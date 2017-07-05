@@ -1,17 +1,13 @@
-Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
+Ext.define('oa.view.ledger.AdministrativeLedgerList', {
     extend: 'Ext.grid.Panel',
-    xtype: 'zhidiLedgerCostList',
+    xtype: 'administrativeLedgerList',
 
-    id: 'zhidiLedgerCostList',
-    alias: 'zhidiLedgerCostList',
+    id: 'administrativeLedgerList',
+    alias: 'administrativeLedgerList',
 
-    requires: [
-        'oa.store.ZhidiLedgerCost'
-    ],
+    controller: 'administrativeLedger',
 
-    controller: 'zhidiLedgerCost',
-
-    title: '成本台账（置地）',
+    title: '行政性收费台账',
     scrollable: true,
     closable: true,
 
@@ -20,7 +16,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
             xtype: 'button',
             text: '新增',
             iconCls: 'x-fa fa-plus',
-            handler: 'addZhidiLedgerCost'
+            handler: 'addAdministrativeLedger'
         },
         {
             xtype: 'button',
@@ -28,7 +24,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
             text: '修改',
             iconCls: 'x-fa fa-edit',
             disabled: true,
-            handler: 'viewZhidiLedgerCost'
+            handler: 'viewAdministrativeLedger'
         },
         {
             xtype: 'button',
@@ -36,19 +32,17 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
             text: '删除',
             iconCls: 'x-fa fa-remove',
             disabled: true,
-            handler: 'deleteZhidiLedgerCost'
+            handler: 'deleteAdministrativeLedger'
         }]
     },
 
     store: {
-        type: 'zhidiLedgerCost'
+        type: 'administrativeLedger'
     },
 
     columns: [
         { text: 'Id', dataIndex: 'id', width: 100 },
-        { text: '年', dataIndex: 'year', width: 50 },
-        { text: '月', dataIndex: 'month', width: 50 },
-        { text: '片区', dataIndex: 'areaId', width: 100 },
+        { text: '片区', dataIndex: 'area', width: 100 },
         { text: '成本科目', dataIndex: 'subjectId', width: 100 },
         { text: '可研测算金额', dataIndex: 'calculateInvest', width: 100 },
         { text: '预计投资额', dataIndex: 'expectInvest', width: 100 },
@@ -86,7 +80,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
             var store = grid.getStore();
             store.load();
         },
-        itemdblclick: 'viewZhidiLedgerCost'
+        itemdblclick: 'viewAdministrativeLedger'
     }
 
 });

@@ -46,7 +46,9 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostList', {
 
     columns: [
         { text: 'Id', dataIndex: 'id', width: 100 },
-        { text: '地块', dataIndex: 'area', width: 100 },
+        { text: '年', dataIndex: 'year', width: 50 },
+        { text: '月', dataIndex: 'month', width: 50 },
+        { text: '地块', dataIndex: 'landId', width: 100 },
         { text: '成本科目', dataIndex: 'subjectId', width: 100 },
         { text: '预计投资额', dataIndex: 'expectInvest', width: 100 },
         { text: '已签合同金额', dataIndex: 'contractAmount', width: 100 },

@@ -60,7 +60,7 @@ Ext.define('oa.view.plan.PlanMoneyOutMonthInfo', {
                 items: [
                     { fieldLabel: '已支付金额', name: 'paidAmount', xtype: 'numberfield' },
                     { fieldLabel: '本月计划支付', name: 'planAmount', xtype: 'numberfield' },
-                    { fieldLabel: '本月实际支付', name: 'actualAmount', xtype: 'numberfield' },
+                    { fieldLabel: '本月实际支付', name: 'actualAmount', xtype: 'numberfield' }
                 ]
             },
             {
@@ -77,7 +77,7 @@ Ext.define('oa.view.plan.PlanMoneyOutMonthInfo', {
                         }
                     }
                 ]
-            },
+            }
 
         ],
         buttons: [{
@@ -88,7 +88,7 @@ Ext.define('oa.view.plan.PlanMoneyOutMonthInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

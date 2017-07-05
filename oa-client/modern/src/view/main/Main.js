@@ -13,7 +13,7 @@ Ext.define('oa.view.main.Main', {
         'Ext.MessageBox',
 
         'oa.view.main.MainController',
-        'oa.view.main.MainModel',
+        'oa.view.main.MainModel'
     ],
 
     controller: 'main',

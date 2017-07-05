@@ -12,7 +12,7 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostInfo', {
     resizable: false,
 
     width: 800,
-    height: 550,
+    height: 600,
     scrollable: true,
     closeAction: 'destroy',
 
@@ -23,7 +23,7 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostInfo', {
             anchor: '100%'
         },
         method: 'POST',
-        url: oa.config.Config.BASE_URL + 'zhiye/ledger/cost/update',
+        url: oa.config.Config.BASE_URL + 'ledger/zhiye/cost/update',
 
         bodyStyle: "padyeng:10px",
         items: [
@@ -33,8 +33,10 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostInfo', {
                 layout: 'form',
                 items: [
                     { fieldLabel: 'Id', name: 'id', xtype: 'textfield', hidden: true },
-                    { fieldLabel: '地块', name: 'area', xtype: 'landCombo', allowBlank: false },
-                    { fieldLabel: '成本科目', name: 'subjectId', xtype: 'textfield' },
+                    { fieldLabel: '年', name: 'year', xtype: 'numberfield', allowBlank: false },
+                    { fieldLabel: '月', name: 'month', xtype: 'monthCombo', allowBlank: false },
+                    { fieldLabel: '地块', name: 'landId', xtype: 'landCombo', allowBlank: false },
+                    { fieldLabel: '成本科目', name: 'subjectId', xtype: 'textfield' }
                 ]
             },
             {
@@ -46,7 +48,7 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostInfo', {
                 items: [
                     { fieldLabel: '预计投入金额', name: 'expectInvest', xtype: 'numberfield' },
                     { fieldLabel: '已签合同金额', name: 'contractAmount', xtype: 'numberfield' },
-                    { fieldLabel: '已履约金额', name: 'performanceAmount', xtype: 'numberfield' },
+                    { fieldLabel: '已履约金额', name: 'performanceAmount', xtype: 'numberfield' }
                 ]
             },
             {
@@ -74,7 +76,7 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostInfo', {
                         }
                     }
                 ]
-            },
+            }
 
         ],
         buttons: [{
@@ -85,7 +87,7 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

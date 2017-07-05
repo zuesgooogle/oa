@@ -93,5 +93,5 @@ Ext.define('oa.view.workflow.WorkflowController', {
                 });
             }
         });
-    },
+    }
 });

@@ -2,6 +2,16 @@ package com.s4game.oa.common.data;
 
 public class Page {
 	
+	/**
+	 * 默认 第一页
+	 */
+	public static final String PAGE = "1";
+	
+	/**
+	 * 默认 每页数据数量
+	 */
+	public static final String LIMIT = "25";
+	
 	private Integer pageNum = 1;
 	
 	private Integer pageSize = 10;

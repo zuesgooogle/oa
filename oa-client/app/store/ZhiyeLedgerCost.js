@@ -9,7 +9,7 @@ Ext.define('oa.store.ZhiyeLedgerCost', {
     proxy: {
 
         type: 'ajax',
-        url: oa.config.Config.BASE_URL + 'zhiye/ledger/cost/list',
+        url: oa.config.Config.BASE_URL + 'ledger/zhiye/cost/list',
         reader: {
             type: 'json',
             rootProperty: 'data',

@@ -12,7 +12,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostInfo', {
     resizable: false,
 
     width: 800,
-    height: 600,
+    height: 700,
     scrollable: true,
     closeAction: 'destroy',
 
@@ -23,7 +23,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostInfo', {
             anchor: '100%'
         },
         method: 'POST',
-        url: oa.config.Config.BASE_URL + 'zhidi/ledger/cost/update',
+        url: oa.config.Config.BASE_URL + 'ledger/zhidi/cost/update',
 
         bodyStyle: "padding:10px",
         items: [
@@ -33,8 +33,10 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostInfo', {
                 layout: 'form',
                 items: [
                     { fieldLabel: 'Id', name: 'id', xtype: 'textfield', hidden: true },
-                    { fieldLabel: '片区', name: 'area', xtype: 'areaCombo', allowBlank: false },
-                    { fieldLabel: '成本科目', name: 'subjectId', xtype: 'textfield' },
+                    { fieldLabel: '年', name: 'year', xtype: 'numberfield', allowBlank: false },
+                    { fieldLabel: '月', name: 'month', xtype: 'monthCombo', allowBlank: false },
+                    { fieldLabel: '片区', name: 'areaId', xtype: 'areaCombo', allowBlank: false },
+                    { fieldLabel: '成本科目', name: 'subjectId', xtype: 'textfield' }
                 ]
             },
             {
@@ -47,7 +49,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostInfo', {
                     { fieldLabel: '可研测算金额', name: 'calculateInvest', xtype: 'numberfield' },
                     { fieldLabel: '预计投入金额', name: 'expectInvest', xtype: 'numberfield' },
                     { fieldLabel: '累计投入', name: 'totalInvest', xtype: 'numberfield' },
-                    { fieldLabel: '审计资料统计金额', name: 'auditStatistics', xtype: 'numberfield' },
+                    { fieldLabel: '审计资料统计金额', name: 'auditStatistics', xtype: 'numberfield' }
                 ]
             },
             {
@@ -59,7 +61,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostInfo', {
                 items: [
                     { fieldLabel: '政府确认金额', name: 'govConfirm', xtype: 'numberfield' },
                     { fieldLabel: '政府程序金额', name: 'govCheck', xtype: 'numberfield' },
-                    { fieldLabel: '未核对金额', name: 'uncheck', xtype: 'numberfield' },
+                    { fieldLabel: '未核对金额', name: 'uncheck', xtype: 'numberfield' }
                 ]
             },
             {
@@ -76,7 +78,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostInfo', {
                         }
                     }
                 ]
-            },
+            }
 
         ],
         buttons: [{
@@ -87,7 +89,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {

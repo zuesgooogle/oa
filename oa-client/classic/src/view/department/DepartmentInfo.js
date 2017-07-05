@@ -46,7 +46,7 @@ Ext.define('oa.view.department.DeparmentInfo', {
             handler: function () {
                 this.up("window").close();
             }
-        }],
+        }]
     }],
 
     initComponent: function () {
