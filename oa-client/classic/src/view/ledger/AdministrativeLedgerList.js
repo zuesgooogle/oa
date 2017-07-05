@@ -44,13 +44,9 @@ Ext.define('oa.view.ledger.AdministrativeLedgerList', {
         { text: 'Id', dataIndex: 'id', width: 100 },
         { text: '片区', dataIndex: 'area', width: 100 },
         { text: '成本科目', dataIndex: 'subjectId', width: 100 },
-        { text: '可研测算金额', dataIndex: 'calculateInvest', width: 100 },
-        { text: '预计投资额', dataIndex: 'expectInvest', width: 100 },
-        { text: '累计投入', dataIndex: 'totalInvest', width: 100 },
-        { text: '审计资料统计金额', dataIndex: 'auditStatistics', width: 150 },
-        { text: '政府确认金额', dataIndex: 'govConfirm', width: 100 },
-        { text: '政府程序金额', dataIndex: 'govCheck', width: 100 },
-        { text: '未核对金额', dataIndex: 'uncheck', width: 100 },
+        { text: '名称', dataIndex: 'name', width: 100 },
+        { text: '应支付金额', dataIndex: 'payableAmount', width: 100 },
+        { text: '签约方', dataIndex: 'signatory', width: 100 },
         {
             text: '时间', dataIndex: 'createTime', width: 200,
             renderer: function (value, cellmeta, record) {

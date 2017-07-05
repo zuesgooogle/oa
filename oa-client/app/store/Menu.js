@@ -10,9 +10,8 @@ Ext.define('oa.store.Menu', {
                 text: '经营管理', expanded: true, iconCls: 'x-fa fa-cart-plus', children: [
                     { text: '成本台账(置地)', action: 'zhidiLedgerCostList', iconCls: 'fa-hourglass', leaf: true },
                     { text: '成本台账(置业)', action: 'zhiyeLedgerCostList', iconCls: 'fa-hourglass-end', leaf: true },
-                    { text: '合同台账', leaf: true },
-                    { text: '行政收费台账', leaf: true },
-                    { text: '费用报销台账', leaf: true },
+                    { text: '合同台账', iconCls: 'x-fa fa-thumbs-up', leaf: true },
+                    { text: '行政收费台账', action: 'administrativeLedgerList', iconCls: 'x-fa fa-tint', leaf: true },
                     { text: '合格供方名录', action: 'providerDirectoryList', iconCls: 'x-fa fa-user', leaf: true }
                 ]
             },

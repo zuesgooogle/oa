@@ -37,6 +37,14 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
             iconCls: 'x-fa fa-remove',
             disabled: true,
             handler: 'deleteZhidiLedgerCost'
+        },
+        '->',
+        {
+            xtype: 'button',
+            itemId: 'report',
+            text: '查看汇总',
+            iconCls: 'x-fa fa-bar-chart',
+            handler: 'viewReport'
         }]
     },
 

@@ -72,4 +72,21 @@
     update_time
     from oa_ledger_zhidi_cost
   </select>
+  
+  
+  <select id="selectReport" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	select area_id, subject_id, 
+
+	sum(calculate_invest) as calculate_invest,
+	sum(expect_invest) as expect_invest,
+	sum(total_invest) as total_invest,
+	sum(audit_statistics) as audit_statistics,
+	sum(gov_confirm) as gov_confirm,
+	sum(gov_check) as gov_check,
+	sum(uncheck) as uncheck
+	
+	from oa_ledger_zhidi_cost 
+	
+	where `year` = #{year} group by area_id, subject_id
+  </select>
 </mapper>

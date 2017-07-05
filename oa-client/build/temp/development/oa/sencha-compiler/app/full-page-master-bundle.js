@@ -1,2 +1,2 @@
 // @tag full-page
-// @require D:\github\oa\oa-client\app.js
+// @require /Users/max/git/oa/oa-client/app.js

@@ -13,4 +13,7 @@ public interface ZhidiLedgerCostMapper {
     List<ZhidiLedgerCost> selectAll();
 
     int updateByPrimaryKey(ZhidiLedgerCost record);
+    
+    
+    List<ZhidiLedgerCost> selectReport(Integer year);
 }

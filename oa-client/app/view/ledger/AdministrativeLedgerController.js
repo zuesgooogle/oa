@@ -1,38 +1,38 @@
-Ext.define('oa.view.ledger.ZhidiLedgerCostController', {
+Ext.define('oa.view.ledger.administrativeLedgerController', {
     extend: 'Ext.app.ViewController',
 
-    alias: 'controller.zhidiLedgerCost',
+    alias: 'controller.administrativeLedger',
 
-    addZhidiLedgerCost: function (sender) {
-        var info = Ext.getCmp('zhidiLedgerCostInfo');
+    addAdministrativeLedger: function (sender) {
+        var info = Ext.getCmp('administrativeLedgerInfo');
         if (info == null) {
-            info = Ext.create('zhidiLedgerCostInfo');
+            info = Ext.create('administrativeLedgerInfo');
         }
         info.show();
     },
 
-    viewZhidiLedgerCost: function (sender) {
-        var gird = sender.up('zhidiLedgerCostList');
+    viewAdministrativeLedger: function (sender) {
+        var gird = sender.up('administrativeLedgerList');
         var record = gird.getSelectionModel().getSelection()[0];
 
-        var info = Ext.getCmp('zhidiLedgerCostInfo');
+        var info = Ext.getCmp('administrativeLedgerInfo');
         if (info == null) {
-            info = Ext.create('zhidiLedgerCostInfo');
+            info = Ext.create('administrativeLedgerInfo');
         }
 
         info.down('form').loadRecord(record);
         info.show();
     },
 
-    updateZhidiLedgerCost: function (sender) {
+    updateAdministrativeLedger: function (sender) {
         var form = sender.up('form').getForm();
         if (form.isValid()) {
             form.submit({
                 success: function (form, action) {
                     var data = action.result.data;
 
-                    var zhidiLedgerCostList = Ext.getCmp('zhidiLedgerCostList');
-                    var store = zhidiLedgerCostList.store;
+                    var administrativeLedgerList = Ext.getCmp('administrativeLedgerList');
+                    var store = administrativeLedgerList.store;
                     var record = store.getById(data.id);
                     if (record != null) {
                         record.data = data;
@@ -41,7 +41,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostController', {
                     }
 
                     // refresh grid view
-                    zhidiLedgerCostList.getView().refresh();
+                    administrativeLedgerList.getView().refresh();
                     // window close
                     sender.up("window").close();
                 },
@@ -52,14 +52,14 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostController', {
         }
     },
 
-    deleteZhidiLedgerCost: function (sender) {
-        var gird = sender.up('zhidiLedgerCostList');
+    deleteAdministrativeLedger: function (sender) {
+        var gird = sender.up('administrativeLedgerList');
         var record = gird.getSelectionModel().getSelection()[0];
 
         Ext.MessageBox.confirm("删除台账", "您确认要删除台账吗？", function (btn) {
             if (btn == 'yes') {
                 Ext.Ajax.request({
-                    url: oa.config.Config.BASE_URL + 'zhidi/ledger/cost/delete',
+                    url: oa.config.Config.BASE_URL + 'ledger/administrative/delete',
                     method: 'POST',
                     params: {
                         id: record.data.id
@@ -74,20 +74,6 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostController', {
                 });
             }
         });
-    },
-    viewReport: function() {
-        var workspace = Ext.getCmp('workspace');
-            report = Ext.getCmp('zhidiLedgerCostReport');
-
-            if (report == null) {
-                report = Ext.create('zhidiLedgerCostReport');
-                workspace.add(report);
-            }
-            workspace.setActiveTab(report);
-    },
-
-    doReport: function() {
-        
     }
 
 });

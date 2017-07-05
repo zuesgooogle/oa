@@ -2,6 +2,7 @@ package com.s4game.oa.manager.web;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -113,4 +114,16 @@ public class ZhidiLedgerCostController {
 
 		return response.build();
 	}
+	
+	@ApiOperation(value = "汇总台账")
+	@RequestMapping(value = "/report", method = { RequestMethod.GET, RequestMethod.POST })
+	public Response report(@ApiParam(value = "年份") @RequestParam(value = "year", required = true) Integer year) {
+		Response.Builder response = Response.newBuilder();
+
+		List<ZhidiLedgerCost> results = ledgerCostMapper.selectReport(year);
+
+		response.setData(results);
+		return response.build();
+	}
+		
 }
