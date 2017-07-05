@@ -390,8 +390,9 @@ CREATE TABLE `oa_ledger_administrative` (
 DROP TABLE IF EXISTS `oa_ledger_zhidi_cost`;
 CREATE TABLE `oa_ledger_zhidi_cost` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `serial_number` varchar(20) DEFAULT NULL COMMENT '序号',
-  `area` int(11) NOT NULL COMMENT '片区',
+  `year` smallint(6) NOT NULL COMMENT '年',
+  `month` smallint(6) NOT NULL COMMENT '月',
+  `area_id` int(11) NOT NULL COMMENT '片区',
   `subject_id` int(11) NOT NULL COMMENT '成本科目ID',
   `project_name` varchar(64) DEFAULT NULL COMMENT '成本项目名称',
   `calculate_invest` decimal(10,2) NOT NULL COMMENT '可研测算金额',
@@ -410,7 +411,7 @@ CREATE TABLE `oa_ledger_zhidi_cost` (
 -- ----------------------------
 -- Records of oa_ledger_zhidi_cost
 -- ----------------------------
-INSERT INTO `oa_ledger_zhidi_cost` VALUES ('1', null, '1', '1', null, '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1', '2017-07-03 19:51:28', '2017-07-03 19:51:28');
+INSERT INTO `oa_ledger_zhidi_cost` VALUES ('1', '2016', '1', '1', '1', null, '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1', '2017-07-05 17:50:00', '2017-07-05 17:50:00');
 
 -- ----------------------------
 -- Table structure for oa_ledger_zhiye_cost
@@ -418,8 +419,9 @@ INSERT INTO `oa_ledger_zhidi_cost` VALUES ('1', null, '1', '1', null, '1.00', '1
 DROP TABLE IF EXISTS `oa_ledger_zhiye_cost`;
 CREATE TABLE `oa_ledger_zhiye_cost` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `serial_number` varchar(20) DEFAULT NULL COMMENT '序号',
-  `area` int(11) NOT NULL COMMENT '片区',
+  `year` smallint(6) NOT NULL COMMENT '年',
+  `month` smallint(6) NOT NULL COMMENT '月',
+  `land_id` int(11) NOT NULL COMMENT '地块',
   `subject_id` int(11) NOT NULL COMMENT '成本科目ID',
   `project_name` varchar(64) DEFAULT NULL,
   `expect_invest` decimal(10,2) NOT NULL COMMENT '预计投入金额',
@@ -436,7 +438,7 @@ CREATE TABLE `oa_ledger_zhiye_cost` (
 -- ----------------------------
 -- Records of oa_ledger_zhiye_cost
 -- ----------------------------
-INSERT INTO `oa_ledger_zhiye_cost` VALUES ('1', null, '1', '2', null, '1.00', '1.00', '1.00', '1.00', '1.00', '1', '2017-07-03 19:53:18', '2017-07-03 19:53:18');
+INSERT INTO `oa_ledger_zhiye_cost` VALUES ('1', '2017', '2', '2', '1', null, '1.00', '1.00', '1.00', '1.00', '1.00', '1', '2017-07-05 17:50:39', '2017-07-05 17:50:38');
 
 -- ----------------------------
 -- Table structure for oa_plan_assert_month
@@ -979,4 +981,14 @@ CREATE TABLE `oa_user_process` (
   `create_time` datetime NOT NULL COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间，自动填充，程序不需要处理',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COMMENT='用户任务';
+) ENGINE=InnoDB AUTO_INCREMENT=1115 DEFAULT CHARSET=utf8 COMMENT='用户任务';
+
+-- ----------------------------
+-- Records of oa_user_process
+-- ----------------------------
+INSERT INTO `oa_user_process` VALUES ('1110', '47507', '1', '1', '1', '1', null, null, 'deptManager', null, '2017-07-02 21:40:53', null, '2017-07-02 21:40:53', '2017-07-02 21:40:54');
+INSERT INTO `oa_user_process` VALUES ('1111', '47515', '1', '1', '1', '1', null, null, 'deptManager', null, '2017-07-02 21:54:08', null, '2017-07-02 21:54:08', '2017-07-02 21:54:08');
+INSERT INTO `oa_user_process` VALUES ('1112', '47523', '1', '1', '1', '1', null, null, 'deptManager', null, '2017-07-02 21:54:33', null, '2017-07-02 21:54:33', '2017-07-02 21:54:33');
+INSERT INTO `oa_user_process` VALUES ('1113', '47531', '1', '1', '1', '1', null, null, 'deptManager', null, '2017-07-02 21:55:33', null, '2017-07-02 21:55:33', '2017-07-02 21:55:32');
+INSERT INTO `oa_user_process` VALUES ('1114', '47539', '1', '1', '1', '1', null, null, 'deptManager', null, '2017-07-02 21:57:23', null, '2017-07-02 21:57:23', '2017-07-02 21:57:23');
+
