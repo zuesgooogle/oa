@@ -301,7 +301,7 @@ CREATE TABLE `oa_financing_ledger` (
 -- ----------------------------
 -- Records of oa_financing_ledger
 -- ----------------------------
-INSERT INTO `oa_financing_ledger` VALUES ('1', '2017', '12', '1', '5', '1', '1.00', '1.00', '1.00', '1.00', '1.00', '1', '1', '1', '1', '2017-07-04 15:40:03', '2017-07-04 15:40:02');
+INSERT INTO `oa_financing_ledger` VALUES ('1', '2016', '12', '1', '5', '1', '1.00', '1.00', '1.00', '1.00', '1.00', '1', '1', '1', '1', '2017-07-04 15:40:03', '2017-07-04 15:40:02');
 
 -- ----------------------------
 -- Table structure for oa_financing_progress
@@ -406,12 +406,14 @@ CREATE TABLE `oa_ledger_zhidi_cost` (
   `create_time` datetime NOT NULL,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of oa_ledger_zhidi_cost
 -- ----------------------------
 INSERT INTO `oa_ledger_zhidi_cost` VALUES ('1', '2016', '1', '1', '1', null, '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1', '2017-07-05 17:50:00', '2017-07-05 17:50:00');
+INSERT INTO `oa_ledger_zhidi_cost` VALUES ('2', '2017', '1', '1', '1', null, '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '', '2017-07-06 10:30:12', '2017-07-06 10:30:12');
+INSERT INTO `oa_ledger_zhidi_cost` VALUES ('3', '2017', '2', '2', '1', null, '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1', '2017-07-06 10:30:22', '2017-07-06 10:30:21');
 
 -- ----------------------------
 -- Table structure for oa_ledger_zhiye_cost
@@ -686,9 +688,36 @@ CREATE TABLE `oa_plan_money_out_year` (
 -- ----------------------------
 -- Records of oa_plan_money_out_year
 -- ----------------------------
-INSERT INTO `oa_plan_money_out_year` VALUES ('1', '1', '1', null, null, null, '1', '1.00', '12.00', '2017', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2017-07-01 18:44:32', '2017-07-01 18:45:51');
-INSERT INTO `oa_plan_money_out_year` VALUES ('2', '1', '1', null, null, null, '1', '1.00', '1.00', '2018', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2017-07-01 19:03:15', '2017-07-01 19:03:14');
-INSERT INTO `oa_plan_money_out_year` VALUES ('3', '1', '1', null, null, null, '1', '1.00', '1.00', '2020', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2017-07-01 19:14:06', '2017-07-01 19:14:06');
+INSERT INTO `oa_plan_money_out_year` VALUES ('1', '1', '1', null, null, null, '1', '1.00', '12.00', '2022', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2017-07-01 18:44:32', '2017-07-01 18:45:51');
+INSERT INTO `oa_plan_money_out_year` VALUES ('2', '1', '1', null, null, null, '1', '1.00', '1.00', '2017', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2017-07-01 19:03:15', '2017-07-01 19:03:14');
+INSERT INTO `oa_plan_money_out_year` VALUES ('3', '1', '1', null, null, null, '1', '1.00', '1.00', '2016', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2017-07-01 19:14:06', '2017-07-01 19:14:06');
+
+-- ----------------------------
+-- Table structure for oa_plan_repay
+-- ----------------------------
+DROP TABLE IF EXISTS `oa_plan_repay`;
+CREATE TABLE `oa_plan_repay` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `year` smallint(6) NOT NULL COMMENT '年',
+  `month` smallint(6) NOT NULL COMMENT '月',
+  `bank_id` int(11) NOT NULL COMMENT '单位/公司',
+  `project_name` varchar(64) NOT NULL COMMENT '项目',
+  `total_loan_amount` decimal(20,2) NOT NULL COMMENT '累计已放款金额',
+  `plan_amount` decimal(20,2) NOT NULL COMMENT '本月计划还款金额',
+  `plan_remain_loan_amount` decimal(20,2) NOT NULL COMMENT '计划还款贷款余额',
+  `actual_amount` decimal(20,2) NOT NULL COMMENT '实际本月还款金额',
+  `actual_remain_loan_amount` decimal(20,2) NOT NULL COMMENT '实际还款贷款余额',
+  `remark` varchar(255) DEFAULT NULL,
+  `create_time` datetime NOT NULL,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of oa_plan_repay
+-- ----------------------------
+INSERT INTO `oa_plan_repay` VALUES ('3', '2016', '2', '1', '1', '1.00', '1.00', '1.00', '1.00', '1.00', '1', '2017-07-06 17:20:37', '2017-07-06 17:20:37');
+INSERT INTO `oa_plan_repay` VALUES ('4', '2017', '2', '2', '1', '1.00', '1.00', '1.00', '1.00', '1.00', '1', '2017-07-06 17:22:21', '2017-07-06 17:22:21');
 
 -- ----------------------------
 -- Table structure for oa_position
@@ -991,4 +1020,3 @@ INSERT INTO `oa_user_process` VALUES ('1111', '47515', '1', '1', '1', '1', null,
 INSERT INTO `oa_user_process` VALUES ('1112', '47523', '1', '1', '1', '1', null, null, 'deptManager', null, '2017-07-02 21:54:33', null, '2017-07-02 21:54:33', '2017-07-02 21:54:33');
 INSERT INTO `oa_user_process` VALUES ('1113', '47531', '1', '1', '1', '1', null, null, 'deptManager', null, '2017-07-02 21:55:33', null, '2017-07-02 21:55:33', '2017-07-02 21:55:32');
 INSERT INTO `oa_user_process` VALUES ('1114', '47539', '1', '1', '1', '1', null, null, 'deptManager', null, '2017-07-02 21:57:23', null, '2017-07-02 21:57:23', '2017-07-02 21:57:23');
-
