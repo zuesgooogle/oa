@@ -130,6 +130,12 @@
 		<table tableName="oa_plan_assert_year" domainObjectName="PlanAssertYear" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
+		<!-- 还款计划 -->
+		<table tableName="oa_plan_repay" domainObjectName="PlanRepay" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		
+		
 		<!-- 融资计划管理 -->
 		<table tableName="oa_financing_progress" domainObjectName="FinancingProgress" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />

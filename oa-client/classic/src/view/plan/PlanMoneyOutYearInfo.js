@@ -35,7 +35,7 @@ Ext.define('oa.view.plan.PlanMoneyOutYearInfo', {
                 style: "padding: 5px",
                 items: [
                     { fieldLabel: 'Id', name: 'id', xtype: 'textfield', hidden: true },
-                    { fieldLabel: '年份', name: 'year', xtype: 'numberfield', allowBlank: false },
+                    { fieldLabel: '年份', name: 'year', xtype: 'yearCombo', allowBlank: false },
                     { name: 'company', xtype: 'companyCombo', allowBlank: false },
                     { fieldLabel: '部门', name: 'departmentId', xtype: 'textfield', allowBlank: false }
                 ]

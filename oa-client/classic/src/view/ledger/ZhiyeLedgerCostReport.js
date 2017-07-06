@@ -1,17 +1,17 @@
-Ext.define('oa.view.ledger.ZhidiLedgerCostReport', {
+Ext.define('oa.view.ledger.ZhiyeLedgerCostReport', {
     extend: 'Ext.grid.Panel',
-    xtype: 'zhidiLedgerCostReport',
+    xtype: 'ZhiyeLedgerCostReport',
 
-    id: 'zhidiLedgerCostReport',
-    alias: 'zhidiLedgerCostReport',
+    id: 'zhiyeLedgerCostReport',
+    alias: 'zhiyeLedgerCostReport',
 
     requires: [
-        'oa.store.ZhidiLedgerCost'
+        'oa.store.ZhiyeLedgerCost'
     ],
 
-    controller: 'zhidiLedgerCost',
+    controller: 'zhiyeLedgerCost',
 
-    title: '成本台账汇总（置地）',
+    title: '成本台账汇总（置业）',
     scrollable: true,
     closable: true,
 
@@ -32,20 +32,18 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostReport', {
     },
 
     store: {
-        type: 'zhidiLedgerCost'
+        type: 'zhiyeLedgerCost'
     },
 
     columns: [
         { header: '序号', xtype: 'rownumberer', width: 60, align: 'center', sortable: false },
-        { text: '片区', dataIndex: 'areaId', width: 100 },
+        { text: '地块', dataIndex: 'landId', width: 100 },
         { text: '成本科目', dataIndex: 'subjectId', width: 100 },
-        { text: '可研测算金额', dataIndex: 'calculateInvest', width: 100 },
         { text: '预计投资额', dataIndex: 'expectInvest', width: 100 },
-        { text: '累计投入', dataIndex: 'totalInvest', width: 100 },
-        { text: '审计资料统计金额', dataIndex: 'auditStatistics', width: 150 },
-        { text: '政府确认金额', dataIndex: 'govConfirm', width: 100 },
-        { text: '政府程序金额', dataIndex: 'govCheck', width: 100 },
-        { text: '未核对金额', dataIndex: 'uncheck', width: 100 },
+        { text: '已签合同金额', dataIndex: 'contractAmount', width: 100 },
+        { text: '已履约金额', dataIndex: 'performanceAmount', width: 150 },
+        { text: '已付金额', dataIndex: 'paidAmount', width: 100 },
+        { text: '已结束金额', dataIndex: 'settledAccount', width: 100 },
         { flex: 1 }
     ],
     bbar: {
@@ -63,7 +61,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostReport', {
                 proxy = store.getProxy();
 
             var now = Ext.Date.format(new Date(), 'Y');
-            proxy.url = oa.config.Config.BASE_URL + 'ledger/zhidi/cost/report';
+            proxy.url = oa.config.Config.BASE_URL + 'ledger/zhiye/cost/report';
             proxy.extraParams = { year: now };
 
             store.load();

@@ -1,7 +1,8 @@
 package com.s4game.oa.common.mapper;
 
-import com.s4game.oa.common.entity.ZhiyeLedgerCost;
 import java.util.List;
+
+import com.s4game.oa.common.entity.ZhiyeLedgerCost;
 
 public interface ZhiyeLedgerCostMapper {
     int deleteByPrimaryKey(Long id);
@@ -13,4 +14,7 @@ public interface ZhiyeLedgerCostMapper {
     List<ZhiyeLedgerCost> selectAll();
 
     int updateByPrimaryKey(ZhiyeLedgerCost record);
+    
+    
+    List<ZhiyeLedgerCost> selectReport(Integer year);
 }

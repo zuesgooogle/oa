@@ -64,4 +64,18 @@
     performance_amount, paid_amount, settled_account, remark, create_time, update_time
     from oa_ledger_zhiye_cost
   </select>
+  
+    <select id="selectReport" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	select land_id, subject_id, 
+
+	sum(expect_invest) as expect_invest,
+	sum(contract_amount) as contract_amount,
+	sum(performance_amount) as performance_amount,
+	sum(paid_amount) as paid_amount,
+	sum(settled_account) as settled_account
+
+	from oa_ledger_zhiye_cost 
+	
+	where `year` = #{year} group by land_id, subject_id
+  </select>
 </mapper>

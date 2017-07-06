@@ -86,8 +86,18 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostController', {
             workspace.setActiveTab(report);
     },
 
-    doReport: function() {
-        
+    doReport: function(sender) {
+        var grid = sender.up('grid');
+            year = grid.down('#year').getValue();
+
+            store = grid.getStore();
+            proxy = store.getProxy();
+
+            now = Ext.Date.format(new Date(), 'Y');
+            proxy.url = oa.config.Config.BASE_URL + 'ledger/zhidi/cost/report';
+            proxy.extraParams = { year: year };
+
+            store.load();
     }
 
 });

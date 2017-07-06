@@ -16,17 +16,26 @@ Ext.define('oa.ux.YearCombo', {
     displayField: 'name',
     valueField: 'id',
 
+    initComponent: function() {
+        var year = Ext.Date.format(new Date(), 'Y');
+            start = parseInt(year) + 5;
+            end = parseInt(year) - 100;
+            years = [];
+
+        for (var i = start; i > end; i--) {
+            years.push([i, i]);
+        }
+        this.store.loadData(years);
+
+        this.callParent();
+    },
+
     listeners: {
         beforerender: function() {
-            var now = Ext.Date.format(new Date(), 'Y');
-            var years = [];
-
-            for (var i = now; i > 1900; i--) {
-                years.push([i, i]);
+            if (this.getValue() == null) {
+                var now = Ext.Date.format(new Date(), 'Y');
+                this.setValue(now);
             }
-            this.store.loadData(years);
-
-            this.setValue(now);
         }
     }
 });

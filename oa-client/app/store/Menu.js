@@ -40,6 +40,7 @@ Ext.define('oa.store.Menu', {
                             { text: '年度', action: 'planAssertYearList', iconCls: 'x-fa fa-calendar', leaf: true }
                         ]
                     },
+                    { text: '还款计划', action: 'planRepayList', iconCls: 'fa-credit-card', leaf: true },
                     { text: '融资进度管理', action: 'financingList', iconCls: 'fa-random', leaf: true },
                     { text: '融资台账', action: 'financingLedgerList', iconCls: 'fa-recycle', leaf: true }
                 ]

@@ -24,7 +24,7 @@ Ext.define('oa.view.main.Main', {
 
     items: [{
         region: 'north',
-        title: '天津京宝置业有限公司OA系统',
+        title: '天津京宝置地有限公司OA系统',
         height: 50,
         html: '',
         scrollable: false,
@@ -76,7 +76,7 @@ Ext.define('oa.view.main.Main', {
         collapsible: false,
         split: true,
         defaultAlign: 'center',
-        html: '<div style="text-align: center"><p>天津京宝置业有限公司 Copyright © 2009-2018</p></div>'
+        html: '<div style="text-align: center"><p>天津京宝置地有限公司 Copyright © 2009-2018</p></div>'
     }]
 
 });

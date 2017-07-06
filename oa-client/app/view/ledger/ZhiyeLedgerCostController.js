@@ -76,6 +76,31 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostController', {
                 });
             }
         });
+    },
+
+    viewReport: function() {
+        var workspace = Ext.getCmp('workspace');
+            report = Ext.getCmp('zhiyeLedgerCostReport');
+
+            if (report == null) {
+                report = Ext.create('zhiyeLedgerCostReport');
+                workspace.add(report);
+            }
+            workspace.setActiveTab(report);
+    },
+
+    doReport: function(sender) {
+        var grid = sender.up('grid');
+            year = grid.down('#year').getValue();
+
+            store = grid.getStore();
+            proxy = store.getProxy();
+
+            now = Ext.Date.format(new Date(), 'Y');
+            proxy.url = oa.config.Config.BASE_URL + 'ledger/zhiye/cost/report';
+            proxy.extraParams = { year: year };
+
+            store.load();
     }
 
 });

@@ -28,7 +28,7 @@ Ext.define('oa.view.develop.financingLedgerInfo', {
         bodyStyle: "padding:10px 10px 10px 10px",
         items: [
             { fieldLabel: 'ID', name: 'id', xtype: 'numberfield', hidden: true},
-            { fieldLabel: '年', name: 'year', xtype: 'numberfield', allowBlank: false },
+            { fieldLabel: '年', name: 'year', xtype: 'yearCombo', allowBlank: false },
             { fieldLabel: '月', name: 'month', xtype: 'monthCombo', allowBlank: false },
             { fieldLabel: '类型', name: 'type', xtype: 'numberfield', allowBlank: false },
             { fieldLabel: '银行', name: 'bankId', xtype: 'bankCombo', allowBlank: false },
