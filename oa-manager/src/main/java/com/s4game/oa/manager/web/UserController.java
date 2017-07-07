@@ -39,12 +39,12 @@ public class UserController {
 	@ApiOperation(value = "用户登录")
 	@RequestMapping(value = "/login")
 	public Response login(
-			@ApiParam(value = "用户名") @RequestParam(value = "username", required = true) String username,
+			@ApiParam(value = "手机号") @RequestParam(value = "mobile", required = true) String mobile,
 			@ApiParam(value = "密码") @RequestParam(value = "password", required = true) String password
 			) {
 		Response.Builder response = Response.newBuilder();
 		
-		User user = userService.findByUsername(username);
+		User user = userService.findByMobile(mobile);
 		if (user == null) {
 			return response.failure("用户名或者密码错误").build();
 		}
@@ -74,11 +74,10 @@ public class UserController {
 	public Response update(
 			@ApiParam(value = "用户ID") @RequestParam(value = "id", required = true) Long id,
 			@ApiParam(value = "用户名") @RequestParam(value = "username", required = true) String username,
+			@ApiParam(value = "北京号码") @RequestParam(value = "mobile", required = true) String mobile,
 			@ApiParam(value = "部门") @RequestParam(value = "departmentids", required = true) String departmentids,
 			@ApiParam(value = "职位") @RequestParam(value = "positionids", required = true) String positionids,
 			@ApiParam(value = "房间号") @RequestParam(value = "roomId", required = false) Integer roomId,
-			@ApiParam(value = "北京号码") @RequestParam(value = "beijingMobile", required = false) String beijingMobile,
-			@ApiParam(value = "天津号码") @RequestParam(value = "tianjingMobile", required = false) String tianjingMobile,
 			@ApiParam(value = "备注") @RequestParam(value = "remark", required = false) String remark
 			) {
 		Response.Builder response = Response.newBuilder();
@@ -86,14 +85,11 @@ public class UserController {
 		User user = new User();
 		user.setId(id);
 		user.setUsername(username);
-//		user.setPassword(passwordEncoder.encode("123456"));
+		user.setMobile(mobile);
 		user.setPassword("123456");
 		user.setDepartmentids(departmentids);
 		user.setPositionids(positionids);
 		user.setRoomId(roomId);
-		user.setBeijingMobile(beijingMobile);
-		user.setTianjingMobile(tianjingMobile);
-		user.setRemark(remark);
 		
 		userService.updateUser(user);
 		

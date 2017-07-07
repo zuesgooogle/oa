@@ -29,11 +29,10 @@ Ext.define('oa.view.user.UserInfo', {
         items: [
             { fieldLabel: 'Id', name: 'id', xtype: 'textfield', hidden: true },
             { fieldLabel: '用户名', name: 'username', xtype: 'textfield', allowBlank: false },
+            { fieldLabel: '手机号', name: 'mobile', xtype: 'textfield', allowBlank: false },
             { name: 'departmentids', xtype: 'departmentMultiSelect', allowBlank: false },
             { name: 'positionids', xtype: 'positionMultiSelect', allowBlank: false },
             { fieldLabel: '房间号', name: 'roomId', xtype: 'numberfield', allowBlank: false },
-            { fieldLabel: '北京号码', name: 'beijingMobile', xtype: 'textfield' },
-            { fieldLabel: '天津号码', name: 'tianjingMobile', xtype: 'textfield' },
 
             { fieldLabel: '备注', name: 'remark', xtype: 'textfield' },
             {

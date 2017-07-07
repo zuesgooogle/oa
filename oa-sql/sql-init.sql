@@ -922,12 +922,11 @@ INSERT INTO `oa_task_classifi` VALUES ('3', '1', '3333', '2017-07-03 19:42:08', 
 DROP TABLE IF EXISTS `oa_user`;
 CREATE TABLE `oa_user` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `mobile` varchar(16) NOT NULL,
   `username` varchar(32) NOT NULL,
   `password` varchar(256) NOT NULL,
   `departmentIds` varchar(64) NOT NULL,
   `positionIds` varchar(64) NOT NULL,
-  `beijing_mobile` varchar(32) DEFAULT NULL,
-  `tianjing_mobile` varchar(32) DEFAULT NULL,
   `room_id` int(11) DEFAULT NULL COMMENT '房间号',
   `remark` varchar(128) DEFAULT NULL,
   `deleted` tinyint(4) DEFAULT NULL,
@@ -939,8 +938,8 @@ CREATE TABLE `oa_user` (
 -- ----------------------------
 -- Records of oa_user
 -- ----------------------------
-INSERT INTO `oa_user` VALUES ('1', '123456', '123456', '1,2', '3,4,5,6', '1', '1', '1', '', null, '2017-06-22 17:25:04', '2017-07-04 20:51:02');
-INSERT INTO `oa_user` VALUES ('3', '222', '123456', '1,2', '1', '2', '2', '2', '', null, '2017-07-02 11:22:02', '2017-07-04 20:51:05');
+INSERT INTO `oa_user` VALUES ('1', '123456', '123456', '123456', '1,2', '3,4,5,6', '1', '', null, '2017-06-22 17:25:04', '2017-07-04 20:51:02');
+INSERT INTO `oa_user` VALUES ('3', '2', '222', '123456', '1,2', '1', '2', '', null, '2017-07-02 11:22:02', '2017-07-04 20:51:05');
 
 -- ----------------------------
 -- Table structure for oa_user_department
@@ -951,7 +950,7 @@ CREATE TABLE `oa_user_department` (
   `user_id` int(11) NOT NULL,
   `department_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of oa_user_department
@@ -964,8 +963,8 @@ INSERT INTO `oa_user_department` VALUES ('5', '6', '1');
 INSERT INTO `oa_user_department` VALUES ('6', '6', '2');
 INSERT INTO `oa_user_department` VALUES ('7', '7', '1');
 INSERT INTO `oa_user_department` VALUES ('8', '7', '2');
-INSERT INTO `oa_user_department` VALUES ('17', '1', '1');
-INSERT INTO `oa_user_department` VALUES ('18', '1', '2');
+INSERT INTO `oa_user_department` VALUES ('19', '1', '1');
+INSERT INTO `oa_user_department` VALUES ('20', '1', '2');
 
 -- ----------------------------
 -- Table structure for oa_user_position
@@ -976,7 +975,7 @@ CREATE TABLE `oa_user_position` (
   `user_id` int(11) NOT NULL,
   `position_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of oa_user_position
@@ -985,10 +984,10 @@ INSERT INTO `oa_user_position` VALUES ('1', '4', '1');
 INSERT INTO `oa_user_position` VALUES ('2', '5', '1');
 INSERT INTO `oa_user_position` VALUES ('3', '6', '1');
 INSERT INTO `oa_user_position` VALUES ('4', '7', '1');
-INSERT INTO `oa_user_position` VALUES ('9', '1', '3');
-INSERT INTO `oa_user_position` VALUES ('10', '1', '4');
-INSERT INTO `oa_user_position` VALUES ('11', '1', '5');
-INSERT INTO `oa_user_position` VALUES ('12', '1', '6');
+INSERT INTO `oa_user_position` VALUES ('13', '1', '3');
+INSERT INTO `oa_user_position` VALUES ('14', '1', '4');
+INSERT INTO `oa_user_position` VALUES ('15', '1', '5');
+INSERT INTO `oa_user_position` VALUES ('16', '1', '6');
 
 -- ----------------------------
 -- Table structure for oa_user_process

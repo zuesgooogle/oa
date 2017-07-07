@@ -12,6 +12,7 @@ Ext.define('oa.view.login.Login', {
     title: '用户登录',
     closable: false,
     autoShow: true,
+    width: 350,
 
     items: {
         xtype: 'form',
@@ -27,18 +28,19 @@ Ext.define('oa.view.login.Login', {
         reference: 'form',
         items: [{
             xtype: 'textfield',
-            name: 'username',
-            fieldLabel: 'Username',
+            name: 'mobile',
+            fieldLabel: '手机号码',
             allowBlank: false
         }, {
             xtype: 'textfield',
             name: 'password',
             inputType: 'password',
-            fieldLabel: 'Password',
+            fieldLabel: '账号密码',
             allowBlank: false
         }, {
             xtype: 'displayfield',
             hideEmptyLabel: false,
+            itemId: 'errorMsg',
             value: 'Enter any non-blank password'
         }],
         buttons: [{

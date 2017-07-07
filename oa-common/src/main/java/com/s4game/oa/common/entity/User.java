@@ -5,6 +5,8 @@ import java.util.Date;
 public class User {
     private Long id;
 
+    private String mobile;
+
     private String username;
 
     private String password;
@@ -12,10 +14,6 @@ public class User {
     private String departmentids;
 
     private String positionids;
-
-    private String beijingMobile;
-
-    private String tianjingMobile;
 
     private Integer roomId;
 
@@ -33,6 +31,14 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile == null ? null : mobile.trim();
     }
 
     public String getUsername() {
@@ -65,22 +71,6 @@ public class User {
 
     public void setPositionids(String positionids) {
         this.positionids = positionids == null ? null : positionids.trim();
-    }
-
-    public String getBeijingMobile() {
-        return beijingMobile;
-    }
-
-    public void setBeijingMobile(String beijingMobile) {
-        this.beijingMobile = beijingMobile == null ? null : beijingMobile.trim();
-    }
-
-    public String getTianjingMobile() {
-        return tianjingMobile;
-    }
-
-    public void setTianjingMobile(String tianjingMobile) {
-        this.tianjingMobile = tianjingMobile == null ? null : tianjingMobile.trim();
     }
 
     public Integer getRoomId() {

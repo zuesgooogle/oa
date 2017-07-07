@@ -3,7 +3,6 @@ package com.s4game.oa.manager.service.impl;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,8 +34,6 @@ public class UserServiceImpl implements IUserService {
 	@Autowired
 	private UserDepartmentMapper userDepartmentMapper;
 	
-	private BeanCopier beanCopier = BeanCopier.create(User.class, User.class, false);
-	
 //	@Override
 //	public SessionUser loadUserByUsername(String username) throws UsernameNotFoundException {
 //		User user = userMapper.selectByUsername(username);
@@ -51,6 +48,11 @@ public class UserServiceImpl implements IUserService {
 //	}
 
 	@Override
+	public User findByMobile(String mobile) {
+		return userMapper.selectByMobile(mobile);
+	}
+	
+	@Override
 	public User findByUsername(String username) {
 		return userMapper.selectByUsername(username);
 	}
@@ -62,7 +64,11 @@ public class UserServiceImpl implements IUserService {
 			userMapper.insert(user);
 		} else {
 			User exist = userMapper.selectByPrimaryKey(user.getId());
-			beanCopier.copy(user, exist, null);
+			exist.setUsername(user.getUsername());
+			exist.setMobile(user.getMobile());
+			exist.setDepartmentids(user.getDepartmentids());
+			exist.setPositionids(user.getPositionids());
+			exist.setRoomId(user.getRoomId());
 			
 			userMapper.updateByPrimaryKey(exist);
 		}

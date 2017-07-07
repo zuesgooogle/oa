@@ -6,10 +6,9 @@ Ext.define('oa.model.User', {
         type: 'int'
     },
     'username',
+    'mobile',
     'departmentids',
     'positionids',
-    'beijingMobile',
-    'tianjingMobile',
     'roomId',
     'remark',
     {

@@ -20,7 +20,9 @@ Ext.define('oa.view.login.LoginController', {
                     });
                 },
                 failure: function(form, action) {
-                    Ext.Msg.alert('Failed', action.result.msg);
+                    var errorDisplay = form.owner.down('#errorMsg');
+                        errorDisplay.setValue(action.result.msg);
+
                 }
             });
         }

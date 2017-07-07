@@ -43,8 +43,7 @@ Ext.define('oa.view.user.UserList', {
     columns: [
         { text: 'ID', dataIndex: 'id', width: 100 },
         { text: '用户名', dataIndex: 'username', width: 100 },
-        { text: '北京号码', dataIndex: 'beijingMobile', width: 100 },
-        { text: '天津号码', dataIndex: 'tianjingMobile', width: 100 },
+        { text: '手机号', dataIndex: 'mobile', width: 100 },
         { text: '房间号', dataIndex: 'roomId', width: 100 },
         {
             text: '时间', dataIndex: 'createTime', width: 200,
