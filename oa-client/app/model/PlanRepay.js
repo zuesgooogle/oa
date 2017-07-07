@@ -9,6 +9,7 @@ Ext.define('oa.model.PlanRepay', {
     'month',
     'bankId',
     'projectName',
+    'contractName',
     'totalLoanAmount',
     'planAmount',
     'planRemainLoanAmount',

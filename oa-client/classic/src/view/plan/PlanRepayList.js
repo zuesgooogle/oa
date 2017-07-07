@@ -41,6 +41,7 @@ Ext.define('oa.view.plan.PlanRepayList', {
         { text: '月份', dataIndex: 'month', width: 50 },
         { text: '银行', dataIndex: 'bankId', width: 100 },
         { text: '项目', dataIndex: 'projectName', width: 100 },
+        { text: '合同', dataIndex: 'contractName', width: 100 },
         { text: '累计已放款金额', dataIndex: 'totalLoanAmount', width: 150 },
         { text: '本月计划还款金额', dataIndex: 'planAmount', width: 150 },
         { text: '计划还款贷款余额', dataIndex: 'planRemainLoanAmount', width: 150 },

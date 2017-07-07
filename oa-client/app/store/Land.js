@@ -3,6 +3,7 @@ Ext.define('oa.store.Land', {
 
     id: 'store.land',
     alias: 'store.land',
+    storeId: 'land',
 
     model: 'oa.model.Land',
     autoLoad: true,

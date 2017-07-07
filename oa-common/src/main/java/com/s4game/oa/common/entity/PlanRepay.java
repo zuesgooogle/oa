@@ -14,6 +14,8 @@ public class PlanRepay {
 
     private String projectName;
 
+    private String contractName;
+
     private BigDecimal totalLoanAmount;
 
     private BigDecimal planAmount;
@@ -68,6 +70,14 @@ public class PlanRepay {
 
     public void setProjectName(String projectName) {
         this.projectName = projectName == null ? null : projectName.trim();
+    }
+
+    public String getContractName() {
+        return contractName;
+    }
+
+    public void setContractName(String contractName) {
+        this.contractName = contractName == null ? null : contractName.trim();
     }
 
     public BigDecimal getTotalLoanAmount() {

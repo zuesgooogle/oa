@@ -56,7 +56,14 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostList', {
         { text: 'Id', dataIndex: 'id', width: 100 },
         { text: '年', dataIndex: 'year', width: 50 },
         { text: '月', dataIndex: 'month', width: 50 },
-        { text: '地块', dataIndex: 'landId', width: 100 },
+        { text: '地块', dataIndex: 'landId', width: 100, 
+            renderer: function(value, cellmeta, recrod) {
+                var landStore = Ext.getStore('land');
+                    index = landStore.find('id', value); 
+                    name = landStore.getAt(index).get('name'); 
+                return name; 
+            }
+        },
         { text: '成本科目', dataIndex: 'subjectId', width: 100 },
         { text: '预计投资额', dataIndex: 'expectInvest', width: 100 },
         { text: '已签合同金额', dataIndex: 'contractAmount', width: 100 },
@@ -88,6 +95,15 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostList', {
     },
 
     listeners: {
+        beforerender: function() {
+            var landStore = Ext.getStore('land');
+            if (landStore == null) {
+                landStore = Ext.create('oa.store.Land');
+                // 保证主数据渲染之前加载完成
+                landStore.proxy.async = false;
+                landStore.load();
+            }
+        },
         render: function (grid) {
             var store = grid.getStore();
             store.load();

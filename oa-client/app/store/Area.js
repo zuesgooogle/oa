@@ -4,6 +4,8 @@ Ext.define('oa.store.Area', {
     id: 'store.area',
     alias: 'store.area',
 
+    storeId: 'area',
+
     model: 'oa.model.Area',
     autoLoad: true,
     proxy: {

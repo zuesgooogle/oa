@@ -52,6 +52,7 @@ public class PlanRepayController {
 			@ApiParam(value = "月") @RequestParam(value = "month", required = true) Short month,
 			@ApiParam(value = "银行") @RequestParam(value = "bankId", required = true) Integer bankId,
 			@ApiParam(value = "项目") @RequestParam(value = "projectName", required = true) String projectName,
+			@ApiParam(value = "合同") @RequestParam(value = "contractName", required = true) String contractName,
 			@ApiParam(value = "累计已放款金额") @RequestParam(value = "totalLoanAmount", required = true) BigDecimal totalLoanAmount,
 			@ApiParam(value = "本月计划还款金额") @RequestParam(value = "planAmount", required = true) BigDecimal planAmount,
 			@ApiParam(value = "计划还款贷款余额") @RequestParam(value = "planRemainLoanAmount", required = true) BigDecimal planRemainLoanAmount,
@@ -67,6 +68,7 @@ public class PlanRepayController {
 			repay.setMonth(month);
 			repay.setBankId(bankId);
 			repay.setProjectName(projectName);
+			repay.setContractName(contractName);
 			repay.setTotalLoanAmount(totalLoanAmount);
 			repay.setPlanAmount(planAmount);
 			repay.setPlanRemainLoanAmount(planRemainLoanAmount);
@@ -82,6 +84,7 @@ public class PlanRepayController {
 			repay.setMonth(month);
 			repay.setBankId(bankId);
 			repay.setProjectName(projectName);
+			repay.setContractName(contractName);
 			repay.setTotalLoanAmount(totalLoanAmount);
 			repay.setPlanAmount(planAmount);
 			repay.setPlanRemainLoanAmount(planRemainLoanAmount);

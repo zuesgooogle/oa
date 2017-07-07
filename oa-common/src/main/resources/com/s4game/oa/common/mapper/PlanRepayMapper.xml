@@ -7,6 +7,7 @@
     <result column="month" jdbcType="SMALLINT" property="month" />
     <result column="bank_id" jdbcType="INTEGER" property="bankId" />
     <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="contract_name" jdbcType="VARCHAR" property="contractName" />
     <result column="total_loan_amount" jdbcType="DECIMAL" property="totalLoanAmount" />
     <result column="plan_amount" jdbcType="DECIMAL" property="planAmount" />
     <result column="plan_remain_loan_amount" jdbcType="DECIMAL" property="planRemainLoanAmount" />
@@ -25,15 +26,15 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into oa_plan_repay (year, month, bank_id, 
-      project_name, total_loan_amount, plan_amount, 
-      plan_remain_loan_amount, actual_amount, actual_remain_loan_amount, 
-      remark, create_time, update_time
-      )
+      project_name, contract_name, total_loan_amount, 
+      plan_amount, plan_remain_loan_amount, actual_amount, 
+      actual_remain_loan_amount, remark, create_time, 
+      update_time)
     values (#{year,jdbcType=SMALLINT}, #{month,jdbcType=SMALLINT}, #{bankId,jdbcType=INTEGER}, 
-      #{projectName,jdbcType=VARCHAR}, #{totalLoanAmount,jdbcType=DECIMAL}, #{planAmount,jdbcType=DECIMAL}, 
-      #{planRemainLoanAmount,jdbcType=DECIMAL}, #{actualAmount,jdbcType=DECIMAL}, #{actualRemainLoanAmount,jdbcType=DECIMAL}, 
-      #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+      #{projectName,jdbcType=VARCHAR}, #{contractName,jdbcType=VARCHAR}, #{totalLoanAmount,jdbcType=DECIMAL}, 
+      #{planAmount,jdbcType=DECIMAL}, #{planRemainLoanAmount,jdbcType=DECIMAL}, #{actualAmount,jdbcType=DECIMAL}, 
+      #{actualRemainLoanAmount,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.PlanRepay">
     update oa_plan_repay
@@ -41,6 +42,7 @@
       month = #{month,jdbcType=SMALLINT},
       bank_id = #{bankId,jdbcType=INTEGER},
       project_name = #{projectName,jdbcType=VARCHAR},
+      contract_name = #{contractName,jdbcType=VARCHAR},
       total_loan_amount = #{totalLoanAmount,jdbcType=DECIMAL},
       plan_amount = #{planAmount,jdbcType=DECIMAL},
       plan_remain_loan_amount = #{planRemainLoanAmount,jdbcType=DECIMAL},
@@ -52,14 +54,16 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select id, year, month, bank_id, project_name, total_loan_amount, plan_amount, plan_remain_loan_amount, 
-    actual_amount, actual_remain_loan_amount, remark, create_time, update_time
+    select id, year, month, bank_id, project_name, contract_name, total_loan_amount, 
+    plan_amount, plan_remain_loan_amount, actual_amount, actual_remain_loan_amount, remark, 
+    create_time, update_time
     from oa_plan_repay
     where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, year, month, bank_id, project_name, total_loan_amount, plan_amount, plan_remain_loan_amount, 
-    actual_amount, actual_remain_loan_amount, remark, create_time, update_time
+    select id, year, month, bank_id, project_name, contract_name, total_loan_amount, 
+    plan_amount, plan_remain_loan_amount, actual_amount, actual_remain_loan_amount, remark, 
+    create_time, update_time
     from oa_plan_repay
   </select>
 </mapper>

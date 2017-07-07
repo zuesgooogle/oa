@@ -33,6 +33,7 @@ Ext.define('oa.view.plan.PlanRepayInfo', {
             { fieldLabel: '月', name: 'month', xtype: 'monthCombo', allowBlank: false },
             { fieldLabel: '银行', name: 'bankId', xtype: 'bankCombo', allowBlank: false },
             { fieldLabel: '项目', name: 'projectName', xtype: 'textfield', allowBlank: false },
+            { fieldLabel: '合同', name: 'contractName', xtype: 'textfield', allowBlank: false },
             { fieldLabel: '累计已放款金额', name: 'totalLoanAmount', xtype: 'numberfield', allowBlank: false },
             { fieldLabel: '本月计划还款金额', name: 'planAmount', xtype: 'numberfield', allowBlank: false },
             { fieldLabel: '计划还款贷款余额', name: 'planRemainLoanAmount', xtype: 'numberfield', allowBlank: false },

@@ -42,6 +42,7 @@ public class ZhidiLedgerCostController {
 		PageInfo<ZhidiLedgerCost> pageInfo = pageService.selectPage(new ZhidiLedgerCost(),
 				new Page<ZhidiLedgerCost>(page, limit));
 		response.setData(pageInfo.getList());
+		response.setTotalCount(pageInfo.getTotal());
 
 		return response.build();
 	}
