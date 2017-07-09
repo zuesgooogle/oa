@@ -1,21 +1,17 @@
-Ext.define('oa.model.PlanChargeMonth', {
+Ext.define('oa.model.CloudStorage', {
     extend: 'Ext.data.Model',
 
     fields: [{
         name: 'id',
         type: 'int'
     }, 
-    'year',
-    'month',
-    'company',
-    'departmentId',
-    'projectId',
-    'subjectId',
-    'chargeName',
-    'yearAmount',
-    'paiedAmount',
-    'planAmount',
-    'actualAmount',
+    'fileName',
+    'fileUrl',
+    'fileType',
+    'size',
+    'sumary',
+    'directoryId',
+    'contentType',
     'remark',
     {
         name: 'createTime',

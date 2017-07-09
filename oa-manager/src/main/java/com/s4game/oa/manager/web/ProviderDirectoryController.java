@@ -1,6 +1,7 @@
 package com.s4game.oa.manager.web;
 
 import java.util.Date;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,10 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
+import com.s4game.oa.common.constants.PageConstants;
+import com.s4game.oa.common.entity.Filter;
 import com.s4game.oa.common.entity.ProviderDirectory;
 import com.s4game.oa.common.mapper.ProviderDirectoryMapper;
 import com.s4game.oa.common.response.Response;
 import com.s4game.oa.common.service.PageService;
+import com.s4game.oa.manager.service.IFilterService;
+import com.s4game.oa.manager.utils.FilterUtils;
 import com.s4game.oa.manager.utils.WebUtils;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -30,15 +35,23 @@ public class ProviderDirectoryController {
 	@Autowired
 	private PageService<ProviderDirectory> pageService;
 	
+	@Autowired
+	private IFilterService filterService;
+	
 	@ApiOperation(value = "列表")
 	@RequestMapping(value = "/list")
 	public Response list(
-			@ApiParam(value = "当前页数") @RequestParam(value = "page", required = false) Integer page,
-			@ApiParam(value = "每页数量") @RequestParam(value = "limit", required = false) Integer limit
-			) {
+			@ApiParam(value = "当前页数") @RequestParam(value = "page", required = false, defaultValue = PageConstants.PAGE) Integer page,
+			@ApiParam(value = "每页数量") @RequestParam(value = "limit", required = false, defaultValue = PageConstants.LIMIT) Integer limit,
+			@ApiParam(value = "过滤参数") @RequestParam(value = "filter", required = false) String filter) {
 		Response.Builder response = Response.newBuilder();
 
-		PageInfo<ProviderDirectory> pageInfo = pageService.selectPage(new ProviderDirectory(), new Page<ProviderDirectory>(page, limit));
+		ProviderDirectory params = new ProviderDirectory();
+		
+		Map<String, Filter> filters = filterService.decode(filter);
+		params.setLinkman(FilterUtils.getString(filters, "linkman"));
+		
+		PageInfo<ProviderDirectory> pageInfo = pageService.selectPage(params, new Page<ProviderDirectory>(page, limit));
 		response.setData(pageInfo.getList());
 
 		return response.build();

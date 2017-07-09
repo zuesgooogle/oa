@@ -10,6 +10,7 @@ Ext.define('oa.view.plan.PlanChargeMonthList', {
     title: '月度费用计划',
     scrollable: true,
     closable: true,
+    plugins: 'gridfilters',
 
     tbar: [
         {
@@ -37,7 +38,17 @@ Ext.define('oa.view.plan.PlanChargeMonthList', {
 
     columns: [
         { text: 'ID', dataIndex: 'id', width: 100 },
-        { text: '年份', dataIndex: 'year', width: 100 },
+        { text: '年份', dataIndex: 'year', width: 50 },
+        {text: '月', dataIndex: 'month', width: 50,
+            filter: {
+                type: 'list',
+                labelField: 'name',
+                store: Ext.create('Ext.data.Store', {
+                    fields: ['id', 'name'],
+                    data: DateUtils.month
+                })
+            }
+        },
         {
             text: '所属公司', dataIndex: 'company', width: 200,
             renderer: function (value, cellmeta, record) {

@@ -5,7 +5,7 @@ Ext.define('oa.store.ProviderDirectory', {
     alias: 'store.providerDirectory',
 
     model: 'oa.model.ProviderDirectory',
-
+    remoteFilter: true,
     proxy: {
         
         type: 'ajax',

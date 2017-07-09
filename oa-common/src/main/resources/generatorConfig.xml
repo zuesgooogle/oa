@@ -6,14 +6,13 @@
 <generatorConfiguration>
 	<!-- cmd: mybatis-generator:generate -->
 
-	<!--
 	<classPathEntry location="/Users/max/m2/repository/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar"/>
-	-->
 	
+	<!-- 
 	<classPathEntry location="C:/Users/renyuan_game/.m2/repository/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar"/>
+	 -->
 	
-	
-	<context id="MysqlContext" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+	<context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
 		<property name="beginningDelimiter" value="`" />
 		<property name="endingDelimiter" value="`" />
 		
@@ -164,6 +163,11 @@
 		
 		<!-- 新闻管理 -->
 		<table tableName="oa_news" domainObjectName="News" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		
+		<!-- 云盘  -->
+		<table tableName="oa_cloud_storage" domainObjectName="CloudStorage" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 		

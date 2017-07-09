@@ -2,6 +2,7 @@ package com.s4game.oa.manager.web;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,10 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
+import com.s4game.oa.common.constants.PageConstants;
+import com.s4game.oa.common.entity.Filter;
 import com.s4game.oa.common.entity.PlanChargeMonth;
 import com.s4game.oa.common.mapper.PlanChargeMonthMapper;
 import com.s4game.oa.common.response.Response;
 import com.s4game.oa.common.service.PageService;
+import com.s4game.oa.manager.service.IFilterService;
+import com.s4game.oa.manager.utils.FilterUtils;
 import com.s4game.oa.manager.utils.WebUtils;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -31,15 +36,23 @@ public class PlanChargeMonthController {
 	@Autowired
 	private PageService<PlanChargeMonth> pageService;
 	
+	@Autowired
+	private IFilterService filterService;
+	
 	@ApiOperation(value = "费用列表")
 	@RequestMapping(value = "/list")
 	public Response list(
-			@ApiParam(value = "当前页数") @RequestParam(value = "page", required = false) Integer page,
-			@ApiParam(value = "每页数量") @RequestParam(value = "limit", required = false) Integer limit
-			) {
+			@ApiParam(value = "当前页数") @RequestParam(value = "page", required = false, defaultValue = PageConstants.PAGE) Integer page,
+			@ApiParam(value = "每页数量") @RequestParam(value = "limit", required = false, defaultValue = PageConstants.LIMIT) Integer limit,
+			@ApiParam(value = "过滤参数") @RequestParam(value = "filter", required = false) String filter) {
 		Response.Builder response = Response.newBuilder();
 
-		PageInfo<PlanChargeMonth> pageInfo = pageService.selectPage(new PlanChargeMonth(), new Page<PlanChargeMonth>(page, limit));
+		PlanChargeMonth params = new PlanChargeMonth();
+
+		Map<String, Filter> filters = filterService.decode(filter);
+		params.setMonths(FilterUtils.getList(filters, "month"));
+		
+		PageInfo<PlanChargeMonth> pageInfo = pageService.selectPage(params, new Page<PlanChargeMonth>(page, limit));
 		response.setData(pageInfo.getList());
 
 		return response.build();
@@ -48,6 +61,8 @@ public class PlanChargeMonthController {
 	@ApiOperation(value = "更新费用")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public Response update(@ApiParam(value = "费用Id") @RequestParam(value = "id", required = true) Long id,
+			@ApiParam(value = "年") @RequestParam(value = "year", required = true) Short year,
+			@ApiParam(value = "月") @RequestParam(value = "month", required = true) Short month,
 			@ApiParam(value = "所属公司") @RequestParam(value = "company", required = true) Integer company,
 			@ApiParam(value = "部门") @RequestParam(value = "departmentId", required = true) Integer departmentId,
 			@ApiParam(value = "项目") @RequestParam(value = "projectId", required = true) Integer projectId,
@@ -60,39 +75,29 @@ public class PlanChargeMonthController {
 			@ApiParam(value = "备注") @RequestParam(value = "remark", required = false) String remark) {
 		Response.Builder response = Response.newBuilder();
 		
-		PlanChargeMonth month = null;
-		if (WebUtils.isAdd(id)) {
-			month = new PlanChargeMonth();
-			month.setCompany(company);
-			month.setDepartmentId(departmentId);
-			month.setProjectId(projectId);
-			month.setSubjectId(subjectId);
-			month.setChargeName(chargeName);
-			month.setYearAmount(yearAmount);
-			month.setPaiedAmount(paiedAmount);
-			month.setPlanAmount(planAmount);
-			month.setActualAmount(actualAmount);
-			month.setRemark(remark);
-			month.setCreateTime(new Date());
+		PlanChargeMonth charge = new PlanChargeMonth();
+		charge.setYear(year);
+		charge.setMonth(month);
+		charge.setCompany(company);
+		charge.setDepartmentId(departmentId);
+		charge.setProjectId(projectId);
+		charge.setSubjectId(subjectId);
+		charge.setChargeName(chargeName);
+		charge.setYearAmount(yearAmount);
+		charge.setPaiedAmount(paiedAmount);
+		charge.setPlanAmount(planAmount);
+		charge.setActualAmount(actualAmount);
+		charge.setRemark(remark);
 
-			planChargeMonthMapper.insert(month);
+		if (WebUtils.isAdd(id)) {
+			charge.setCreateTime(new Date());
+			planChargeMonthMapper.insert(charge);
 		} else {
-			month = planChargeMonthMapper.selectByPrimaryKey(id);
-			month.setCompany(company);
-			month.setDepartmentId(departmentId);
-			month.setProjectId(projectId);
-			month.setSubjectId(subjectId);
-			month.setChargeName(chargeName);
-			month.setYearAmount(yearAmount);
-			month.setPaiedAmount(paiedAmount);
-			month.setPlanAmount(planAmount);
-			month.setActualAmount(actualAmount);
-			month.setRemark(remark);
-			
-			planChargeMonthMapper.updateByPrimaryKey(month);
+			charge.setId(id);
+			planChargeMonthMapper.updateByPrimaryKeySelective(charge);
 		}
 
-		response.setData(month);
+		response.setData(charge);
 		return response.build();
 	}
 

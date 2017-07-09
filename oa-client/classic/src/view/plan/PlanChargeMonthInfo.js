@@ -12,7 +12,7 @@ Ext.define('oa.view.plan.PlanChargeMonthInfo', {
     resizable: false,
 
     width: 800,
-    height: 500,
+    height: 600,
 
     closeAction: 'destroy',
 
@@ -33,6 +33,8 @@ Ext.define('oa.view.plan.PlanChargeMonthInfo', {
                 layout: 'form',
                 items: [
                     { fieldLabel: 'Id', name: 'id', xtype: 'textfield', hidden: true },
+                    { fieldLabel: '年', name: 'year', xtype: 'yearCombo', allowBlank: false },
+                    { fieldLabel: '月', name: 'month', xtype: 'monthCombo', allowBlank: false },
                     { name: 'company', xtype: 'companyCombo', allowBlank: false },
                     { name: 'departmentId', xtype: 'departmentSingleSelect', allowBlank: false },
                     { fieldLabel: '项目', name: 'projectId', xtype: 'textfield', allowBlank: false },

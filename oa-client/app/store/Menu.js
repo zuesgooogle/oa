@@ -7,9 +7,14 @@ Ext.define('oa.store.Menu', {
         expanded: true,
         children: [
             {
-                text: '新闻/公告', expanded: true, iconCls: 'fa-paper-plane', children: [
+                text: '新闻/会议', expanded: true, iconCls: 'fa-paper-plane', children: [
                     { text: '新闻管理', iconCls: 'x-fa fa-newspaper-o', action: 'newsList', leaf: true },
-                    { text: '公告管理', iconCls: 'x-fa fa-delicious', action: 'noticeList', leaf: true }
+                    { text: '会议管理', iconCls: 'x-fa fa-delicious', action: 'noticeList', leaf: true }
+                ]
+            },
+            {
+                text: '云盘', expanded: true, iconCls: 'fa-paper-plane', children: [
+                    { text: '云盘管理', iconCls: 'x-fa fa-newspaper-o', action: 'cloudStorageList', leaf: true }
                 ]
             },
             {

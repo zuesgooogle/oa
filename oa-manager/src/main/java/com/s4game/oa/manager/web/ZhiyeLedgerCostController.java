@@ -3,6 +3,7 @@ package com.s4game.oa.manager.web;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,10 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
 import com.s4game.oa.common.constants.PageConstants;
+import com.s4game.oa.common.entity.Filter;
 import com.s4game.oa.common.entity.ZhiyeLedgerCost;
 import com.s4game.oa.common.mapper.ZhiyeLedgerCostMapper;
 import com.s4game.oa.common.response.Response;
 import com.s4game.oa.common.service.PageService;
+import com.s4game.oa.manager.service.IFilterService;
+import com.s4game.oa.manager.utils.FilterUtils;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
@@ -32,15 +36,22 @@ public class ZhiyeLedgerCostController {
 	@Autowired
 	private ZhiyeLedgerCostMapper ledgerCostMapper;
 
+	@Autowired
+	private IFilterService filterService;
+
 	@ApiOperation(value = "台账列表")
 	@RequestMapping(value = "/list", method = { RequestMethod.GET, RequestMethod.POST })
 	public Response list(
 			@ApiParam(value = "当前页数") @RequestParam(value = "page", required = false, defaultValue = PageConstants.PAGE) Integer page,
-			@ApiParam(value = "每页数量") @RequestParam(value = "limit", required = false, defaultValue = PageConstants.LIMIT) Integer limit) {
+			@ApiParam(value = "每页数量") @RequestParam(value = "limit", required = false, defaultValue = PageConstants.LIMIT) Integer limit,
+			@ApiParam(value = "过滤参数") @RequestParam(value = "filter", required = false) String filter) {
 		Response.Builder response = Response.newBuilder();
 
-		PageInfo<ZhiyeLedgerCost> pageInfo = pageService.selectPage(new ZhiyeLedgerCost(),
-				new Page<ZhiyeLedgerCost>(page, limit));
+		ZhiyeLedgerCost params = new ZhiyeLedgerCost();
+		Map<String, Filter> filters = filterService.decode(filter);
+		params.setLandIds(FilterUtils.getList(filters, "landId"));
+
+		PageInfo<ZhiyeLedgerCost> pageInfo = pageService.selectPage(params, new Page<ZhiyeLedgerCost>(page, limit));
 		response.setData(pageInfo.getList());
 
 		return response.build();
@@ -106,7 +117,7 @@ public class ZhiyeLedgerCostController {
 
 		return response.build();
 	}
-	
+
 	@ApiOperation(value = "汇总台账")
 	@RequestMapping(value = "/report", method = { RequestMethod.GET, RequestMethod.POST })
 	public Response report(@ApiParam(value = "年份") @RequestParam(value = "year", required = true) Integer year) {

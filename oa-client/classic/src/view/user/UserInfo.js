@@ -33,7 +33,6 @@ Ext.define('oa.view.user.UserInfo', {
             { name: 'departmentids', xtype: 'departmentMultiSelect', allowBlank: false },
             { name: 'positionids', xtype: 'positionMultiSelect', allowBlank: false },
             { fieldLabel: '房间号', name: 'roomId', xtype: 'numberfield', allowBlank: false },
-
             { fieldLabel: '备注', name: 'remark', xtype: 'textfield' },
             {
                 fieldLabel: 'CreateTime', name: 'createTime', xtype: 'textfield', editable: false,

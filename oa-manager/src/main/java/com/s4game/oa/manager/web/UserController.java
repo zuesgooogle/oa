@@ -74,7 +74,7 @@ public class UserController {
 	public Response update(
 			@ApiParam(value = "用户ID") @RequestParam(value = "id", required = true) Long id,
 			@ApiParam(value = "用户名") @RequestParam(value = "username", required = true) String username,
-			@ApiParam(value = "北京号码") @RequestParam(value = "mobile", required = true) String mobile,
+			@ApiParam(value = "手机号") @RequestParam(value = "mobile", required = true) String mobile,
 			@ApiParam(value = "部门") @RequestParam(value = "departmentids", required = true) String departmentids,
 			@ApiParam(value = "职位") @RequestParam(value = "positionids", required = true) String positionids,
 			@ApiParam(value = "房间号") @RequestParam(value = "roomId", required = false) Integer roomId,
@@ -89,7 +89,9 @@ public class UserController {
 		user.setPassword("123456");
 		user.setDepartmentids(departmentids);
 		user.setPositionids(positionids);
+		user.setMobile(mobile);
 		user.setRoomId(roomId);
+		user.setRemark(remark);
 		
 		userService.updateUser(user);
 		

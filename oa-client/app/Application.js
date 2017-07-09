@@ -24,12 +24,23 @@ Ext.define('oa.Application', {
         // Check to see the current value of the localStorage key
         loggedIn = localStorage.getItem("oaLoggedIn");
 
-        // This ternary operator determines the value of the TutorialLoggedIn key.
-        // If TutorialLoggedIn isn't true, we display the login window,
-        // otherwise, we display the main view
-        Ext.create({
-            xtype: loggedIn ? 'app-main' : 'login'
-        });
+        if (loggedIn) {
+            var main = Ext.create({
+                        xtype: 'app-main'
+                    });
+                newsView = Ext.create('newsView');
+                
+                workspace = Ext.getCmp('workspace');
+                workspace.add(newsView);
+                workspace.setActiveTab(newsView);
+
+        } else {
+            Ext.create({
+                xtype: 'login'
+            });
+        }
+
+        
     },
 
     onAppUpdate: function () {

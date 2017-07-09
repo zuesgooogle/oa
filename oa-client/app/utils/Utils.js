@@ -43,5 +43,21 @@ Ext.define('Utils', {
             }
         });
         return name;
+    },
+
+    rendererNetworkSize: function(value) {
+        var size = parseInt(value);
+        if (size == 0) {
+            return '--';
+        }
+        if (size < 1024) {
+            return size + 'Byte';
+        } else if (1024 < size && 1024 * 1024) {
+            return parseInt(size / 1024) + ' Mb'; 
+        } else if (1024 * 1024 < size && 1024 * 1024 * 1024) {
+            return parseInt(size / (1024 * 1024)) + ' Gb'; 
+        } else {
+            return parseInt(size / (1024 * 1024 * 1024)) + ' Tb';
+        }
     }
 });

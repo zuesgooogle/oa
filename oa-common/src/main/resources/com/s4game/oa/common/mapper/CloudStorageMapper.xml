@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.s4game.oa.common.mapper.CloudStorageMapper">
+  <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.CloudStorage">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="directory_id" jdbcType="INTEGER" property="directoryId" />
+    <result column="file_name" jdbcType="VARCHAR" property="fileName" />
+    <result column="file_url" jdbcType="VARCHAR" property="fileUrl" />
+    <result column="file_type" jdbcType="TINYINT" property="fileType" />
+    <result column="size" jdbcType="BIGINT" property="size" />
+    <result column="sumary" jdbcType="VARCHAR" property="sumary" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+    <result column="create_id" jdbcType="INTEGER" property="createId" />
+    <result column="download_count" jdbcType="INTEGER" property="downloadCount" />
+    <result column="content_type" jdbcType="VARCHAR" property="contentType" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, directory_id, file_name, file_url, file_type, size, sumary, deleted, create_id, 
+    download_count, content_type, remark, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oa_cloud_storage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from oa_cloud_storage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.s4game.oa.common.entity.CloudStorage">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_cloud_storage (directory_id, file_name, file_url, 
+      file_type, size, sumary, 
+      deleted, create_id, download_count, 
+      content_type, remark, create_time, 
+      update_time)
+    values (#{directoryId,jdbcType=INTEGER}, #{fileName,jdbcType=VARCHAR}, #{fileUrl,jdbcType=VARCHAR}, 
+      #{fileType,jdbcType=TINYINT}, #{size,jdbcType=BIGINT}, #{sumary,jdbcType=VARCHAR}, 
+      #{deleted,jdbcType=BIT}, #{createId,jdbcType=INTEGER}, #{downloadCount,jdbcType=INTEGER}, 
+      #{contentType,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.s4game.oa.common.entity.CloudStorage">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_cloud_storage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="directoryId != null">
+        directory_id,
+      </if>
+      <if test="fileName != null">
+        file_name,
+      </if>
+      <if test="fileUrl != null">
+        file_url,
+      </if>
+      <if test="fileType != null">
+        file_type,
+      </if>
+      <if test="size != null">
+        size,
+      </if>
+      <if test="sumary != null">
+        sumary,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="downloadCount != null">
+        download_count,
+      </if>
+      <if test="contentType != null">
+        content_type,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="directoryId != null">
+        #{directoryId,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null">
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileUrl != null">
+        #{fileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null">
+        #{fileType,jdbcType=TINYINT},
+      </if>
+      <if test="size != null">
+        #{size,jdbcType=BIGINT},
+      </if>
+      <if test="sumary != null">
+        #{sumary,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=INTEGER},
+      </if>
+      <if test="downloadCount != null">
+        #{downloadCount,jdbcType=INTEGER},
+      </if>
+      <if test="contentType != null">
+        #{contentType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.s4game.oa.common.entity.CloudStorage">
+    update oa_cloud_storage
+    <set>
+      <if test="directoryId != null">
+        directory_id = #{directoryId,jdbcType=INTEGER},
+      </if>
+      <if test="fileName != null">
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="fileUrl != null">
+        file_url = #{fileUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="fileType != null">
+        file_type = #{fileType,jdbcType=TINYINT},
+      </if>
+      <if test="size != null">
+        size = #{size,jdbcType=BIGINT},
+      </if>
+      <if test="sumary != null">
+        sumary = #{sumary,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=INTEGER},
+      </if>
+      <if test="downloadCount != null">
+        download_count = #{downloadCount,jdbcType=INTEGER},
+      </if>
+      <if test="contentType != null">
+        content_type = #{contentType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.CloudStorage">
+    update oa_cloud_storage
+    set directory_id = #{directoryId,jdbcType=INTEGER},
+      file_name = #{fileName,jdbcType=VARCHAR},
+      file_url = #{fileUrl,jdbcType=VARCHAR},
+      file_type = #{fileType,jdbcType=TINYINT},
+      size = #{size,jdbcType=BIGINT},
+      sumary = #{sumary,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=BIT},
+      create_id = #{createId,jdbcType=INTEGER},
+      download_count = #{downloadCount,jdbcType=INTEGER},
+      content_type = #{contentType,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oa_cloud_storage
+    
+    <where>
+    	<if test="directoryId != null">
+    		and directory_id = #{directoryId}
+    	</if>
+    	
+    	and deleted = 0
+    </where>
+  </select>
+  
+</mapper>

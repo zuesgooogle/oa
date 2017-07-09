@@ -5,7 +5,7 @@ Ext.define('oa.store.PlanMoneyOutMonth', {
     alias: 'store.planMoneyOutMonth',
 
     model: 'oa.model.PlanMoneyOutMonth',
-
+    remoteFilter: true,
     proxy: {
         type: 'ajax',
         url: oa.config.Config.BASE_URL + '/plan/money/out/month/list',

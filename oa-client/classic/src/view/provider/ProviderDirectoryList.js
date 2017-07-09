@@ -10,6 +10,7 @@ Ext.define('oa.view.provider.ProviderDirectoryList', {
     title: '合格供方名录',
     scrollable: true,
     closable: true,
+    plugins: 'gridfilters',
 
     tbar: [
         {
@@ -39,7 +40,11 @@ Ext.define('oa.view.provider.ProviderDirectoryList', {
         { text: 'ID', dataIndex: 'id', width: 100 },
         { text: '供方名称', dataIndex: 'name', width: 100 },
         { text: '供方品类', dataIndex: 'type', width: 100 },
-        { text: '联系人', dataIndex: 'linkman', width: 100 },
+        { text: '联系人', dataIndex: 'linkman', width: 100,
+            filter: {
+                type: 'string'
+            }
+        },
         { text: '联系电话', dataIndex: 'phone', width: 100 },
         { text: '地址', dataIndex: 'address', width: 100 },
         { text: '邮编', dataIndex: 'postcode', width: 100 },

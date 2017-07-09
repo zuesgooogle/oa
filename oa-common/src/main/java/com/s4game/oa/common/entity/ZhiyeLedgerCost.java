@@ -2,6 +2,9 @@ package com.s4game.oa.common.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class ZhiyeLedgerCost {
     private Long id;
@@ -31,6 +34,12 @@ public class ZhiyeLedgerCost {
     private Date createTime;
 
     private Date updateTime;
+    
+    @JsonIgnore
+    private List<Integer> landIds;
+    
+    @JsonIgnore
+    private List<Integer> subjectIds;
 
     public Long getId() {
         return id;
@@ -143,4 +152,22 @@ public class ZhiyeLedgerCost {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
+
+	public List<Integer> getLandIds() {
+		return landIds;
+	}
+
+	public void setLandIds(List<Integer> landIds) {
+		this.landIds = landIds;
+	}
+
+	public List<Integer> getSubjectIds() {
+		return subjectIds;
+	}
+
+	public void setSubjectIds(List<Integer> subjectIds) {
+		this.subjectIds = subjectIds;
+	}
+    
+    
 }

@@ -14,7 +14,8 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostList', {
     title: '成本台账（置业）',
     scrollable: true,
     closable: true,
-
+    plugins: 'gridfilters',
+    
     tbar: {
         items: [{
             xtype: 'button',
@@ -62,6 +63,13 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostList', {
                     index = landStore.find('id', value); 
                     name = landStore.getAt(index).get('name'); 
                 return name; 
+            },
+            filter: {
+                type: 'list',
+                labelField: 'name',
+                store:  {
+                    type: 'land'
+                }
             }
         },
         { text: '成本科目', dataIndex: 'subjectId', width: 100 },
