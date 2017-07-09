@@ -86,8 +86,11 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-		// TODO Auto-generated method stub
-		registry.addMapping("/**").allowCredentials(true).allowedHeaders("*").allowedMethods("*").allowedOrigins("*")
+		registry.addMapping("/**")
+				.allowedHeaders("*")
+				.allowedMethods("*")
+				.allowedOrigins("*")
+				.allowCredentials(true)
 				.maxAge(3600);
 		super.addCorsMappings(registry);
 	}

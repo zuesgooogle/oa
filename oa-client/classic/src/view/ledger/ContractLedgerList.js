@@ -1,22 +1,24 @@
-Ext.define('oa.view.ledger.AdministrativeLedgerList', {
+Ext.define('oa.view.ledger.ContractLedgerList', {
     extend: 'Ext.grid.Panel',
-    xtype: 'administrativeLedgerList',
+    xtype: 'contractLedgerList',
 
-    id: 'administrativeLedgerList',
-    alias: 'administrativeLedgerList',
+    id: 'contractLedgerList',
+    alias: 'contractLedgerList',
 
-    controller: 'administrativeLedger',
+    controller: 'contractLedger',
 
-    title: '行政性收费台账',
+    title: '合同台账',
     scrollable: true,
     closable: true,
-
+    store: {
+        type: 'contractLedger'
+    },
     tbar: {
         items: [{
             xtype: 'button',
             text: '新增',
             iconCls: 'x-fa fa-plus',
-            handler: 'addAdministrativeLedger'
+            handler: 'addContractLedger'
         },
         {
             xtype: 'button',
@@ -24,7 +26,7 @@ Ext.define('oa.view.ledger.AdministrativeLedgerList', {
             text: '修改',
             iconCls: 'x-fa fa-edit',
             disabled: true,
-            handler: 'viewAdministrativeLedger'
+            handler: 'viewContractLedger'
         },
         {
             xtype: 'button',
@@ -32,20 +34,17 @@ Ext.define('oa.view.ledger.AdministrativeLedgerList', {
             text: '删除',
             iconCls: 'x-fa fa-remove',
             disabled: true,
-            handler: 'deleteAdministrativeLedger'
+            handler: 'deleteContractLedger'
         }]
-    },
-
-    store: {
-        type: 'administrativeLedger'
     },
 
     columns: [
         { text: 'Id', dataIndex: 'id', width: 100 },
-        { text: '片区', dataIndex: 'area', width: 100 },
-        { text: '成本科目', dataIndex: 'subjectId', width: 100 },
-        { text: '名称', dataIndex: 'name', width: 100 },
-        { text: '应支付金额', dataIndex: 'payableAmount', width: 100 },
+        { text: '公司', dataIndex: 'company', width: 100 },
+        { text: '合同名称', dataIndex: 'contractName', width: 100 },
+        { text: '合同状态', dataIndex: 'contractState', width: 100 },
+        { text: '合同金额', dataIndex: 'contractAmount', width: 100 },
+        { text: '履约金额', dataIndex: 'performanceAmount', width: 100 },
         { text: '签约方', dataIndex: 'signatory', width: 100 },
         { text: '合同签订时间', dataIndex: 'signTime', width: 150, 
             renderer: function (value, cellmeta, record) {
@@ -81,7 +80,7 @@ Ext.define('oa.view.ledger.AdministrativeLedgerList', {
             var store = grid.getStore();
             store.load();
         },
-        itemdblclick: 'viewAdministrativeLedger'
+        itemdblclick: 'viewContractLedger'
     }
 
 });

@@ -36,7 +36,9 @@ public class ZhidiLedgerCostController {
 	@RequestMapping(value = "/list", method = { RequestMethod.GET, RequestMethod.POST })
 	public Response list(
 			@ApiParam(value = "当前页数") @RequestParam(value = "page", required = false, defaultValue = PageConstants.PAGE) Integer page,
-			@ApiParam(value = "每页数量") @RequestParam(value = "limit", required = false, defaultValue = PageConstants.LIMIT) Integer limit) {
+			@ApiParam(value = "每页数量") @RequestParam(value = "limit", required = false, defaultValue = PageConstants.LIMIT) Integer limit,
+			@ApiParam(value = "过滤参数") @RequestParam(value = "limit", required = false) String filter
+			) {
 		Response.Builder response = Response.newBuilder();
 
 		PageInfo<ZhidiLedgerCost> pageInfo = pageService.selectPage(new ZhidiLedgerCost(),

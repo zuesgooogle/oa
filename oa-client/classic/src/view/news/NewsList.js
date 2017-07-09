@@ -1,13 +1,13 @@
-Ext.define('oa.view.setting.areaList', {
+Ext.define('oa.view.news.NewsList', {
     extend: 'Ext.grid.Panel',
-    xtype: 'areaList',
+    xtype: 'newsList',
 
-    id: 'areaList',
-    alias: 'areaList',
+    id: 'newsList',
+    alias: 'newsList',
 
-    controller: 'area',
+    controller: 'news',
 
-    title: '片区管理',
+    title: '新闻管理',
     scrollable: true,
     closable: true,
 
@@ -16,30 +16,33 @@ Ext.define('oa.view.setting.areaList', {
             xtype: 'button',
             text: '新增',
             iconCls: 'x-fa fa-plus',
-            handler: 'addArea'
+            handler: 'addNews'
         }, {
             itemId: 'update',
             text: '修改',
             iconCls: 'x-fa fa-edit',
             disabled: true,
-            handler: 'viewArea'
+            handler: 'viewNews'
         }, {
             itemId: 'delete',
             text: '删除',
             iconCls: 'x-fa fa-remove',
             disabled: true,
-            handler: 'deleteArea'
+            handler: 'deleteNews'
         }],
 
     store: {
-        type: 'area'
+        type: 'news'
     },
 
     columns: [
         { text: 'ID', dataIndex: 'id', width: 100 },
-        { text: '片区名称', dataIndex: 'name', width: 200 },
+        { text: '封面图', dataIndex: 'mainImgUrl', width: 200,
+            renderer: 'rendererMainImage'
+        },
+        { text: '新闻标题', dataIndex: 'title', flex: 1},
         {
-            text: '创建时间', dataIndex: 'createTime', flex: 1,
+            text: '发布时间', dataIndex: 'createTime', width: 200, 
             renderer: function (value, cellmeta, record) {
                 return Ext.Date.format(new Date(value), 'Y-m-d H:i:s');
             }
@@ -63,10 +66,10 @@ Ext.define('oa.view.setting.areaList', {
 
     listeners: {
         render: function (grid) {
-            // var store = grid.getStore();
-            // store.load();
+            var store = grid.getStore();
+            store.load();
         },
-        itemdblclick: 'viewArea'
+        itemdblclick: 'viewNews'
     }
 
 });

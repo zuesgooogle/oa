@@ -8,6 +8,8 @@ public class AdministrativeLedger {
 
     private Integer company;
 
+    private Integer areaLandId;
+
     private Integer subjectId;
 
     private String name;
@@ -56,6 +58,14 @@ public class AdministrativeLedger {
 
     public void setCompany(Integer company) {
         this.company = company;
+    }
+
+    public Integer getAreaLandId() {
+        return areaLandId;
+    }
+
+    public void setAreaLandId(Integer areaLandId) {
+        this.areaLandId = areaLandId;
     }
 
     public Integer getSubjectId() {

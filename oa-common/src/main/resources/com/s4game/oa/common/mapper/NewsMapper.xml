@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.s4game.oa.common.mapper.NewsMapper">
+  <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.News">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_id" jdbcType="INTEGER" property="createId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="sumary" jdbcType="VARCHAR" property="sumary" />
+    <result column="main_img_url" jdbcType="VARCHAR" property="mainImgUrl" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="content" jdbcType="LONGVARCHAR" property="content" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from oa_news
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.s4game.oa.common.entity.News">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_news (create_id, title, sumary, 
+      main_img_url, deleted, create_time, 
+      update_time, content)
+    values (#{createId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{sumary,jdbcType=VARCHAR}, 
+      #{mainImgUrl,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.News">
+    update oa_news
+    set create_id = #{createId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      sumary = #{sumary,jdbcType=VARCHAR},
+      main_img_url = #{mainImgUrl,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=BIT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, create_id, title, sumary, main_img_url, deleted, create_time, update_time, 
+    content
+    from oa_news
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, create_id, title, sumary, main_img_url, deleted, create_time, update_time, 
+    content
+    from oa_news
+  </select>
+</mapper>

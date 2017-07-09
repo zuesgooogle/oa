@@ -55,6 +55,9 @@
 		<table tableName="oa_ledger_zhiye_cost" domainObjectName="ZhiyeLedgerCost" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
+		<table tableName="oa_ledger_contract" domainObjectName="ContractLedger" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
 		<table tableName="oa_ledger_administrative" domainObjectName="AdministrativeLedger" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
@@ -145,7 +148,6 @@
 		</table>
 		
 		
-		
 		<!-- 土地、二级开发计划 -->
 		<table tableName="oa_develop_progress_land" domainObjectName="DevelopProgressLand" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
@@ -158,6 +160,13 @@
 		<table tableName="oa_user_process" domainObjectName="UserProcess" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
+		
+		
+		<!-- 新闻管理 -->
+		<table tableName="oa_news" domainObjectName="News" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		
 		
 	</context>
 </generatorConfiguration>

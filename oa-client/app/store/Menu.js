@@ -7,10 +7,16 @@ Ext.define('oa.store.Menu', {
         expanded: true,
         children: [
             {
+                text: '新闻/公告', expanded: true, iconCls: 'fa-paper-plane', children: [
+                    { text: '新闻管理', iconCls: 'x-fa fa-newspaper-o', action: 'newsList', leaf: true },
+                    { text: '公告管理', iconCls: 'x-fa fa-delicious', action: 'noticeList', leaf: true }
+                ]
+            },
+            {
                 text: '经营管理', expanded: true, iconCls: 'x-fa fa-cart-plus', children: [
                     { text: '成本台账(置地)', action: 'zhidiLedgerCostList', iconCls: 'fa-hourglass', leaf: true },
                     { text: '成本台账(置业)', action: 'zhiyeLedgerCostList', iconCls: 'fa-hourglass-end', leaf: true },
-                    { text: '合同台账', iconCls: 'x-fa fa-thumbs-up', leaf: true },
+                    { text: '合同台账' , action: 'contractLedgerList', iconCls: 'x-fa fa-thumbs-up', leaf: true },
                     { text: '行政收费台账', action: 'administrativeLedgerList', iconCls: 'x-fa fa-tint', leaf: true },
                     { text: '合格供方名录', action: 'providerDirectoryList', iconCls: 'x-fa fa-user', leaf: true }
                 ]

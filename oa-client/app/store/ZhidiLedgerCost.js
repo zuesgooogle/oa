@@ -5,7 +5,7 @@ Ext.define('oa.store.ZhidiLedgerCost', {
     alias: 'store.zhidiLedgerCost',
 
     model: 'oa.model.ZhidiLedgerCost',
-
+    remoteFilter: true,
     proxy: {
 
         type: 'ajax',

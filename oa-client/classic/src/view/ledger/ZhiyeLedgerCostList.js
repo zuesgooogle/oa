@@ -95,18 +95,10 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostList', {
     },
 
     listeners: {
-        beforerender: function() {
-            var landStore = Ext.getStore('land');
-            if (landStore == null) {
-                landStore = Ext.create('oa.store.Land');
-                // 保证主数据渲染之前加载完成
-                landStore.proxy.async = false;
-                landStore.load();
-            }
-        },
-        render: function (grid) {
-            var store = grid.getStore();
-            store.load();
+        beforerender: function(grid) {
+            StoreManager.syncLoadStore('store.land', function() {
+                grid.getStore().load();
+            });
         },
         itemdblclick: 'viewZhiyeLedgerCost'
     }

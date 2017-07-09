@@ -49,6 +49,7 @@ public class AdministrativeLedgerController {
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public Response update(@ApiParam(value = "Id") @RequestParam(value = "id", required = true) Long id,
 			@ApiParam(value = "公司") @RequestParam(value = "company", required = true) Integer company,
+			@ApiParam(value = "片区/地块名称") @RequestParam(value = "areaLandId", required = true) Integer areaLandId,
 			@ApiParam(value = "成本科目") @RequestParam(value = "subjectId", required = true) Integer subjectId,
 			@ApiParam(value = "名称") @RequestParam(value = "name", required = true) String name,
 			@ApiParam(value = "内容") @RequestParam(value = "content", required = true) String content,
@@ -67,20 +68,53 @@ public class AdministrativeLedgerController {
 			) {
 		Response.Builder response = Response.newBuilder();
 		
-		AdministrativeLedger AdministrativeLedger = null;
+		AdministrativeLedger ledger = null;
 		if (WebUtils.isAdd(id)) {
-			AdministrativeLedger = new AdministrativeLedger();
-			AdministrativeLedger.setName(name);
-			AdministrativeLedger.setCreateTime(new Date());
+			ledger = new AdministrativeLedger();
+			ledger.setCompany(company);
+			ledger.setAreaLandId(areaLandId);
+			ledger.setSubjectId(subjectId);
+			ledger.setName(name);
+			ledger.setContent(content);
+			ledger.setPayableAmount(payableAmount);
+			ledger.setPayCondition(payCondition);
+			ledger.setSignatory(signatory);
+			ledger.setSignTime(signTime);
+			ledger.setLinkman(linkman);
+			ledger.setPhone(phone);
+			ledger.setPayTotal(payTotal);
+			ledger.setDepartmentId(departmentId);
+			ledger.setUserId(userId);
+			ledger.setFileBoxId(fileBoxId);
+			ledger.setFileId(fileId);
+			ledger.setRemark(remark);
+			
+			ledger.setCreateTime(new Date());
 
-			administrativeLedgerManager.insert(AdministrativeLedger);
+			administrativeLedgerManager.insert(ledger);
 		} else {
-			AdministrativeLedger = administrativeLedgerManager.selectByPrimaryKey(id);
-			AdministrativeLedger.setName(name);
-			administrativeLedgerManager.updateByPrimaryKey(AdministrativeLedger);
+			ledger = administrativeLedgerManager.selectByPrimaryKey(id);
+			ledger.setCompany(company);
+			ledger.setAreaLandId(areaLandId);
+			ledger.setSubjectId(subjectId);
+			ledger.setName(name);
+			ledger.setContent(content);
+			ledger.setPayableAmount(payableAmount);
+			ledger.setPayCondition(payCondition);
+			ledger.setSignatory(signatory);
+			ledger.setSignTime(signTime);
+			ledger.setLinkman(linkman);
+			ledger.setPhone(phone);
+			ledger.setPayTotal(payTotal);
+			ledger.setDepartmentId(departmentId);
+			ledger.setUserId(userId);
+			ledger.setFileBoxId(fileBoxId);
+			ledger.setFileId(fileId);
+			ledger.setRemark(remark);
+			administrativeLedgerManager.updateByPrimaryKey(ledger);
 		}
 
-		response.setData(AdministrativeLedger);
+		response.setData(ledger);
 		return response.build();
 	}
 

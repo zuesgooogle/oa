@@ -1,15 +1,14 @@
-Ext.define('oa.store.User', {
+Ext.define('oa.store.ContractLedger', {
     extend: 'Ext.data.Store',
 
-    id: 'store.user',
-    alias: 'store.user',
+    id: 'store.contractLedger',
+    alias: 'store.contractLedger',
 
-    model: 'oa.model.User',
+    model: 'oa.model.ContractLedger',
     autoLoad: true,
     proxy: {
-        
         type: 'ajax',
-        url: oa.config.Config.BASE_URL + 'user/list',
+        url: oa.config.Config.BASE_URL + 'ledger/contract/list',
         reader: {
             type: 'json',
             rootProperty: 'data',

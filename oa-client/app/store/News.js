@@ -1,15 +1,15 @@
-Ext.define('oa.store.User', {
+Ext.define('oa.store.News', {
     extend: 'Ext.data.Store',
 
-    id: 'store.user',
-    alias: 'store.user',
+    id: 'store.news',
+    alias: 'store.news',
+    storeId: 'news',
 
-    model: 'oa.model.User',
+    model: 'oa.model.News',
     autoLoad: true,
     proxy: {
-        
         type: 'ajax',
-        url: oa.config.Config.BASE_URL + 'user/list',
+        url: oa.config.Config.BASE_URL + 'news/list',
         reader: {
             type: 'json',
             rootProperty: 'data',

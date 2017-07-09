@@ -5,15 +5,13 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
     id: 'zhidiLedgerCostList',
     alias: 'zhidiLedgerCostList',
 
-    requires: [
-        'oa.store.ZhidiLedgerCost'
-    ],
-
     controller: 'zhidiLedgerCost',
 
     title: '成本台账（置地）',
     scrollable: true,
     closable: true,
+
+    requires: ['Ext.grid.filters.Filters'],
 
     tbar: {
         items: [{
@@ -52,9 +50,10 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
         type: 'zhidiLedgerCost'
     },
 
+    plugins: 'gridfilters',
     columns: [
         { text: 'Id', dataIndex: 'id', width: 100 },
-        { text: '年', dataIndex: 'year', width: 50 },
+        { text: '年', dataIndex: 'year', width: 50, },
         { text: '月', dataIndex: 'month', width: 50 },
         { text: '片区', dataIndex: 'areaId', width: 100,
             renderer: function(value, cellmeta, recrod) {
@@ -62,6 +61,13 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
                     index = areaStore.find('id', value); 
                     name = areaStore.getAt(index).get('name'); 
                 return name; 
+            },
+            filter: {
+                type: 'list',
+                labelField: 'name',
+                store:  {
+                    type: 'area'
+                }
             }
         },
         { text: '成本科目', dataIndex: 'subjectId', width: 100 },
@@ -73,10 +79,8 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
         { text: '政府程序金额', dataIndex: 'govCheck', width: 100 },
         { text: '未核对金额', dataIndex: 'uncheck', width: 100 },
         {
-            text: '时间', dataIndex: 'createTime', width: 200,
-            renderer: function (value, cellmeta, record) {
-                return Ext.Date.format(new Date(value), 'Y-m-d H:i:s');
-            }
+            text: '时间', dataIndex: 'createTime', width: 200, 
+            renderer: Ext.util.Format.dateRenderer('Y-m-d H:i:s')
         },
         { flex: 1 }
     ],
@@ -97,18 +101,10 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
     },
 
     listeners: {
-        beforerender: function() {
-            var areaStore = Ext.getStore('area');
-            if (areaStore == null) {
-                areaStore = Ext.create('oa.store.Area');
-                // 保证主数据渲染之前加载完成
-                areaStore.proxy.async = false;
-                areaStore.load();
-            }
-        },
-        render: function (grid) {
-            var store = grid.getStore();
-            store.load();
+        beforerender: function(grid) {
+            // StoreManager.syncLoadStore('store.area', function() {
+            //     grid.getStore().load();
+            // });
         },
         itemdblclick: 'viewZhidiLedgerCost'
     }

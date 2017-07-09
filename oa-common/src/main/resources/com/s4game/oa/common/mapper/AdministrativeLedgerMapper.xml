@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.AdministrativeLedger">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="company" jdbcType="INTEGER" property="company" />
+    <result column="area_land_id" jdbcType="INTEGER" property="areaLandId" />
     <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="content" jdbcType="VARCHAR" property="content" />
@@ -30,24 +31,25 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into oa_ledger_administrative (company, subject_id, name, 
-      content, payable_amount, pay_condition, 
-      signatory, sign_time, linkman, 
-      phone, pay_total, department_id, 
-      user_id, file_box_id, file_id, 
-      remark, create_time, update_time
-      )
-    values (#{company,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{content,jdbcType=VARCHAR}, #{payableAmount,jdbcType=DECIMAL}, #{payCondition,jdbcType=VARCHAR}, 
-      #{signatory,jdbcType=VARCHAR}, #{signTime,jdbcType=TIMESTAMP}, #{linkman,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{payTotal,jdbcType=DECIMAL}, #{departmentId,jdbcType=INTEGER}, 
-      #{userId,jdbcType=BIGINT}, #{fileBoxId,jdbcType=VARCHAR}, #{fileId,jdbcType=VARCHAR}, 
-      #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+    insert into oa_ledger_administrative (company, area_land_id, subject_id, 
+      name, content, payable_amount, 
+      pay_condition, signatory, sign_time, 
+      linkman, phone, pay_total, 
+      department_id, user_id, file_box_id, 
+      file_id, remark, create_time, 
+      update_time)
+    values (#{company,jdbcType=INTEGER}, #{areaLandId,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{payableAmount,jdbcType=DECIMAL}, 
+      #{payCondition,jdbcType=VARCHAR}, #{signatory,jdbcType=VARCHAR}, #{signTime,jdbcType=TIMESTAMP}, 
+      #{linkman,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{payTotal,jdbcType=DECIMAL}, 
+      #{departmentId,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, #{fileBoxId,jdbcType=VARCHAR}, 
+      #{fileId,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.AdministrativeLedger">
     update oa_ledger_administrative
     set company = #{company,jdbcType=INTEGER},
+      area_land_id = #{areaLandId,jdbcType=INTEGER},
       subject_id = #{subjectId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       content = #{content,jdbcType=VARCHAR},
@@ -68,16 +70,16 @@
     where id = #{id,jdbcType=BIGINT}
   </update>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select id, company, subject_id, name, content, payable_amount, pay_condition, signatory, 
-    sign_time, linkman, phone, pay_total, department_id, user_id, file_box_id, file_id, 
-    remark, create_time, update_time
+    select id, company, area_land_id, subject_id, name, content, payable_amount, pay_condition, 
+    signatory, sign_time, linkman, phone, pay_total, department_id, user_id, file_box_id, 
+    file_id, remark, create_time, update_time
     from oa_ledger_administrative
     where id = #{id,jdbcType=BIGINT}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, company, subject_id, name, content, payable_amount, pay_condition, signatory, 
-    sign_time, linkman, phone, pay_total, department_id, user_id, file_box_id, file_id, 
-    remark, create_time, update_time
+    select id, company, area_land_id, subject_id, name, content, payable_amount, pay_condition, 
+    signatory, sign_time, linkman, phone, pay_total, department_id, user_id, file_box_id, 
+    file_id, remark, create_time, update_time
     from oa_ledger_administrative
   </select>
 </mapper>
