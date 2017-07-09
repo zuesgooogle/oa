@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.s4game.oa.common.mapper.PlanMoneyOutYearMapper">
+  <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.PlanMoneyOutYear">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="company" jdbcType="INTEGER" property="company" />
+    <result column="department_id" jdbcType="INTEGER" property="departmentId" />
+    <result column="project_id" jdbcType="INTEGER" property="projectId" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="receiver" jdbcType="VARCHAR" property="receiver" />
+    <result column="contract_name" jdbcType="VARCHAR" property="contractName" />
+    <result column="contract_amount" jdbcType="DECIMAL" property="contractAmount" />
+    <result column="paid_amount" jdbcType="DECIMAL" property="paidAmount" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+    <result column="month_1" jdbcType="DECIMAL" property="month1" />
+    <result column="month_2" jdbcType="DECIMAL" property="month2" />
+    <result column="month_3" jdbcType="DECIMAL" property="month3" />
+    <result column="month_4" jdbcType="DECIMAL" property="month4" />
+    <result column="month_5" jdbcType="DECIMAL" property="month5" />
+    <result column="month_6" jdbcType="DECIMAL" property="month6" />
+    <result column="month_7" jdbcType="DECIMAL" property="month7" />
+    <result column="month_8" jdbcType="DECIMAL" property="month8" />
+    <result column="month_9" jdbcType="DECIMAL" property="month9" />
+    <result column="month_10" jdbcType="DECIMAL" property="month10" />
+    <result column="month_11" jdbcType="DECIMAL" property="month11" />
+    <result column="month_12" jdbcType="DECIMAL" property="month12" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, company, department_id, project_id, subject_id, receiver, contract_name, contract_amount, 
+    paid_amount, year, month_1, month_2, month_3, month_4, month_5, month_6, month_7, 
+    month_8, month_9, month_10, month_11, month_12, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oa_plan_money_out_year
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from oa_plan_money_out_year
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.s4game.oa.common.entity.PlanMoneyOutYear">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_plan_money_out_year (company, department_id, project_id, 
+      subject_id, receiver, contract_name, 
+      contract_amount, paid_amount, year, 
+      month_1, month_2, month_3, 
+      month_4, month_5, month_6, 
+      month_7, month_8, month_9, 
+      month_10, month_11, month_12, 
+      create_time, update_time)
+    values (#{company,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, 
+      #{subjectId,jdbcType=INTEGER}, #{receiver,jdbcType=VARCHAR}, #{contractName,jdbcType=VARCHAR}, 
+      #{contractAmount,jdbcType=DECIMAL}, #{paidAmount,jdbcType=DECIMAL}, #{year,jdbcType=INTEGER}, 
+      #{month1,jdbcType=DECIMAL}, #{month2,jdbcType=DECIMAL}, #{month3,jdbcType=DECIMAL}, 
+      #{month4,jdbcType=DECIMAL}, #{month5,jdbcType=DECIMAL}, #{month6,jdbcType=DECIMAL}, 
+      #{month7,jdbcType=DECIMAL}, #{month8,jdbcType=DECIMAL}, #{month9,jdbcType=DECIMAL}, 
+      #{month10,jdbcType=DECIMAL}, #{month11,jdbcType=DECIMAL}, #{month12,jdbcType=DECIMAL}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.s4game.oa.common.entity.PlanMoneyOutYear">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_plan_money_out_year
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="company != null">
+        company,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="projectId != null">
+        project_id,
+      </if>
+      <if test="subjectId != null">
+        subject_id,
+      </if>
+      <if test="receiver != null">
+        receiver,
+      </if>
+      <if test="contractName != null">
+        contract_name,
+      </if>
+      <if test="contractAmount != null">
+        contract_amount,
+      </if>
+      <if test="paidAmount != null">
+        paid_amount,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+      <if test="month1 != null">
+        month_1,
+      </if>
+      <if test="month2 != null">
+        month_2,
+      </if>
+      <if test="month3 != null">
+        month_3,
+      </if>
+      <if test="month4 != null">
+        month_4,
+      </if>
+      <if test="month5 != null">
+        month_5,
+      </if>
+      <if test="month6 != null">
+        month_6,
+      </if>
+      <if test="month7 != null">
+        month_7,
+      </if>
+      <if test="month8 != null">
+        month_8,
+      </if>
+      <if test="month9 != null">
+        month_9,
+      </if>
+      <if test="month10 != null">
+        month_10,
+      </if>
+      <if test="month11 != null">
+        month_11,
+      </if>
+      <if test="month12 != null">
+        month_12,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="company != null">
+        #{company,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null">
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="receiver != null">
+        #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="contractName != null">
+        #{contractName,jdbcType=VARCHAR},
+      </if>
+      <if test="contractAmount != null">
+        #{contractAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="paidAmount != null">
+        #{paidAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=INTEGER},
+      </if>
+      <if test="month1 != null">
+        #{month1,jdbcType=DECIMAL},
+      </if>
+      <if test="month2 != null">
+        #{month2,jdbcType=DECIMAL},
+      </if>
+      <if test="month3 != null">
+        #{month3,jdbcType=DECIMAL},
+      </if>
+      <if test="month4 != null">
+        #{month4,jdbcType=DECIMAL},
+      </if>
+      <if test="month5 != null">
+        #{month5,jdbcType=DECIMAL},
+      </if>
+      <if test="month6 != null">
+        #{month6,jdbcType=DECIMAL},
+      </if>
+      <if test="month7 != null">
+        #{month7,jdbcType=DECIMAL},
+      </if>
+      <if test="month8 != null">
+        #{month8,jdbcType=DECIMAL},
+      </if>
+      <if test="month9 != null">
+        #{month9,jdbcType=DECIMAL},
+      </if>
+      <if test="month10 != null">
+        #{month10,jdbcType=DECIMAL},
+      </if>
+      <if test="month11 != null">
+        #{month11,jdbcType=DECIMAL},
+      </if>
+      <if test="month12 != null">
+        #{month12,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.s4game.oa.common.entity.PlanMoneyOutYear">
+    update oa_plan_money_out_year
+    <set>
+      <if test="company != null">
+        company = #{company,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null">
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        subject_id = #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="receiver != null">
+        receiver = #{receiver,jdbcType=VARCHAR},
+      </if>
+      <if test="contractName != null">
+        contract_name = #{contractName,jdbcType=VARCHAR},
+      </if>
+      <if test="contractAmount != null">
+        contract_amount = #{contractAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="paidAmount != null">
+        paid_amount = #{paidAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="year != null">
+        year = #{year,jdbcType=INTEGER},
+      </if>
+      <if test="month1 != null">
+        month_1 = #{month1,jdbcType=DECIMAL},
+      </if>
+      <if test="month2 != null">
+        month_2 = #{month2,jdbcType=DECIMAL},
+      </if>
+      <if test="month3 != null">
+        month_3 = #{month3,jdbcType=DECIMAL},
+      </if>
+      <if test="month4 != null">
+        month_4 = #{month4,jdbcType=DECIMAL},
+      </if>
+      <if test="month5 != null">
+        month_5 = #{month5,jdbcType=DECIMAL},
+      </if>
+      <if test="month6 != null">
+        month_6 = #{month6,jdbcType=DECIMAL},
+      </if>
+      <if test="month7 != null">
+        month_7 = #{month7,jdbcType=DECIMAL},
+      </if>
+      <if test="month8 != null">
+        month_8 = #{month8,jdbcType=DECIMAL},
+      </if>
+      <if test="month9 != null">
+        month_9 = #{month9,jdbcType=DECIMAL},
+      </if>
+      <if test="month10 != null">
+        month_10 = #{month10,jdbcType=DECIMAL},
+      </if>
+      <if test="month11 != null">
+        month_11 = #{month11,jdbcType=DECIMAL},
+      </if>
+      <if test="month12 != null">
+        month_12 = #{month12,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.PlanMoneyOutYear">
+    update oa_plan_money_out_year
+    set company = #{company,jdbcType=INTEGER},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      project_id = #{projectId,jdbcType=INTEGER},
+      subject_id = #{subjectId,jdbcType=INTEGER},
+      receiver = #{receiver,jdbcType=VARCHAR},
+      contract_name = #{contractName,jdbcType=VARCHAR},
+      contract_amount = #{contractAmount,jdbcType=DECIMAL},
+      paid_amount = #{paidAmount,jdbcType=DECIMAL},
+      year = #{year,jdbcType=INTEGER},
+      month_1 = #{month1,jdbcType=DECIMAL},
+      month_2 = #{month2,jdbcType=DECIMAL},
+      month_3 = #{month3,jdbcType=DECIMAL},
+      month_4 = #{month4,jdbcType=DECIMAL},
+      month_5 = #{month5,jdbcType=DECIMAL},
+      month_6 = #{month6,jdbcType=DECIMAL},
+      month_7 = #{month7,jdbcType=DECIMAL},
+      month_8 = #{month8,jdbcType=DECIMAL},
+      month_9 = #{month9,jdbcType=DECIMAL},
+      month_10 = #{month10,jdbcType=DECIMAL},
+      month_11 = #{month11,jdbcType=DECIMAL},
+      month_12 = #{month12,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oa_plan_money_out_year
+  </select>
+</mapper>

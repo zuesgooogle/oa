@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.s4game.oa.common.mapper.UserProcessMapper">
+  <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.UserProcess">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="task_id" jdbcType="VARCHAR" property="taskId" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="form_data_id" jdbcType="INTEGER" property="formDataId" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="create_id" jdbcType="BIGINT" property="createId" />
+    <result column="input_date" jdbcType="VARCHAR" property="inputDate" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="form_key" jdbcType="VARCHAR" property="formKey" />
+    <result column="deleted" jdbcType="BIT" property="deleted" />
+    <result column="begin_time" jdbcType="TIMESTAMP" property="beginTime" />
+    <result column="expire_time" jdbcType="TIMESTAMP" property="expireTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, task_id, user_id, form_data_id, state, create_id, input_date, remark, form_key, 
+    deleted, begin_time, expire_time, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oa_user_process
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from oa_user_process
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.s4game.oa.common.entity.UserProcess">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_user_process (task_id, user_id, form_data_id, 
+      state, create_id, input_date, 
+      remark, form_key, deleted, 
+      begin_time, expire_time, create_time, 
+      update_time)
+    values (#{taskId,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, #{formDataId,jdbcType=INTEGER}, 
+      #{state,jdbcType=TINYINT}, #{createId,jdbcType=BIGINT}, #{inputDate,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{formKey,jdbcType=VARCHAR}, #{deleted,jdbcType=BIT}, 
+      #{beginTime,jdbcType=TIMESTAMP}, #{expireTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.s4game.oa.common.entity.UserProcess">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_user_process
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="taskId != null">
+        task_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="formDataId != null">
+        form_data_id,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="createId != null">
+        create_id,
+      </if>
+      <if test="inputDate != null">
+        input_date,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="formKey != null">
+        form_key,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+      <if test="beginTime != null">
+        begin_time,
+      </if>
+      <if test="expireTime != null">
+        expire_time,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="taskId != null">
+        #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="formDataId != null">
+        #{formDataId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="createId != null">
+        #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="inputDate != null">
+        #{inputDate,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="formKey != null">
+        #{formKey,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireTime != null">
+        #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.s4game.oa.common.entity.UserProcess">
+    update oa_user_process
+    <set>
+      <if test="taskId != null">
+        task_id = #{taskId,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="formDataId != null">
+        form_data_id = #{formDataId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="createId != null">
+        create_id = #{createId,jdbcType=BIGINT},
+      </if>
+      <if test="inputDate != null">
+        input_date = #{inputDate,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="formKey != null">
+        form_key = #{formKey,jdbcType=VARCHAR},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expireTime != null">
+        expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.UserProcess">
+    update oa_user_process
+    set task_id = #{taskId,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT},
+      form_data_id = #{formDataId,jdbcType=INTEGER},
+      state = #{state,jdbcType=TINYINT},
+      create_id = #{createId,jdbcType=BIGINT},
+      input_date = #{inputDate,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      form_key = #{formKey,jdbcType=VARCHAR},
+      deleted = #{deleted,jdbcType=BIT},
+      begin_time = #{beginTime,jdbcType=TIMESTAMP},
+      expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oa_user_process
+  </select>
+</mapper>

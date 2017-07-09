@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.s4game.oa.common.mapper.ZhidiLedgerCostMapper">
+  <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.ZhidiLedgerCost">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="year" jdbcType="SMALLINT" property="year" />
+    <result column="month" jdbcType="SMALLINT" property="month" />
+    <result column="area_id" jdbcType="INTEGER" property="areaId" />
+    <result column="subject_id" jdbcType="INTEGER" property="subjectId" />
+    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="calculate_invest" jdbcType="DECIMAL" property="calculateInvest" />
+    <result column="expect_invest" jdbcType="DECIMAL" property="expectInvest" />
+    <result column="total_invest" jdbcType="DECIMAL" property="totalInvest" />
+    <result column="audit_statistics" jdbcType="DECIMAL" property="auditStatistics" />
+    <result column="gov_confirm" jdbcType="DECIMAL" property="govConfirm" />
+    <result column="gov_check" jdbcType="DECIMAL" property="govCheck" />
+    <result column="uncheck" jdbcType="DECIMAL" property="uncheck" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, year, month, area_id, subject_id, project_name, calculate_invest, expect_invest, 
+    total_invest, audit_statistics, gov_confirm, gov_check, uncheck, remark, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oa_ledger_zhidi_cost
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from oa_ledger_zhidi_cost
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.s4game.oa.common.entity.ZhidiLedgerCost">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_ledger_zhidi_cost (year, month, area_id, 
+      subject_id, project_name, calculate_invest, 
+      expect_invest, total_invest, audit_statistics, 
+      gov_confirm, gov_check, uncheck, 
+      remark, create_time, update_time
+      )
+    values (#{year,jdbcType=SMALLINT}, #{month,jdbcType=SMALLINT}, #{areaId,jdbcType=INTEGER}, 
+      #{subjectId,jdbcType=INTEGER}, #{projectName,jdbcType=VARCHAR}, #{calculateInvest,jdbcType=DECIMAL}, 
+      #{expectInvest,jdbcType=DECIMAL}, #{totalInvest,jdbcType=DECIMAL}, #{auditStatistics,jdbcType=DECIMAL}, 
+      #{govConfirm,jdbcType=DECIMAL}, #{govCheck,jdbcType=DECIMAL}, #{uncheck,jdbcType=DECIMAL}, 
+      #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.s4game.oa.common.entity.ZhidiLedgerCost">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_ledger_zhidi_cost
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="year != null">
+        year,
+      </if>
+      <if test="month != null">
+        month,
+      </if>
+      <if test="areaId != null">
+        area_id,
+      </if>
+      <if test="subjectId != null">
+        subject_id,
+      </if>
+      <if test="projectName != null">
+        project_name,
+      </if>
+      <if test="calculateInvest != null">
+        calculate_invest,
+      </if>
+      <if test="expectInvest != null">
+        expect_invest,
+      </if>
+      <if test="totalInvest != null">
+        total_invest,
+      </if>
+      <if test="auditStatistics != null">
+        audit_statistics,
+      </if>
+      <if test="govConfirm != null">
+        gov_confirm,
+      </if>
+      <if test="govCheck != null">
+        gov_check,
+      </if>
+      <if test="uncheck != null">
+        uncheck,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="year != null">
+        #{year,jdbcType=SMALLINT},
+      </if>
+      <if test="month != null">
+        #{month,jdbcType=SMALLINT},
+      </if>
+      <if test="areaId != null">
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null">
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="calculateInvest != null">
+        #{calculateInvest,jdbcType=DECIMAL},
+      </if>
+      <if test="expectInvest != null">
+        #{expectInvest,jdbcType=DECIMAL},
+      </if>
+      <if test="totalInvest != null">
+        #{totalInvest,jdbcType=DECIMAL},
+      </if>
+      <if test="auditStatistics != null">
+        #{auditStatistics,jdbcType=DECIMAL},
+      </if>
+      <if test="govConfirm != null">
+        #{govConfirm,jdbcType=DECIMAL},
+      </if>
+      <if test="govCheck != null">
+        #{govCheck,jdbcType=DECIMAL},
+      </if>
+      <if test="uncheck != null">
+        #{uncheck,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.s4game.oa.common.entity.ZhidiLedgerCost">
+    update oa_ledger_zhidi_cost
+    <set>
+      <if test="year != null">
+        year = #{year,jdbcType=SMALLINT},
+      </if>
+      <if test="month != null">
+        month = #{month,jdbcType=SMALLINT},
+      </if>
+      <if test="areaId != null">
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="subjectId != null">
+        subject_id = #{subjectId,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null">
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="calculateInvest != null">
+        calculate_invest = #{calculateInvest,jdbcType=DECIMAL},
+      </if>
+      <if test="expectInvest != null">
+        expect_invest = #{expectInvest,jdbcType=DECIMAL},
+      </if>
+      <if test="totalInvest != null">
+        total_invest = #{totalInvest,jdbcType=DECIMAL},
+      </if>
+      <if test="auditStatistics != null">
+        audit_statistics = #{auditStatistics,jdbcType=DECIMAL},
+      </if>
+      <if test="govConfirm != null">
+        gov_confirm = #{govConfirm,jdbcType=DECIMAL},
+      </if>
+      <if test="govCheck != null">
+        gov_check = #{govCheck,jdbcType=DECIMAL},
+      </if>
+      <if test="uncheck != null">
+        uncheck = #{uncheck,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.ZhidiLedgerCost">
+    update oa_ledger_zhidi_cost
+    set year = #{year,jdbcType=SMALLINT},
+      month = #{month,jdbcType=SMALLINT},
+      area_id = #{areaId,jdbcType=INTEGER},
+      subject_id = #{subjectId,jdbcType=INTEGER},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      calculate_invest = #{calculateInvest,jdbcType=DECIMAL},
+      expect_invest = #{expectInvest,jdbcType=DECIMAL},
+      total_invest = #{totalInvest,jdbcType=DECIMAL},
+      audit_statistics = #{auditStatistics,jdbcType=DECIMAL},
+      gov_confirm = #{govConfirm,jdbcType=DECIMAL},
+      gov_check = #{govCheck,jdbcType=DECIMAL},
+      uncheck = #{uncheck,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectReport" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+	select area_id, subject_id, 
+
+	sum(calculate_invest) as calculate_invest,
+	sum(expect_invest) as expect_invest,
+	sum(total_invest) as total_invest,
+	sum(audit_statistics) as audit_statistics,
+	sum(gov_confirm) as gov_confirm,
+	sum(gov_check) as gov_check,
+	sum(uncheck) as uncheck
+	
+	from oa_ledger_zhidi_cost 
+	
+	where `year` = #{year} group by area_id, subject_id
+  </select>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oa_ledger_zhidi_cost
+    
+    <where>
+    	<if test="areaIds != null">
+    		and area_id in 
+    		<foreach collection="areaIds" index="index" item="item" open="(" separator="," close=")">
+		    	#{item}
+		    </foreach>
+    	</if>
+    	<if test="subjectIds != null">
+    		and subject_id in 
+    		<foreach collection="subjectIds" index="index" item="item" open="(" separator="," close=")">
+		    	#{item}
+		    </foreach>
+    	</if>
+    	
+    </where>
+  </select>
+</mapper>

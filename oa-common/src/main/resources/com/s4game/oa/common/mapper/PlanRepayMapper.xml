@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.s4game.oa.common.mapper.PlanRepayMapper">
+  <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.PlanRepay">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="year" jdbcType="SMALLINT" property="year" />
+    <result column="month" jdbcType="SMALLINT" property="month" />
+    <result column="bank_id" jdbcType="INTEGER" property="bankId" />
+    <result column="project_name" jdbcType="VARCHAR" property="projectName" />
+    <result column="contract_name" jdbcType="VARCHAR" property="contractName" />
+    <result column="total_loan_amount" jdbcType="DECIMAL" property="totalLoanAmount" />
+    <result column="plan_amount" jdbcType="DECIMAL" property="planAmount" />
+    <result column="plan_remain_loan_amount" jdbcType="DECIMAL" property="planRemainLoanAmount" />
+    <result column="actual_amount" jdbcType="DECIMAL" property="actualAmount" />
+    <result column="actual_remain_loan_amount" jdbcType="DECIMAL" property="actualRemainLoanAmount" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, year, month, bank_id, project_name, contract_name, total_loan_amount, plan_amount, 
+    plan_remain_loan_amount, actual_amount, actual_remain_loan_amount, remark, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oa_plan_repay
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from oa_plan_repay
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.s4game.oa.common.entity.PlanRepay">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_plan_repay (year, month, bank_id, 
+      project_name, contract_name, total_loan_amount, 
+      plan_amount, plan_remain_loan_amount, actual_amount, 
+      actual_remain_loan_amount, remark, create_time, 
+      update_time)
+    values (#{year,jdbcType=SMALLINT}, #{month,jdbcType=SMALLINT}, #{bankId,jdbcType=INTEGER}, 
+      #{projectName,jdbcType=VARCHAR}, #{contractName,jdbcType=VARCHAR}, #{totalLoanAmount,jdbcType=DECIMAL}, 
+      #{planAmount,jdbcType=DECIMAL}, #{planRemainLoanAmount,jdbcType=DECIMAL}, #{actualAmount,jdbcType=DECIMAL}, 
+      #{actualRemainLoanAmount,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.s4game.oa.common.entity.PlanRepay">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_plan_repay
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="year != null">
+        year,
+      </if>
+      <if test="month != null">
+        month,
+      </if>
+      <if test="bankId != null">
+        bank_id,
+      </if>
+      <if test="projectName != null">
+        project_name,
+      </if>
+      <if test="contractName != null">
+        contract_name,
+      </if>
+      <if test="totalLoanAmount != null">
+        total_loan_amount,
+      </if>
+      <if test="planAmount != null">
+        plan_amount,
+      </if>
+      <if test="planRemainLoanAmount != null">
+        plan_remain_loan_amount,
+      </if>
+      <if test="actualAmount != null">
+        actual_amount,
+      </if>
+      <if test="actualRemainLoanAmount != null">
+        actual_remain_loan_amount,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="year != null">
+        #{year,jdbcType=SMALLINT},
+      </if>
+      <if test="month != null">
+        #{month,jdbcType=SMALLINT},
+      </if>
+      <if test="bankId != null">
+        #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null">
+        #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="contractName != null">
+        #{contractName,jdbcType=VARCHAR},
+      </if>
+      <if test="totalLoanAmount != null">
+        #{totalLoanAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="planAmount != null">
+        #{planAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="planRemainLoanAmount != null">
+        #{planRemainLoanAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="actualAmount != null">
+        #{actualAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="actualRemainLoanAmount != null">
+        #{actualRemainLoanAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.s4game.oa.common.entity.PlanRepay">
+    update oa_plan_repay
+    <set>
+      <if test="year != null">
+        year = #{year,jdbcType=SMALLINT},
+      </if>
+      <if test="month != null">
+        month = #{month,jdbcType=SMALLINT},
+      </if>
+      <if test="bankId != null">
+        bank_id = #{bankId,jdbcType=INTEGER},
+      </if>
+      <if test="projectName != null">
+        project_name = #{projectName,jdbcType=VARCHAR},
+      </if>
+      <if test="contractName != null">
+        contract_name = #{contractName,jdbcType=VARCHAR},
+      </if>
+      <if test="totalLoanAmount != null">
+        total_loan_amount = #{totalLoanAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="planAmount != null">
+        plan_amount = #{planAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="planRemainLoanAmount != null">
+        plan_remain_loan_amount = #{planRemainLoanAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="actualAmount != null">
+        actual_amount = #{actualAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="actualRemainLoanAmount != null">
+        actual_remain_loan_amount = #{actualRemainLoanAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.PlanRepay">
+    update oa_plan_repay
+    set year = #{year,jdbcType=SMALLINT},
+      month = #{month,jdbcType=SMALLINT},
+      bank_id = #{bankId,jdbcType=INTEGER},
+      project_name = #{projectName,jdbcType=VARCHAR},
+      contract_name = #{contractName,jdbcType=VARCHAR},
+      total_loan_amount = #{totalLoanAmount,jdbcType=DECIMAL},
+      plan_amount = #{planAmount,jdbcType=DECIMAL},
+      plan_remain_loan_amount = #{planRemainLoanAmount,jdbcType=DECIMAL},
+      actual_amount = #{actualAmount,jdbcType=DECIMAL},
+      actual_remain_loan_amount = #{actualRemainLoanAmount,jdbcType=DECIMAL},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oa_plan_repay
+  </select>
+</mapper>
