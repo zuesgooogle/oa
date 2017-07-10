@@ -28,7 +28,7 @@ Ext.define('oa.Application', {
             var main = Ext.create({
                         xtype: 'app-main'
                     });
-                newsView = Ext.create('newsView');
+                newsView = Ext.create('newsViewList');
                 
                 workspace = Ext.getCmp('workspace');
                 workspace.add(newsView);

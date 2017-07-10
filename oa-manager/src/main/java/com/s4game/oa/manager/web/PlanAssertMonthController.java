@@ -48,6 +48,8 @@ public class PlanAssertMonthController {
 	@ApiOperation(value = "更新资产购置")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public Response update(@ApiParam(value = "资产购置Id") @RequestParam(value = "id", required = true) Long id,
+			@ApiParam(value = "年") @RequestParam(value = "year", required = true) Short year,
+			@ApiParam(value = "月") @RequestParam(value = "month", required = true) Short month,
 			@ApiParam(value = "资产Id") @RequestParam(value = "assertId", required = true) Integer assertId,
 			@ApiParam(value = "资产名称") @RequestParam(value = "assertName", required = true) String assertName,
 			@ApiParam(value = "年度计划购置数量") @RequestParam(value = "yearTotalNum", required = true) Integer yearTotalNum,
@@ -55,35 +57,29 @@ public class PlanAssertMonthController {
 			@ApiParam(value = "本月计划数量") @RequestParam(value = "planNum", required = true) Integer planNum,
 			@ApiParam(value = "单价") @RequestParam(value = "unitPrice", required = true) BigDecimal unitPrice,
 			@ApiParam(value = "备注") @RequestParam(value = "remark", required = false) String remark) {
+		
 		Response.Builder response = Response.newBuilder();
 		
-		PlanAssertMonth month = null;
+		PlanAssertMonth planAssert = new PlanAssertMonth();
+		planAssert.setYear(year);
+		planAssert.setMonth(month);
+		planAssert.setAssertId(assertId);
+		planAssert.setAssertName(assertName);
+		planAssert.setYearTotalNum(yearTotalNum);
+		planAssert.setBoughtNum(boughtNum);
+		planAssert.setPlanNum(planNum);
+		planAssert.setUnitPrice(unitPrice);
+		planAssert.setRemark(remark);
+		
 		if (WebUtils.isAdd(id)) {
-			month = new PlanAssertMonth();
-			month.setAssertId(assertId);
-			month.setAssertName(assertName);
-			month.setYearTotalNum(yearTotalNum);
-			month.setBoughtNum(boughtNum);
-			month.setPlanNum(planNum);
-			month.setUnitPrice(unitPrice);
-			month.setRemark(remark);
-			month.setCreateTime(new Date());
-
-			planAssertMonthMapper.insert(month);
+			planAssert.setCreateTime(new Date());
+			planAssertMonthMapper.insert(planAssert);
 		} else {
-			month = planAssertMonthMapper.selectByPrimaryKey(id);
-			month.setAssertId(assertId);
-			month.setAssertName(assertName);
-			month.setYearTotalNum(yearTotalNum);
-			month.setBoughtNum(boughtNum);
-			month.setPlanNum(planNum);
-			month.setUnitPrice(unitPrice);
-			month.setRemark(remark);
-			
-			planAssertMonthMapper.updateByPrimaryKey(month);
+			planAssert.setId(id);
+			planAssertMonthMapper.updateByPrimaryKeySelective(planAssert);
 		}
 
-		response.setData(month);
+		response.setData(planAssert);
 		return response.build();
 	}
 

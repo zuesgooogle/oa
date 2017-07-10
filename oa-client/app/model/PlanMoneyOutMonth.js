@@ -5,6 +5,8 @@ Ext.define('oa.model.PlanMoneyOutMonth', {
         name: 'id',
         type: 'int'
     }, 
+    'year',
+    'month',
     'company',
     'departmentId',
     'projectId',

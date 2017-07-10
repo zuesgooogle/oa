@@ -1,7 +1,6 @@
 package com.s4game.oa.manager.web;
 
 import java.util.Date;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,9 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 import com.s4game.oa.common.entity.TaskClassifi;
 import com.s4game.oa.common.mapper.TaskClassifiMapper;
 import com.s4game.oa.common.response.Response;
+import com.s4game.oa.common.service.PageService;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
@@ -23,14 +25,23 @@ public class TaskClassifiController {
 
 	@Autowired
 	private TaskClassifiMapper taskClassifiManager;
+	
+	@Autowired
+	private PageService<TaskClassifi> pageService;
 
 	@ApiOperation(value = "任务分类列表")
 	@RequestMapping(value = "/list")
-	public Response list(@ApiParam(value = "任务分类Id") @RequestParam(value = "node", required = true) Integer node) {
+	public Response list(@ApiParam(value = "任务分类Id") @RequestParam(value = "node", required = false) Integer node) {
 		Response.Builder response = Response.newBuilder();
 
-		List<TaskClassifi> TaskClassifis = taskClassifiManager.selectByParentId(node);
-		response.setData(TaskClassifis);
+		TaskClassifi params = new TaskClassifi();
+		if (node != null) {
+			params.setParentId(node);
+		}
+		
+		PageInfo<TaskClassifi> pageInfo = pageService.selectPage(params, new Page<TaskClassifi>(1, 1000));
+		response.setData(pageInfo.getList());
+		response.setTotalCount(pageInfo.getTotal());
 
 		return response.build();
 	}
@@ -44,7 +55,7 @@ public class TaskClassifiController {
 
 		TaskClassifi parent = taskClassifiManager.selectByPrimaryKey(parentId);
 		if (parent == null) {
-			parentId = null;
+			parentId = 0;
 		}
 		
 		TaskClassifi taskClassifi = new TaskClassifi();

@@ -38,8 +38,22 @@ Ext.define('oa.view.develop.DevelopLandList', {
     columns: [
         { text: 'ID', dataIndex: 'id', width: 100 },
 
-        { text: '任务类型', dataIndex: 'taskTypeId', width: 100 },
-        { text: '任务名称', dataIndex: 'taskNameId', width: 100 },
+        { text: '任务类型', dataIndex: 'taskTypeId', width: 100,
+            renderer: function(value, cellmeta, recrod) {
+                var store = Ext.getStore('taskClassifi');
+                    index = store.find('id', value); 
+                    name = store.getAt(index).get('name'); 
+                return name; 
+            }
+        },
+        { text: '任务名称', dataIndex: 'taskNameId', width: 200, 
+            renderer: function(value, cellmeta, recrod) {
+                var store = Ext.getStore('taskClassifi');
+                    index = store.find('id', value); 
+                    name = store.getAt(index).get('name'); 
+                return name; 
+            }
+        },
         {
             text: '计划开始时间', dataIndex: 'planStartTime', width: 150,
             renderer: function (value, cellmeta, record) {
@@ -93,9 +107,10 @@ Ext.define('oa.view.develop.DevelopLandList', {
     },
 
     listeners: {
-        render: function (grid) {
-            var store = grid.getStore();
-            store.load();
+        beforerender: function (grid) {
+            StoreManager.syncLoadStore('store.taskClassifi', function() {
+                grid.getStore().load();
+            });
         },
         itemdblclick: 'viewDevelopLand'
     }

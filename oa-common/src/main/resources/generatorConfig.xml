@@ -6,11 +6,11 @@
 <generatorConfiguration>
 	<!-- cmd: mybatis-generator:generate -->
 
-	<classPathEntry location="/Users/max/m2/repository/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar"/>
-	
 	<!-- 
-	<classPathEntry location="C:/Users/renyuan_game/.m2/repository/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar"/>
+	<classPathEntry location="/Users/max/m2/repository/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar"/>
 	 -->
+	
+	<classPathEntry location="C:/Users/renyuan_game/.m2/repository/mysql/mysql-connector-java/5.1.41/mysql-connector-java-5.1.41.jar"/>
 	
 	<context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
 		<property name="beginningDelimiter" value="`" />

@@ -14,12 +14,12 @@ public class News {
     private String mainImgUrl;
 
     private Boolean deleted;
-    
-    private String content;
 
     private Date createTime;
 
     private Date updateTime;
+
+    private String content;
 
     public Integer getId() {
         return id;

@@ -37,6 +37,8 @@ Ext.define('oa.view.plan.PlanAssertMonthList', {
 
     columns: [
         { text: 'ID', dataIndex: 'id', width: 100 },
+        {text: '年', dataIndex: 'year', width: 50},
+        {text: '月', dataIndex: 'month', width: 50},
         {text: '资产类型', dataIndex: 'assertId', width: 100},
         {text: '资产名称', dataIndex: 'assertName', width: 100},
         {text: '年度计划购置数量', dataIndex: 'yearTotalNum', width: 150},

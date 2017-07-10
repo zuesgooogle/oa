@@ -36,18 +36,29 @@ Ext.define('oa.view.develop.financingLedgerList', {
 
     columns: [
         { text: 'ID', dataIndex: 'id', width: 100 },
-        { text: '类别', dataIndex: 'type', width: 100 },
+        { text: '类别', dataIndex: 'type', width: 100, 
+            renderer: function (value, cellmeta, record) {
+                return Utils.rendererFnancingType(value);
+            }
+        },
         { text: '年', dataIndex: 'year', width: 50 },
         { text: '月', dataIndex: 'month', width: 50 },
-        { text: '银行', dataIndex: 'bankId', width: 100},
+        { text: '银行', dataIndex: 'bankId', width: 150,
+            renderer: function(value, cellmeta, recrod) {
+                var bs = Ext.getStore('store.bank');
+                    index = bs.find('id', value); 
+                    name = bs.getAt(index).get('name'); 
+                return name; 
+            }
+        },
         { text: '项目', dataIndex: 'projectName', width: 100 },
         { text: '额度', dataIndex: 'amount', width: 100 },
         { text: '计划融资金额', dataIndex: 'financingAmount', width: 120 },
         { text: '累计已放款金额', dataIndex: 'totalLending', width: 120 },
         { text: '累计已还款金额', dataIndex: 'totalReplayLoan', width: 120 },
         { text: '贷款余额', dataIndex: 'remainLoan', width: 100 },
-        { text: '期限', dataIndex: 'deadline', width: 100 },
-        { text: '利率', dataIndex: 'rate', width: 100 },
+        { text: '期限', dataIndex: 'deadline', width: 50 },
+        { text: '利率', dataIndex: 'rate', width: 50 },
         { text: '担保方式', dataIndex: 'guaranty', width: 100 },
         {
             text: '创建时间', dataIndex: 'createTime', width: 200,
@@ -76,8 +87,9 @@ Ext.define('oa.view.develop.financingLedgerList', {
 
     listeners: {
         render: function (grid) {
-            var store = grid.getStore();
-            store.load();
+            StoreManager.syncLoadStore('store.bank', function() {
+                grid.getStore().load();
+            });
         },
         itemdblclick: 'viewFinancingLedger'
     }

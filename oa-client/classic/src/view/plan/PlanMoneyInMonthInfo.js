@@ -12,7 +12,7 @@ Ext.define('oa.view.plan.PlanMoneyInMonthInfo', {
     resizable: false,
 
     width: 800,
-    height: 500,
+    height: 600,
 
     closeAction: 'destroy',
 
@@ -33,11 +33,12 @@ Ext.define('oa.view.plan.PlanMoneyInMonthInfo', {
                 layout: 'form',
                 items: [
                     { fieldLabel: 'Id', name: 'id', xtype: 'textfield', hidden: true },
+                    { fieldLabel: '年', name: 'year', xtype: 'yearCombo', allowBlank: false },
+                    { fieldLabel: '月', name: 'month', xtype: 'monthCombo', allowBlank: false },
                     { name: 'company', xtype: 'companyCombo', allowBlank: false },
                     { name: 'departmentId', xtype: 'departmentSingleSelect', allowBlank: false },
                     { fieldLabel: '项目', name: 'projectId', xtype: 'textfield', allowBlank: false },
-                    { fieldLabel: '成本科目', name: 'subjectId', xtype: 'textfield' },
-                    { fieldLabel: '单位名称', name: 'organizer', xtype: 'textfield' }
+                    { fieldLabel: '成本科目', name: 'subjectId', xtype: 'textfield' }
                 ]
             },
             {
@@ -47,6 +48,7 @@ Ext.define('oa.view.plan.PlanMoneyInMonthInfo', {
                 defaults: { anchor: '95%' },
                 style: "margin-left: 5px; padding: 5px",
                 items: [
+                    { fieldLabel: '单位名称', name: 'organizer', xtype: 'textfield' },
                     { fieldLabel: '合同名称', name: 'contractName', xtype: 'textfield' },
                     { fieldLabel: '全年计划总额', name: 'total', xtype: 'numberfield' },
                     { fieldLabel: '本月计划支付', name: 'planAmount', xtype: 'numberfield' },

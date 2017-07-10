@@ -65,6 +65,7 @@ public class UserController {
 		
 		PageInfo<User> pageInfo = pageService.selectPage(new User(), new Page<User>(page, limit));
 		response.setData(pageInfo.getList());
+		response.setTotalCount(pageInfo.getTotal());
 		
 		return response.build();
 	}

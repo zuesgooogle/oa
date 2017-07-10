@@ -97,7 +97,15 @@
     select 
     <include refid="Base_Column_List" />
     from oa_task_classifi
+  	
+  	<where>
+  		<if test="parentId != null">
+  			and parent_id = #{parentId}
+  		</if>
+  	</where>  
+    
   </select>
+  
   <select id="selectByParentId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select id, parent_id, name, create_time, update_time
     from oa_task_classifi

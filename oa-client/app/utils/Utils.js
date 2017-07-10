@@ -12,6 +12,12 @@ Ext.define('Utils', {
         { id: 3, name: "员工" }
     ],
 
+    /** 融资类别 */
+    financingType: [
+        { "id": 1, "name": "融资明细" },
+        { "id": 2, "name": "融资预案" }
+    ],
+
     isCompany: function (name) {
         var has = false;
         Ext.each(this.company, function (record) {
@@ -26,6 +32,17 @@ Ext.define('Utils', {
     rendererCompany: function (id) {
         var name = 'unknow';
         Ext.each(this.company, function (record) {
+            if (record.id === id) {
+                name = record.name;
+                return false; 
+            }
+        });
+        return name;
+    },
+
+    rendererFnancingType: function (id) {
+        var name = 'unknow';
+        Ext.each(this.financingType, function (record) {
             if (record.id === id) {
                 name = record.name;
                 return false; 

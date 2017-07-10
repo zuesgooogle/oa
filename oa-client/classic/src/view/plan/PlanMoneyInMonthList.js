@@ -37,6 +37,8 @@ Ext.define('oa.view.plan.PlanMoneyInMonthList', {
 
     columns: [
         { text: 'ID', dataIndex: 'id', width: 100 },
+        {text: '年', dataIndex: 'year', width: 50},
+        {text: '月', dataIndex: 'month', width: 50},
         {
             text: '所属公司', dataIndex: 'company', width: 200,
             renderer: function (value, cellmeta, record) {

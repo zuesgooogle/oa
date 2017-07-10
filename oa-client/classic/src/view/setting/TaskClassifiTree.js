@@ -14,7 +14,7 @@ Ext.define('oa.view.setting.TaskClassifiTree', {
 
     rootVisible: true,
     store: {
-        type: 'taskclassifi',
+        type: 'taskClassifiTree',
         proxy: {
             type: 'ajax',
             url: oa.config.Config.BASE_URL + 'taskclassifi/list'

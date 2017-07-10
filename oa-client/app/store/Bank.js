@@ -4,6 +4,8 @@ Ext.define('oa.store.Bank', {
     id: 'store.bank',
     alias: 'store.bank',
 
+    storeId: 'store.bank',
+
     model: 'oa.model.Bank',
     autoLoad: true,
     proxy: {

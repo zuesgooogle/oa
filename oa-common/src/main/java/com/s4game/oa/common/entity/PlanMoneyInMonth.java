@@ -2,12 +2,13 @@ package com.s4game.oa.common.entity;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class PlanMoneyInMonth {
     private Long id;
+
+    private Short year;
+
+    private Short month;
 
     private Integer company;
 
@@ -31,15 +32,28 @@ public class PlanMoneyInMonth {
 
     private Date updateTime;
 
-    @JsonIgnore
-    private List<Integer> months;
-    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Short getYear() {
+        return year;
+    }
+
+    public void setYear(Short year) {
+        this.year = year;
+    }
+
+    public Short getMonth() {
+        return month;
+    }
+
+    public void setMonth(Short month) {
+        this.month = month;
     }
 
     public Integer getCompany() {
@@ -129,13 +143,4 @@ public class PlanMoneyInMonth {
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
-    
-    public List<Integer> getMonths() {
-		return months;
-	}
-
-	public void setMonths(List<Integer> months) {
-		this.months = months;
-	}
-
 }

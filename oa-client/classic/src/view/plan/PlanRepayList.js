@@ -39,7 +39,14 @@ Ext.define('oa.view.plan.PlanRepayList', {
         { text: 'ID', dataIndex: 'id', width: 100 },
         { text: '年份', dataIndex: 'year', width: 50 },
         { text: '月份', dataIndex: 'month', width: 50 },
-        { text: '银行', dataIndex: 'bankId', width: 100 },
+        { text: '银行', dataIndex: 'bankId', width: 150,
+            renderer: function(value, cellmeta, recrod) {
+                var bs = Ext.getStore('store.bank');
+                    index = bs.find('id', value); 
+                    name = bs.getAt(index).get('name'); 
+                return name; 
+            }
+        },
         { text: '项目', dataIndex: 'projectName', width: 100 },
         { text: '合同', dataIndex: 'contractName', width: 100 },
         { text: '累计已放款金额', dataIndex: 'totalLoanAmount', width: 150 },
@@ -73,8 +80,9 @@ Ext.define('oa.view.plan.PlanRepayList', {
 
     listeners: {
         render: function (grid) {
-            var store = grid.getStore();
-            store.load();
+            StoreManager.syncLoadStore('store.bank', function() {
+                grid.getStore().load();
+            });
         },
         itemdblclick: 'viewPlanRepay'
     }

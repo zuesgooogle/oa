@@ -12,7 +12,7 @@ Ext.define('oa.view.news.NewsInfo', {
     resizable: false,
 
     width: 1024,
-    height: 768,
+    height: 820,
 
     closeAction: 'destroy',
 

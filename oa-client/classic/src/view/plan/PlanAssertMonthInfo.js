@@ -12,7 +12,7 @@ Ext.define('oa.view.plan.PlanAssertMonthInfo', {
     resizable: false,
 
     width: 800,
-    height: 500,
+    height: 600,
 
     closeAction: 'destroy',
 
@@ -28,6 +28,8 @@ Ext.define('oa.view.plan.PlanAssertMonthInfo', {
         bodyStyle: "padding:10px 10px 10px 10px",
         items: [
             { fieldLabel: 'Id', name: 'id', xtype: 'textfield', hidden: true },
+            { fieldLabel: '年', name: 'year', xtype: 'yearCombo', allowBlank: false },
+            { fieldLabel: '月', name: 'month', xtype: 'monthCombo', allowBlank: false },
             { fieldLabel: '资产类型', name: 'assertId', xtype: 'textfield', allowBlank: false },
             { fieldLabel: '资产名称', name: 'assertName', xtype: 'textfield', allowBlank: false },
             { fieldLabel: '年度计划购置数量', name: 'yearTotalNum', xtype: 'numberfield', allowBlank: false },

@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.s4game.oa.common.mapper.PlanAssertMonthMapper">
-  <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.PlanAssertMonth">
+<resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.PlanAssertMonth">
     <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="year" jdbcType="SMALLINT" property="year" />
+    <result column="month" jdbcType="SMALLINT" property="month" />
     <result column="assert_id" jdbcType="INTEGER" property="assertId" />
     <result column="assert_name" jdbcType="VARCHAR" property="assertName" />
     <result column="year_total_num" jdbcType="INTEGER" property="yearTotalNum" />
@@ -14,8 +16,8 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, assert_id, assert_name, year_total_num, bought_num, plan_num, unit_price, remark, 
-    create_time, update_time
+    id, year, month, assert_id, assert_name, year_total_num, bought_num, plan_num, unit_price, 
+    remark, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -31,14 +33,14 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into oa_plan_assert_month (assert_id, assert_name, year_total_num, 
-      bought_num, plan_num, unit_price, 
-      remark, create_time, update_time
-      )
-    values (#{assertId,jdbcType=INTEGER}, #{assertName,jdbcType=VARCHAR}, #{yearTotalNum,jdbcType=INTEGER}, 
-      #{boughtNum,jdbcType=INTEGER}, #{planNum,jdbcType=INTEGER}, #{unitPrice,jdbcType=DECIMAL}, 
-      #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+    insert into oa_plan_assert_month (year, month, assert_id, 
+      assert_name, year_total_num, bought_num, 
+      plan_num, unit_price, remark, 
+      create_time, update_time)
+    values (#{year,jdbcType=SMALLINT}, #{month,jdbcType=SMALLINT}, #{assertId,jdbcType=INTEGER}, 
+      #{assertName,jdbcType=VARCHAR}, #{yearTotalNum,jdbcType=INTEGER}, #{boughtNum,jdbcType=INTEGER}, 
+      #{planNum,jdbcType=INTEGER}, #{unitPrice,jdbcType=DECIMAL}, #{remark,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.s4game.oa.common.entity.PlanAssertMonth">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -46,6 +48,12 @@
     </selectKey>
     insert into oa_plan_assert_month
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="year != null">
+        year,
+      </if>
+      <if test="month != null">
+        month,
+      </if>
       <if test="assertId != null">
         assert_id,
       </if>
@@ -75,6 +83,12 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="year != null">
+        #{year,jdbcType=SMALLINT},
+      </if>
+      <if test="month != null">
+        #{month,jdbcType=SMALLINT},
+      </if>
       <if test="assertId != null">
         #{assertId,jdbcType=INTEGER},
       </if>
@@ -107,6 +121,12 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.s4game.oa.common.entity.PlanAssertMonth">
     update oa_plan_assert_month
     <set>
+      <if test="year != null">
+        year = #{year,jdbcType=SMALLINT},
+      </if>
+      <if test="month != null">
+        month = #{month,jdbcType=SMALLINT},
+      </if>
       <if test="assertId != null">
         assert_id = #{assertId,jdbcType=INTEGER},
       </if>
@@ -139,7 +159,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.PlanAssertMonth">
     update oa_plan_assert_month
-    set assert_id = #{assertId,jdbcType=INTEGER},
+    set year = #{year,jdbcType=SMALLINT},
+      month = #{month,jdbcType=SMALLINT},
+      assert_id = #{assertId,jdbcType=INTEGER},
       assert_name = #{assertName,jdbcType=VARCHAR},
       year_total_num = #{yearTotalNum,jdbcType=INTEGER},
       bought_num = #{boughtNum,jdbcType=INTEGER},

@@ -53,7 +53,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
     plugins: 'gridfilters',
     columns: [
         { text: 'Id', dataIndex: 'id', width: 100 },
-        { text: '年', dataIndex: 'year', width: 50, },
+        { text: '年', dataIndex: 'year', width: 50 },
         { text: '月', dataIndex: 'month', width: 50 },
         { text: '片区', dataIndex: 'areaId', width: 100,
             renderer: function(value, cellmeta, recrod) {

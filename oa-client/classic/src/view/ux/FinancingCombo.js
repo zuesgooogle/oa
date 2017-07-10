@@ -1,14 +1,14 @@
-Ext.define('oa.ux.CompanyCombo', {
+Ext.define('oa.ux.FinancingCombo', {
     extend: 'Ext.form.ComboBox',
 
-    alias: 'widget.companyCombo',
+    alias: 'widget.financingCombo',
 
     store: Ext.create('Ext.data.Store', {
         fields: ['id', 'name'],
-        data: Utils.company
+        data: Utils.financingType
     }),
 
-    fieldLabel: '所属公司',
+    fieldLabel: '融资类别',
     queryMode: 'local',
     editable: false,      //是否允许输入   
     forceSelection: true, //必须选择一个选项   

@@ -6,6 +6,10 @@ import java.util.Date;
 public class PlanAssertMonth {
     private Long id;
 
+    private Short year;
+
+    private Short month;
+
     private Integer assertId;
 
     private String assertName;
@@ -30,6 +34,22 @@ public class PlanAssertMonth {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Short getYear() {
+        return year;
+    }
+
+    public void setYear(Short year) {
+        this.year = year;
+    }
+
+    public Short getMonth() {
+        return month;
+    }
+
+    public void setMonth(Short month) {
+        this.month = month;
     }
 
     public Integer getAssertId() {

@@ -48,6 +48,8 @@ public class PlanMoneyInMonthController {
 	@ApiOperation(value = "更新收入")
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public Response update(@ApiParam(value = "收入Id") @RequestParam(value = "id", required = true) Long id,
+			@ApiParam(value = "年") @RequestParam(value = "year", required = true) Short year,
+			@ApiParam(value = "月") @RequestParam(value = "month", required = true) Short month,
 			@ApiParam(value = "所属公司") @RequestParam(value = "company", required = true) Integer company,
 			@ApiParam(value = "部门") @RequestParam(value = "departmentId", required = true) Integer departmentId,
 			@ApiParam(value = "项目") @RequestParam(value = "projectId", required = true) Integer projectId,
@@ -60,37 +62,28 @@ public class PlanMoneyInMonthController {
 			@ApiParam(value = "备注") @RequestParam(value = "remark", required = false) String remark) {
 		Response.Builder response = Response.newBuilder();
 		
-		PlanMoneyInMonth month = null;
+		PlanMoneyInMonth money = new PlanMoneyInMonth();
+		money.setYear(year);
+		money.setMonth(month);
+		money.setCompany(company);
+		money.setDepartmentId(departmentId);
+		money.setProjectId(projectId);
+		money.setSubjectId(subjectId);
+		money.setContractName(contractName);
+		money.setOrganizer(organizer);
+		money.setTotal(total);
+		money.setPlanAmount(planAmount);
+		money.setActualAmount(actualAmount);
+		
 		if (WebUtils.isAdd(id)) {
-			month = new PlanMoneyInMonth();
-			month.setCompany(company);
-			month.setDepartmentId(departmentId);
-			month.setProjectId(projectId);
-			month.setSubjectId(subjectId);
-			month.setContractName(contractName);
-			month.setOrganizer(organizer);
-			month.setTotal(total);
-			month.setPlanAmount(planAmount);
-			month.setActualAmount(actualAmount);
-			month.setCreateTime(new Date());
-
-			planMoneyInMonthMapper.insert(month);
+			money.setCreateTime(new Date());
+			planMoneyInMonthMapper.insert(money);
 		} else {
-			month = planMoneyInMonthMapper.selectByPrimaryKey(id);
-			month.setCompany(company);
-			month.setDepartmentId(departmentId);
-			month.setProjectId(projectId);
-			month.setSubjectId(subjectId);
-			month.setContractName(contractName);
-			month.setOrganizer(organizer);
-			month.setTotal(total);
-			month.setPlanAmount(planAmount);
-			month.setActualAmount(actualAmount);
-			
-			planMoneyInMonthMapper.updateByPrimaryKey(month);
+			money.setId(id);;
+			planMoneyInMonthMapper.updateByPrimaryKeySelective(money);
 		}
 
-		response.setData(month);
+		response.setData(money);
 		return response.build();
 	}
 

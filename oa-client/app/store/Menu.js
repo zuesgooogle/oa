@@ -7,17 +7,6 @@ Ext.define('oa.store.Menu', {
         expanded: true,
         children: [
             {
-                text: '新闻/会议', expanded: true, iconCls: 'fa-paper-plane', children: [
-                    { text: '新闻管理', iconCls: 'x-fa fa-newspaper-o', action: 'newsList', leaf: true },
-                    { text: '会议管理', iconCls: 'x-fa fa-delicious', action: 'noticeList', leaf: true }
-                ]
-            },
-            {
-                text: '云盘', expanded: true, iconCls: 'fa-paper-plane', children: [
-                    { text: '云盘管理', iconCls: 'x-fa fa-newspaper-o', action: 'cloudStorageList', leaf: true }
-                ]
-            },
-            {
                 text: '经营管理', expanded: true, iconCls: 'x-fa fa-cart-plus', children: [
                     { text: '成本台账(置地)', action: 'zhidiLedgerCostList', iconCls: 'fa-hourglass', leaf: true },
                     { text: '成本台账(置业)', action: 'zhiyeLedgerCostList', iconCls: 'fa-hourglass-end', leaf: true },
@@ -63,7 +52,7 @@ Ext.define('oa.store.Menu', {
                 ]
             },
             {
-                text: '组织管理', expanded: true, iconCls: 'x-fa fa-user-plus', children: [
+                text: '组织管理', expanded: false, iconCls: 'x-fa fa-user-plus', children: [
                     { text: '用户管理', action: 'userList', iconCls: 'x-fa fa-user', leaf: true },
                     { text: '部门管理', action: 'departmentList', iconCls: 'x-fa fa-group', leaf: true },
                     { text: '职位管理', action: 'positionList', iconCls: 'x-fa fa-user-secret', leaf: true }
@@ -77,13 +66,28 @@ Ext.define('oa.store.Menu', {
             },
             {
                 text: '系统设置', expanded: true, iconCls: 'fa-paper-plane', children: [
-                    { text: '成本科目', iconCls: 'x-fa fa-cubes', action: 'costsubjectTree', leaf: true },
-                    { text: '项目管理', iconCls: 'x-fa fa-delicious', action: 'projectList', leaf: true },
-                    { text: '片区管理', iconCls: 'x-fa fa-area-chart', action: 'areaList', leaf: true },
-                    { text: '地块管理', iconCls: 'x-fa fa-anchor', action: 'landList', leaf: true },
-                    { text: '标段管理', iconCls: 'x-fa fa-map-pin', action: 'sectionList', leaf: true },
-                    { text: '银行管理', iconCls: 'x-fa fa-bank', action: 'bankList', leaf: true },
-                    { text: '任务分类', iconCls: 'x-fa fa-list', action: 'taskClassifiTree', leaf: true }
+                    {
+                        text: '新闻/会议', expanded: false, iconCls: 'fa-newspaper-o', children: [
+                            { text: '新闻管理', iconCls: 'x-fa fa-newspaper-o', action: 'newsList', leaf: true },
+                            { text: '会议管理', iconCls: 'x-fa fa-delicious', action: 'noticeList', leaf: true }
+                        ]
+                    },
+                    {
+                        text: '云盘', expanded: false, iconCls: 'fa-dropbox', children: [
+                            { text: '云盘管理', iconCls: 'x-fa fa-dropbox', action: 'cloudStorageList', leaf: true }
+                        ]
+                    },
+                    {
+                        text: '元数据', expanded: false, iconCls: 'fa-database', children: [
+                            { text: '成本科目', iconCls: 'x-fa fa-cubes', action: 'costsubjectTree', leaf: true },
+                            { text: '项目管理', iconCls: 'x-fa fa-delicious', action: 'projectList', leaf: true },
+                            { text: '片区管理', iconCls: 'x-fa fa-area-chart', action: 'areaList', leaf: true },
+                            { text: '地块管理', iconCls: 'x-fa fa-anchor', action: 'landList', leaf: true },
+                            { text: '标段管理', iconCls: 'x-fa fa-map-pin', action: 'sectionList', leaf: true },
+                            { text: '银行管理', iconCls: 'x-fa fa-bank', action: 'bankList', leaf: true },
+                            { text: '任务分类', iconCls: 'x-fa fa-list', action: 'taskClassifiTree', leaf: true }
+                        ]
+                    }
                 ]
             }
         ]

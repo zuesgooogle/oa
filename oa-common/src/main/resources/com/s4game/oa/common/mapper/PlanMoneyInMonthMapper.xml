@@ -3,6 +3,8 @@
 <mapper namespace="com.s4game.oa.common.mapper.PlanMoneyInMonthMapper">
   <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.PlanMoneyInMonth">
     <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="year" jdbcType="SMALLINT" property="year" />
+    <result column="month" jdbcType="SMALLINT" property="month" />
     <result column="company" jdbcType="INTEGER" property="company" />
     <result column="department_id" jdbcType="INTEGER" property="departmentId" />
     <result column="project_id" jdbcType="INTEGER" property="projectId" />
@@ -16,8 +18,8 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, company, department_id, project_id, subject_id, organizer, contract_name, total, 
-    plan_amount, actual_amount, create_time, update_time
+    id, year, month, company, department_id, project_id, subject_id, organizer, contract_name, 
+    total, plan_amount, actual_amount, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
@@ -33,14 +35,16 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into oa_plan_money_in_month (company, department_id, project_id, 
-      subject_id, organizer, contract_name, 
-      total, plan_amount, actual_amount, 
-      create_time, update_time)
-    values (#{company,jdbcType=INTEGER}, #{departmentId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, 
-      #{subjectId,jdbcType=INTEGER}, #{organizer,jdbcType=VARCHAR}, #{contractName,jdbcType=VARCHAR}, 
-      #{total,jdbcType=DECIMAL}, #{planAmount,jdbcType=DECIMAL}, #{actualAmount,jdbcType=DECIMAL}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    insert into oa_plan_money_in_month (year, month, company, 
+      department_id, project_id, subject_id, 
+      organizer, contract_name, total, 
+      plan_amount, actual_amount, create_time, 
+      update_time)
+    values (#{year,jdbcType=SMALLINT}, #{month,jdbcType=SMALLINT}, #{company,jdbcType=INTEGER}, 
+      #{departmentId,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{subjectId,jdbcType=INTEGER}, 
+      #{organizer,jdbcType=VARCHAR}, #{contractName,jdbcType=VARCHAR}, #{total,jdbcType=DECIMAL}, 
+      #{planAmount,jdbcType=DECIMAL}, #{actualAmount,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.s4game.oa.common.entity.PlanMoneyInMonth">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
@@ -48,6 +52,12 @@
     </selectKey>
     insert into oa_plan_money_in_month
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="year != null">
+        year,
+      </if>
+      <if test="month != null">
+        month,
+      </if>
       <if test="company != null">
         company,
       </if>
@@ -83,6 +93,12 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="year != null">
+        #{year,jdbcType=SMALLINT},
+      </if>
+      <if test="month != null">
+        #{month,jdbcType=SMALLINT},
+      </if>
       <if test="company != null">
         #{company,jdbcType=INTEGER},
       </if>
@@ -121,6 +137,12 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.s4game.oa.common.entity.PlanMoneyInMonth">
     update oa_plan_money_in_month
     <set>
+      <if test="year != null">
+        year = #{year,jdbcType=SMALLINT},
+      </if>
+      <if test="month != null">
+        month = #{month,jdbcType=SMALLINT},
+      </if>
       <if test="company != null">
         company = #{company,jdbcType=INTEGER},
       </if>
@@ -159,7 +181,9 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.PlanMoneyInMonth">
     update oa_plan_money_in_month
-    set company = #{company,jdbcType=INTEGER},
+    set year = #{year,jdbcType=SMALLINT},
+      month = #{month,jdbcType=SMALLINT},
+      company = #{company,jdbcType=INTEGER},
       department_id = #{departmentId,jdbcType=INTEGER},
       project_id = #{projectId,jdbcType=INTEGER},
       subject_id = #{subjectId,jdbcType=INTEGER},

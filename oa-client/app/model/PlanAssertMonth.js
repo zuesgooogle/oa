@@ -5,6 +5,8 @@ Ext.define('oa.model.PlanAssertMonth', {
         name: 'id',
         type: 'int'
     }, 
+    'year',
+    'month',
     'assertId',
     'assertName',
     'yearTotalNum',
