@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2017-07-11 12:01:24
+Date: 2017-07-11 16:24:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -2504,12 +2504,15 @@ CREATE TABLE `oa_supplement_manage` (
   `create_time` datetime NOT NULL,
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of oa_supplement_manage
 -- ----------------------------
 INSERT INTO `oa_supplement_manage` VALUES ('2', '2017', '3', '1', '11.00', '1.00', '2017-07-11 11:32:42', '2017-07-11 11:32:42');
+INSERT INTO `oa_supplement_manage` VALUES ('3', '2017', '1', '1', '1.00', '1.00', '2017-07-11 15:07:29', '2017-07-11 15:07:29');
+INSERT INTO `oa_supplement_manage` VALUES ('4', '2017', '3', '2', '2.00', '2.00', '2017-07-11 15:07:36', '2017-07-11 15:07:35');
+INSERT INTO `oa_supplement_manage` VALUES ('5', '2016', '1', '1', '1.00', '1.00', '2017-07-11 15:15:03', '2017-07-11 15:15:03');
 
 -- ----------------------------
 -- Table structure for oa_task_classifi
