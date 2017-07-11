@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.s4game.oa.common.mapper.SupplementManageMapper">
+  <resultMap id="BaseResultMap" type="com.s4game.oa.common.entity.SupplementManage">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="year" jdbcType="SMALLINT" property="year" />
+    <result column="month" jdbcType="SMALLINT" property="month" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="investment_amount" jdbcType="DECIMAL" property="investmentAmount" />
+    <result column="composite_amount" jdbcType="DECIMAL" property="compositeAmount" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, year, month, type, investment_amount, composite_amount, create_time, update_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oa_supplement_manage
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from oa_supplement_manage
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.s4game.oa.common.entity.SupplementManage">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_supplement_manage (year, month, type, 
+      investment_amount, composite_amount, create_time, 
+      update_time)
+    values (#{year,jdbcType=SMALLINT}, #{month,jdbcType=SMALLINT}, #{type,jdbcType=TINYINT}, 
+      #{investmentAmount,jdbcType=DECIMAL}, #{compositeAmount,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.s4game.oa.common.entity.SupplementManage">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into oa_supplement_manage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="year != null">
+        year,
+      </if>
+      <if test="month != null">
+        month,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="investmentAmount != null">
+        investment_amount,
+      </if>
+      <if test="compositeAmount != null">
+        composite_amount,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="year != null">
+        #{year,jdbcType=SMALLINT},
+      </if>
+      <if test="month != null">
+        #{month,jdbcType=SMALLINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="investmentAmount != null">
+        #{investmentAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="compositeAmount != null">
+        #{compositeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.s4game.oa.common.entity.SupplementManage">
+    update oa_supplement_manage
+    <set>
+      <if test="year != null">
+        year = #{year,jdbcType=SMALLINT},
+      </if>
+      <if test="month != null">
+        month = #{month,jdbcType=SMALLINT},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="investmentAmount != null">
+        investment_amount = #{investmentAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="compositeAmount != null">
+        composite_amount = #{compositeAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.s4game.oa.common.entity.SupplementManage">
+    update oa_supplement_manage
+    set year = #{year,jdbcType=SMALLINT},
+      month = #{month,jdbcType=SMALLINT},
+      type = #{type,jdbcType=TINYINT},
+      investment_amount = #{investmentAmount,jdbcType=DECIMAL},
+      composite_amount = #{compositeAmount,jdbcType=DECIMAL},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oa_supplement_manage
+    
+    <where>
+    	<if test="months != null">
+    		and month in 
+    		<foreach collection="months" index="index" item="item" open="(" separator="," close=")">
+		    	#{item}
+		    </foreach>
+    	</if>
+    </where>
+  </select>
+  
+</mapper>

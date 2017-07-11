@@ -155,6 +155,15 @@
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
 		</table>
 		
+		<!-- 补充数据 -->
+		<table tableName="oa_supplement_financing" domainObjectName="SupplementFinancing" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		<table tableName="oa_supplement_manage" domainObjectName="SupplementManage" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+			<generatedKey column="id" sqlStatement="Mysql" identity="true" />
+		</table>
+		
+		
 		<!-- 审批 -->
 		<table tableName="oa_user_process" domainObjectName="UserProcess" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
 			<generatedKey column="id" sqlStatement="Mysql" identity="true" />

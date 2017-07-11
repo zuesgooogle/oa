@@ -46,9 +46,15 @@ Ext.define('oa.store.Menu', {
                 ]
             },
             {
+                text: '补充数据', expanded: true, iconCls: 'fa-life-ring', children: [
+                    { text: '财务', action: 'supplementFinancingList', iconCls: 'fa-money', leaf: true },
+                    { text: '经营', action: 'supplementManageList', iconCls: 'fa-cogs', leaf: true }
+                ]
+            },
+            {
                 text: '开发进度管理', expanded: true, iconCls: 'fa-connectdevelop', children: [
                     { text: '土地开发', action: 'developLandList', iconCls: 'fa-anchor', leaf: true },
-                    { text: '二级开发', action: 'developSecondList', iconCls: 'fa-dropbox', leaf: true }
+                    { text: '二级开发', action: 'developSecondList', iconCls: 'fa-level-down', leaf: true }
                 ]
             },
             {

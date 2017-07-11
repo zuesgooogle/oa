@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2017-07-10 18:43:48
+Date: 2017-07-11 12:01:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -2460,6 +2460,56 @@ CREATE TABLE `oa_section` (
 INSERT INTO `oa_section` VALUES ('1', 'A区', '2017-07-01 19:22:31', '2017-07-01 19:22:31');
 INSERT INTO `oa_section` VALUES ('2', 'B区', '2017-07-01 19:22:34', '2017-07-01 19:22:34');
 INSERT INTO `oa_section` VALUES ('3', 'C区', '2017-07-01 19:22:38', '2017-07-01 19:22:37');
+
+-- ----------------------------
+-- Table structure for oa_supplement_financing
+-- ----------------------------
+DROP TABLE IF EXISTS `oa_supplement_financing`;
+CREATE TABLE `oa_supplement_financing` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `year` smallint(6) NOT NULL COMMENT '年',
+  `month` smallint(6) NOT NULL COMMENT '月',
+  `type` tinyint(4) NOT NULL COMMENT '1: 目标值, 2: 实际值',
+  `asserts` decimal(20,2) NOT NULL COMMENT '资产',
+  `debt` decimal(20,2) NOT NULL COMMENT '负债',
+  `debt_ratio` decimal(10,2) NOT NULL COMMENT '资产负债率',
+  `equity` decimal(20,2) NOT NULL COMMENT '所有者权益',
+  `equity_ratio` decimal(10,2) NOT NULL COMMENT '净资产收益率',
+  `maintenance` decimal(20,2) NOT NULL COMMENT '管理费',
+  `profit` decimal(20,2) NOT NULL COMMENT '利润',
+  `taking` decimal(20,2) NOT NULL COMMENT '营业收入',
+  `borrow_amount` decimal(20,2) NOT NULL COMMENT '金融机构借款本金',
+  `other_amount` decimal(20,2) NOT NULL COMMENT '其他支出',
+  `create_time` datetime NOT NULL,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of oa_supplement_financing
+-- ----------------------------
+INSERT INTO `oa_supplement_financing` VALUES ('1', '2017', '2', '1', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '2017-07-11 11:27:29', '2017-07-11 11:27:28');
+
+-- ----------------------------
+-- Table structure for oa_supplement_manage
+-- ----------------------------
+DROP TABLE IF EXISTS `oa_supplement_manage`;
+CREATE TABLE `oa_supplement_manage` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `year` smallint(6) NOT NULL COMMENT '年',
+  `month` smallint(6) NOT NULL COMMENT '月',
+  `type` tinyint(4) NOT NULL COMMENT '1: 目标值, 2: 实际值',
+  `investment_amount` decimal(20,2) NOT NULL COMMENT '投资额',
+  `composite_amount` decimal(20,2) NOT NULL COMMENT '综合经营额',
+  `create_time` datetime NOT NULL,
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of oa_supplement_manage
+-- ----------------------------
+INSERT INTO `oa_supplement_manage` VALUES ('2', '2017', '3', '1', '11.00', '1.00', '2017-07-11 11:32:42', '2017-07-11 11:32:42');
 
 -- ----------------------------
 -- Table structure for oa_task_classifi
