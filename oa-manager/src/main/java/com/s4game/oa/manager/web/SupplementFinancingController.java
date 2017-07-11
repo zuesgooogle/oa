@@ -2,6 +2,7 @@ package com.s4game.oa.manager.web;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +68,7 @@ public class SupplementFinancingController {
 			@ApiParam(value = "资产") @RequestParam(value = "asserts", required = true) BigDecimal asserts,
 			@ApiParam(value = "负债") @RequestParam(value = "debt", required = true) BigDecimal debt,
 			@ApiParam(value = "资产负债率") @RequestParam(value = "debtRatio", required = true) BigDecimal debtRatio,
-			@ApiParam(value = "所有者权益") @RequestParam(value = "equity", required = true) BigDecimal equity,
+			@ApiParam(value = "所有制权益") @RequestParam(value = "equity", required = true) BigDecimal equity,
 			@ApiParam(value = "净资产收益率") @RequestParam(value = "equityRatio", required = true) BigDecimal equityRatio,
 			@ApiParam(value = "管理费") @RequestParam(value = "maintenance", required = true) BigDecimal maintenance,
 			@ApiParam(value = "利润") @RequestParam(value = "profit", required = true) BigDecimal profit,
@@ -109,6 +110,22 @@ public class SupplementFinancingController {
 		Response.Builder response = Response.newBuilder();
 
 		int result = supplementFinancingMapper.deleteByPrimaryKey(id);
+
+		response.setData(result);
+		return response.build();
+	}
+	
+	@ApiOperation(value = "统计")
+	@RequestMapping(value = "/report", method = { RequestMethod.GET, RequestMethod.POST })
+	public Response report(@ApiParam(value = "年") @RequestParam(value = "year", required = true) Short year,
+			@ApiParam(value = "月") @RequestParam(value = "month", required = false) Short month) {
+		Response.Builder response = Response.newBuilder();
+
+		SupplementFinancing params = new SupplementFinancing();
+		params.setYear(year);
+		params.setMonth(month);
+		
+		List<SupplementFinancing> result = supplementFinancingMapper.selectReport(params);
 
 		response.setData(result);
 		return response.build();

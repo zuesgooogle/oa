@@ -30,7 +30,7 @@ public class TaskClassifiController {
 	private PageService<TaskClassifi> pageService;
 
 	@ApiOperation(value = "任务分类列表")
-	@RequestMapping(value = "/list")
+	@RequestMapping(value = "/list", method = { RequestMethod.GET, RequestMethod.POST })
 	public Response list(@ApiParam(value = "任务分类Id") @RequestParam(value = "node", required = false) Integer node) {
 		Response.Builder response = Response.newBuilder();
 

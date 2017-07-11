@@ -18,6 +18,11 @@ Ext.define('Utils', {
         { "id": 2, "name": "融资预案" }
     ],
 
+    supplementType: [
+        { "id": 1, "name": "目标值" },
+        { "id": 2, "name": "实际值" }
+    ],
+
     isCompany: function (name) {
         var has = false;
         Ext.each(this.company, function (record) {
@@ -43,6 +48,17 @@ Ext.define('Utils', {
     rendererFnancingType: function (id) {
         var name = 'unknow';
         Ext.each(this.financingType, function (record) {
+            if (record.id === id) {
+                name = record.name;
+                return false; 
+            }
+        });
+        return name;
+    },
+
+    rendererSupplementType: function (id) {
+        var name = 'unknow';
+        Ext.each(this.supplementType, function (record) {
             if (record.id === id) {
                 name = record.name;
                 return false; 

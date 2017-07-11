@@ -39,7 +39,11 @@ Ext.define('oa.view.plan.SupplementFinancingList', {
         { text: 'ID', dataIndex: 'id', width: 100 },
         { text: '年', dataIndex: 'year', width: 50 },
         { text: '月', dataIndex: 'month', width: 50 },
-        { text: '类型', dataIndex: 'type', width: 100 },
+        { text: '类型', dataIndex: 'type', width: 100,
+            renderer: function (value, cellmeta, record) {
+                return Utils.rendererSupplementType(value);
+            }
+        },
 
         { text: '资产', dataIndex: 'asserts', width: 100 },
         { text: '负债', dataIndex: 'debt', width: 100 },

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
+import com.s4game.oa.common.constants.PageConstants;
 import com.s4game.oa.common.entity.DevelopProgressSecond;
 import com.s4game.oa.common.mapper.DevelopProgressSecondMapper;
 import com.s4game.oa.common.response.Response;
@@ -32,8 +33,8 @@ public class DevelopProgressSecondController {
 	@ApiOperation(value = "进度列表")
 	@RequestMapping(value = "/list")
 	public Response list(
-			@ApiParam(value = "当前页数") @RequestParam(value = "page", required = false) Integer page,
-			@ApiParam(value = "每页数量") @RequestParam(value = "limit", required = false) Integer limit
+			@ApiParam(value = "当前页数") @RequestParam(value = "page", required = false, defaultValue = PageConstants.PAGE) Integer page,
+			@ApiParam(value = "每页数量") @RequestParam(value = "limit", required = false, defaultValue = PageConstants.LIMIT) Integer limit
 			) {
 		Response.Builder response = Response.newBuilder();
 		

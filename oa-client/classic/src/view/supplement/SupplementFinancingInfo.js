@@ -37,7 +37,7 @@ Ext.define('oa.view.supplement.SupplementFinancingInfo', {
                     { fieldLabel: 'Id', name: 'id', xtype: 'textfield', hidden: true },
                     { fieldLabel: '年份', name: 'year', xtype: 'yearCombo', allowBlank: false },
                     { fieldLabel: '月份', name: 'month', xtype: 'monthCombo', allowBlank: false },
-                    { fieldLabel: '类型', name: 'type', xtype: 'textfield', allowBlank: false }
+                    { fieldLabel: '类型', name: 'type', xtype: 'supplementCombo', allowBlank: false }
                 ]
             },
             {
@@ -47,7 +47,7 @@ Ext.define('oa.view.supplement.SupplementFinancingInfo', {
                 defaults: { anchor: '95%' },
                 style: "padding: 5px",
                 items: [
-                    { fieldLabel: '负债', name: 'asserts', xtype: 'numberfield' },
+                    { fieldLabel: '资产', name: 'asserts', xtype: 'numberfield' },
                     { fieldLabel: '负债', name: 'debt', xtype: 'numberfield' },
                     { fieldLabel: '资产负债率', name: 'debtRatio', xtype: 'numberfield' },
                     { fieldLabel: '所有者权益', name: 'equity', xtype: 'numberfield' },

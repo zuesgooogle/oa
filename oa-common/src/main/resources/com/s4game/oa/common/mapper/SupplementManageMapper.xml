@@ -141,4 +141,21 @@
     </where>
   </select>
   
+  <select id="selectReport" resultMap="BaseResultMap">
+    select type, sum(investment_amount) as investment_amount, sum(composite_amount) as composite_amount 
+    
+    from oa_supplement_manage
+    
+    <where>
+    	<if test="year != null">
+    		and `year` = #{year} 
+    	</if>
+    	<if test="month != null">
+    		and month = #{month} 
+    	</if>
+    </where>
+    group by type
+    
+  </select>
+  
 </mapper>

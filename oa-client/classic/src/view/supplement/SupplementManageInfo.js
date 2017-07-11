@@ -37,7 +37,7 @@ Ext.define('oa.view.supplement.SupplementManageInfo', {
                     { fieldLabel: 'Id', name: 'id', xtype: 'textfield', hidden: true },
                     { fieldLabel: '年份', name: 'year', xtype: 'yearCombo', allowBlank: false },
                     { fieldLabel: '月份', name: 'month', xtype: 'monthCombo', allowBlank: false },
-                    { fieldLabel: '类型', name: 'type', xtype: 'textfield', allowBlank: false },
+                    { fieldLabel: '类型', name: 'type', xtype: 'supplementCombo', allowBlank: false },
                     { fieldLabel: '投资额', name: 'investmentAmount', xtype: 'numberfield' },
                     { fieldLabel: '综合经营额', name: 'compositeAmount', xtype: 'numberfield' }
                 ]

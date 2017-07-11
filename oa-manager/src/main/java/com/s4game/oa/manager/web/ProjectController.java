@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
+import com.s4game.oa.common.constants.PageConstants;
 import com.s4game.oa.common.entity.Project;
 import com.s4game.oa.common.mapper.ProjectMapper;
 import com.s4game.oa.common.response.Response;
@@ -31,10 +32,10 @@ public class ProjectController {
 	private PageService<Project> pageService;
 	
 	@ApiOperation(value = "项目列表")
-	@RequestMapping(value = "/list")
+	@RequestMapping(value = "/list", method = { RequestMethod.GET, RequestMethod.POST })
 	public Response list(
-			@ApiParam(value = "当前页数") @RequestParam(value = "page", required = false) Integer page,
-			@ApiParam(value = "每页数量") @RequestParam(value = "limit", required = false) Integer limit
+			@ApiParam(value = "当前页数") @RequestParam(value = "page", required = false, defaultValue = PageConstants.PAGE) Integer page,
+			@ApiParam(value = "每页数量") @RequestParam(value = "limit", required = false, defaultValue = PageConstants.LIMIT) Integer limit
 			) {
 		Response.Builder response = Response.newBuilder();
 
