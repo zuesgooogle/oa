@@ -8764,3 +8764,7 @@ tr.x-grid-subtable-row {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     opacity: 1;
 }
+/* D:/github/oa/oa-client/classic/sass/src/view/main/Main.scss:1 */
+.x-grid-cell-alert .x-grid-cell-inner {
+    background-color: rgba(255, 0, 0, 0.42);
+}

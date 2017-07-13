@@ -36,7 +36,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
             disabled: true,
             handler: 'deleteZhidiLedgerCost'
         },
-        '->',
+            '->',
         {
             xtype: 'button',
             itemId: 'report',
@@ -51,21 +51,34 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
     },
 
     plugins: 'gridfilters',
+
+    viewConfig: {
+        // getRowClass: function (record, rowIndex, rowParams, store) {
+        //     var expectInvest = record.get('expectInvest');
+        //     var totalInvest = record.get('totalInvest');
+        //     if (expectInvest <= totalInvest) {
+        //         return 'x-grid-item-alert';
+        //     } else {
+        //         return '';
+        //     }
+        // }
+    },
     columns: [
         { text: 'Id', dataIndex: 'id', width: 100 },
         { text: '年', dataIndex: 'year', width: 50 },
         { text: '月', dataIndex: 'month', width: 50 },
-        { text: '片区', dataIndex: 'areaId', width: 100,
-            renderer: function(value, cellmeta, recrod) {
+        {
+            text: '片区', dataIndex: 'areaId', width: 100,
+            renderer: function (value, cellmeta, recrod) {
                 var areaStore = Ext.getStore('area');
-                    index = areaStore.find('id', value); 
-                    name = areaStore.getAt(index).get('name'); 
-                return name; 
+                index = areaStore.find('id', value);
+                name = areaStore.getAt(index).get('name');
+                return name;
             },
             filter: {
                 type: 'list',
                 labelField: 'name',
-                store:  {
+                store: {
                     type: 'area'
                 }
             }
@@ -73,13 +86,21 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
         { text: '成本科目', dataIndex: 'subjectId', width: 100 },
         { text: '可研测算金额', dataIndex: 'calculateInvest', width: 100 },
         { text: '预计投资额', dataIndex: 'expectInvest', width: 100 },
-        { text: '累计投入', dataIndex: 'totalInvest', width: 100 },
+        { text: '累计投入', dataIndex: 'totalInvest', width: 100, 
+            renderer: function(value, cellmeta, record) {
+                var expectInvest = record.get('expectInvest');
+                if (expectInvest <= value) {
+                    cellmeta.tdCls = 'x-grid-cell-alert';
+                }
+                return value;
+            }
+        },
         { text: '审计资料统计金额', dataIndex: 'auditStatistics', width: 150 },
         { text: '政府确认金额', dataIndex: 'govConfirm', width: 100 },
         { text: '政府程序金额', dataIndex: 'govCheck', width: 100 },
         { text: '未核对金额', dataIndex: 'uncheck', width: 100 },
         {
-            text: '时间', dataIndex: 'createTime', width: 200, 
+            text: '时间', dataIndex: 'createTime', width: 200,
             renderer: Ext.util.Format.dateRenderer('Y-m-d H:i:s')
         },
         { flex: 1 }
@@ -101,7 +122,7 @@ Ext.define('oa.view.ledger.ZhidiLedgerCostList', {
     },
 
     listeners: {
-        beforerender: function(grid) {
+        beforerender: function (grid) {
             // StoreManager.syncLoadStore('store.area', function() {
             //     grid.getStore().load();
             // });

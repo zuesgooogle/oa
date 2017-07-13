@@ -53,6 +53,20 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostList', {
         type: 'zhiyeLedgerCost'
     },
 
+    
+    viewConfig: {
+        getRowClass: function (record, rowIndex, rowParams, store) {
+            var performanceAmount = record.get('performanceAmount');
+            var paidAmount = record.get('paidAmount');
+            var settledAccount = record.get('settledAccount');
+            
+            if (performanceAmount <= paidAmount || settledAccount <= paidAmount) {
+                return 'x-grid-item-alert';
+            } else {
+                return '';
+            }
+        }
+    },
     columns: [
         { text: 'Id', dataIndex: 'id', width: 100 },
         { text: '年', dataIndex: 'year', width: 50 },
@@ -75,9 +89,25 @@ Ext.define('oa.view.ledger.ZhiyeLedgerCostList', {
         { text: '成本科目', dataIndex: 'subjectId', width: 100 },
         { text: '预计投资额', dataIndex: 'expectInvest', width: 100 },
         { text: '已签合同金额', dataIndex: 'contractAmount', width: 100 },
-        { text: '已履约金额', dataIndex: 'performanceAmount', width: 150 },
+        { text: '已履约金额', dataIndex: 'performanceAmount', width: 150, 
+            renderer: function(value, cellmeta, record) {
+                var paidAmount = record.get('paidAmount');
+                if (value <= value) {
+                    cellmeta.tdCls = 'x-grid-cell-alert';
+                }
+                return value;
+            }
+        },
         { text: '已付金额', dataIndex: 'paidAmount', width: 100 },
-        { text: '已结束金额', dataIndex: 'settledAccount', width: 100 },
+        { text: '已结束金额', dataIndex: 'settledAccount', width: 100, 
+            renderer: function(value, cellmeta, record) {
+                var paidAmount = record.get('paidAmount');
+                if (value <= paidAmount) {
+                    cellmeta.tdCls = 'x-grid-cell-alert';
+                }
+                return value;
+            }
+        },
         {
             text: '时间', dataIndex: 'createTime', width: 200 ,
             renderer: function (value, cellmeta, record) {
